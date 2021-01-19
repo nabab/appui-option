@@ -1,0 +1,37 @@
+{
+  "text": "Options",
+  "num": 7,
+  "icon": "nf nf-fa-hand_paper_o",
+  "items": [
+    {
+      "text": "Options Categories",
+      "num": 1,
+      "icon": "nf nf-fa-tencent_weibo",
+      "link": "categories"
+    },
+    {
+      "text": "Options widgets",
+      "num": 2,
+      "icon": "nf nf-fa-sitemap",
+      "link": "items"
+    },
+    {
+      "text": "Permissions",
+      "num": 3,
+      "icon": "nf nf-oct-key",
+      "link": "permissions"
+    },
+    {
+      "text": "Options Tree",
+      "num": 4,
+      "icon": "nf nf-fa-tree",
+      "link": "tree"
+    },
+    {
+      "text": "Radios",
+      "num": 5,
+      "icon": "nf nf-fa-music",
+      "link": "radios"
+    }
+  ]
+}

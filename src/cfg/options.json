@@ -1,0 +1,53 @@
+[{
+  "text": "Permissions",
+  "code": "permissions",
+  "id_parent": "appui",
+  "icon": "nf nf-fa-key",
+  "cfg": {
+    "show_code": 1,
+    "show_value": 1,
+    "sortable": 1,
+    "allow_children": 1,
+    "inheritance": "cascade"
+  },
+  "items": [{
+    "text": "Pages",
+    "code": "page",
+    "icon": "nf nf-fa-files_o",
+    "cfg": {
+      "show_code": 1,
+      "show_value": 1,
+      "allow_children": 1,
+      "inheritance": "cascade",
+      "sortable": 1,
+      "inherit_from": ["|*appui-options*|","appui"],
+      "frozen": 1
+    }
+  }, {
+    "text": "Options",
+    "code": "options",
+    "icon": "nf nf-fa-cogs",
+    "cfg": {
+      "show_code": 1,
+      "show_value": 1,
+      "sortable": 1,
+      "allow_children": 1,
+      "inheritance": "cascade",
+      "inherit_from": ["|*appui-options*|","appui"],
+      "frozen": 1
+    }
+  }, {
+    "text": "Plugins",
+    "code": "plugins",
+    "icon": "nf nf-fa-plug",
+    "cfg": {
+      "show_code": 1,
+      "show_value": 1,
+      "sortable": 1,
+      "allow_children": 1,
+      "inheritance": "cascade",
+      "inherit_from": ["|*appui-options*|","appui"],
+      "frozen": 1
+    }
+  }]
+}]
