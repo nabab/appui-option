@@ -44,7 +44,7 @@
         }],
         isAdmin: appui.app.user.isAdmin,
         appuiTree: false,
-        routerRoot: appui.plugins['appui-options'] + '/tree/'
+        routerRoot: appui.plugins['appui-option'] + '/tree/'
       }
     },
     computed: {
@@ -52,7 +52,7 @@
         if (this.closest('bbn-floater')) {
           return undefined;
         }
-        return 'appui-options-tree';
+        return 'appui-option-tree';
       },
       hasChildren(){
         if ( this.option ){
@@ -73,7 +73,7 @@
       importOption(node){
         this.getPopup({
           title: 'Import into option ' + node.text,
-          component: 'appui-options-import',
+          component: 'appui-option-import',
           source: {
             root: this.source.root,
             data: {
@@ -133,11 +133,11 @@
         return n;
       },
       treeNodeActivate(n){
-        bbn.fn.link(appui.plugins['appui-options'] + '/tree/option/' + n.data.id + this.currentUrl, true);
+        bbn.fn.link(appui.plugins['appui-option'] + '/tree/option/' + n.data.id + this.currentUrl, true);
       },
       moveOpt(node, nodeDest, ev){
         ev.preventDefault();
-        this.post(appui.plugins['appui-options'] + '/actions/move', {
+        this.post(appui.plugins['appui-option'] + '/actions/move', {
           idNode: node.data.id,
           idParentNode: nodeDest.data.id
         }, d => {
@@ -163,7 +163,7 @@
     },
     watch: {
       appuiTree(){
-        this.post(appui.plugins['appui-options'] + '/tree/typeTree',{appuiTree: this.appuiTree}, d => {
+        this.post(appui.plugins['appui-option'] + '/tree/typeTree',{appuiTree: this.appuiTree}, d => {
           if ( this.source.cat !== d.data.id_cat ){
             this.$set(this.source, 'cat', d.data.id_cat);
             if ( this.optionSelected.id.length > -1 ){

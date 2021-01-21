@@ -1,6 +1,6 @@
 <!-- HTML Document -->
 <bbn-form :action="url"
-          :class="['appui-options-form', 'bbn-overlay']"
+          :class="['appui-option-form', 'bbn-overlay']"
           :source="currentSource"
           @success="onSuccess"
           :validation="beforeSend"

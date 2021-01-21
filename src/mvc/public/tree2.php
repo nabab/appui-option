@@ -21,7 +21,7 @@ if ( !isset($ctrl->post['id']) ){
   $ctrl->combo(_("Options' tree"), $ctrl->data);
 }
 else{
-  /** @var \bbn\appui\options $o */
+  /** @var \bbn\appui\option $o */
 /*  $o =& $ctrl->inc->options;
   $res = $o->full_options($ctrl->post['id']);
     $ctrl->obj->data = $res ?: [];*/

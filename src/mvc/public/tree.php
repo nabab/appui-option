@@ -39,10 +39,10 @@ else{
     $ctrl->obj->bcolor = '#1D481F';
     $ctrl->obj->fcolor = '#FFF';
     $ctrl->obj->icon = 'nf nf-mdi-file_tree';
-    $ctrl->set_url(APPUI_OPTIONS_ROOT . 'tree')->combo(_("Options' tree"), $ctrl->data);
+    $ctrl->set_url(APPUI_OPTION_ROOT . 'tree')->combo(_("Options' tree"), $ctrl->data);
   }
   else{
-    /** @var \bbn\appui\options $o */
+    /** @var \bbn\appui\option $o */
   /*  $o =& $ctrl->inc->options;
     $res = $o->full_options($ctrl->post['id']);
     $ctrl->obj->data = $res ?: [];*/

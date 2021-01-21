@@ -38,7 +38,7 @@
       importOption(node){
         this.getPopup({
           title: 'Import into option ' + node.text,
-          component: 'appui-options-import',
+          component: 'appui-option-import',
           source: {
             root: this.source.root,
             data: {
@@ -142,7 +142,7 @@
               width: 450,
               height: 550,
               title: bbn._('Usage'),
-              component: 'appui-options-popup-tree',
+              component: 'appui-option-popup-tree',
               source: {
                 treeData: d.tree,
                 result: d.totalReferences,

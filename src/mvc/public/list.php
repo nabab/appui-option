@@ -2,7 +2,7 @@
 /** @var $ctrl \bbn\mvc\controller */
 
 
-/** @var bbn\appui\options $o */
+/** @var bbn\appui\option $o */
 $o =& $ctrl->inc->options;
 // Option ID and option exists
 $id = empty($ctrl->arguments[0]) ? $o->from_code(false) : $ctrl->arguments[0];

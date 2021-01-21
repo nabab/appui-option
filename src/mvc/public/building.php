@@ -12,7 +12,7 @@ if ( !isset($ctrl->arguments[0]) ){
   $ctrl->combo(_("building"), $ctrl->data);
 }
 else{
-  /** @var \bbn\appui\options $o */
+  /** @var \bbn\appui\option $o */
   $o =& $ctrl->inc->options;
   $res = $o->full_options_cfg($ctrl->arguments[0]);
   $res2 = $res;

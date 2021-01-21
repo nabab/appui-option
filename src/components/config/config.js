@@ -89,7 +89,7 @@
         showSchemaScfg: !!this.source.cfg.scfg && !!this.source.cfg.scfg.schema,
         defaultScfg: defScfg,
         showReset: !this.source.cfg.frozen,
-        root: appui.plugins['appui-options'] + '/'
+        root: appui.plugins['appui-option'] + '/'
       }
     },
     computed: {
@@ -100,7 +100,7 @@
         return controllers
       },
       tree(){
-        return this.closest('appui-options-option') || null
+        return this.closest('appui-option-option') || null
       }
     },
     methods: {
@@ -149,7 +149,7 @@
       },
       onSuccess() {
         let tab = bbn.vue.closest(this, 'bbn-container'),
-            list = bbn.vue.find(tab, 'appui-options-list'),
+            list = bbn.vue.find(tab, 'appui-option-list'),
             table = list ? list.getRef('table') : false;
         if ( table && table.hasStorage ){
           table.storage.remove(table._getStorageRealName());
@@ -169,7 +169,7 @@
           width: 500,
           height: 600,
           title: bbn._('Options'),
-          component: 'appui-options-browse',
+          component: 'appui-option-browse',
           source: {
             data: src
           }
@@ -200,11 +200,11 @@
       }
     },
     mounted(){
-      if (!appui.plugins['appui-options'] || controllers) {
+      if (!appui.plugins['appui-option'] || controllers) {
         this.ready = true;
       }
       else{
-        this.post(appui.plugins['appui-options'] + '/plugins', (d) => {
+        this.post(appui.plugins['appui-option'] + '/plugins', (d) => {
           if (d.controllers) {
             controllers = d.controllers;
           }

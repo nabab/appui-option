@@ -60,7 +60,7 @@
       openConfig(){
         this.getPopup().open({
           title: bbn._("Option's configuration"),
-          component: 'appui-options-config',
+          component: 'appui-option-config',
           source: this.source,
           width: 1000,
           height: bbn.env.height - 100
@@ -216,8 +216,8 @@
       }
     },
     components: {
-      'appui-options-list-fixnum': {
-        name: 'appui-options-list-fixnum',
+      'appui-option-list-fixnum': {
+        name: 'appui-option-list-fixnum',
         template: `
   <bbn-dropdown :source="src"
                 :value="source.num"
@@ -229,7 +229,7 @@
         props: ['source'],
         computed: {
           list(){
-            return bbn.vue.closest(this, 'appui-options-list');
+            return bbn.vue.closest(this, 'appui-option-list');
           },
           src(){
             return Array.from({length: this.list.$refs.table.total}, (v, k) => k + 1);

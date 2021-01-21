@@ -8,7 +8,7 @@ array_unshift($plugins, [
   'path' => $model->app_path()
 ]);
 foreach ( $plugins as $name => $cfg ){
-  if ( $fs->cd($cfg['path'].'plugins/appui-options') ){
+  if ( $fs->cd($cfg['path'].'plugins/appui-option') ){
     $all = $fs->scan('.', 'file');
     foreach ( $all as $a ){
       $bits = \bbn\x::split($a, '/');

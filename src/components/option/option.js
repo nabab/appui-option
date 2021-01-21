@@ -24,10 +24,10 @@
     },
     methods: {
       linkOption(){
-        bbn.fn.link(appui.plugins['appui-options'] + "/list/" + this.source.option.id)
+        bbn.fn.link(appui.plugins['appui-option'] + "/list/" + this.source.option.id)
       },
       deleteCache(){
-        this.post(appui.plugins['appui-options'] + '/actions/delete_cache',{
+        this.post(appui.plugins['appui-option'] + '/actions/delete_cache',{
           id: this.source.option.id
         }, (d) => {
           if ( d.success ){
@@ -40,7 +40,7 @@
       },
       removeOpt(){
         this.confirm(bbn._('Are you sure you want to delete this option?'), ()=>{
-          this.post(appui.plugins['appui-options'] + '/actions/remove', this.source.option, d => { 
+          this.post(appui.plugins['appui-option'] + '/actions/remove', this.source.option, d => { 
               if ( d.success ){
                 appui.success(bbn._('Deleted'));
                 this.tree.$refs.listOptions.selectedNode.$parent.reload();
@@ -51,7 +51,7 @@
       },
       removeOptHistory(){
         this.confirm(bbn._('Are you sure you want to delete this option\'s history?'), () => {
-          this.post(appui.plugins['appui-options'] + '/actions/remove', 
+          this.post(appui.plugins['appui-option'] + '/actions/remove', 
             bbn.fn.extend({}, this.source.option, {history : true}), 
             d => {
               if ( d.success ){
@@ -63,7 +63,7 @@
         })
       },
       showUsageOpt(){
-        this.post(appui.plugins['appui-options'] + "/actions/show_used_option", {
+        this.post(appui.plugins['appui-option'] + "/actions/show_used_option", {
           id: this.source.option.id
         }, d => {
           if ( d.success && d.tree ){
@@ -74,7 +74,7 @@
               width: 450,
               height: 550,
               title: bbn._('Usage'),
-              component: 'appui-options-popup-tree',
+              component: 'appui-option-popup-tree',
               source: {
                 treeData: d.tree,
                 result: d.totalReferences,

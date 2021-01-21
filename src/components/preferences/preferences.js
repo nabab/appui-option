@@ -55,7 +55,7 @@
       remove(row){
         if ( row.id ){
           this.confirm(bbn._('Are you sure you want to to delete this preference?'), () => {
-            this.post(appui.plugins['appui-options'] + '/actions/preferences/remove', {id: row.id} , d => {
+            this.post(appui.plugins['appui-option'] + '/actions/preferences/remove', {id: row.id} , d => {
               if ( d.success ){
                 let idx = bbn.fn.search(this.source[this.isMine ? 'prefs' : 'uprefs'], {id: row.id})
                 if ( idx > -1 ){
@@ -73,7 +73,7 @@
       },
       removeAll(){
         this.confirm(bbn._('Are you sure you want to delete these preferences?'), () => {
-          this.post(appui.plugins['appui-options'] + '/actions/preferences/remove', {
+          this.post(appui.plugins['appui-option'] + '/actions/preferences/remove', {
             ids: bbn.fn.map(this.source[this.isMine ? 'prefs' : 'uprefs'], p => {
               return p.id;
             })
@@ -112,13 +112,13 @@
           delete fd.id
           delete fd.id_option
           return {
-            root: appui.plugins['appui-options'] + '/',
+            root: appui.plugins['appui-option'] + '/',
             formData: fd
           }
         },
         methods: {
           afterSubmit(d){
-            let tab = this.closest('bbn-container').find('appui-options-preferences')
+            let tab = this.closest('bbn-container').find('appui-option-preferences')
             if ( tab && d.success && (d.prefs !== undefined) ){
               this.$set(tab.source, 'prefs', d.prefs)
               this.$nextTick(() => {
@@ -144,7 +144,7 @@
           }
         },
         created(){
-          this.post(appui.plugins['appui-options'] + '/data/preferences/bits', {id: this.source.id}, d => {
+          this.post(appui.plugins['appui-option'] + '/data/preferences/bits', {id: this.source.id}, d => {
             if ( d.success ){
               this.bits = d.bits
               this.$nextTick(() => {
@@ -171,10 +171,10 @@
         `,
         methods: {
           add(){
-            this.closest('appui-options-preferences').add()
+            this.closest('appui-option-preferences').add()
           },
           removeAll(){
-            this.closest('appui-options-preferences').removeAll()
+            this.closest('appui-option-preferences').removeAll()
           }
         }
       }

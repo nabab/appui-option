@@ -20,7 +20,7 @@
       "allow_children": 1,
       "inheritance": "cascade",
       "sortable": 1,
-      "inherit_from": ["|*appui-options*|","appui"],
+      "inherit_from": ["|*appui-option*|","appui"],
       "frozen": 1
     }
   }, {
@@ -33,7 +33,7 @@
       "sortable": 1,
       "allow_children": 1,
       "inheritance": "cascade",
-      "inherit_from": ["|*appui-options*|","appui"],
+      "inherit_from": ["|*appui-option*|","appui"],
       "frozen": 1
     }
   }, {
@@ -46,7 +46,7 @@
       "sortable": 1,
       "allow_children": 1,
       "inheritance": "cascade",
-      "inherit_from": ["|*appui-options*|","appui"],
+      "inherit_from": ["|*appui-option*|","appui"],
       "frozen": 1
     }
   }]

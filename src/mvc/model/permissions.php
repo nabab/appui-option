@@ -87,7 +87,7 @@ else if ( isset($model->data['id']) &&
   $users = $mgr->get_list();
   $is_file = substr($row['code'], -1) !== '/';
   // Check if it's an option
-  $is_option = $model->inc->options->is_parent($model->data['id'], $model->inc->options->from_root_code('options', 'permissions', 'appui'));
+  $is_option = $model->inc->options->is_parent($model->data['id'], $model->inc->options->from_root_code('options', 'permission', 'appui'));
   $res = [
     'id' => $row['id'],
     'text' => !empty($row['text']) ? $row['text'] : '',
@@ -109,7 +109,7 @@ else if ( isset($model->data['id']) &&
   }
 
   // Check if it's a real file/dir (page)
-  $id_page = $model->inc->options->from_root_code('page', 'permissions', 'appui');
+  $id_page = $model->inc->options->from_root_code('page', 'permission', 'appui');
   if ( $model->inc->options->is_parent($model->data['id'], $id_page) ){
     $id_parent = $row['id_parent'];
     $p = [];

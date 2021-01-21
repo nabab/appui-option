@@ -8,7 +8,7 @@
       }
     },
     created(){
-      this.post(appui.plugins['appui-options'] + "/data/stats", {id: this.source.option.id}, d => {
+      this.post(appui.plugins['appui-option'] + "/data/stats", {id: this.source.option.id}, d => {
         this.treeData = d.tree
         this.result = d.totalReferences
         this.ready = true

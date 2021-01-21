@@ -1,11 +1,11 @@
-<div class="bbn-overlay appui-options-list">
+<div class="bbn-overlay appui-option-list">
 	<bbn-table :source="source.options"
              uid="id"
              ref="table"
              :toolbar="getToolbar"
              :editable="!!source.cfg.write"
              :showable="source.is_dev"
-             editor="appui-options-form"
+             editor="appui-option-form"
              :filterable="!source.cfg.orderable"
              :pageable="!source.cfg.orderable"
              :map="mapTable"
@@ -37,7 +37,7 @@
                 :editable="!!source.cfg.sortable"
                 type="number"
                 cls="bbn-c"
-                :component="$options.components['appui-options-list-fixnum']"
+                :component="$options.components['appui-option-list-fixnum']"
     ></bbns-column>
     <bbns-column v-if="!schemaHasField('text') && (!source.cfg.notext || !source.cfg.show_alias)"
                 field="text"

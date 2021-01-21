@@ -18,7 +18,7 @@
     methods: {
       linkOption(){
         if (this.optionObj.row.id) {
-          bbn.fn.link(appui.plugins['appui-options'] + "/list/" + this.optionObj.row.id);
+          bbn.fn.link(appui.plugins['appui-option'] + "/list/" + this.optionObj.row.id);
         }
       }
     }

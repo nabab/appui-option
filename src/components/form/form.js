@@ -3,17 +3,17 @@
     data(){
       return {
         alias: this.source.row && this.source.row.alias ? this.source.row.alias.text : (this.source.alias ? this.source.alias.text : ''),
-        root: appui.plugins['appui-options'] + '/',
+        root: appui.plugins['appui-option'] + '/',
         currentSource: this.source.row || this.source
       }
     },
     computed: {
       list(){
         let tab = this.closest('bbn-container')
-        return tab ? (tab.find('appui-options-list') || null) : null
+        return tab ? (tab.find('appui-option-list') || null) : null
       },
       tree(){
-        return this.closest('appui-options-option') || null
+        return this.closest('appui-option-option') || null
       },
       currentComp(){
         return this.list || this.tree
@@ -50,7 +50,7 @@
           width: 500,
           height: 600,
           title: bbn._('Options'),
-          component: 'appui-options-browse',
+          component: 'appui-option-browse',
           source: {
             idRootTree: this.cfg.id_root_alias,
             data: this.currentSource

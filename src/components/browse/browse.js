@@ -10,7 +10,7 @@
       return {
         isMounted: false,
         cat: '',
-        root: appui.plugins['appui-options'] + '/'
+        root: appui.plugins['appui-option'] + '/'
       }
     },
     methods: {
@@ -38,7 +38,7 @@
     },
     mounted(){
       this.post(this.root + '/root_options_tree', {
-        id: bbn.vue.find(this.getPopup(), 'appui-options-config') ? false : (this.source.idRootTree || false)
+        id: bbn.vue.find(this.getPopup(), 'appui-option-config') ? false : (this.source.idRootTree || false)
       }, (d) => {
         this.isMounted = true;
         this.cat = d.data.cat;

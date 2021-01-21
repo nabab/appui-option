@@ -6,8 +6,8 @@
       return {
         ready: false,
         showInput: false,
-        root: appui.plugins['appui-options'],
-        url: appui.plugins['appui-options'] + '/actions/store_psw',
+        root: appui.plugins['appui-option'],
+        url: appui.plugins['appui-option'] + '/actions/store_psw',
         password: '',
         newPassword: ''
       }
@@ -21,10 +21,10 @@
         return false
       },
       list(){
-        return this.tab ? (this.tab.find('appui-options-list') || null) : null
+        return this.tab ? (this.tab.find('appui-option-list') || null) : null
       },
       tree(){
-        return this.closest('appui-options-option') || null
+        return this.closest('appui-option-option') || null
       },
       currentSource(){
         return {

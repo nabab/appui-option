@@ -1,7 +1,7 @@
 <!-- HTML Document -->
 
 <bbn-form :action="root + 'actions/' + (currentSource.id ? 'update' : 'insert')"
-          :class="['appui-options-form', {'bbn-overlay': !inPopup}]"
+          :class="['appui-option-form', {'bbn-overlay': !inPopup}]"
           :source="currentSource"
           @success="success"
           :validation="beforeSend"
