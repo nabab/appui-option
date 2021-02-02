@@ -4,5 +4,5 @@
  *
  **/
 
-/** @var $ctrl \bbn\mvc\ctrl */
+/** @var $ctrl \bbn\Mvc\ctrl */
 $ctrl->action();

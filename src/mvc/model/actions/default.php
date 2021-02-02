@@ -1,8 +1,8 @@
 <?php
-/* @var \bbn\mvc\model $model */
+/* @var \bbn\Mvc\Model $model */
 if ( 
   !empty($model->data['id']) &&
-  $model->inc->options->unset_cfg($model->data['id'])
+  $model->inc->options->unsetCfg($model->data['id'])
 ){
   return ['success' => true];
 }

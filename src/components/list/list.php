@@ -59,7 +59,7 @@
     <bbns-column v-if="!!source.cfg.show_alias && !schemaHasField('id_alias')"
                 field="id_alias"
                 :width="!schemaHasField('text') && (!source.cfg.notext || !source.cfg.show_alias) ? 150 : null"
-                :title="source.cfg.alias_name || '<?=bbn\str::escape_squotes(_('Alias'))?>'"
+                :title="source.cfg.alias_name || '<?=bbn\Str::escapeSquotes(_('Alias'))?>'"
                 :render="renderAlias"
                 :editable="!!source.cfg.show_alias"
     ></bbns-column>

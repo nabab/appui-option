@@ -1,8 +1,8 @@
 <?php
 if ( !isset($ctrl->arguments[0]) ){
-  $ctrl->add_data([
+  $ctrl->addData([
     'cat' => '0',
-    'is_dev' => $ctrl->inc->user->is_dev(),
+    'is_dev' => $ctrl->inc->user->isDev(),
     'lng' => [
       'problem_while_moving' => _("Sorry, a problem occured while moving this item, and although the tree says otherwise the item has not been moved."),
       'please_refresh' => _("Please refresh the tab in order to see the awful truth..."),
@@ -12,10 +12,10 @@ if ( !isset($ctrl->arguments[0]) ){
   $ctrl->combo(_("building"), $ctrl->data);
 }
 else{
-  /** @var \bbn\appui\option $o */
+  /** @var \bbn\Appui\Option $o */
   $o =& $ctrl->inc->options;
-  $res = $o->full_options_cfg($ctrl->arguments[0]);
+  $res = $o->fullOptionsCfg($ctrl->arguments[0]);
   $res2 = $res;
-  //die(\bbn\x::hdump($res2));
+  //die(\bbn\X::hdump($res2));
   $ctrl->obj->data = $res2 ?: [];
 }

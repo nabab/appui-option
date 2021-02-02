@@ -1,7 +1,7 @@
 <?php
-$id_root = $model->inc->options->from_code(false);
+$id_root = $model->inc->options->fromCode(false);
 return [
-  'is_dev' => $model->inc->user->is_dev(),
+  'is_dev' => $model->inc->user->isDev(),
   'root' => $model->data['root'],
   'id_root' => $id_root,
   'lng' => [
@@ -23,14 +23,14 @@ return [
   ]
 ];
 /*$perm =& $model->inc->perm;
-$id_root = $model->inc->options->from_code(false);
+$id_root = $model->inc->options->fromCode(false);
 return [
-  'is_dev' => $model->inc->user->is_dev(),
+  'is_dev' => $model->inc->user->isDev(),
   'root' => $model->data['root'],
   'id_root' => $id_root,
   'options' => $model->inc->options->map(function($a)use($perm){
-      if ( $perm->read_option($a['id']) ){
-        $a['write'] = $perm->write_option($a['id']);
+      if ( $perm->readOption($a['id']) ){
+        $a['write'] = $perm->writeOption($a['id']);
         return $a;
       }
     }, $id_root),

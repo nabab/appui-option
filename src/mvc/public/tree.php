@@ -4,9 +4,9 @@
  *
  **/
 
-/** @var $ctrl \bbn\mvc\controller */
+/** @var $ctrl \bbn\Mvc\Controller */
 
-$id_appui = $ctrl->db->select_one([
+$id_appui = $ctrl->db->selectOne([
   'table' => 'bbn_options',
   'fields' => ['id'],
   'where' => [
@@ -19,17 +19,17 @@ $id_appui = $ctrl->db->select_one([
     ]]
   ]
 ]);
-$id_root = $ctrl->inc->options->from_code(false);
+$id_root = $ctrl->inc->options->fromCode(false);
 
-if ( $ctrl->inc->user->is_admin() && !empty($ctrl->arguments) && ($ctrl->arguments[0] === 'typeTree') ){
+if ( $ctrl->inc->user->isAdmin() && !empty($ctrl->arguments) && ($ctrl->arguments[0] === 'typeTree') ){
   $ctrl->obj->data = ['id_cat' => !!$ctrl->post['appuiTree'] ? $id_appui : $id_root]; 
 }
 else{
   if ( !isset($ctrl->post['data']['id']) && !empty($id_root) ){
-    $ctrl->add_data([
+    $ctrl->addData([
       'cat' => $id_root,
-      'is_dev' => $ctrl->inc->user->is_dev(),
-      'is_admin' => $ctrl->inc->user->is_admin(),
+      'is_dev' => $ctrl->inc->user->isDev(),
+      'is_admin' => $ctrl->inc->user->isAdmin(),
       'lng' => [
         'problem_while_moving' => _("Sorry, a problem occured while moving this item, and although the tree says otherwise the item has not been moved."),
         'please_refresh' => _("Please refresh the tab in order to see the awful truth..."),
@@ -39,13 +39,13 @@ else{
     $ctrl->obj->bcolor = '#1D481F';
     $ctrl->obj->fcolor = '#FFF';
     $ctrl->obj->icon = 'nf nf-mdi-file_tree';
-    $ctrl->set_url(APPUI_OPTION_ROOT . 'tree')->combo(_("Options' tree"), $ctrl->data);
+    $ctrl->setUrl(APPUI_OPTION_ROOT . 'tree')->combo(_("Options' tree"), $ctrl->data);
   }
   else{
-    /** @var \bbn\appui\option $o */
+    /** @var \bbn\Appui\Option $o */
   /*  $o =& $ctrl->inc->options;
-    $res = $o->full_options($ctrl->post['id']);
+    $res = $o->fullOptions($ctrl->post['id']);
     $ctrl->obj->data = $res ?: [];*/
-    $ctrl->obj = $ctrl->get_object_model($ctrl->post['data']);
+    $ctrl->obj = $ctrl->getObjectModel($ctrl->post['data']);
   }
 }

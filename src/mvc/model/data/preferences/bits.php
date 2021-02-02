@@ -1,12 +1,12 @@
 <?php
-/* @var \bbn\mvc\model $model */
+/* @var \bbn\Mvc\Model $model */
 if ( 
-  ($pref = new \bbn\user\preferences($model->db)) &&
+  ($pref = new \bbn\User\Preferences($model->db)) &&
   !empty($model->data['id'])
 ){
   return [
     'success' => true,
-    'bits' => $pref->get_bits($model->data['id'])
+    'bits' => $pref->getBits($model->data['id'])
   ];
 }
 return ['success' => false];

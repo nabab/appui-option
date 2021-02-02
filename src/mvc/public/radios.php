@@ -4,8 +4,8 @@
  *
  **/
 
-/** @var $this \bbn\mvc\controller */
+/** @var $this \bbn\Mvc\Controller */
 $ctrl
-  ->set_icon("nf nf-mdi-music")
-  ->set_color('#5E40BF', '#FFF')
+  ->setIcon("nf nf-mdi-music")
+  ->setColor('#5E40BF', '#FFF')
   ->combo("Radios");

@@ -4,5 +4,5 @@
  *
  **/
 
-/** @var $ctrl \bbn\mvc\controller */
-echo $ctrl->set_title("TEST")->get_view($ctrl->get_model());
+/** @var $ctrl \bbn\Mvc\Controller */
+echo $ctrl->setTitle("TEST")->getView($ctrl->getModel());

@@ -1,3 +1,3 @@
 <?php
-/** @var $ctrl \bbn\mvc\controller */
-$ctrl->obj = $ctrl->get_model($ctrl->data['root'].'plugins');
+/** @var $ctrl \bbn\Mvc\Controller */
+$ctrl->obj = $ctrl->getModel($ctrl->data['root'].'plugins');

@@ -1,18 +1,18 @@
 <?php
-/** @var $model \bbn\mvc\model */
-$plugins = $model->get_plugins();
-$fs = new \bbn\file\system();
+/** @var $model \bbn\Mvc\Model */
+$plugins = $model->getPlugins();
+$fs = new \bbn\File\System();
 $res = [];
 array_unshift($plugins, [
   'url' => '',
-  'path' => $model->app_path()
+  'path' => $model->appPath()
 ]);
 foreach ( $plugins as $name => $cfg ){
   if ( $fs->cd($cfg['path'].'plugins/appui-option') ){
     $all = $fs->scan('.', 'file');
     foreach ( $all as $a ){
-      $bits = \bbn\x::split($a, '/');
-      $fn = basename($bits[1], '.'.\bbn\str::file_ext($bits[1]));
+      $bits = \bbn\X::split($a, '/');
+      $fn = basename($bits[1], '.'.\bbn\Str::fileExt($bits[1]));
       $st = $fn.' <em>'._('from').' '.
             ($name ?: _('Application')).
             '</em>';
@@ -32,7 +32,7 @@ foreach ( $plugins as $name => $cfg ){
 $r = [];
 foreach ( $res as $n => $re ){
   $r[] = [
-    'text' => $n.' ('.\bbn\x::join($re['elements'], ',').')',
+    'text' => $n.' ('.\bbn\X::join($re['elements'], ',').')',
     'value' => ($re['plugin'] ? $re['plugin'].'/' : '').$re['fn']
   ];
 }

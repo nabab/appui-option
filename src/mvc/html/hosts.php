@@ -5,5 +5,5 @@
  * Time: 19:44
  */
  
-/** @var \bbn\mvc\controller $ctrl The current controller */
+/** @var \bbn\Mvc\Controller $ctrl The current controller */
 

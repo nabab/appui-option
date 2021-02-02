@@ -1,3 +1,3 @@
 <?php
-/** @var $model \bbn\mvc\model*/
-return $model->inc->perm->update_all($model->get_routes());
+/** @var $model \bbn\Mvc\Model*/
+return $model->inc->perm->updateAll($model->getRoutes());

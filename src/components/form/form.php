@@ -26,7 +26,7 @@
       ></bbn-field>
     </template>
     <div v-if="cfg.show_alias && !schemaHasField('id_alias')"
-        v-text="cfg.alias_name || '<?=bbn\str::escape_squotes(_('Alias'))?>'">
+        v-text="cfg.alias_name || '<?=bbn\Str::escapeSquotes(_('Alias'))?>'">
     </div>
     <div v-if="cfg.show_alias && !schemaHasField('id_alias')"
         class="bbn-flex-width"
@@ -61,7 +61,7 @@
         style="justify-content: flex-start"
     >
       <div class="bbn-box bbn-xspadded bbn-right-sspace">
-        <i :class="['bbn-xxxlarge', 'bbn-block', currentSource.icon]"
+        <i :class="['bbn-xxxlarge', 'bbn-block', CurrentSource.icon]"
           :title="currentSource.icon"
           v-if="currentSource.icon"
         ></i>

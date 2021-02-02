@@ -4,8 +4,8 @@
  *
  **/
 
-/** @var $ctrl \bbn\mvc\controller */
+/** @var $ctrl \bbn\Mvc\Controller */
 $ctrl->obj->res = 0;
 if ( isset($ctrl->post['id']) ){
-  $ctrl->obj->res = $ctrl->inc->options->set_cfg($ctrl->post['id'], $ctrl->post['cfg']);
+  $ctrl->obj->res = $ctrl->inc->options->setCfg($ctrl->post['id'], $ctrl->post['cfg']);
 }

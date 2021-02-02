@@ -4,15 +4,15 @@
  *
  **/
 
-/** @var $ctrl \bbn\mvc\controller */
+/** @var $ctrl \bbn\Mvc\Controller */
 
 if ( !isset($ctrl->arguments[0]) ){
-  $ctrl->add_data([
+  $ctrl->addData([
     'cat' => '0'
   ]);
   $ctrl->combo("Options' tree", $ctrl->data);
 }
 else{
-  $res = $ctrl->inc->options->full_options($ctrl->arguments[0]);
+  $res = $ctrl->inc->options->fullOptions($ctrl->arguments[0]);
   $ctrl->obj->data = $res ?: [];
 }

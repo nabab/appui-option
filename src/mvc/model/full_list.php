@@ -1,5 +1,5 @@
 <?php
-$grid = new \bbn\appui\grid($model->db, $model->data, [
+$grid = new \bbn\Appui\Grid($model->db, $model->data, [
   'table' => 'bbn_options',
   'fields' => [
     'id',
@@ -25,5 +25,5 @@ $grid = new \bbn\appui\grid($model->db, $model->data, [
   ],
 ]);
 if ( $grid->check() ){
-  return $grid->get_datatable();
+  return $grid->getDatatable();
 }

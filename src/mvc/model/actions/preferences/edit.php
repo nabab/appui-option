@@ -1,12 +1,12 @@
 <?php
-/* @var \bbn\mvc\model $model */
+/* @var \bbn\Mvc\Model $model */
 if ( 
-  ($pref = new \bbn\user\preferences($model->db)) &&
+  ($pref = new \bbn\User\Preferences($model->db)) &&
   !empty($model->data['id']) &&
-  ($c = $pref->get_class_cfg())
+  ($c = $pref->getClassCfg())
 ){
   $fields = $c['arch']['user_options'];
-  $cfg = $pref->get_cfg(null, $model->data);
+  $cfg = $pref->getCfg(null, $model->data);
   if ( $model->db->update($c['table'], [
     $fields['text'] => $model->data[$fields['text']] ?? NULL,
     $fields['num'] => $model->data[$fields['num']] ?? NULL,
@@ -20,7 +20,7 @@ if (
   ]) ){
     return [
       'success' => true,
-      'prefs' => $pref->get_all($model->data['id_option'])
+      'prefs' => $pref->getAll($model->data['id_option'])
     ];
   }
 }

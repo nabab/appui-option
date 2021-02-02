@@ -1,11 +1,11 @@
 <?php
-/** @var $model \bbn\mvc\model */
+/** @var $model \bbn\Mvc\Model */
 
 if ( empty($model->data['id']) ){
-  $model->data['id'] = $model->inc->options->from_code(false);
+  $model->data['id'] = $model->inc->options->fromCode(false);
 }
 if ( isset($model->data['id']) ){
-  $cfg = $model->inc->options->get_cfg($model->data['id']);
+  $cfg = $model->inc->options->getCfg($model->data['id']);
   $res = [
     'success' => false,
     'data' => array_map(function($o) use($cfg){
@@ -16,7 +16,7 @@ if ( isset($model->data['id']) ){
         'sortable' => !empty($cfg['sortable']),
         'data' => $o
       ];
-    }, empty($model->data['id']) ? [$model->inc->options->option(false)] : $model->inc->options->full_options($model->data['id'])),
+    }, empty($model->data['id']) ? [$model->inc->options->option(false)] : $model->inc->options->fullOptions($model->data['id'])),
     'sql' => $model->db->last()
   ];
   if ( \is_array($res['data']) ){

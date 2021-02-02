@@ -4,15 +4,15 @@
  *
  **/
 
-/** @var $ctrl \bbn\mvc\controller */
+/** @var $ctrl \bbn\Mvc\Controller */
 // Case for the whole page
 if ( !empty($ctrl->post['data']) ){
   $ctrl->post = $ctrl->post['data'];
 }
 if ( !isset($ctrl->post['id']) && empty($ctrl->arguments[0]) ){
-  $id_perm = $ctrl->inc->perm->get_option_root();
+  $id_perm = $ctrl->inc->perm->getOptionRoot();
   //$perm =& $ctrl->inc->perm;
-  $ctrl->add_data([
+  $ctrl->addData([
     'cat' => $id_perm,
     /*'tree' => $ctrl->inc->options->map(function($r)use($perm){
       if ( empty($r['icon']) ){
@@ -40,33 +40,33 @@ if ( !isset($ctrl->post['id']) && empty($ctrl->arguments[0]) ){
   ]);
   $ctrl->combo(_("Permissions"), true);
 }/*
-else if (\bbn\str::is_integer($ctrl->post['id']) && empty($ctrl->arguments[0]) ){
-  $ctrl->add_data([
+else if (\bbn\Str::isInteger($ctrl->post['id']) && empty($ctrl->arguments[0]) ){
+  $ctrl->addData([
     'id' => $ctrl->post['id'],
     'full' => isset($ctrl->post['full']) ? $ctrl->post['full'] : false,
-    'routes' => $ctrl->get_routes()
+    'routes' => $ctrl->getRoutes()
   ]);
-  $ctrl->obj->data = $ctrl->get_model();
+  $ctrl->obj->data = $ctrl->getModel();
 }
 else{
-  $ctrl->add_data([
+  $ctrl->addData([
     'action' => $ctrl->arguments[0]
   ], $ctrl->post);
-  $ctrl->obj->data = $ctrl->get_model();
+  $ctrl->obj->data = $ctrl->getModel();
 }*/
 
 else if ( !empty($ctrl->post['id']) && empty($ctrl->arguments[0]) ){
   $ctrl->obj->data = $ctrl
-    ->add_data([
+    ->addData([
       'id' => $ctrl->post['id'],
       'full' => isset($ctrl->post['full']) ? $ctrl->post['full'] : false,
-      'routes' => $ctrl->get_routes()
+      'routes' => $ctrl->getRoutes()
     ])
-    ->get_model();
+    ->getModel();
 }
 else{
-  $ctrl->add_data([
+  $ctrl->addData([
     'action' => $ctrl->arguments[0]
   ], $ctrl->post);
-  $ctrl->obj->data = $ctrl->get_model();
+  $ctrl->obj->data = $ctrl->getModel();
 }

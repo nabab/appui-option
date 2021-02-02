@@ -4,11 +4,11 @@
  *
  **/
 
-/** @var $ctrl \bbn\mvc\controller */
+/** @var $ctrl \bbn\Mvc\Controller */
 if ( !isset($ctrl->post['id']) ){
-  $ctrl->add_data([
-    'cat' => $ctrl->inc->options->from_code(false),
-    'is_dev' => $ctrl->inc->user->is_dev(),
+  $ctrl->addData([
+    'cat' => $ctrl->inc->options->fromCode(false),
+    'is_dev' => $ctrl->inc->user->isDev(),
     'lng' => [
       'problem_while_moving' => _("Sorry, a problem occured while moving this item, and although the tree says otherwise the item has not been moved."),
       'please_refresh' => _("Please refresh the tab in order to see the awful truth..."),
@@ -21,9 +21,9 @@ if ( !isset($ctrl->post['id']) ){
   $ctrl->combo(_("Options' tree"), $ctrl->data);
 }
 else{
-  /** @var \bbn\appui\option $o */
+  /** @var \bbn\Appui\Option $o */
 /*  $o =& $ctrl->inc->options;
-  $res = $o->full_options($ctrl->post['id']);
+  $res = $o->fullOptions($ctrl->post['id']);
     $ctrl->obj->data = $res ?: [];*/
-  $ctrl->obj = $ctrl->get_object_model($ctrl->post);
+  $ctrl->obj = $ctrl->getObjectModel($ctrl->post);
 }

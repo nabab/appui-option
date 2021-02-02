@@ -1,2 +1,2 @@
 <?php
-$ctrl->obj->data = $ctrl->get_model();
+$ctrl->obj->data = $ctrl->getModel();

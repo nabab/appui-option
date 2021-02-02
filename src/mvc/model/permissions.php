@@ -1,5 +1,5 @@
 <?php
-/** @var $model \bbn\mvc\model*/
+/** @var $model \bbn\Mvc\Model*/
 if ( !empty($model->data['action']) ){
   if ( $model->data['action'] === 'insert' ){
     if ( !empty($model->data['id_parent']) &&
@@ -56,7 +56,7 @@ if ( !empty($model->data['action']) ){
       (!empty($model->data['id_user']) || !empty($model->data['id_group']))
     ){
       return [
-        'res' => $model->db->insert_ignore('bbn_users_options', [
+        'res' => $model->db->insertIgnore('bbn_users_options', [
           'id_option' => $model->data['id_option'],
           'id_user' => !empty($model->data['id_user']) ? $model->data['id_user'] : null,
           'id_group' => empty($model->data['id_user']) ? $model->data['id_group'] : null
@@ -82,18 +82,18 @@ else if ( isset($model->data['id']) &&
   !empty($model->data['full'])
 ){
   $row = $model->inc->options->option($model->data['id']);
-  $mgr = new \bbn\user\manager($model->inc->user);
+  $mgr = new \bbn\User\Manager($model->inc->user);
   $groups = $mgr->groups();
-  $users = $mgr->get_list();
+  $users = $mgr->getList();
   $is_file = substr($row['code'], -1) !== '/';
   // Check if it's an option
-  $is_option = $model->inc->options->is_parent($model->data['id'], $model->inc->options->from_root_code('options', 'permission', 'appui'));
+  $is_option = $model->inc->options->isParent($model->data['id'], $model->inc->options->fromRootCode('options', 'permission', 'appui'));
   $res = [
     'id' => $row['id'],
     'text' => !empty($row['text']) ? $row['text'] : '',
     'code' => $row['code'],
     'path' => empty($is_option) ?
-      $model->inc->options->to_path($model->data['id'], '', \bbn\user\permissions::get_option_id('page')) :
+      $model->inc->options->toPath($model->data['id'], '', \bbn\User\Permissions::getOptionId('page')) :
       'options/list/'.$row['id'],
     'help' => !empty($row['help']) ? $row['help'] : '',
     'public' => !empty($row['public']) ? $row['public'] : 0,
@@ -102,15 +102,15 @@ else if ( isset($model->data['id']) &&
     'exist' => false
   ];
   foreach ( $groups as $g ){
-    $res['group'.$g['id']] = $model->inc->pref->group_has($row['id'], $g['id']);
+    $res['group'.$g['id']] = $model->inc->pref->groupHas($row['id'], $g['id']);
   }
   foreach ( $users as $u ){
-    $res['user'.$u['id']] = $model->inc->pref->user_has($row['id'], $u['id']);
+    $res['user'.$u['id']] = $model->inc->pref->userHas($row['id'], $u['id']);
   }
 
   // Check if it's a real file/dir (page)
-  $id_page = $model->inc->options->from_root_code('page', 'permission', 'appui');
-  if ( $model->inc->options->is_parent($model->data['id'], $id_page) ){
+  $id_page = $model->inc->options->fromRootCode('page', 'permission', 'appui');
+  if ( $model->inc->options->isParent($model->data['id'], $id_page) ){
     $id_parent = $row['id_parent'];
     $p = [];
     while ( $id_parent !== $id_page ){
@@ -120,8 +120,8 @@ else if ( isset($model->data['id']) &&
     }
     $p = array_reverse($p);
     $path = implode('', $p).$row['code'].($is_file ? '.php' : '');
-    $tried = [[$model->app_path().'mvc/public/'.$path, 'really']];
-    if ( file_exists($model->app_path().'mvc/public/'.$path) ){
+    $tried = [[$model->appPath().'mvc/public/'.$path, 'really']];
+    if ( file_exists($model->appPath().'mvc/public/'.$path) ){
       $res['exist'] = true;
       $res['type'] = $is_file ? 'file' : 'folder';
     }
@@ -150,7 +150,7 @@ else if ( isset($model->data['id']) &&
   return $res;
 }
 else if ( isset($model->data['id']) ){
-  $rows = $model->inc->options->full_options($model->data['id']) ?: [];
+  $rows = $model->inc->options->fullOptions($model->data['id']) ?: [];
   $res = [
     'folders' => [],
     'files' => []
@@ -164,8 +164,8 @@ else if ( isset($model->data['id']) ){
       }
       else {
         $real = false;
-        $path_to_file = $model->inc->options->to_path($r['id'], '', \bbn\user\permissions::get_option_id('page'));
-        if ( file_exists($model->app_path().'mvc/public/'.$path_to_file.'.php') ){
+        $path_to_file = $model->inc->options->toPath($r['id'], '', \bbn\User\Permissions::getOptionId('page'));
+        if ( file_exists($model->appPath().'mvc/public/'.$path_to_file.'.php') ){
           $real = true;
         }
         if ( empty($real) ){
@@ -181,7 +181,7 @@ else if ( isset($model->data['id']) ){
     }
     if (
       $model->inc->perm->has($r['id']) ||
-      (!empty($r['num_children']) && $model->inc->perm->has_deep($r['id']))
+      (!empty($r['num_children']) && $model->inc->perm->hasDeep($r['id']))
     ){
       $res[!empty($is_folder) ? 'folders' : 'files'][$r['code']] = [
         'id' => $r['id'],
@@ -200,10 +200,10 @@ else if ( isset($model->data['id']) ){
 
 }
 else{
-  $mgr = $model->inc->user->get_manager();
+  $mgr = $model->inc->user->getManager();
   $model->data['groups'] = $mgr->groups();
-  $model->data['users'] = $mgr->get_list();
-  $cfg = $model->inc->user->get_class_cfg();
+  $model->data['users'] = $mgr->getList();
+  $cfg = $model->inc->user->getClassCfg();
   $model->data['users_table'] = $cfg['arch']['users'];
   $model->data['groups_table'] = $cfg['arch']['groups'];
   return $model->data;

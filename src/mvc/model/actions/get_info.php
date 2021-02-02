@@ -3,26 +3,26 @@ if ( isset($model->inc->options) ){
   //info option for spliter
   if ( !empty($model->data['id']) ){
     $all = $model->inc->options->option($model->data['id']);
-    $cfg = $model->inc->options->get_cfg($model->data['id']);
-    $aliases = $model->inc->options->get_aliases($model->data['id']);
-    $prefs = new \bbn\user\preferences($model->db);
+    $cfg = $model->inc->options->getCfg($model->data['id']);
+    $aliases = $model->inc->options->getAliases($model->data['id']);
+    $prefs = new \bbn\User\Preferences($model->db);
     $pub = array_map(function($a){
-      if ( !empty($a['value']) && \bbn\str::is_json($a['value']) ){
+      if ( !empty($a['value']) && \bbn\Str::isJson($a['value']) ){
         $a = array_merge(json_decode($a['value'], true), $a);
         unset($a['value']);
       }
       return $a;
-    }, $model->db->rselect_all('bbn_users_options', [], [
+    }, $model->db->rselectAll('bbn_users_options', [], [
       'id_option' => $model->data['id'],
       'public' => 1
     ]));
     /* $prefs = array_map(function($a){
-      if ( !empty($a['value']) && (\bbn\str::is_json($a['value'])) ){
+      if ( !empty($a['value']) && (\bbn\Str::isJson($a['value'])) ){
         $a = array_merge(json_decode($a['value'], true), $a);
         unset($a['value']);
       }
       return $a;
-    }, $model->db->rselect_all([
+    }, $model->db->rselectAll([
       'table' => 'bbn_users_options',
       'fields' => [],
       'where' => [
@@ -33,17 +33,17 @@ if ( isset($model->inc->options) ){
           'logic' => 'OR',
           'conditions' => [[
             'field' => 'id_user',
-            'value' => $model->inc->user->get_id()
+            'value' => $model->inc->user->getId()
           ], [
             'field' => 'id_group',
-            'value' => $model->inc->user->get_group()
+            'value' => $model->inc->user->getGroup()
           ]]
         ]]
       ]
     ])); */
     if ( 
       !empty($all) &&
-      ($option = $model->inc->options->native_option($model->data['id']))
+      ($option = $model->inc->options->nativeOption($model->data['id']))
     ){
       if ( !empty($all['id_alias']) ){
         $option['alias'] = $model->inc->options->option($all['id_alias']);
@@ -55,8 +55,8 @@ if ( isset($model->inc->options) ){
         'cfg' => json_encode($cfg),
         'aliases' => $aliases,
         'public' => $pub,
-        'prefs' => $prefs->get_all($model->data['id']),
-        'uprefs' => $prefs->get_all_not_mine($model->data['id'])
+        'prefs' => $prefs->getAll($model->data['id']),
+        'uprefs' => $prefs->getAllNotMine($model->data['id'])
       ];
     }
   }

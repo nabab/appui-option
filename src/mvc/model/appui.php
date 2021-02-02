@@ -1,10 +1,10 @@
 <?php
-$appui = $model->db->select_one('bbn_options', 'id', ['id_parent' => null, 'code'=> 'appui']);
+$appui = $model->db->selectOne('bbn_options', 'id', ['id_parent' => null, 'code'=> 'appui']);
 
 
 $id_root = $appui;
 return [
-  'is_dev' => $model->inc->user->is_dev(),
+  'is_dev' => $model->inc->user->isDev(),
   'root' => $model->data['root'],
   'id_root' => $id_root,
   'lng' => [

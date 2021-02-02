@@ -4,7 +4,7 @@
  *
  **/
 
-/** @var $this \bbn\mvc\model */
+/** @var $this \bbn\Mvc\Model */
 $res = ['success' => false];
 if (
   isset($model->data['id'], $model->data['option']) &&

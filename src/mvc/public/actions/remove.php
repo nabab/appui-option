@@ -6,15 +6,15 @@ if ( isset($ctrl->post['id']) ){
   if ( !isset($ctrl->post['history']) ){
     $success = $ctrl->inc->options->remove($ctrl->post['id']);
   }
-  else if ( !empty($ctrl->post['history']) && $ctrl->inc->user->is_admin()){
+  else if ( !empty($ctrl->post['history']) && $ctrl->inc->user->isAdmin()){
    
-    \bbn\appui\history::disable();
+    \bbn\Appui\History::disable();
     if( !empty($ctrl->post['num_children']) ){
-      $full = $ctrl->inc->options->full_tree($ctrl->post['id']);
+      $full = $ctrl->inc->options->fullTree($ctrl->post['id']);
       $db = $ctrl->db;
       function remove_history($arr, $db){
         if(!empty($arr['id'])){
-          \bbn\appui\history::delete($arr['id']);
+          \bbn\Appui\History::delete($arr['id']);
           //have to manually remove the row from bbn_history because it's not automatic basing on the configuration of the table bbn_histort_uids
           $db->delete('bbn_history', ['uid' => $arr['id']], true);
         }
@@ -29,10 +29,10 @@ if ( isset($ctrl->post['id']) ){
       $success = remove_history($full, $db);
     }
     else{
-      $success = \bbn\appui\history::delete($ctrl->post['id']);
+      $success = \bbn\Appui\History::delete($ctrl->post['id']);
     }
-    \bbn\appui\history::enable();
-    $ctrl->inc->options->delete_cache();
+    \bbn\Appui\History::enable();
+    $ctrl->inc->options->deleteCache();
    
   }  
   $ctrl->obj->success = $success;

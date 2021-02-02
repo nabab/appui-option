@@ -1,7 +1,7 @@
 <?php
 if ( !empty($model->data['id']) ){
   $res = [];
-  $tables = $model->db->get_foreign_keys('id', 'bbn_options');
+  $tables = $model->db->getForeignKeys('id', 'bbn_options');
   $t = 0;
   foreach( $tables as $table => $cols ){
     foreach ( $cols as $col ){
