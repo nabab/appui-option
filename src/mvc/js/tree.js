@@ -72,7 +72,7 @@
     methods: {
       importOption(node){
         this.getPopup({
-          title: 'Import into option ' + node.text,
+          title: 'Import into option ' + node.data.text,
           component: 'appui-option-import',
           source: {
             root: this.source.root,
