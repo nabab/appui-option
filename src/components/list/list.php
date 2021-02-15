@@ -81,7 +81,7 @@
                 field="icon"
                 title="<?=_('Icon')?>"
                 :showable="true"
-                :editable="!!source.cfg.categories"
+                :editable="!!source.cfg.categories || !!source.cfg.show_icon"
                 :width="50"
                 :render="renderIcon"
                 cls="bbn-c"

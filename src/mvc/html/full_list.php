@@ -4,7 +4,7 @@
            :filterable="true"
            :showable="true"
            :sortable="true"
-           :order="[{field: 'text', Dir:'ASC'}]"
+           :order="[{field: 'text', dir: 'ASC'}]"
            :limit="50"
 >
   <bbns-column title="UID"

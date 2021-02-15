@@ -1,4 +1,4 @@
-[{
+{
   "text": "Permissions",
   "code": "permissions",
   "id_parent": "appui",
@@ -11,8 +11,8 @@
     "inheritance": "cascade"
   },
   "items": [{
-    "text": "Pages",
-    "code": "page",
+    "text": "Access",
+    "code": "access",
     "icon": "nf nf-fa-files_o",
     "cfg": {
       "show_code": 1,
@@ -20,7 +20,7 @@
       "allow_children": 1,
       "inheritance": "cascade",
       "sortable": 1,
-      "inherit_from": ["|*appui-option*|","appui"],
+      "inherit_from": ["option","appui"],
       "frozen": 1
     }
   }, {
@@ -33,7 +33,7 @@
       "sortable": 1,
       "allow_children": 1,
       "inheritance": "cascade",
-      "inherit_from": ["|*appui-option*|","appui"],
+      "inherit_from": ["option","appui"],
       "frozen": 1
     }
   }, {
@@ -46,8 +46,8 @@
       "sortable": 1,
       "allow_children": 1,
       "inheritance": "cascade",
-      "inherit_from": ["|*appui-option*|","appui"],
+      "inherit_from": ["option","appui"],
       "frozen": 1
     }
   }]
-}]
+}

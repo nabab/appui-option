@@ -24,19 +24,37 @@
           icon: 'nf nf-fa-arrow_up',
           action: this.importOption
         }, {
-          text: bbn._('Export option'),
+          text: bbn._('Export option for database'),
           icon: 'nf nf-fa-arrow_down',
           action: (node) => {
             this.exportOption(node)
           }
         }, {
-          text: bbn._('Export children'),
+          text: bbn._('Export option for import'),
           icon: 'nf nf-fa-arrow_down',
           action: (node) => {
-            this.exportOption(node, true)
+            this.exportOption(node, 'simple')
           }
         }, {
-          text: bbn._('Export tree'),
+          text: bbn._('Export children for import'),
+          icon: 'nf nf-fa-arrow_down',
+          action: (node) => {
+            this.exportOption(node, 'schildren')
+          }
+        }, {
+          text: bbn._('Export children for database'),
+          icon: 'nf nf-fa-arrow_down',
+          action: (node) => {
+            this.exportOption(node, 'children')
+          }
+        }, {
+          text: bbn._('Export tree for import'),
+          icon: 'nf nf-fa-arrow_down',
+          action: (node) => {
+            this.exportOption(node, 'sfull')
+          }
+        }, {
+          text: bbn._('Export tree for database'),
           icon: 'nf nf-fa-arrow_down',
           action: (node) => {
             this.exportOption(node, 'full')
@@ -87,16 +105,8 @@
           maximizable: false
         })
       },
-      exportOption(node, children) {
-        let data = {id: node.data.id, mode: 'single'};
-        if (children) {
-          if (children === 'full') {
-            data.mode = 'full';
-          }
-          else {
-            data.mode = 'children';
-          }
-        }
+      exportOption(node, mode) {
+        let data = {id: node.data.id, mode: mode || 'single'};
         this.post(this.source.root + 'actions/export', data, (d) => {
           if ( d.success ){
             this.getPopup({

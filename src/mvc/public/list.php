@@ -82,13 +82,7 @@ if ( !empty($id) ){
       // Adding the options' list
       /** @todo Paginate if not orderable & count > 100 */
       //$ctrl->addData(['options' => $ctrl->inc->options->fullOptions($ctrl->data['id'])]);
-      $options = $o->nativeOptions($ctrl->data['id']);
-      $ctrl->addData(['options' => is_array($options) ? array_map(function($op) use($o){
-        if ( !empty($op['id_alias']) && \bbn\Str::isUid($op['id_alias']) ){
-          $op['alias'] = $o->nativeOption($op['id_alias']);
-        }
-        return $op;
-      }, $options) : []]);
+      $ctrl->addData(['options' => $o->fullOptions($ctrl->data['id'])]);
 
 
       /*if ( $controller ){
