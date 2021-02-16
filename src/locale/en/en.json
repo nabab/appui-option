@@ -1,5 +1,5 @@
 {
-    "components\/config\/config": {
+    "components\/config": {
         "Root": "Root",
         "Field": "Field",
         "Insert a form field": "Insert a form field",
@@ -9,22 +9,28 @@
         "Are you sure you want to back to the default configuration?": "Are you sure you want to back to the default configuration?",
         "Success": "success"
     },
-    "components\/form\/form": {
+    "components\/form": {
         "Options": "Options",
         "Icon Picker": "Icon Picker",
         "Saved": "Saved"
     },
-    "components\/list\/list": {
+    "components\/list": {
         "Saved": "Saved",
+        "Configuration": "Configuration",
         "Fix order": "Fix order",
+        "Add": "Add",
         "Option's configuration": "Option's configuration",
         "Fixed": "Fixed",
+        "Edit": "Edit",
         "Copy": "Copy",
+        "Delete": "Delete",
         "List": "List",
         "New option": "New option",
         "Updating option": "Updating option",
         "Do you also want to duplicate children options?": "Do you also want to duplicate children options?",
-        "Copy option": "Copy option"
+        "Copy option": "Copy option",
+        "Are you sure you want to delete this entry?": "Are you sure you want to delete this entry?",
+        "Deleted": "Deleted"
     },
     "mvc\/permissions3": {
         "Configuration": "Configuration",
@@ -40,6 +46,18 @@
         "Are you sure you want to delete this permission?": "Are you sure you want to delete this permission?",
         "Deleted!": "Deleted!",
         "permissions added": "permissions added"
+    },
+    "components\/preferences": {
+        "Add": "Add",
+        "Deleted": "Deleted",
+        "Public": "Public",
+        "User": "User",
+        "Group": "Group",
+        "Add preference": "Add preference",
+        "Edit preference": "Edit preference",
+        "Are you sure you want to to delete this preference?": "Are you sure you want to to delete this preference?",
+        "Are you sure you want to delete these preferences?": "Are you sure you want to delete these preferences?",
+        "Delete all": "Delete all"
     },
     "mvc\/appui": {
         "Edit": "Edit",
@@ -78,24 +96,17 @@
         "Export": "Export",
         "Impossible to retrieve information about this element": "Impossible to retrieve information about this element"
     },
-    "components\/option\/option": {
+    "components\/option": {
+        "Deleted": "Deleted",
         "Are you sure you want to delete this option?": "Are you sure you want to delete this option?",
         "Are you sure you want to delete this option's history?": "Are you sure you want to delete this option's history?",
+        "Usage": "Usage",
         "No occurrence of this option found": "No occurrence of this option found"
     },
-    "components\/popup\/tree\/tree": {
+    "components\/popup\/tree": {
         "times": "times"
     },
-    "components\/preferences\/preferences": {
-        "User": "User",
-        "Group": "Group",
-        "Add preference": "Add preference",
-        "Edit preference": "Edit preference",
-        "Are you sure you want to to delete this preference?": "Are you sure you want to to delete this preference?",
-        "Are you sure you want to delete these preferences?": "Are you sure you want to delete these preferences?",
-        "Delete all": "Delete all"
-    },
-    "components\/psw\/psw": {
+    "components\/psw": {
         "Password changed successfully": "Password changed successfully"
     },
     "mvc\/permissions": {
