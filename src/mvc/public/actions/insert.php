@@ -15,7 +15,7 @@ if ( isset($ctrl->post['id_parent']) ){
     }
     unset($ctrl->post['source_children']);
   }
-  
+
   $cfg = $ctrl->inc->options->getCfg($ctrl->post['id_parent']);
   if ( !empty($cfg['schema']) && ($schema = json_decode($cfg['schema'], true)) ){
     foreach ( $ctrl->post as $i => $d ){
@@ -28,9 +28,13 @@ if ( isset($ctrl->post['id_parent']) ){
       }
     }
   }
-  
+
   if ( $id = $ctrl->inc->options->add($ctrl->post) ){
+    $data = $ctrl->inc->options->nativeOption($id);
+    if (!empty($data['id_alias'])) {
+      $data['alias'] = $ctrl->inc->options->nativeOption($data['id_alias']);
+    }
     $ctrl->obj->success = true;
-    $ctrl->obj->data = $ctrl->inc->options->nativeOption($id);
+    $ctrl->obj->data = $data;
   }
 }

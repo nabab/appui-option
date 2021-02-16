@@ -2,12 +2,14 @@
   return {
     data(){
       return {
-        alias: this.source.row && this.source.row.alias ? this.source.row.alias.text : (this.source.alias ? this.source.alias.text : ''),
         root: appui.plugins['appui-option'] + '/',
         currentSource: this.source.row || this.source
       }
     },
     computed: {
+      alias(){
+        return this.source.row && this.source.row.alias ? this.source.row.alias.text : (this.source.alias ? this.source.alias.text : '')
+      },
       list(){
         let tab = this.closest('bbn-container')
         return tab ? (tab.find('appui-option-list') || null) : null

@@ -30,6 +30,7 @@
         }
         else if (keys.includes('id_alias')) {
           this.$set(this.source.data, 'id_alias', d.data.id);
+          this.$set(this.source.data, 'alias', d.data);
         }
         setTimeout(() => {
           this.getPopup().close();
