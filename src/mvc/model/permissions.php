@@ -164,7 +164,7 @@ else if ( isset($model->data['id']) ){
       }
       else {
         $real = false;
-        $path_to_file = $model->inc->options->toPath($r['id'], '', \bbn\User\Permissions::getOptionId('page'));
+        $path_to_file = $model->inc->options->toPath($r['id'], '', \bbn\User\Permissions::getOptionId('access'));
         if ( file_exists($model->appPath().'mvc/public/'.$path_to_file.'.php') ){
           $real = true;
         }
