@@ -13,7 +13,7 @@
       },
       schema(){
         if ( this.source.cfg.schema ){
-          return JSON.parse(this.source.cfg.schema);
+          return typeof this.source.cfg.schema === 'string' ? JSON.parse(this.source.cfg.schema) : this.source.cfg.schema;
         }
         return [];
       }
@@ -82,12 +82,12 @@
       },
       mapTable(row){
         if ( this.schema && this.schema.length && row.value ){
-          let val = JSON.parse(row.value, (k, v) => {
+          let val = typeof row.value === 'string' ? JSON.parse(row.value, (k, v) => {
             if ( 'null' === v ){
               v = null;
             }
             return v;
-          });
+          }) : row.value;
           bbn.fn.iterate(val, (v, k) => {
             this.$set(row, k, v);
           })
