@@ -24,10 +24,14 @@ $appui_options = X::toArray($fs->decodeContents($file));
 $root = $ctrl->inc->options->getDefault();
 $res = 0;
 if ($res = $ctrl->inc->options->import($appui_options, $root)) {
-  $res += (int)$ctrl->inc->options->updatePlugins();
-  $res += (int)$ctrl->inc->options->updateAllTemplates();
+  X::adump($res." options changed");
+  if ($res = (int)$ctrl->inc->options->updatePlugins()) {
+    X::adump($res." options from plugins changed");
+  }
+  if ($res = (int)$ctrl->inc->options->updateAllTemplates()) {
+    X::adump($res." options from templates changed");
+  }
 }
-X::adump($res." options changed");
 
 /*
 $permissions_options = X::toArray($fs->decodeContents($file2));
