@@ -9,7 +9,8 @@
         root: appui.plugins['appui-option'],
         url: appui.plugins['appui-option'] + '/actions/store_psw',
         password: '',
-        newPassword: ''
+        newPassword: '',
+        inputType: 'password'
       }
     },
     computed: {
@@ -28,7 +29,7 @@
       },
       currentSource(){
         return {
-          id_option: this.source.id,
+          id_option: this.source.option.id,
           new_password: this.newPassword
         }
       },
@@ -53,7 +54,7 @@
     },
     mounted(){
       bbn.fn.post( this.root + '/actions/get_psw',{
-        id_option: this.source.id
+        id_option: this.source.option.id
       }, d =>{
         if ( d.success ){
           this.password = d.psw;
