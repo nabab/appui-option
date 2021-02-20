@@ -33,7 +33,7 @@
         data: {
           cfg: this.source.cfg,
           scfg: this.source.cfg.scfg || defScfg,
-          id: this.source.cfg.id
+          id: this.source.id
         },
         ready: false,
         values: this.source.options,
