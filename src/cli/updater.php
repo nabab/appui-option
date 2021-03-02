@@ -2,8 +2,15 @@
 
 use bbn\X;
 /** @var $ctrl \bbn\mvc\ctrl */
+X::adump("Hello from the updater...");
 $fs = new \bbn\File\System();
 $file0 = BBN_LIB_PATH.'bbn/bbn/changes.json';
+if (!is_file($file0)) {
+  X::adump("Hello from the updater...");
+  throw new \Exception("Impossible to find the file changes");
+}
+X::adump("File changes found...");
+
 // Changing codes
 $changes = $fs->decodeContents($file0);
 foreach ($changes as $ch) {
@@ -20,6 +27,11 @@ foreach ($changes as $ch) {
 }
 
 $file = BBN_LIB_PATH.'bbn/bbn/options.json';
+if (!is_file($file)) {
+  X::adump("Hello from the updater...");
+  throw new \Exception("Impossible to find the file options");
+}
+X::adump("File options found...");
 $appui_options = X::toArray($fs->decodeContents($file));
 $root = $ctrl->inc->options->getDefault();
 $res = 0;

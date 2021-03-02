@@ -4,32 +4,96 @@
     data(){
       return {
         selected: false,
-        newPerm: {},
+        root: appui.plugins['appui-option'] + '/permissions/',
+        mode: 'access',
         sections:{
           configuration: true,
           newPermission: false,
           groups: false,
           users: false
-        }
+        },
+        modes: [
+          {
+            text: bbn._("Access"),
+            value: 'access'
+          }, {
+            text: bbn._("Options"),
+            value: 'options'
+          }
+        ],
+        currentSource: this.source.rootAccess,
+        currentSection: 0
       }
     },
     computed: {
+      panelSource() {
+        if (this.selected) {
+          return [
+            {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("Groups") + '</span>',
+              component: 'appui-option-permissions-groups',
+              componentOptions: {
+                users: this.source.users,
+                groups: this.source.groups,
+                source: this.selected,
+                parent: this
+              }
+            }, {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("Users") + '</span>',
+              component: 'appui-option-permissions-users',
+              componentOptions: {
+                users: this.source.users,
+                groups: this.source.groups,
+                source: this.selected,
+                parent: this
+              }
+            }, {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("Configuration") + '</span>',
+              component: 'appui-option-permissions-configuration',
+              componentOptions: {
+                source: this.selected,
+                parent: this
+            	}
+            }, {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("New permission (under this one)") + '</span>',
+              component: 'appui-option-permissions-new',
+              componentOptions: {
+                source: {
+                  selected: this.selected
+                },
+                parent: this
+              }
+            }
+          ];
+        }
+        return [];
+      },
       idParent(){
         return this.selected.id || null;
       },
-      conf(){
-        return {
-          id: this.selected.id,
-          code: this.selected.code,
-          text: this.selected.text,
-          help: this.selected.help,
-          public: this.selected.public || false,
-          cascade: this.selected.cascade || false
-        }
-      },
-
     },
     methods: {
+      delPerm(){
+        if ( this.selected.id ){
+          this.confirm(bbn._('Are you sure you want to delete this permission?'), ()  => {
+            this.post(
+              this.root + 'actions/delete',
+              {id: this.selected.id},
+              d => {
+                if ( d && d.success ){
+                  appui.success(bbn._('Deleted!'));
+                  this.selected = {};
+                  this.getRef('tree').selectedNode.parent.updateData();
+                  /** @todo to remove it from the permissions list (tree) and to select its parent */
+                }
+              }
+            );
+          });
+        }
+      },
+      changeSection(idx) {
+        this.currentSection = idx
+      },
       enter(element) {
         const width = getComputedStyle(element).width;
 
@@ -74,41 +138,74 @@
           element.style.height = 0;
         });
       },
-      clearNewPerm(){
-        this.newPerm = {
-          id_parent: this.idParent,
-          code: '',
-          text: '',
-          help: ''
-        };
+      refresh(){
+        this.confirm(
+          bbn._("Are you sure you want to update all permissions? It might take a while..."),
+          () => {
+            this.post(
+              this.root + 'actions/scan',
+              // The combo controller checks if there is a post
+              {oh: 'yeah'},
+              d => {
+                if (d && d.res && d.res.total) {
+                  appui.success(d.res.total + ' ' + bbn._("permissions have been added"));
+                  this.getRef('tree').updateData();
+                }
+                else if (d && d.res) {
+                  appui.success(bbn._("No permission has been added"));
+                }
+                else {
+                  appui.error();
+                }
+                //load();
+              }
+            );
+          }
+        );
       },
-      refreshPermissions(){
-        this.confirm(bbn._("Are you sure you want to update all permissions? It might take a while..."), () => {
-          this.post(this.source.root + 'actions/update_permissions', (d) => {
-            if (d && d.res && d.res.total) {
-              appui.success(d.res.total + ' ' + bbn._("permissions have been added"));
-            }
-            else if (d && d.res) {
-              appui.success(bbn._("No permission has been added"));
-            }
-            else {
-              appui.error();
-            }
-            //load();
-          });
-        });
+      cleanUp(){
+        this.confirm(
+          bbn._("Are you sure you want to clean up the permissions?") + "<br>" +
+          		bbn._("It will delete only obsoletes ones which don't correspond to any file and have no user option defined."),
+          () => {
+            this.post(
+              this.root + 'actions/cleanup',
+              // The combo controller checks if there is a post
+              {oh: 'yeah'},
+              d => {
+                if (d && d.success) {
+                  let msg = d.total ?
+                      d.total + ' ' + bbn._("permissions have been removed") :
+                      bbn._("All good but no need to delete anything");
+                  appui.success(msg);
+                  this.getRef('tree').updateData();
+                }
+                else {
+                  appui.error();
+                }
+                //load();
+              }
+            );
+	        }
+        );
       },
       treeMapper(n){
-        n.text += '<span class="bbn-permissions-list-code">' + n.code + '</span>';
+        let addedCls = ''
+        if (!n.text && n.alias) {
+          n.text = n.alias.text + ' <span class="bbn-permissions-list-code bbn-blue">' + n.alias.code + '</span>';
+        }
+        else {
+          n.text += ' <span class="bbn-permissions-list-code">' + n.code + '</span>';
+        }
+
         return n;
       },
       permissionSelect(n){
-        this.post(this.source.root + 'permissions', {
+        this.post(this.root + 'actions/get', {
           id: n.data.id,
           full: 1
         }, (d) => {
           this.selected = d.data || false;
-          this.clearNewPerm();
           //bbn.fn.extend(r, d.data);
         });
       },
@@ -117,91 +214,24 @@
            this.sections[i] = i === section
         });
       },
-      submitConf(){
-        if ( this.getRef('form_cfg').dirty ){
-          this.post(this.source.root + 'permissions/update', this.conf, (d) => {
-            if ( d.data && d.data.success ){
-              appui.success(bbn._('Saved!'));
-            }
-            else {
-              appui.error(bbn._('Error!'));
-            }
-          });
+    },
+    watch: {
+      currentSource(){
+        this.$nextTick(() => {
+          this.getRef('tree').updateData()
+        })
+      },
+      mode(v, ov) {
+        let idx = bbn.fn.search(
+          this.source.sources,
+          {[v === 'options' ? 'rootOptions' : 'rootAccess']: this.currentSource}
+        );
+
+        if (v === 'options') {
+          this.currentSource = this.source.sources[idx] ? this.source.sources[idx].rootOptions : this.source.rootOptions;
         }
-      },
-      submitNew(){
-        if ( this.newPerm.id_parent && this.newPerm.code && this.getRef('form_new').dirty ){
-          this.post(this.source.root + 'permissions/insert', this.newPerm, (d) => {
-            if ( d.data && d.data.success ){
-              /** @todo to add the new permission to tre (permissions list) */
-              this.clearNewPerm();
-              appui.success(bbn._('Inserted!'));
-            }
-            else {
-              appui.error(bbn._('Error'));
-            }
-          });
-        }
-      },
-      delPerm(){
-        if ( this.selected.id ){
-          this.confirm(bbn._('Are you sure you want to delete this permission?'), ()  => {
-            this.post(this.source.root + 'permissions/delete', {id: this.selected.id}, (d) => {
-              if ( d.data && d.data.success ){
-                appui.success(bbn._('Deleted!'));
-                this.selected = {};
-                /** @todo to remove it from the permissions list (tree) and to select its parent */
-              }
-            });
-          });
-        }
-      },
-      checkAllGroups(){
-        bbn.fn.each(this.source.groups, (v, i) => {
-          if ( !this.selected['group' + v.id] ){
-            this.setGroupPerm(v);
-            this.selected['group' + v.id] = true;
-          }
-        });
-      },
-      uncheckAllGroups(){
-        bbn.fn.each(this.source.groups, (v, i) => {
-          if ( this.selected['group' + v.id] ){
-            this.setGroupPerm(v);
-            this.selected['group' + v.id] = false;
-          }
-        });
-      },
-      setGroupPerm(group){
-        if ( group && group.id && !this.selected.public ){
-          let isChecked = !this.selected['group' + group.id];
-          this.post(this.source.root + 'permissions/' + (isChecked ? 'add' : 'remove'), {
-            id_group: group.id,
-            id_option: this.selected.id
-          }, (d) => {
-            if ( d.data.res ){
-              appui.success(bbn._('Saved!'));
-            }
-            else {
-              appui.error(bbn._('Error!'));
-            }
-          });
-        }
-      },
-      setUserPerm(user){
-        if ( user && user.id && !this.selected.public && !this.selected['group' + user.id_group] ){
-          let isChecked = !this.selected['user' + user.id];
-          this.post(this.source.root + 'permissions/' + (isChecked ? 'add' : 'remove'), {
-            id_user: user.id,
-            id_option: this.selected.id
-          }, (d) => {
-            if ( d.data.res ){
-              appui.success(bbn._('Saved!'));
-            }
-            else {
-              appui.error(bbn._('Error!'));
-            }
-          });
+        else {
+          this.currentSource = this.source.sources[idx] ? this.source.sources[idx].rootAccess : this.source.rootAccess;
         }
       }
     }

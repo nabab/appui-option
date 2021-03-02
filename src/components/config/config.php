@@ -33,7 +33,7 @@
                   :notext="true"/>
     </div>
     <div class="bbn-grid-fields">
-      <label><?=_("Categories' page")?></label>
+      <label style="width: 15em"><?=_("Categories' page")?></label>
       <bbn-checkbox class="k-checkbox"
                     v-model.number="data.cfg.categories"
                     :disabled="!!source.cfg.frozen"
@@ -201,7 +201,7 @@
                          v-if="showSchema"
                          style="height: 300px"/>
       </div>
-      <div v-else/>
+      <div v-else> </div>
 
 
       <label><?=_('Description')?></label>
@@ -212,11 +212,13 @@
 
 
       <label><?=_('Help')?></label>
-      <bbn-markdown class="bbn-iblock"
-                    style="width: 100%; min-height: 120px; vertical-align: top"
-                    v-model="data.cfg.help"
-                    :disabled="!!source.cfg.frozen"
-      ></bbn-markdown>
+      <div class="bbn-bordered bbn-radius bbn-spadded">
+        <div class="bbn-block">
+          <bbn-markdown v-model="data.cfg.help"
+                        :disabled="!!source.cfg.frozen"
+          ></bbn-markdown>
+        </div>
+      </div>
 
       <label v-if="source.cfg.allow_children"
              class="bbn-p"
@@ -395,16 +397,17 @@
           </div>
 
           <label><?=_('Description')?></label>
-          <bbn-textarea style="width: 100%; min-height: 120px"
-                        v-model="data.scfg.desc"
-                        :disabled="!!source.cfg.frozen"
-          ></bbn-textarea>
+          <div>
+            <bbn-textarea style="width: 100%; min-height: 120px"
+                          v-model="data.scfg.desc"
+                          :disabled="!!source.cfg.frozen"
+            ></bbn-textarea>
+          </div>
 
           <label><?=_('Help')?></label>
-          <bbn-markdown class="bbn-iblock"
-                        style="width: 100%; min-height: 120px; vertical-align: top"
-                        v-model="data.scfg.help"
-          ></bbn-markdown>
+          <div>
+            <bbn-markdown v-model="data.scfg.help"/>
+          </div>
         </div>
       </div>
     </div>

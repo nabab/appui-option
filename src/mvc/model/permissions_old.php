@@ -1,5 +1,6 @@
 <?php
 /** @var $model \bbn\Mvc\Model*/
+
 if ( !empty($model->data['action']) ){
   if ( $model->data['action'] === 'insert' ){
     if ( !empty($model->data['id_parent']) &&
@@ -12,7 +13,8 @@ if ( !empty($model->data['action']) ){
         'text' => $model->data['text'],
         'help' => $model->data['help'],
         'public' => !empty($model->data['public']),
-        'cascade' => !empty($model->data['cascade'])
+        'cascade' => !empty($model->data['cascade']),
+        'type' => 'permission'
       ]) ){
         return [
           'success' => 1
@@ -41,8 +43,8 @@ if ( !empty($model->data['action']) ){
     return false;
   }
   else if ( $model->data['action'] === 'delete' ){
-    if ( !empty($model->data['id']) &&
-      $model->inc->options->remove($model->data['id'])
+    if (!empty($model->data['id']) &&
+        $model->inc->options->remove($model->data['id'])
     ){
       return [
         'success' => 1
@@ -133,10 +135,10 @@ else if ( isset($model->data['id']) &&
       }
       if ( !empty($name) ){
         foreach ( $model->data['routes'] as $n => $r ){
-          array_push($tried, [$r['path'].'/mvc/public/'.substr($path, \strlen($name))]);
+          array_push($tried, [$r['path'].'src/mvc/public/'.substr($path, \strlen($name))]);
           if ( $n.'/' === $name ){
             $tried[count($tried)-1][1] = 'really';
-            if ( file_exists($r['path'].'/mvc/public/'.substr($path, \strlen($name))) ){
+            if ( file_exists($r['path'].'src/mvc/public/'.substr($path, \strlen($name))) ){
               $res['exist'] = true;
               $res['type'] = $is_file ? 'file' : 'folder';
               break;
@@ -163,13 +165,13 @@ else if ( isset($model->data['id']) ){
       }
       else {
         $real = false;
-        $path_to_file = $model->inc->options->toPath($r['id'], '', \bbn\User\Permissions::getOptionId('page'));
+        $path_to_file = $model->inc->options->toPath($r['id'], '', \bbn\User\Permissions::getOptionId('access'));
         if ( file_exists($model->appPath().'mvc/public/'.$path_to_file.'.php') ){
           $real = true;
         }
         if ( empty($real) ){
           foreach ( $model->data['routes'] as $n => $route ){
-            if ( file_exists($route['path'].'/mvc/public/'.substr($path_to_file, \strlen($n)+1).'.php') ){
+            if ( file_exists($route['path'].'src/mvc/public/'.substr($path_to_file, \strlen($n)+1).'.php') ){
               $real = true;
               break;
             }
@@ -178,20 +180,24 @@ else if ( isset($model->data['id']) ){
         $r['icon'] = !empty($real) ? 'nf nf-fa-file' : 'nf nf-fa-key';
       }
     }
-    if ( $model->inc->perm->has($r['id']) ){
-
+    if (
+      $model->inc->perm->has($r['id']) ||
+      (!empty($r['num_children']) && $model->inc->perm->hasDeep($r['id']))
+    ){
       $res[!empty($is_folder) ? 'folders' : 'files'][$r['code']] = [
         'id' => $r['id'],
         'text' => $r['text'],
         'code' => $r['code'],
-        'icon' => $r['icon'],  
-        'num' => $r['num_children'] ?: 0
+        'icon' => $r['icon'],
+        'numChildren' => $r['num_children'] ?? 0
       ];
     }
   }
+
   ksort($res['folders'], SORT_STRING | SORT_FLAG_CASE);
   ksort($res['files'], SORT_STRING | SORT_FLAG_CASE);
   return array_merge(array_values($res['folders']), array_values($res['files']));
+
 }
 else{
   $mgr = $model->inc->user->getManager();
