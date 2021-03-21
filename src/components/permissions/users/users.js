@@ -2,7 +2,7 @@
 
 (() => {
   return {
-    props: ['source', 'parent', 'users', 'groups'],
+    props: ['source', 'parent', 'users', 'groups', 'url'],
     data(){
       return {};
     },
@@ -10,7 +10,7 @@
       setUserPerm(user){
         if ( user && user.id && !this.source.public && !this.source['group' + user.id_group] ){
           let isChecked = !this.source['user' + user.id];
-          this.post(this.parent.root + 'actions/' + (isChecked ? 'add' : 'remove'), {
+          this.post((this.url || (this.parent.root + 'actions/')) + (isChecked ? 'add' : 'remove'), {
             id_user: user.id,
             id_option: this.source.id
           }, d => {

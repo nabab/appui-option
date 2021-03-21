@@ -139,55 +139,63 @@
         });
       },
       refresh(){
-        this.confirm(
-          bbn._("Are you sure you want to update all permissions? It might take a while..."),
-          () => {
-            this.post(
-              this.root + 'actions/scan',
-              // The combo controller checks if there is a post
-              {oh: 'yeah'},
-              d => {
-                if (d && d.res && d.res.total) {
-                  appui.success(d.res.total + ' ' + bbn._("permissions have been added"));
-                  this.getRef('tree').updateData();
-                }
-                else if (d && d.res) {
-                  appui.success(bbn._("No permission has been added"));
-                }
-                else {
-                  appui.error();
-                }
-                //load();
+        this.getPopup({
+          title: bbn._("Choose plugins to refresh"),
+          width: 400,
+          component: 'appui-core-form-plugins',
+          componentOptions: {
+            source: {
+              plugins: this.source.sources.map(a => {
+                return {value: a.rootAccess, text: a.text}
+              }),
+              action: this.root + 'actions/scan'
+            },
+            confirmMessage: bbn._("Are you sure you want to update the chosen permissions?") +
+            								"<br>" + bbn._("Depending on the size of your app it might take a while"),
+            success(d) {
+              if (d && d.res && d.res.total) {
+                appui.success(d.res.total + ' ' + bbn._("permissions have been added"));
+                this.getRef('tree').updateData();
               }
-            );
+              else if (d && d.res) {
+                appui.success(bbn._("No permission has been added"));
+              }
+              else {
+                appui.error();
+              }
+		        }
           }
-        );
+        })
       },
       cleanUp(){
-        this.confirm(
-          bbn._("Are you sure you want to clean up the permissions?") + "<br>" +
-          		bbn._("It will delete only obsoletes ones which don't correspond to any file and have no user option defined."),
-          () => {
-            this.post(
-              this.root + 'actions/cleanup',
-              // The combo controller checks if there is a post
-              {oh: 'yeah'},
-              d => {
-                if (d && d.success) {
-                  let msg = d.total ?
-                      d.total + ' ' + bbn._("permissions have been removed") :
-                      bbn._("All good but no need to delete anything");
-                  appui.success(msg);
-                  this.getRef('tree').updateData();
-                }
-                else {
-                  appui.error();
-                }
-                //load();
+        this.getPopup({
+          title: bbn._("Choose plugins to refresh"),
+          width: 400,
+          component: 'appui-core-form-plugins',
+          componentOptions: {
+            source: {
+              plugins: this.source.sources.map(a => {
+                return {value: a.rootAccess, text: a.text}
+              }),
+              action: this.root + 'actions/cleanup'
+            },
+            confirmMessage: bbn._("Are you sure you want to clean up the permissions?") +
+            								"<br>" + bbn._("It will delete only obsoletes ones which don't correspond to any file and have no user option defined.") +
+            								"<br>" + bbn._("Depending on the size of your app it might take a while"),
+            success(d) {
+              if (d && d.total) {
+                let msg = d.total ?
+                    d.total + ' ' + bbn._("permissions have been removed") :
+                bbn._("All good but no need to delete anything");
+                appui.success(msg);
+                this.getRef('tree').updateData();
               }
-            );
-	        }
-        );
+              else {
+                appui.error();
+              }
+		        }
+          }
+        })
       },
       treeMapper(n){
         let addedCls = ''

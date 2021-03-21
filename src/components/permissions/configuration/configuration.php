@@ -1,7 +1,7 @@
 <!-- HTML Document -->
 <div class="bbn-lpadded">
   <div class="bbn-w-100 bbn-lpadded bbn-bordered bbn-radius">
-    <bbn-form :action="parent.root + 'actions/update'"
+    <bbn-form :action="(url || (parent.root + 'actions/')) + 'update'"
               @success="success"
               :source="source"
               :fixedFooter="false"

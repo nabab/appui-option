@@ -6,7 +6,7 @@
         <bbn-checkbox v-if="!!source.public || !!source['group' + u.id_group]"
                       :disabled="true"
                       :checked="true"
-                      :label="u.nom"
+                      :label="u.nom || u.username"
                       :key="u.id+'a'"/>
         <bbn-checkbox v-else
                       v-model="source['user' + u.id]"

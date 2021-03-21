@@ -2,7 +2,7 @@
 
 (() => {
   return {
-    props: ['source', 'parent'],
+    props: ['source', 'parent', 'url'],
     data(){
       return {};
     },

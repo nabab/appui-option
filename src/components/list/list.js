@@ -58,12 +58,12 @@
         }
       },
       openConfig(){
-        this.getPopup().open({
+        this.getPopup({
           title: bbn._("Option's configuration"),
           component: 'appui-option-config',
           source: this.source,
-          width: 1000,
-          height: bbn.env.height - 100
+          minWidth: 500,
+          minHeight: '80%'
         });
       },
       fixNum(){
