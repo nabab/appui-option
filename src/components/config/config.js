@@ -17,6 +17,7 @@
         i18n: {},
         id: "",
         inheritance: "",
+        permissions: "",
         schema: null,
         show_alias: null,
         show_code: null,
@@ -33,10 +34,9 @@
         data: {
           cfg: this.source.cfg,
           scfg: this.source.cfg.scfg || defScfg,
-          id: this.source.id
+          id: this.source.option ? this.source.option.id : this.source.id
         },
         ready: false,
-        values: this.source.options,
         models: [],
         views: [],
         showSchema: !!this.source.cfg.schema,
@@ -81,7 +81,7 @@
                 "type": "object"
               }
             },
-            "required": ["title", "field", "type", "showable", "editable", "hidden", "options"]
+            "required": ["title", "field"]
           }
         },
         //rootAlias: this.source.cfg.root_alias !== undefined ? this.source.cfg.root_alias.text : bbn._('Root'),
@@ -93,6 +93,59 @@
       }
     },
     computed: {
+      canDefineSubPermissions(){
+        if (this.source.permissions) {
+          return !['all', 'cascade'].includes(this.source.permissions.cfg)
+        }
+
+        return true;
+      },
+      canDefineSelfPermission(){
+        return !this.source.permissions
+      },
+      permissionsText(){
+        if (this.source.permissions) {
+          let str = '';
+          if (!this.canDefineSubPermissions) {
+            str += bbn._("The permissions' configuration comes from the parent option");
+          }
+          else if (!this.canDefineSelfPermission) {
+            str += bbn._("This permission's configuration comes from the parent option");
+          }
+          str += ' <strong>' + this.source.permissions.from_text + '</strong>';
+          return str;
+        }
+      },
+      permissionsSource(){
+        let r = [{
+          text: bbn._("None"),
+          value: ''
+        }];
+        if (this.canDefineSelfPermission) {
+          r.push({
+            text: bbn._("This"),
+            value: 'single'
+          });
+        }
+
+        if (this.source.cfg.allow_children && this.canDefineSubPermissions) {
+          r.push({
+            text: bbn._("Children"),
+            value: 'children'
+          });
+          r.push({
+            text: bbn._("Cascade"),
+            value: 'cascade'
+          });
+          if (this.canDefineSelfPermission) {
+            r.push({
+              text: bbn._("All (this + cascade)"),
+              value: 'all'
+            });
+          }
+        }
+        return r;
+      },
       inPopup(){
         return !!this.closest('bbn-popup');
       },

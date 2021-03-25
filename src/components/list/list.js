@@ -58,13 +58,17 @@
         }
       },
       openConfig(){
-        this.getPopup({
-          title: bbn._("Option's configuration"),
-          component: 'appui-option-config',
-          source: this.source,
-          minWidth: 500,
-          minHeight: '80%'
-        });
+        this.post(this.source.root + 'tree/option/' + this.source.id, d => {
+          if (d && d.data) {
+            this.getPopup({
+              title: bbn._("Option's configuration"),
+              component: 'appui-option-config',
+              source: d.data,
+              minWidth: 500,
+              minHeight: '80%'
+            });
+          }
+        })
       },
       fixNum(){
         this.post(this.source.root + 'actions/fix_order/' + this.source.id, (d) => {

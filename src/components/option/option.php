@@ -52,7 +52,7 @@
                       title="<?=_('Configuration')?>"
                       component="appui-option-config"
                       :load="false"
-                      :source="cfgObj"
+                      :source="source"
                       bcolor="sandybrown"
                       fcolor="white"
                       icon="nf nf-fa-gears"

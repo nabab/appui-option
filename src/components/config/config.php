@@ -29,15 +29,17 @@
       <bbn-button type="button"
                   @click="reset"
                   icon="nf nf-fa-undo"
-                  title="<?=_('Bak to default')?>"
+                  title="<?=_('Back to default')?>"
                   :notext="true"/>
     </div>
+
     <div class="bbn-grid-fields">
       <label style="width: 15em"><?=_("Categories' page")?></label>
       <bbn-checkbox class="k-checkbox"
                     v-model.number="data.cfg.categories"
                     :disabled="!!source.cfg.frozen"
                     :value="1"/>
+
       <label v-if="!data.cfg.categories"><?=_('Show')?></label>
       <div v-if="!data.cfg.categories">
         <bbn-checkbox v-model.number="data.cfg.show_code"
@@ -120,34 +122,46 @@
                  v-model="data.cfg.inheritance"
                  :disabled="!!source.cfg.frozen || showScfg"
                  :source="[{
-                    text: '<?=_('None')?>',
+                    text: '<?=\bbn\str::escape(_('None'))?>',
                     value: '',
                   }, {
-                    text: '<?=_('Only children')?>',
+                    text: '<?=\bbn\str::escape(_('Only children'))?>',
                     value: 'children',
                   }, {
-                    text: '<?=_('Cascade')?>',
+                    text: '<?=\bbn\str::escape(_('Cascade'))?>',
                     value: 'cascade',
                   }, {
-                    text: '<?=_('Default')?>',
+                    text: '<?=\bbn\str::escape(_('Default'))?>',
                     value: 'default',
                   }]"/>
 
-       <label><?=_('Permissions')?></label>
-      <bbn-checkbox v-model.number="data.cfg.permissions"
-                    :value="1"
-                    :disabled="!!source.cfg.frozen"/>
+      <label v-if="source.cfg.allow_children || permissionsText"><?=_('Permissions')?></label>
+      <div v-if="source.cfg.allow_children || permissionsText">
+        <div class="bbn-w-100">
+          <bbn-radio class="bbn-options-inheritance"
+                     v-model="data.cfg.permissions"
+                     :disabled="!!source.cfg.frozen"
+                     v-if="permissionsSource.length > 1"
+                     :source="permissionsSource"/>
+        </div>
+        <div class="bbn-w-100 bbn-i"
+             v-if="source.permissions"
+             v-html="permissionsText">
+        </div>
+      </div>
 
-      <label><?=_('Default value')?></label>
-      <bbn-dropdown class="bbn-wider"
-                    :source="values"
+      <label v-if="source.cfg.allow_children"><?=_('Default value')?></label>
+      <bbn-dropdown v-if="source.cfg.allow_children"
+                    class="bbn-wider"
+                    :source="root + 'text_value/' + data.id"
                     :disabled="!!source.cfg.frozen"
                     source-value="id"
                     v-model="data.cfg.default_value"
                     placeholder=" - "/>
 
-      <label><?=_('External MV')?></label>
-      <bbn-dropdown id="bbn_options_cfg_model"
+      <label v-if="source.cfg.allow_children"><?=_('External MV')?></label>
+      <bbn-dropdown v-if="source.cfg.allow_children"
+                    id="bbn_options_cfg_model"
                     class="bbn-wider"
                     :nullable="true"
                     :source="controllers"
@@ -174,16 +188,17 @@
                     :disabled="!!source.cfg.inherit_from"
                     placeholder=" - "/>-->
 
-      <label v-if="!data.cfg.categories || !data.cfg.view"><?=_('Form')?></label>
+      <label v-if="source.cfg.allow_children && (!data.cfg.categories || !data.cfg.view)"><?=_('Form')?></label>
       <bbn-dropdown class="bbn-wider"
-                    v-if="!data.cfg.categories || !data.cfg.view"
+                    v-if="source.cfg.allow_children && (!data.cfg.categories || !data.cfg.view)"
                     :source="views"
                     v-model="data.cfg.form"
                     :disabled="!!source.cfg.frozen"
                     placeholder=" - "/>
 
-      <label><?=_('Language')?></label>
-      <bbn-dropdown :source="source.languages"
+      <label v-if="source.cfg.allow_children"><?=_('Language')?></label>
+      <bbn-dropdown v-if="source.cfg.allow_children"
+                    :source="source.languages"
                     v-model="data.cfg.i18n"
                     class="bbn-wider"
                     placeholder=" - "
@@ -191,18 +206,17 @@
                     :nullable="true"
                     :disabled="!!source.cfg.frozen"/>
 
-      <label>
+      <label v-if="source.cfg.allow_children">
         <a class="bbn-p" @click="toggleSchema"><?=_('Schema')?></a>
       </label>
-      <div v-if="showSchema">
+      <div v-if="source.cfg.allow_children && showSchema">
         <bbn-json-editor v-model="data.cfg.schema"
                          :cfg="{schema: jsonSchema, templates: jsonDataTemplate}"
                          :disabled="!!source.cfg.frozen"
                          v-if="showSchema"
                          style="height: 300px"/>
       </div>
-      <div v-else> </div>
-
+      <div v-else-if="source.cfg.allow_children"> </div>
 
       <label><?=_('Description')?></label>
       <bbn-textarea style="width: 100%; min-height: 120px"

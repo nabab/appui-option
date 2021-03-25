@@ -2,9 +2,6 @@
   return {
     data(){
       return {
-        cfgObj: {
-          cfg: JSON.parse(this.source.cfg)
-        },
         cfg: {
           show_code: true,
           show_alias: true,
@@ -40,7 +37,7 @@
       },
       removeOpt(){
         this.confirm(bbn._('Are you sure you want to delete this option?'), ()=>{
-          this.post(appui.plugins['appui-option'] + '/actions/remove', this.source.option, d => { 
+          this.post(appui.plugins['appui-option'] + '/actions/remove', this.source.option, d => {
               if ( d.success ){
                 appui.success(bbn._('Deleted'));
                 this.tree.$refs.listOptions.selectedNode.$parent.reload();
@@ -51,8 +48,8 @@
       },
       removeOptHistory(){
         this.confirm(bbn._('Are you sure you want to delete this option\'s history?'), () => {
-          this.post(appui.plugins['appui-option'] + '/actions/remove', 
-            bbn.fn.extend({}, this.source.option, {history : true}), 
+          this.post(appui.plugins['appui-option'] + '/actions/remove',
+            bbn.fn.extend({}, this.source.option, {history : true}),
             d => {
               if ( d.success ){
                 appui.success(bbn._('Deleted'));
