@@ -145,7 +145,9 @@
           component: 'appui-core-form-plugins',
           componentOptions: {
             source: {
-              plugins: this.source.sources.map(a => {
+              plugins: bbn.fn.filter(this.source.sources, a => {
+                return !a.code || appui.plugins[a.code];
+              }).map(a => {
                 return {value: a.rootAccess, text: a.text}
               }),
               action: this.root + 'actions/scan'
