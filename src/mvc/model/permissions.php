@@ -8,7 +8,7 @@
 
 $mgr    = $model->inc->user->getManager();
 $cfg    = $model->inc->user->getClassCfg();
-$src    = $model->inc->perm->getSources();
+$src    = $model->inc->perm->getSources(false);
 $access = $model->inc->options->fromCode('access', 'permissions', 'appui');
 $options = $model->inc->options->fromCode('options', 'permissions', 'appui');
 return $model->addData([

@@ -21,7 +21,7 @@
     methods: {
       getToolbar(){
         let res = [];
-        if ( this.source.parent && this.source.is_dev && !this.source.cfg.noparent ){
+        if ( this.source.parent && !this.source.cfg.noparent ){
           res.push({
             text: this.source.parent_text,
             icon: 'nf nf-fa-angle_double_left',
