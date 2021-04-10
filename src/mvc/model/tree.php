@@ -10,12 +10,19 @@ else {
   $arr = $model->inc->options->fullOptions($model->data['id']);
 }
 
-if (!empty($arr)) {
+if (is_array($arr)) {
+  if (empty($arr)) {
+    return [
+      'success' => true,
+      'data'    => []
+    ];
+  }
+
   $cfg = $model->inc->options->getCfg($model->data['id']);
   $arr = $model->inc->options->fullOptions($model->data['id']);
 
-  $res = [
-    'success' => false,
+  return [
+    'success' => true,
     'data' => array_map(
       function ($o) use ($cfg) {
         $icon = $o['icon'] ?? '';
@@ -32,12 +39,8 @@ if (!empty($arr)) {
         ];
       },
       $arr
-    ),
-    'sql' => $model->db->last()
+    )
   ];
-  if (\is_array($res['data'])) {
-    $res['success'] = true;
-  }
-
-  return $res;
 }
+
+return ['success' => false];

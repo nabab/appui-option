@@ -185,7 +185,7 @@
             								"<br>" + bbn._("It will delete only obsoletes ones which don't correspond to any file and have no user option defined.") +
             								"<br>" + bbn._("Depending on the size of your app it might take a while"),
             success(d) {
-              if (d && d.total) {
+              if (d && d.success) {
                 let msg = d.total ?
                     d.total + ' ' + bbn._("permissions have been removed") :
                 bbn._("All good but no need to delete anything");
