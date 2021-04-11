@@ -157,12 +157,13 @@
             "text": {
                 "position": 6,
                 "type": "varchar",
-                "null": 0,
+                "null": 1,
                 "key": null,
                 "extra": "",
                 "signed": true,
                 "virtual": false,
                 "generation": "",
+                "default": "NULL",
                 "maxlength": 255
             },
             "value": {
