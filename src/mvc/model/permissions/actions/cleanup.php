@@ -16,12 +16,15 @@ foreach ($model->data as $id => $v) {
     if ($opt['code'] === 'access') {
       $tree = $model->inc->options->fullTree($id);
       if (!empty($tree['items'])) {
-        $all = array_reverse(X::flatten($tree['items'], 'items'));
+        $all            = array_reverse(X::flatten($tree['items'], 'items'));
         $res['tested'] += count($all);
         foreach ($all as $i => $a) {
           if (!$model->inc->perm->accessExists($a['id'])) {
             if (!$model->db->count('bbn_users_options', ['id_option' => $a['id']])) {
-              X::log($model->inc->options->getPathArray($a['id_alias'] ?: $a['id']), 'delPerm');
+              X::log(
+                $model->inc->options->getPathArray($a['id_alias'] ?: $a['id']),
+                'delPerm'
+              );
               $res['total'] += (int)$model->db->delete('bbn_options', ['id' => $a['id']]);
             }
           }
@@ -29,6 +32,7 @@ foreach ($model->data as $id => $v) {
       }
     }
   }
+
   $model->inc->options->deleteCache($id, true);
 }
 
