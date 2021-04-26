@@ -1,6 +1,6 @@
 <!-- HTML Document -->
 <bbn-splitter :resizable="true" :collapsible="true" orientation="horizontal">
-  <bbn-pane :resizable="true" :collapsible="true" :size="450">
+  <bbn-pane :resizable="true" :collapsible="true" size="30%">
     <div class="bbn-flex-height">
       <bbn-toolbar class="bbn-flex-width bbn-spadded">
         <div class="bbn-flex-fill">

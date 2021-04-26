@@ -3,6 +3,8 @@
 $routes = array_values($model->getRoutes());
 $todo = [];
 $parents = [];
+$id_page = $model->inc->perm->getOptionId('access');
+$withApp = false;
 foreach ($model->data as $id => $v) {
   if (bbn\Str::isUid($id) && $v) {
     $opt = $model->inc->options->option($id);
@@ -23,8 +25,11 @@ foreach ($model->data as $id => $v) {
           $todo[$row['url']] = $row;
         }
       }
+      elseif ($id === $id_page) {
+        $withApp = true;
+      }
     }
   }
 }
 
-return ['res' => $model->inc->perm->updateAll($todo)];
+return ['res' => $model->inc->perm->updateAll($todo, $withApp)];

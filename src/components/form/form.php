@@ -61,7 +61,7 @@
         style="justify-content: flex-start"
     >
       <div class="bbn-box bbn-xspadded bbn-right-sspace">
-        <i :class="['bbn-xxxlarge', 'bbn-block', CurrentSource.icon]"
+        <i :class="['bbn-xxxlarge', 'bbn-block', currentSource.icon]"
           :title="currentSource.icon"
           v-if="currentSource.icon"
         ></i>
