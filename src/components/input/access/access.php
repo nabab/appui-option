@@ -23,6 +23,5 @@
               @select="selectPermission"
               @unselect="currentValue = ''"
               ref="tree"/>
-           
   </div>
 </div>

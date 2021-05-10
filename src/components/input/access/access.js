@@ -37,6 +37,12 @@
       },
       "obj.icon"(v) {
         this.currentValue = v;
+      },
+      root(){
+        let tree = this.getRef('tree');
+        if (tree) {
+          //tree.updateData();
+        }
       }
     }
   }
