@@ -4,6 +4,11 @@
            ref="table"
            :expander="$options.components.bits"
 >
+  <bbns-column :hidden="true"
+               :showable="true"
+               field="id_option"
+               :default="source.option.id">
+  </bbns-column>
   <bbns-column title="<?=_('ID')?>"
                field="id"
                :width="isMine ? undefined : '250'"
