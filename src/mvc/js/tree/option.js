@@ -6,7 +6,7 @@
           row: this.source.info ? JSON.parse(this.source.info) : {},
         },
         cfgObj: {
-          cfg: this.source.cfg ? JSON.parse(this.source.cfg) : {}
+          cfg: this.source.cfg ? (bbn.fn.isString(this.source.cfg) ? JSON.parse(this.source.cfg) : this.source.cfg) : {}
         }
       }
     },

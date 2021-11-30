@@ -1,34 +1,31 @@
-<div class="bbn-flex-height bbn-overlay">
-  <bbn-toolbar class="bbn-spadded bbn-flex-width">
-    <div class="bbn-flex-fill bbn-b bbn-c bbn-large" v-text="source.option.text"></div>
+<div class="bbn-flex-height bbn-overlay appui-option-option">
+  <div class="bbn-header bbn-spadded bbn-w-100 bbn-flex-width">
+    <div class="bbn-flex-fill bbn-b bbn-c bbn-large"
+         v-text="source.option.text"/>
     <div>
       <bbn-button icon="nf nf-fa-link"
                   @click="linkOption"
-                  :text="'<?=_('Go to')?> ' + source.option.text"
-                  :notext="true"
-      ></bbn-button>
+                  :text="'<?= _('Go to') ?> ' + source.option.text"
+                  :notext="true"/>
       <bbn-button icon="nf nf-fa-history"
                   @click="deleteCache"
-                  text="<?=_('Delete cache option')?>"
+                  text="<?= _('Delete cache option') ?>"
                   :notext="true"
-                  class="bbn-hsmargin"
-      ></bbn-button>
+                  class="bbn-hsmargin"/>
       <bbn-button icon="nf nf-fa-trash_o"
                   @click="removeOpt"
-                  title="<?=_('Remove option from db')?>"
-                  text="<?=_('Remove')?>"
-                  :notext="true"
-      ></bbn-button>
+                  title="<?= _('Remove option from db') ?>"
+                  text="<?= _('Remove') ?>"
+                  :notext="true"/>
       <bbn-button icon="nf nf-fa-trash"
                   @click="removeOptHistory"
-                  title="<?=_('Remove option\'s history')?>"
+                  title="<?= _('Remove option\'s history') ?>"
                   v-if="isAdmin"
-                  text="<?=_('Remove history')?>"
+                  text="<?= _('Remove history') ?>"
                   class="bbn-hsmargin bbn-bg-red"
-                  :notext="true"
-      ></bbn-button>
+                  :notext="true"/>
     </div>
-  </bbn-toolbar>
+  </div>
   <div class="bbn-flex-fill">
     <bbn-router class="bbn-flex-fill"
                 :autoload="false"

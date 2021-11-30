@@ -17,11 +17,12 @@ if ( isset($ctrl->post['id_parent']) ){
   }
 
   $cfg = $ctrl->inc->options->getCfg($ctrl->post['id_parent']);
-  if ( !empty($cfg['schema']) && ($schema = json_decode($cfg['schema'], true)) ){
+  if (!empty($cfg['schema'])) {
+    $schema = $cfg['schema'];
     foreach ( $ctrl->post as $i => $d ){
-      if ( 
+      if (
         (($idx = \bbn\X::find($schema, ['field' => $i])) !== null) &&
-        isset($schema[$idx]['type']) && 
+        isset($schema[$idx]['type']) &&
         (strtolower($schema[$idx]['type']) === 'json')
       ){
         $ctrl->post[$i] = json_decode($d, true);

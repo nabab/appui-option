@@ -222,13 +222,8 @@
 
 
       <label><?=_('Help')?></label>
-      <div class="bbn-bordered bbn-radius bbn-spadded">
-        <div class="bbn-block">
-          <bbn-markdown v-model="data.cfg.help"
-                        :disabled="!!source.cfg.frozen"
-          ></bbn-markdown>
-        </div>
-      </div>
+      <bbn-markdown v-model="data.cfg.help"
+                    :disabled="!!source.cfg.frozen"/>
 
       <label v-if="source.cfg.allow_children"
              class="bbn-p"
@@ -239,8 +234,7 @@
                   :disabled="!!source.cfg.frozen"
                   :value="true"
                   :novalue="false"
-                  v-if="data.cfg.allow_children"
-      ></bbn-switch>
+                  v-if="data.cfg.allow_children"/>
     </div>
     <div v-if="showScfg && data.cfg.allow_children" class="bbn-box bbn-top-sspace">
       <div class="bbn-header bbn-c bbn-no-border-left bbn-no-border-top bbn-no-border-right bbn-spadded bbn-radius-top-left bbn-radius-top-right"><?=_('SubConfigurator')?></div>
@@ -292,28 +286,24 @@
           ><?=_("Root")?></bbn-button>
           <bbn-input readonly="readonly"
                       class="bbn-flex-fill"
-                      :value="data.scfg.root_alias"
-          ></bbn-input>
+                      :value="data.scfg.root_alias"/>
         </div>
 
         <label v-if="data.scfg.show_alias"><?=_("Alias' name")?></label>
         <bbn-input v-if="data.scfg.show_alias"
-                    v-model="data.scfg.alias_name"
-        ></bbn-input>
+                    v-model="data.scfg.alias_name"/>
 
         <label v-if="!data.scfg.categories"><?=_('Orderable')?></label>
         <bbn-checkbox v-if="!data.scfg.categories"
                       v-model.number="data.scfg.sortable"
                       :disabled="!!source.cfg.frozen"
-                      :value="1"
-        ></bbn-checkbox>
+                      :value="1"/>
 
         <label v-if="!data.scfg.categories"><?=_('Allow children')?></label>
         <bbn-checkbox v-if="!data.scfg.categories"
                       v-model.number="data.scfg.allow_children"
                       :disabled="!!source.cfg.frozen"
-                      :value="1"
-        ></bbn-checkbox>
+                      :value="1"/>
 
         <label class="bbn-options-inheritance"
                 v-if="data.scfg.allow_children"
@@ -336,24 +326,21 @@
                     }, {
                       text: '<?=_('Default')?>',
                       value: 'default',
-                    }]"
-        ></bbn-radio>
+                    }]"/>
 
         <label><?=_('Default value')?></label>
         <bbn-dropdown :source="root + 'text_value/' + data.id"
                       :disabled="!!source.cfg.frozen"
                       source-value="id"
                       v-model="data.scfg.default_value"
-                      placeholder=" - "
-        ></bbn-dropdown>
+                      placeholder=" - "/>
 
         <label><?=_('External MV')?></label>
         <bbn-dropdown id="bbn_options_cfg_model"
                       :source="controllers"
                       v-model="data.model"
                       :disabled="!!source.cfg.inherit_from"
-                      placeholder=" - "
-        ></bbn-dropdown>
+                      placeholder=" - "/>
 
         <!--<label v-if="!data.categories"><?/*=_('Model')*/?></label>
         <bbn-dropdown id="bbn_options_cfg_model"
@@ -381,15 +368,13 @@
                       :source="views"
                       v-model="data.scfg.form"
                       :disabled="!!source.cfg.frozen"
-                      placeholder=" - "
-        ></bbn-dropdown>
+                      placeholder=" - "/>
 
         <label><?=_('Language')?></label>
         <bbn-dropdown :source="source.languages"
                       v-model="data.scfg.i18n"
                       placeholder=" - "
-                      source-value="code"
-        ></bbn-dropdown>
+                      source-value="code"/>
 
         <label>
           <a class="bbn-p" @click="toggleSchemaScfg"><?=_('Schema')?></a>
@@ -399,24 +384,18 @@
                             :cfg="{schema: jsonSchema, templates: jsonDataTemplate}"
                             :disabled="!!source.cfg.frozen"
                             v-if="showSchemaScfg"
-                            style="height: 300px"
-          ></bbn-json-editor>
+                            style="height: 300px"/>
         </div>
 
         <label><?=_('Description')?></label>
         <div>
           <bbn-textarea style="width: 100%; min-height: 120px"
                         v-model="data.scfg.desc"
-                        :disabled="!!source.cfg.frozen"
-          ></bbn-textarea>
+                        :disabled="!!source.cfg.frozen"/>
         </div>
 
         <label><?=_('Help')?></label>
-        <div class="bbn-bordered bbn-radius bbn-spadded">
-          <div class="bbn-block">
-            <bbn-markdown v-model="data.scfg.help" />
-          </div>
-        </div>
+        <bbn-markdown v-model="data.scfg.help" />
       </div>
     </div>
   </div>
