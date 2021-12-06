@@ -84,7 +84,13 @@ if (!empty($id)) {
       // Adding the options' list
       /** @todo Paginate if not orderable & count > 100 */
       //$ctrl->addData(['options' => $ctrl->inc->options->fullOptions($ctrl->data['id'])]);
-      $ctrl->addData(['options' => $o->fullOptions($ctrl->data['id'])]);
+      if (!empty($ctrl->data['cfg']['show_value'])) {
+        $ctrl->addData(['options' => $o->nativeOptions($ctrl->data['id'])]);
+      }
+      else {
+        $ctrl->addData(['options' => $o->fullOptions($ctrl->data['id'])]);
+      }
+      
 
 
       /*if ( $controller ){
