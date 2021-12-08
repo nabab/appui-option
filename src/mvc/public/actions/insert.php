@@ -1,8 +1,4 @@
 <?php
-/*
- * Describe what it does to show you're not that dumb!
- *
- **/
 
 /** @var $ctrl \bbn\Mvc\Controller */
 $ctrl->obj->success = false;
@@ -23,7 +19,8 @@ if ( isset($ctrl->post['id_parent']) ){
       if (
         (($idx = \bbn\X::find($schema, ['field' => $i])) !== null) &&
         isset($schema[$idx]['type']) &&
-        (strtolower($schema[$idx]['type']) === 'json')
+        (strtolower($schema[$idx]['type']) === 'json') &&
+        !is_array($d)
       ){
         $ctrl->post[$i] = json_decode($d, true);
       }
