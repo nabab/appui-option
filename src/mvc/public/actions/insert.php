@@ -15,6 +15,9 @@ if ( isset($ctrl->post['id_parent']) ){
   $cfg = $ctrl->inc->options->getCfg($ctrl->post['id_parent']);
   if (!empty($cfg['schema'])) {
     $schema = $cfg['schema'];
+    if (is_string($schema)) {
+      $schema = json_decode($schema, true);
+    }
     foreach ( $ctrl->post as $i => $d ){
       if (
         (($idx = \bbn\X::find($schema, ['field' => $i])) !== null) &&
