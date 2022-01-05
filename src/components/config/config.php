@@ -243,14 +243,14 @@
         <label style="width: 15em"><?=_("Categories' page")?></label>
         <div>
           <bbn-checkbox v-model.number="data.scfg.categories"
-                        :disabled="!!source.scfg.frozen"
+                        :disabled="!!data.scfg.frozen"
                         style="margin-right: 1.5em"
                         :value="1"/>
           <bbn-checkbox v-model.number="data.scfg.noparent"
                         :value="1"
                         title="<?=_('Hide the parent button')?>"
                         label="<?=_('Hide parent')?>"
-                        :disabled="!!source.scfg.frozen"/>
+                        :disabled="!!data.scfg.frozen"/>
         </div>
 
         <label v-if="!data.scfg.categories"><?=_('Show')?></label>
