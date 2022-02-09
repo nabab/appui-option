@@ -42,18 +42,21 @@
         </div>
       </div>
     </bbn-pane>
-    <bbn-pane :resizable="true" :collapsible="true">
-      <bbn-router :autoload="true"
-                  :root="routerRoot"
-                  :single="true"
-                  ref="router"
-                  class="bbn-overlay"
-      ></bbn-router>
-      <div class="bbn-overlay bbn-middle" v-if="$refs.router && !$refs.router.activeContainer">
-        <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
-            <div class="bbn-xxxl bbn-c">
-              <?=_("Select Option")?>
-            </div>
+    <bbn-pane :resizable="true"
+              :collapsible="true">
+      <div class="bbn-overlay">
+        <bbn-router :autoload="true"
+                    :root="routerRoot"
+                    :single="true"
+                    ref="router"
+                    class="bbn-overlay"
+        ></bbn-router>
+        <div class="bbn-overlay bbn-middle" v-if="$refs.router && !$refs.router.activeContainer">
+          <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
+              <div class="bbn-xxxl bbn-c">
+                <?=_("Select Option")?>
+              </div>
+          </div>
         </div>
       </div>
     </bbn-pane>
