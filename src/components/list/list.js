@@ -64,8 +64,8 @@
               title: bbn._("Option's configuration"),
               component: 'appui-option-config',
               source: d.data,
-              minWidth: 500,
-              minHeight: '80%'
+              maxWidth: 1000,
+              width: '80vw'
             });
           }
         })
