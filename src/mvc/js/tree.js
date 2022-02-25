@@ -146,19 +146,24 @@
         bbn.fn.link(appui.plugins['appui-option'] + '/tree/option/' + n.data.id + this.currentUrl, true);
       },
       moveOpt(node, nodeDest, ev){
-        ev.preventDefault();
-        this.post(appui.plugins['appui-option'] + '/actions/move', {
-          idNode: node.data.id,
-          idParentNode: nodeDest.data.id
-        }, d => {
-          if ( d.success ){
-            appui.success(bbn._('Option successfully moved'));
-            this.getRef('listOptions').move(node, nodeDest, true);
-          }
-          else{
-            appui.error(bbn._('Error!! Option not moved'))
-          }
-        });
+        if (ev.cancelable) {
+          ev.preventDefault();
+          this.post(appui.plugins['appui-option'] + '/actions/move', {
+            idNode: node.data.id,
+            idParentNode: nodeDest.data.id
+          }, d => {
+            if ( d.success ){
+              appui.success(bbn._('Option successfully moved'));
+              this.getRef('listOptions').move(node, nodeDest, true);
+            }
+            else{
+              appui.error(bbn._('Error!! Option not moved'))
+            }
+          });
+        }
+        else {
+          nodeDest.reload();
+        }
       }
     },
     beforeMount(){
