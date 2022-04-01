@@ -1,4 +1,4 @@
-<div class="bbn-overlay bbn-flex-height">
+<div class="bbn-iflex-height">
   <bbn-input type="hidden"
              v-model="currentValue"
              v-show="false"/>
@@ -22,6 +22,7 @@
               :root="root"
               @select="selectPermission"
               @unselect="currentValue = ''"
-              ref="tree"/>
+              ref="tree"
+              @ready="treeReady = true"/>
   </div>
 </div>
