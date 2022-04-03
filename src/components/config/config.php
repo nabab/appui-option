@@ -204,7 +204,7 @@
       <label v-if="source.cfg.allow_children && !data.cfg.show_value">
         <a class="bbn-p" @click="toggleSchema"><?=_('Schema')?></a>
       </label>
-      <div v-if="source.cfg.allow_children && showSchema && !data.cfg.show_value">
+      <div v-if="showSchema && !data.cfg.show_value">
         <bbn-json-editor v-model="data.cfg.schema"
                          :cfg="{schema: jsonSchema, templates: jsonDataTemplate}"
                          :disabled="!!source.cfg.frozen"
@@ -383,7 +383,7 @@
                       :disabled="!!source.cfg.frozen"
                       :value="1"/>
 
-        <label v-if="!data.scfg.show_value">
+        <label v-if="showSchemaScfg && !data.scfg.show_value">
           <a class="bbn-p" @click="toggleSchemaScfg"><?=_('Schema')?></a>
         </label>
         <div v-if="showSchemaScfg && !data.scfg.show_value">
