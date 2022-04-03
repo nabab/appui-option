@@ -3,5 +3,7 @@
   <bbn-dropdown v-model="currentValue"
                 :source="sourceURL"
                 :required="true"
-                source-value="rootAccess"/>
+                source-value="rootAccess"
+                ref="dropdown"
+                @ready="setDropdown"/>
 </span>
