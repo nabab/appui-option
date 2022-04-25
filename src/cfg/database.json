@@ -5,7 +5,6 @@
                 "columns": [
                     "id"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_history_uids",
                 "ref_column": "bbn_uid",
                 "constraint": "bbn_options_ibfk_4",
@@ -18,19 +17,12 @@
                     "id_parent",
                     "code"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": "bbn_options_ibfk_3",
-                "update": "CASCADE",
-                "delete": "CASCADE",
                 "unique": 1
             },
             "id_parent": {
                 "columns": [
                     "id_parent"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_options",
                 "ref_column": "id",
                 "constraint": "bbn_options_ibfk_3",
@@ -42,7 +34,6 @@
                 "columns": [
                     "id_alias"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_options",
                 "ref_column": "id",
                 "constraint": "bbn_options_ibfk_2",
@@ -54,24 +45,12 @@
                 "columns": [
                     "code"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 0
             },
             "num": {
                 "columns": [
                     "num"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 0
             }
         },
@@ -163,19 +142,12 @@
                 "columns": [
                     "id"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 1
             },
             "id_option": {
                 "columns": [
                     "id_option"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_options",
                 "ref_column": "id",
                 "constraint": "bbn_passwords_ibfk_1",
@@ -187,7 +159,6 @@
                 "columns": [
                     "id_user_option_bit"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_users_options_bits",
                 "ref_column": "id",
                 "constraint": "bbn_passwords_ibfk_2",

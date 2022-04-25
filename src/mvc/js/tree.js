@@ -99,8 +99,8 @@
               option: ''
             }
           },
-          width: '100%',
-          height: '100%',
+          width: '90%',
+          height: '90%',
           closable: true,
           maximizable: false
         })
@@ -110,10 +110,10 @@
         this.post(this.source.root + 'actions/export', data, (d) => {
           if ( d.success ){
             this.getPopup({
-              content: '<textarea class="bbn-100">' + d.export + '</textarea>',
-              title: 'Export option ' + node.text,
-              width: '100%',
-              height: '100%',
+              content: '<div class="bbn-overlay"><textarea class="bbn-100">' + d.export + '</textarea></div>',
+              title: 'Export option ' + node.data.text + (node.data.code ? ' (' + node.data.code + ')' : ''),
+              width: '90%',
+              height: '90%',
               scrollable: false,
               closable: true,
               maximizable: false
