@@ -139,6 +139,7 @@
         });
       },
       refresh(){
+        let cp = this;
         this.getPopup({
           title: bbn._("Choose plugins to refresh"),
           width: 400,
@@ -157,7 +158,7 @@
             success(d) {
               if (d && d.res && d.res.total) {
                 appui.success(d.res.total + ' ' + bbn._("permissions have been added"));
-                this.getRef('tree').updateData();
+                cp.getRef('tree').updateData();
               }
               else if (d && d.res) {
                 appui.success(bbn._("No permission has been added"));
@@ -170,6 +171,7 @@
         })
       },
       cleanUp(){
+        let cp = this;
         this.getPopup({
           title: bbn._("Choose plugins to refresh"),
           width: 400,
@@ -190,7 +192,7 @@
                     d.total + ' ' + bbn._("permissions have been removed") :
                 bbn._("All good but no need to delete anything");
                 appui.success(msg);
-                this.getRef('tree').updateData();
+                cp.getRef('tree').updateData();
               }
               else {
                 appui.error();
