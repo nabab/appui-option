@@ -1,14 +1,19 @@
 <!-- HTML Document -->
 
 <div class="appui-option-input-picker">
-  <bbn-input type="hidden"
-             v-model="value"/>
   <bbn-button @click="showFloater = !showFloater"
               ref="button"
               type="button">
     <?=_("Browse")?>
   </bbn-button> &nbsp;
   <bbn-input v-model="rootAlias"/>
+  <bbn-button v-if="value"
+              class="bbn-space-left"
+              @click="selfEmit(null)">
+    <?=_("Clear")?>
+  </bbn-button>
+  <bbn-input type="hidden"
+             v-model="value"/>
   <bbn-floater v-if="showFloater"
                :element="$refs.button.$el"
                height="40em"

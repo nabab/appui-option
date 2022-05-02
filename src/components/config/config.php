@@ -76,18 +76,8 @@
       <label v-if="source.cfg.show_alias"><?=_("Alias' root")?></label>
       <div class="bbn-flex-width"
            v-if="source.cfg.show_alias">
-        <bbn-button @click="browseAlias(data.cfg)"
-                    :disabled="!!source.cfg.frozen"
-                    type="button"
-        ><?=_("Browse")?></bbn-button>
-        <bbn-button @click="setToRoot"
-                    :disabled="!!source.cfg.frozen"
-                    type="button"
-        ><?=_("Root")?></bbn-button>
-        <bbn-input readonly="readonly"
-                   class="bbn-flex-fill"
-                   :value="data.cfg.root_alias"
-                   :disabled="!!source.cfg.frozen"/>
+        <appui-option-input-picker :disabled="!!source.cfg.frozen"
+                                   v-model="data.cfg.id_root_alias"/>
       </div>
 
       <label v-if="source.cfg.show_alias"><?=_("Alias' name")?></label>

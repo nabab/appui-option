@@ -29,31 +29,18 @@
         v-text="cfg.alias_name || '<?=bbn\Str::escapeSquotes(_('Alias'))?>'">
     </div>
     <div v-if="cfg.show_alias && !schemaHasField('id_alias')"
-        class="bbn-flex-width"
-    >
-      <bbn-input :value="alias"
-                 readonly="readonly"
-                 class="bbn-flex-fill"
-                 v-if="!cfg.root_alias || !cfg.root_alias.last_level"
-      ></bbn-input>
-      <bbn-button @click="selectAlias" 
-                  v-if="!cfg.root_alias || !cfg.root_alias.last_level"
-      >
-        <?=_("Browse")?>
-      </bbn-button>
+        class="bbn-flex-width">
+      <appui-option-input-picker v-if="!cfg.root_alias || !cfg.root_alias.last_level"
+                                 :nullable="true"
+                                 v-model="currentSource.id_alias"/>
       <bbn-dropdown v-if="cfg.root_alias && cfg.root_alias.last_level"
                     :source="cfg.root_alias.last_level_children"
                     placeholder="Select Alias"
+                    :nullable="true"
                     source-text="text"
                     source-value="id"
                     class="bbn-w-100"
-                    v-model="currentSource.id_alias"
-      ></bbn-dropdown>
-      <bbn-button v-if="currentSource.id_alias"
-                  @click="clearAlias"
-      >
-        <?=_("Clear")?>
-      </bbn-button>
+                    v-model="currentSource.id_alias"/>
     </div>
     <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"><?=_('Icon')?></div>
     <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"

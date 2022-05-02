@@ -14,7 +14,7 @@
         root: appui.plugins['appui-option'] + '/',
         rootAlias: '',
         showFloater: false
-      }
+      };
     },
     methods: {
       getText(d) {
@@ -47,6 +47,13 @@
           this.rootAlias = d.data.text || (d.data.alias ? d.data.alias.text : d.data.code);
         });
       }
+    },
+    watch: {
+      value(p) {
+        if (!p) {
+          this.rootAlias = '';
+        }
+      }
     }
-  }
+  };
 })();
