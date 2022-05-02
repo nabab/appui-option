@@ -157,11 +157,11 @@
             								"<br>" + bbn._("Depending on the size of your app it might take a while"),
             success(d) {
               if (d && d.res && d.res.total) {
-                appui.success(d.res.total + ' ' + bbn._("permissions have been added"));
+                appui.info(d.res.total + ' ' + bbn._("permissions have been added"));
                 cp.getRef('tree').updateData();
               }
               else if (d && d.res) {
-                appui.success(bbn._("No permission has been added"));
+                appui.info(bbn._("No permission has been added"));
               }
               else {
                 appui.error();
