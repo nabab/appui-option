@@ -78,12 +78,10 @@
         }
       },
       currentUrl(){
-        if ( this.$refs.router && this.$refs.router.activeContainer ){
-          let tn = this.$refs.router.activeContainer.find('bbn-router');
-          if ( tn && tn.activeContainer ){
-            return '/' + tn.activeContainer.url;
-          }
+        if ( this.$refs.router && this.$refs.router.routed ){
+          return '/' + this.$refs.router.getCurrentURL();
         }
+
         return '';
       }
     },
