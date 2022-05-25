@@ -84,6 +84,7 @@
                 "key": "MUL",
                 "signed": true,
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 16
             },
             "id_alias": {
@@ -92,6 +93,7 @@
                 "key": "MUL",
                 "signed": true,
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 16
             },
             "num": {
@@ -99,6 +101,7 @@
                 "null": 1,
                 "key": "MUL",
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 5
             },
             "code": {
@@ -107,6 +110,7 @@
                 "key": "MUL",
                 "signed": true,
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 255
             },
             "text": {
@@ -115,6 +119,7 @@
                 "key": null,
                 "signed": true,
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 255
             },
             "value": {
@@ -197,6 +202,7 @@
                 "key": "UNI",
                 "signed": true,
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 16
             },
             "id_user_option": {
@@ -205,6 +211,7 @@
                 "key": "UNI",
                 "signed": true,
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 16
             },
             "id_user_option_bit": {
@@ -213,6 +220,7 @@
                 "key": "UNI",
                 "signed": true,
                 "default": "NULL",
+                "defaultExpression": 1,
                 "maxlength": 16
             },
             "password": {
