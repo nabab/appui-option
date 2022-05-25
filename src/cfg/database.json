@@ -116,8 +116,7 @@
             "text": {
                 "type": "varchar",
                 "null": 1,
-                "key": null,
-                "signed": true,
+                        "signed": true,
                 "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 255
@@ -125,16 +124,16 @@
             "value": {
                 "type": "json",
                 "null": 1,
-                "key": null,
-                "signed": true,
-                "default": "NULL"
+                        "signed": true,
+                "default": "NULL",
+                "defaultExpression": 1
             },
             "cfg": {
                 "type": "mediumtext",
                 "null": 1,
-                "key": null,
-                "signed": true,
-                "default": "NULL"
+                        "signed": true,
+                "default": "NULL",
+                "defaultExpression": 1
             }
         }
     },
@@ -226,8 +225,7 @@
             "password": {
                 "type": "text",
                 "null": 0,
-                "key": null,
-                "signed": true,
+                        "signed": true,
                 "generation": ""
             }
         }
