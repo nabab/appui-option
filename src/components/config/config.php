@@ -32,12 +32,14 @@
     </div>
 
     <div class="bbn-grid-fields">
-      <label style="width: 15em"><?=_("Categories' page")?></label>
+
+      <label style="width: 15em"><?=_("Presets")?></label>
       <div>
         <bbn-checkbox class="k-checkbox"
                       v-model.number="data.cfg.categories"
                       :disabled="!!source.cfg.frozen"
                       style="margin-right: 1.5em"
+                      label="<?=_("Categories' page")?>"
                       :value="1"/>
         <bbn-checkbox v-model.number="data.cfg.noparent"
                       :value="1"
@@ -46,8 +48,14 @@
                       :disabled="!!source.cfg.frozen"/>
       </div>
 
-      <label v-if="!data.cfg.categories"><?=_('Show')?></label>
-      <div v-if="!data.cfg.categories">
+      <label v-if="!source.cfg.categories"><?=_('Allow children')?></label>
+      <bbn-checkbox v-if="!source.cfg.categories"
+                    v-model.number="data.cfg.allow_children"
+                    :value="1"
+                    :disabled="!!source.cfg.frozen"/>
+
+      <label v-if="source.cfg.allow_children && !data.cfg.categories"><?=_('Show')?></label>
+      <div v-if="source.cfg.allow_children && !data.cfg.categories">
         <bbn-checkbox v-model.number="data.cfg.show_code"
                       :disabled="!!source.cfg.frozen"
                       :value="1"
@@ -73,29 +81,23 @@
                       style="margin-right: 1.5em"/>
       </div>
 
-      <label v-if="source.cfg.show_alias"><?=_("Alias' root")?></label>
+      <label v-if="source.cfg.allow_children && source.cfg.show_alias"><?=_("Alias' root")?></label>
       <div class="bbn-flex-width"
-           v-if="source.cfg.show_alias">
+           v-if="source.cfg.allow_children && source.cfg.show_alias">
         <appui-option-input-picker :disabled="!!source.cfg.frozen"
                                    v-model="data.cfg.id_root_alias"/>
       </div>
 
-      <label v-if="source.cfg.show_alias"><?=_("Alias' name")?></label>
-      <bbn-input v-if="source.cfg.show_alias"
+      <label v-if="source.cfg.allow_children && source.cfg.show_alias"><?=_("Alias' name")?></label>
+      <bbn-input v-if="source.cfg.allow_children && source.cfg.show_alias"
                  v-model="data.cfg.alias_name"
                  :disabled="!!source.cfg.frozen"/>
 
-      <label v-if="!source.cfg.categories"><?=_('Orderable')?></label>
-      <bbn-checkbox v-if="!source.cfg.categories"
+      <label v-if="source.cfg.allow_children && !source.cfg.categories"><?=_('Orderable')?></label>
+      <bbn-checkbox v-if="source.cfg.allow_children && !source.cfg.categories"
                     v-model.number="data.cfg.sortable"
                     :disabled="!!source.cfg.frozen"
                     :value="1"/>
-
-      <label v-if="!source.cfg.categories"><?=_('Allow children')?></label>
-      <bbn-checkbox v-if="!source.cfg.categories"
-                    v-model.number="data.cfg.allow_children"
-                    :value="1"
-                    :disabled="!!source.cfg.frozen"/>
 
       <label class="bbn-options-inheritance"
              v-if="source.cfg.allow_children">
@@ -134,15 +136,17 @@
         </div>
       </div>
 
-      <label><?=_('Default value')?></label>
-      <bbn-dropdown :source="root + 'text_value/' + data.id"
+      <label v-if="source.cfg.allow_children"><?=_('Default value')?></label>
+      <bbn-dropdown v-if="source.cfg.allow_children"
+                    :source="root + 'text_value/' + data.id"
                     :disabled="!!source.cfg.frozen"
                     source-value="id"
                     v-model="data.cfg.default_value"
                     placeholder=" - "/>
 
-      <label><?=_('External MV')?></label>
-      <bbn-dropdown id="bbn_options_cfg_model"
+      <label v-if="source.cfg.allow_children"><?=_('External MV')?></label>
+      <bbn-dropdown v-if="source.cfg.allow_children"
+                    id="bbn_options_cfg_model"
                     :nullable="true"
                     :source="controllers"
                     v-model="data.cfg.controller"
@@ -168,25 +172,26 @@
                     :disabled="!!source.cfg.inherit_from"
                     placeholder=" - "/>-->
 
-      <label v-if="!data.cfg.categories || !data.cfg.view"><?=_('Form')?></label>
-      <bbn-dropdown v-if="!data.cfg.categories || !data.cfg.view"
+      <label v-if="source.cfg.allow_children && (!data.cfg.categories || !data.cfg.view)"><?=_('Form')?></label>
+      <bbn-dropdown v-if="source.cfg.allow_children && (!data.cfg.categories || !data.cfg.view)"
                     :source="views"
                     v-model="data.cfg.form"
                     :disabled="!!source.cfg.frozen"
                     placeholder=" - "/>
 
-      <label><?=_('Language')?></label>
-      <bbn-dropdown :source="source.languages"
+      <label v-if="source.cfg.allow_children"><?=_('Language')?></label>
+      <bbn-dropdown v-if="source.cfg.allow_children"
+                    :source="source.languages"
                     v-model="data.cfg.i18n"
                     placeholder=" - "
                     source-value="code"
                     :nullable="true"
                     :disabled="!!source.cfg.frozen"/>
 
-      <label v-if="!showSchema">
+      <label v-if="source.cfg.allow_children && !showSchema">
         <?=_('Show value')?>
       </label>
-      <bbn-checkbox v-if="!showSchema"
+      <bbn-checkbox v-if="source.cfg.allow_children && !showSchema" 
                     v-model.number="data.cfg.show_value"
                     :disabled="!!source.cfg.frozen"
                     :value="1"/>
@@ -194,18 +199,17 @@
       <label v-if="source.cfg.allow_children && !data.cfg.show_value">
         <a class="bbn-p" @click="toggleSchema"><?=_('Schema')?></a>
       </label>
-      <div v-if="showSchema && !data.cfg.show_value">
+      <div v-if="source.cfg.allow_children && showSchema && !data.cfg.show_value">
         <bbn-json-editor v-model="data.cfg.schema"
                          :cfg="{schema: jsonSchema, templates: jsonDataTemplate}"
                          :disabled="!!source.cfg.frozen"
                          v-if="showSchema"
                          style="height: 300px"/>
       </div>
-
       <div v-else-if="source.cfg.allow_children && !data.cfg.show_value"> </div>
 
       <label><?=_('Description')?></label>
-      <bbn-textarea style="width: 100%; min-height: 120px"
+      <bbn-textarea style="min-height: 120px"
                     v-model="data.cfg.desc"
                     :disabled="!!source.cfg.frozen"/>
 
