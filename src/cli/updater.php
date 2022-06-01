@@ -6,7 +6,7 @@ use bbn\X;
 X::adump("Hello from the updater...");
 $appui = new bbn\Appui();
 if ($res = $appui->importOptions()) {
-  echo $res . _("options changed");
+  echo PHP_EOL . $res . ' ' . _("options changed") . PHP_EOL;
 }
 
 /*
