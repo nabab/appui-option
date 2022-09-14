@@ -140,11 +140,13 @@
         }
         return n;
       },
-      treeNodeActivate(n){
-        this.optionSelected.id = a.data.id;
-        this.optionSelected.code = a.data.code;
-        this.optionSelected.text = a.data.text;
-        bbn.fn.link(appui.plugins['appui-option'] + '/tree/option/' + n.data.id + this.currentUrl, true);
+      treeNodeActivate(node){
+        if (node && node.data && node.data.id) {
+          this.optionSelected.id = node.data.id;
+          this.optionSelected.code = node.data.code;
+          this.optionSelected.text = node.data.text;
+          bbn.fn.link(appui.plugins['appui-option'] + '/tree/option/' + node.data.id + this.currentUrl, true);
+        }
       },
       moveOpt(node, nodeDest, ev){
         if (ev.cancelable) {
