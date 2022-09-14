@@ -51,7 +51,8 @@
                     ref="router"
                     class="bbn-overlay"
         ></bbn-router>
-        <div class="bbn-overlay bbn-middle" v-if="$refs.router && !$refs.router.routed">
+        <div class="bbn-overlay bbn-middle"
+             v-if="!optionSelected">
           <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
               <div class="bbn-xxxl bbn-c">
                 <?=_("Select Option")?>

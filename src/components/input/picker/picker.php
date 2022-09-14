@@ -9,7 +9,7 @@
   <bbn-input v-model="rootAlias"/>
   <bbn-button v-if="value"
               class="bbn-space-left"
-              @click="selfEmit(null)">
+              @click="emitInput(null)">
     <?=_("Clear")?>
   </bbn-button>
   <bbn-input type="hidden"
