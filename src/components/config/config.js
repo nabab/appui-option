@@ -104,17 +104,17 @@
         return !this.source.permissions
       },
       permissionsText(){
-        if (this.source.permissions) {
-          let str = '';
-          if (!this.canDefineSubPermissions) {
-            str += bbn._("The permissions' configuration comes from the parent option");
-          }
-          else if (!this.canDefineSelfPermission) {
-            str += bbn._("This permission's configuration comes from the parent option");
-          }
-          str += ' <strong>' + this.source.permissions.from_text + '</strong>';
-          return str;
+        let str = '';
+        if (this.source.cfg.permissions) {
+          str += ' <strong>' + this.source.cfg.permissions.from_text + '</strong>';
         }
+        else if (!this.canDefineSubPermissions) {
+          str += bbn._("The permissions' configuration comes from the parent option");
+        }
+        else if (!this.canDefineSelfPermission) {
+          str += bbn._("This permission's configuration comes from the parent option");
+        }
+        return str;
       },
       permissionsSource(){
         let r = [{
