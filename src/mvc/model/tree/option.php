@@ -5,4 +5,7 @@ if (!empty($r['cfg']) && is_string($r['cfg'])) {
   $r['cfg'] = json_decode($r['cfg'], true);
 }
 
+$i81nCls = new \bbn\Appui\I18n($model->db);
+$r['languages'] = $i81nCls->getPrimariesLangs();
+
 return $r;
