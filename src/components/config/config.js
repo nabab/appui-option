@@ -14,7 +14,8 @@
         desc: "",
         form: null,
         frozen: 0,
-        i18n: {},
+        i18n: "",
+        i18n_inheritance: "",
         id: "",
         inheritance: "",
         permissions: "",
@@ -180,6 +181,9 @@
           if ( !d.i18n || !d.i18n.length ){
             delete d.i18n;
           }
+          if (!d.i18n || !d.i18n.length || !d.allow_children) {
+            delete d.i18n_inheritance;
+          }
           if ( d.root_alias ){
             delete d.root_alias;
           }
@@ -239,7 +243,8 @@
       unlock(){
         this.data.cfg.frozen = false;
         this.data.cfg.inherit_from = '';
-        this.data.cfg.inherit_from_text = '';
+        //this.data.cfg.inherit_from_text = '';
+        this.data.cfg_inherit_from_text = '';
       },
       reset(){
         this.confirm(bbn._('Are you sure you want to back to the default configuration?'), () => {

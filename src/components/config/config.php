@@ -12,7 +12,7 @@
          class="bbn-c"
          style="margin-bottom: 0.5em">
       <div class="bbn-xl">
-        <?=_('Inherited from')?> <a :href="root + 'list/' + source.cfg.inherit_from" v-text="source.cfg.inherit_from_text"/>
+        <?=_('Inherited from')?> <a :href="root + 'list/' + source.cfg.inherit_from" v-text="source.cfg_inherit_from_text"/>
       </div>
       <div style="position: absolute; top: 15px; right: 30px">
         <bbn-button type="button"
@@ -179,15 +179,6 @@
                     :disabled="!!source.cfg.frozen"
                     placeholder=" - "/>
 
-      <label v-if="source.cfg.allow_children"><?=_('Language')?></label>
-      <bbn-dropdown v-if="source.cfg.allow_children"
-                    :source="source.languages"
-                    v-model="data.cfg.i18n"
-                    placeholder=" - "
-                    source-value="code"
-                    :nullable="true"
-                    :disabled="!!source.cfg.frozen"/>
-
       <label v-if="source.cfg.allow_children && !showSchema">
         <?=_('Show value')?>
       </label>
@@ -207,6 +198,35 @@
                          style="height: 300px"/>
       </div>
       <div v-else-if="source.cfg.allow_children && !data.cfg.show_value"> </div>
+
+      <label><?=_('Language')?></label>
+      <bbn-dropdown :source="source.languages"
+                    v-model="data.cfg.i18n"
+                    placeholder=" - "
+                    source-value="code"
+                    :nullable="true"
+                    :disabled="!!source.cfg.frozen"/>
+      <label class="bbn-options-inheritance"
+             v-if="source.cfg.allow_children && data.cfg.i18n">
+        <?=_('Language inheritance')?>
+      </label>
+      <bbn-radio class="bbn-options-inheritance"
+                 v-if="source.cfg.allow_children && data.cfg.i18n"
+                 v-model="data.cfg.i18n_inheritance"
+                 :disabled="!!source.cfg.frozen || showScfg"
+                 :source="[{
+                    text: '<?=\bbn\str::escape(_('None'))?>',
+                    value: '',
+                  }, {
+                    text: '<?=\bbn\str::escape(_('Only children'))?>',
+                    value: 'children',
+                  }, {
+                    text: '<?=\bbn\str::escape(_('Cascade'))?>',
+                    value: 'cascade',
+                  }, {
+                    text: '<?=\bbn\str::escape(_('Default'))?>',
+                    value: 'default',
+                  }]"/>
 
       <label><?=_('Description')?></label>
       <bbn-textarea style="min-height: 120px"

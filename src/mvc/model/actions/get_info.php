@@ -57,6 +57,7 @@ if ( isset($model->inc->options) ){
         'info' => json_encode($all),
         'option' => $option,
         'cfg' => json_encode($cfg),
+        'cfg_inherit_from_text' => !empty($cfg['inherit_from']) ? $model->inc->options->text($cfg['inherit_from']) : '',
         'aliases' => $aliases,
         'permissions' => $permissions,
         'id_permission' => $model->inc->perm->optionToPermission($model->data['id']),
