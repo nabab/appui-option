@@ -223,9 +223,6 @@
                   }, {
                     text: '<?=\bbn\str::escape(_('Cascade'))?>',
                     value: 'cascade',
-                  }, {
-                    text: '<?=\bbn\str::escape(_('Default'))?>',
-                    value: 'default',
                   }]"/>
 
       <label><?=_('Description')?></label>
