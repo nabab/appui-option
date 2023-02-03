@@ -1,0 +1,855 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: info@bbn.so\n"
+"last-Translator: BBN Solutions <support@bbn.solutions>\n"
+"Language-Team: ES <ES@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-02-03 11:25+0100\n"
+"POT-Revision-Date: 2023-02-03 11:25+0100\n"
+"Language: es\n"
+"X-Domain: appui-option45\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/cli/updater.php
+msgid "options changed"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Root"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "Field"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "Insert a form field"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "Insert a title"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "Insert the field's name"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "The permissions' configuration comes from the parent option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "This permission's configuration comes from the parent option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "None"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "This"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "Children"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Cascade"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "All (this + cascade)"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Options"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "Are you sure you want to back to the default configuration?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
+msgid "Success"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Configuration for items in option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Unlock"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Inherited from"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Back to default"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Presets"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Categories' page"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Hide the parent button"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Hide parent"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Allow children"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Show"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/popup/tree/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/full_list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Code"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+msgid "Alias"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Hide the text column"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "No text"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Icon"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Alias' root"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Alias' name"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Orderable"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Inheritance"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Only children"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Default"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/permissions_old.php
+msgid "Permissions"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Default value"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "External MV"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Form"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Show value"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Schema"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Language"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Language inheritance"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "Description"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Help"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+msgid "SubConfigurator"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/input/picker/picker.php
+msgid "Browse"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.js
+msgid "Icon Picker"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Saved"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "ID"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/full_list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Text"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/input/picker/picker.php
+msgid "Clear"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+msgid "Tekname"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+msgid "Value"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Configuration"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Fix order"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
+msgid "Add"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Option's configuration"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Fixed"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
+msgid "Edit"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Copy"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
+msgid "Delete"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "List"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "New option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Updating option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Do you also want to duplicate children options?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+msgid "Copy option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
+msgid "Are you sure you want to delete this entry?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
+msgid "Deleted"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/full_list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Parent"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+msgid "Order in the list"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+msgid "Variable name"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+msgid "Sub options"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Actions"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
+msgid "Are you sure you want to delete this option?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
+msgid "Are you sure you want to delete this option's history?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
+msgid "Usage"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
+msgid "No occurrence of this option found"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
+msgid "Go to"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
+msgid "Delete cache option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "Remove option from db"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "Remove"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "Remove option's history"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "Remove history"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "Values"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "My preferences"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "Users preferences"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+msgid "Stats"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/psw/psw.php
+msgid "Password"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/users/users.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "Saved!"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/users/users.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "Error!"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Type"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Public"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Check all"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Uncheck all"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "Inserted!"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "Error"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/popup/tree/tree.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/stats/stats.php
+msgid "times"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/popup/tree/tree.php
+msgid "Option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/popup/tree/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/stats/stats.php
+msgid "Option used"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
+msgid "User"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
+msgid "Group"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+msgid "Add preference"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+msgid "Edit preference"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+msgid "Are you sure you want to to delete this preference?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+msgid "Are you sure you want to delete these preferences?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
+msgid "Delete all"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/psw/psw.js
+msgid "Password changed successfully"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/stats/stats.php
+msgid "Loading.."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
+msgid "Categorie's name"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
+msgid "Number of items"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
+msgid "Access name"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/full_list.php
+msgid "ID Alias"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Refresh all permissions"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
+msgid "Clean up permissions (delete obsoletes)"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
+msgid "No item selected"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Select an item..."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Permission for"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+msgid "Save"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "New permission (under this one)"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Groups"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Users"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
+msgid "Delete cache"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree.php
+msgid "App."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree.php
+msgid "Appui"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
+msgid "Select Option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
+msgid "Show Usage"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree/option.php
+msgid "Select an option in the tree"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
+msgid "Text and Code are mandatory!"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
+msgid "Options's page"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Access"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "Are you sure you want to delete this permission?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "Deleted!"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Choose plugins to refresh"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Are you sure you want to update the chosen permissions?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Depending on the size of your app it might take a while"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "permissions have been added"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "No permission has been added"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "Are you sure you want to clean up the permissions?"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid ""
+"It will delete only obsoletes ones which don't correspond to any file and have "
+"no user option defined."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "permissions have been removed"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
+msgid "All good but no need to delete anything"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
+msgid "Are you sure you want to update all permissions? It might take a while..."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
+msgid "Import"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+msgid "Export option for database"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+msgid "Export option for import"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+msgid "Export children for import"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+msgid "Export children for database"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+msgid "Export tree for import"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+msgid "Export tree for database"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
+msgid "Option successfully moved"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
+msgid "Error!! Option not moved"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
+msgid "Export"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
+msgid "Impossible to retrieve information about this element"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Update of options' category"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "New options' category"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Impossible to add the category"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Impossible to update the category"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Impossible to delete the category"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Are you sure you want to delete this category and all its items"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Name"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
+msgid "Accessible"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/plugins.php
+msgid "from"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/plugins.php
+msgid "Application"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/permissions/tree.php
+msgid "Main application"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/appui.php
+msgid "Appui options' categories list"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree2.php
+msgid ""
+"Sorry, a problem occured while moving this item, and although the tree says "
+"otherwise the item has not been moved."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree2.php
+msgid "Please refresh the tab in order to see the awful truth..."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree2.php
+msgid ""
+"Are you sure you want to move this option? Although the configuration will "
+"remain the same, the access path will be changed."
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
+msgid "building"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/categories.php
+msgid "Options' categories list"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/full_list.php
+msgid "Full List"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/list.php
+msgid "You don't have the permission to access this option"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/permissions.php
+msgid "Access control"
+msgstr ""
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree2.php
+msgid "Options' tree"
+msgstr ""
