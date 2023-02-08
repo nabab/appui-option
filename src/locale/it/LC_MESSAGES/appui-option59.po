@@ -7,10 +7,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-08 13:56+0100\n"
-"POT-Revision-Date: 2023-02-08 13:56+0100\n"
+"POT-Creation-Date: 2023-02-08 15:54+0100\n"
+"POT-Revision-Date: 2023-02-08 15:54+0100\n"
 "Language: it\n"
-"X-Domain: appui-option58\n"
+"X-Domain: appui-option59\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/cli/updater.php
