@@ -3,127 +3,127 @@ msgstr ""
 "Project-Id-Version: 1\n"
 "Report-Msgid-Bugs-To: info@bbn.so\n"
 "last-Translator: BBN Solutions <support@bbn.solutions>\n"
-"Language-Team: IT <IT@li.org>\n"
+"Language-Team: FR <FR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-10 15:12+0100\n"
-"POT-Revision-Date: 2023-02-10 15:12+0100\n"
-"Language: it\n"
-"X-Domain: appui-option61\n"
+"POT-Creation-Date: 2023-02-10 18:47+0100\n"
+"POT-Revision-Date: 2023-02-10 18:47+0100\n"
+"Language: fr\n"
+"X-Domain: appui-option62\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/cli/updater.php
 msgid "options changed"
-msgstr "opzioni cambiate"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Root"
-msgstr "Radice"
+msgstr "Racine"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "Field"
-msgstr "Campo"
+msgstr "Champ"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "Insert a form field"
-msgstr "Inserire un campo del formulario"
+msgstr "Insérer un champ de formulaire"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "Insert a title"
-msgstr "Inserire un titolo"
+msgstr "Insérer un titre"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "Insert the field's name"
-msgstr "Inserire il nome del campo"
+msgstr "Insérer le nom du champ"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "The permissions' configuration comes from the parent option"
-msgstr "La configurazione dei permessi deriva dall'opzione genitore"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "This permission's configuration comes from the parent option"
-msgstr "La configurazione di questo permesso deriva dall'opzione genitore"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/input/access/access.php
 msgid "None"
-msgstr "Nessuno"
+msgstr "Aucun"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "This"
-msgstr "Questo"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "Children"
-msgstr "Figli"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Cascade"
-msgstr "Cascata"
+msgstr "Cascade"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "All (this + cascade)"
-msgstr "Tutto (questo + cascata)"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Options"
-msgstr "Opzioni"
+msgstr "Options"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "Are you sure you want to back to the default configuration?"
-msgstr "Sei sicuro di voler tornare alla configurazione predefinita?"
+msgstr "Êtes-vous sûr de vouloir revenir à la configuration par défaut?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.js
 msgid "Success"
-msgstr "Successo"
+msgstr "Succès"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Configuration for items in option"
-msgstr "Configurazione per gli elementi nell'opzione"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Unlock"
-msgstr "Sblocca"
+msgstr "Ouvrir"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Inherited from"
-msgstr "Ereditato da"
+msgstr "Hérité de"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Back to default"
-msgstr "Torna al predefinito"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Presets"
-msgstr "Preimpostati"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Categories' page"
-msgstr "Pagina delle categorie"
+msgstr "Page de catégorie"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Hide the parent button"
-msgstr "Nascondi il bottone genitore"
+msgstr "Cacher le bouton vers le parent"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Hide parent"
-msgstr "Nascondi genitore"
+msgstr "Cacher le parent"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Allow children"
-msgstr "Consenti discendenti"
+msgstr "Autoriser les descendants"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Show"
-msgstr "Mostra"
+msgstr "Montrer"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
@@ -138,7 +138,7 @@ msgstr "Mostra"
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Code"
-msgstr "Codice"
+msgstr "Code"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
@@ -148,11 +148,11 @@ msgstr "Alias"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Hide the text column"
-msgstr "Nascondi la colonna testo"
+msgstr "Cacher la colonne de texte"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "No text"
-msgstr "Nessun testo"
+msgstr "Pas de texte"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
@@ -162,94 +162,94 @@ msgstr "Nessun testo"
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Icon"
-msgstr "Icona"
+msgstr "Icône"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Alias' root"
-msgstr "Radice dell'alias"
+msgstr "Racine de l'alias"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Alias' name"
-msgstr "Nome dell'alias"
+msgstr "Nom de l'alias"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Orderable"
-msgstr "Ordinabile"
+msgstr "Ordonnable"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Inheritance"
-msgstr "Eredità"
+msgstr "Héritage"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Only children"
-msgstr "Solo il primo grado"
+msgstr "Seulement le premier degré"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Default"
-msgstr "Predefinito"
+msgstr "Défaut"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/permissions_old.php
 msgid "Permissions"
-msgstr "Permessi"
+msgstr "Permissions"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Default value"
-msgstr "Valore predefinito"
+msgstr "Valeur par défaut"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "External MV"
-msgstr "MV esterno"
+msgstr "MV externe"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Form"
-msgstr "Formulario"
+msgstr "Formulaire"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Show value"
-msgstr "Mostra valore"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Schema"
-msgstr "Schema"
+msgstr "Schéma"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Language"
-msgstr "Lingua"
+msgstr "Langue"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Language inheritance"
-msgstr "Eredità lingua"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "Description"
-msgstr "Descrizione"
+msgstr "Description"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Help"
-msgstr "Aiuto"
+msgstr "Aide"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 msgid "SubConfigurator"
-msgstr "Sotto-configurazione"
+msgstr "Sous-configurateur"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/config/config.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/input/picker/picker.php
 msgid "Browse"
-msgstr "Sfoglia"
+msgstr "Parcourir"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.js
 msgid "Icon Picker"
-msgstr "Selettore icona"
+msgstr "Sélecteur d'icône"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Saved"
-msgstr "Salvato"
+msgstr "Sauvegardé"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
@@ -266,62 +266,62 @@ msgstr "ID"
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/full_list.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Text"
-msgstr "Testo"
+msgstr "Texte"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/input/picker/picker.php
 msgid "Clear"
-msgstr "Pulisci"
+msgstr "Remettre à zéro"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
 msgid "Tekname"
-msgstr "Nome variabile"
+msgstr "Variable name"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/form/form.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
 msgid "Value"
-msgstr "Valore"
+msgstr "Valeur"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/input/access/access.php
 msgid "Current path"
-msgstr "Percorso corrente"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Configuration"
-msgstr "Configurazione"
+msgstr "Configuration"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Fix order"
-msgstr "Riparare ordine"
+msgstr "Arranger l'ordre"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
 msgid "Add"
-msgstr "Aggiungi"
+msgstr "Ajouter"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Option's configuration"
-msgstr "Configurazione dell'opzione"
+msgstr "Configuration de l'option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Fixed"
-msgstr "Riparato"
+msgstr "Réparé"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
 msgid "Edit"
-msgstr "Modifica"
+msgstr "Modifier"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Copy"
-msgstr "Copia"
+msgstr "Copier"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
@@ -332,33 +332,33 @@ msgstr "Copia"
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
 msgid "Delete"
-msgstr "Elimina"
+msgstr "Supprimer"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "List"
-msgstr "Lista"
+msgstr "Liste"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "New option"
-msgstr "Nuova opzione"
+msgstr "Nouvelle option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Updating option"
-msgstr "Aggiornamento opzione"
+msgstr "Mise à jour de l'option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Do you also want to duplicate children options?"
-msgstr "Vuoi anche duplicare le opzioni figlie?"
+msgstr "Voulez-vous copier aussi les options descendantes?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 msgid "Copy option"
-msgstr "Copia opzione"
+msgstr "Copier l'option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
 msgid "Are you sure you want to delete this entry?"
-msgstr "Sei sicuro di voler eliminare questa voce?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette entrée?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
@@ -366,276 +366,276 @@ msgstr "Sei sicuro di voler eliminare questa voce?"
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
 msgid "Deleted"
-msgstr "Eliminato"
+msgstr "Supprimé"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/full_list.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Parent"
-msgstr "Genitore"
+msgstr "Parent"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
 msgid "Order in the list"
-msgstr "Ordine nella lista"
+msgstr "Ordre dans la liste"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
 msgid "Variable name"
-msgstr "Nome della variabile"
+msgstr "Nom de la variable"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
 msgid "Sub options"
-msgstr "Sotto-opzioni"
+msgstr "Sous-options"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/list/list.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Actions"
-msgstr "Azioni"
+msgstr "Actions"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
 msgid "Are you sure you want to delete this option?"
-msgstr "Sei sicuro di voler eliminare questa opzione?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette option?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
 msgid "Are you sure you want to delete this option's history?"
-msgstr "Sei sicuro di voler eliminare la cronologia di questa opzione?"
+msgstr "Êtes-vous sûr de vouloir supprimer l'historique avec l'option?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
 msgid "Usage"
-msgstr "Utilizzo"
+msgstr "Usage"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.js
 msgid "No occurrence of this option found"
-msgstr "Nessuna occorrenza di questa opzione trovata"
+msgstr "Aucune occurence de cette option n'a été trouvée"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
 msgid "Go to"
-msgstr "Vai verso"
+msgstr "Aller vers"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
 msgid "Delete cache option"
-msgstr "Elimina la cache dell'opzione"
+msgstr "Supprimer le cache de l'option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "Remove option from db"
-msgstr "Rimuovi l'opzione dal database"
+msgstr "Supprimer l'option de la base de données"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "Remove"
-msgstr "Rimuovi"
+msgstr "Supprimer"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "Remove option's history"
-msgstr "Rimuovi la cronologia dell'opzione"
+msgstr "Supprimer l'historique de l'option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "Remove history"
-msgstr "Rimuovi cronologia"
+msgstr "Supprimer l'historique"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "Values"
-msgstr "Valori"
+msgstr "Valeurs"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "My preferences"
-msgstr "Le mie preference"
+msgstr "Mes préférences"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "Users preferences"
-msgstr "Preferenze utilizzatore"
+msgstr "Préférences des utilisateurs"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 msgid "Stats"
-msgstr "Statistiche"
+msgstr "Statistiques"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/option/option.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/psw/psw.php
 msgid "Password"
-msgstr "Password"
+msgstr "Mot de passe"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/users/users.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "Saved!"
-msgstr "Salvato"
+msgstr "Sauvegardé!"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/users/users.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "Error!"
-msgstr "Errore!"
+msgstr "Erreur!"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Type"
-msgstr "Tipo"
+msgstr "Type"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/configuration/configuration.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Public"
-msgstr "Pubblico"
+msgstr "Public"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Check all"
-msgstr "Seleziona tutto"
+msgstr "Tout cocher"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/groups/groups.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Uncheck all"
-msgstr "Deseleziona tutto"
+msgstr "Tout décocher"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "Inserted!"
-msgstr "Inserito!"
+msgstr "Ajouté!"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/permissions/new/new.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "Error"
-msgstr "Errore"
+msgstr "Erreur"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/popup/tree/tree.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/stats/stats.php
 msgid "times"
-msgstr "volte"
+msgstr "fois"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/popup/tree/tree.php
 msgid "Option"
-msgstr "Opzione"
+msgstr "Option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/popup/tree/tree.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/stats/stats.php
 msgid "Option used"
-msgstr "Opzione usata"
+msgstr "Usage de l'option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
 msgid "User"
-msgstr "Utente"
+msgstr "Utilisateur"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.php
 msgid "Group"
-msgstr "Gruppo"
+msgstr "Groupe"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 msgid "Add preference"
-msgstr "Aggiungi preferenza"
+msgstr "Ajouter une préférence"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 msgid "Edit preference"
-msgstr "Modifica preferenza"
+msgstr "Modifier la préférence"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 msgid "Are you sure you want to to delete this preference?"
-msgstr "Sei sicuro di voler eliminare questa preferenza?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette préférence?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 msgid "Are you sure you want to delete these preferences?"
-msgstr "Sei sicuro di voler eliminare queste preferenze?"
+msgstr "Êtes-vous sûr de vouloir supprimer ces préférences?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/preferences/preferences.js
 msgid "Delete all"
-msgstr "Elimina tutto"
+msgstr "Tout supprimer"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/psw/psw.js
 msgid "Password changed successfully"
-msgstr "Password cambiata con successo"
+msgstr "Mot de passe modifié avec succès"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/psw/psw.php
 msgid "Change Passwod"
-msgstr "Cambia Password"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/psw/psw.php
 msgid "New password"
-msgstr "Nuova password"
+msgstr "Nouveau mot de passe"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/psw/psw.php
 msgid "Insert new passwod"
-msgstr "Inserisci una nuova password"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/components/stats/stats.php
 msgid "Loading.."
-msgstr "Caricamento..."
+msgstr "Chargement..."
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
 msgid "Categorie's name"
-msgstr "Nome della categoria"
+msgstr "Nom de la catégorie"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
 msgid "Number of items"
-msgstr "Numero elementi"
+msgstr "Nombre d'éléments"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/categories.php
 msgid "Access name"
-msgstr "Nome d'accesso"
+msgstr "Nom d'accès"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/full_list.php
 msgid "ID Alias"
-msgstr "ID dell'alias"
+msgstr "ID de l'alias"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Refresh all permissions"
-msgstr "Aggiorna tutti i permessi"
+msgstr "Rafraîchir toutes les permissions"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
 msgid "Clean up permissions (delete obsoletes)"
-msgstr "Pulisci i permessi (elimina quelli obsoleti)"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
 msgid "No item selected"
-msgstr "Nessun elemento selezionato"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Select an item..."
-msgstr "Seleziona un elemento..."
+msgstr "Sélectionner un élément"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Permission for"
-msgstr "Autorizzazione per"
+msgstr "Permission pour"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 msgid "Save"
-msgstr "Salva"
+msgstr "Sauvegarder"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "New permission (under this one)"
-msgstr "Nuova autorizzazione (sotto questa)"
+msgstr "Nouvelle permission (sous celle-ci)"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Groups"
-msgstr "Gruppi"
+msgstr "Groupes"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/permissions_old.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Users"
-msgstr "Utenti"
+msgstr "Utilisateurs"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/radios.php
 msgid "Reset stream"
-msgstr "Reimposta flusso"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
 msgid "Delete cache"
-msgstr "Elimina cache"
+msgstr "Supprimer le cache"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree.php
 msgid "App."
@@ -648,188 +648,186 @@ msgstr "Appui"
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
 msgid "Select Option"
-msgstr "Seleziona opzione"
+msgstr "Sélectionner une option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree2.php
 msgid "Show Usage"
-msgstr "Mostra utilizzo"
+msgstr "Voir l'usage"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/html/tree/option.php
 msgid "Select an option in the tree"
-msgstr "Seleziona un opzione nell'albero"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
 msgid "Text and Code are mandatory!"
-msgstr "Testo e Codice sono obbligatori"
+msgstr "Texte et code sont obligatoires"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/appui.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/categories.js
 msgid "Options's page"
-msgstr "Pagina delle opzioni"
+msgstr "Page des options"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Access"
-msgstr "Accesso"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "Are you sure you want to delete this permission?"
-msgstr "Sei sicuro di voler eliminare questo permesso?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette permission?"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "Deleted!"
-msgstr "Eliminato!"
+msgstr "Supprimé!"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Choose plugins to refresh"
-msgstr "Scegli i plugin da aggiornare"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Are you sure you want to update the chosen permissions?"
-msgstr "Sei sicuro di voler aggiornare i permessi selezionati?"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Depending on the size of your app it might take a while"
-msgstr "Potrebbe volerci un po' di tempo a seconda delle dimensioni della tua app"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "permissions have been added"
-msgstr "permessi sono stati aggiunti"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "No permission has been added"
-msgstr "Non è stato aggiunto alcun permesso"
+msgstr "Aucune nouvelle permission n'a été ajoutée"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "Are you sure you want to clean up the permissions?"
-msgstr "Sei sicuro di voler pulire i permessi?"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid ""
 "It will delete only obsoletes ones which don't correspond to any file and have "
 "no user option defined."
 msgstr ""
-"Eliminerà solo quelli obsoleti che non corrispondono a nessun file e non hanno "
-"opzioni utente definite."
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "permissions have been removed"
-msgstr "permessi sono stati eliminati"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions.js
 msgid "All good but no need to delete anything"
-msgstr "Tutto bene non c'è bisogno di eliminare nulla"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/permissions_old.js
 msgid "Are you sure you want to update all permissions? It might take a while..."
-msgstr "Sei sicuro di voler aggiornare tutti i permessi? Potrebbe volerci un po..."
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
 msgid "Import"
-msgstr "Importa"
+msgstr "Importation"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 msgid "Export option for database"
-msgstr "Esporta opzione per il database"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 msgid "Export option for import"
-msgstr "Esporta opzione per importazione"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 msgid "Export children for import"
-msgstr "Esporta figli per importazione"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 msgid "Export children for database"
-msgstr "Esporta figli per il database"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 msgid "Export tree for import"
-msgstr "Esporta albero per importazione"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 msgid "Export tree for database"
-msgstr "Esporta albero per il database"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
 msgid "Option successfully moved"
-msgstr "Opzione spostata con successo"
+msgstr "Option déplacée avec succès"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree.js
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
 msgid "Error!! Option not moved"
-msgstr "Errore! L'opzione non è stata spostata"
+msgstr "Error! L'option n'a pas été déplacée"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
 msgid "Export"
-msgstr "Esporta"
+msgstr "Exportation"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/js/tree2.js
 msgid "Impossible to retrieve information about this element"
-msgstr "Impossibile recuperare informazioni su questo elemento"
+msgstr "Impossible de retrouver l'information sur cet élément"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Update of options' category"
-msgstr "Aggiornamento della categoria delle opzioni"
+msgstr "Mise à jour de la catégorie d'option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "New options' category"
-msgstr "Nuova categoria di opzioni"
+msgstr "Nouvelle catégorie d'options"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Impossible to add the category"
-msgstr "Impossibile aggiungere la categoria"
+msgstr "Impossible d'ajouter la catégorie"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Impossible to update the category"
-msgstr "Impossibile aggiornare la categoria"
+msgstr "Impossible de modifier la catégorie"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Impossible to delete the category"
-msgstr "Impossibile eliminare la categoria"
+msgstr "Impossible de supprimer la catégorie"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Are you sure you want to delete this category and all its items"
-msgstr "Sei sicuro di voler eliminare questa categoria e tutti i suoi elementi"
+msgstr "Êtes-vous sûr de vouloir supprimer cette catégorie et toute sa descendance"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Name"
-msgstr "Nome"
+msgstr "Nom"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/appui.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/categories.php
 msgid "Accessible"
-msgstr "Accessibile"
+msgstr "Accessible"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/plugins.php
 msgid "from"
-msgstr "da"
+msgstr "de"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/plugins.php
 msgid "Application"
-msgstr "Applicazione"
+msgstr "Application"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/model/permissions/tree.php
 msgid "Main application"
-msgstr "Applicazione principale"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/appui.php
 msgid "Appui options' categories list"
-msgstr "Elenco delle categorie delle opzioni Appui"
+msgstr "Catégories d'options Appui"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
@@ -838,15 +836,14 @@ msgid ""
 "Sorry, a problem occured while moving this item, and although the tree says "
 "otherwise the item has not been moved."
 msgstr ""
-"Spiacenti, si è verificato un problema durante lo spostamento di questo "
-"elemento e, sebbene l'albero indichi diversamente, l'elemento non è stato "
-"spostato."
+"Désolé un problème est survenu pendant le déplacement de l'élément, et "
+"bien que l'arborescence se soit mis à jour, l'élément n'a pas été déplacé"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree2.php
 msgid "Please refresh the tab in order to see the awful truth..."
-msgstr "Aggiorna la scheda per favore"
+msgstr "Rafraîchissez cet onglet SVP"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
@@ -855,30 +852,30 @@ msgid ""
 "Are you sure you want to move this option? Although the configuration will "
 "remain the same, the access path will be changed."
 msgstr ""
-"Sei sicuro di voler spostare questa opzione? Anche se la configurazione rimarrà "
-"la stessa, il percorso cambierà"
+"Êtes-vous sûr de vouloir déplacer cette option? Bien que la configuration "
+"restera la même le chemin d'accès changera"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/building.php
 msgid "building"
-msgstr "in fase di costruzione"
+msgstr "en cours de construction"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/categories.php
 msgid "Options' categories list"
-msgstr "Lista delle categorie di opzioni"
+msgstr "Liste des catégories d'options"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/full_list.php
 msgid "Full List"
-msgstr "Lista completa"
+msgstr "Liste complète"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/list.php
 msgid "You don't have the permission to access this option"
-msgstr "Non hai il permesso per accedere a questa opzione"
+msgstr "Vous n'avez pas la permission pour accéder à cette option"
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/permissions.php
 msgid "Access control"
-msgstr "Controllo di accesso"
+msgstr ""
 
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree.php
 #: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-option/src/mvc/public/tree2.php
 msgid "Options' tree"
-msgstr "Albero delle opzioni"
+msgstr "Arborescence des options"
