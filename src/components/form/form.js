@@ -1,9 +1,10 @@
 (() => {
   return {
     data(){
+      let src = this.source.row || this.source;
       return {
         root: appui.plugins['appui-option'] + '/',
-        currentSource: this.source.row || this.source
+        currentSource: src
       }
     },
     computed: {
@@ -32,6 +33,17 @@
       inPopup(){
         return !!this.closest('bbn-popup');
       },
+      currentTranslation(){
+        if (!!this.list) {
+          return this.list.currentTranslation;
+        }
+        else if (!!this.tree
+          && (this.tree.source.translations !== undefined)
+        ) {
+          return this.tree.source.translations;
+        }
+        return false;
+      }
     },
     methods: {
       schemaHasField(field){
@@ -103,17 +115,31 @@
           }
           else if ( this.tree ){
             let list = this.tree.tree.getRef('listOptions');
-            if ( list.selectedNode ){
-              list.selectedNode.parent.reload();
-            }
-            else {
-              list.reload();
-            }
+            this.tree.tree.optionSelected.id = false;
+            this.$nextTick(() => {
+              if ( list.selectedNode ){
+                let parent = list.selectedNode.parent;
+                let id = list.selectedNode.source.data.id;
+                list.selectedNode.parent.reload().then(() => {
+                  this.$nextTick(() => {
+                    parent.selectPath(id);
+                  })
+                });
+              }
+              else {
+                list.reload();
+              }
+            })
           }
           appui.success(bbn._('Saved'));
         }
         else {
           appui.error();
+        }
+      },
+      openI18n(){
+        if (!!appui.plugins['appui-i18n']) {
+          bbn.fn.link(appui.plugins['appui-i18n'] + '/page');
         }
       }
     }

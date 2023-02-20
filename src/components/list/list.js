@@ -4,7 +4,8 @@
   return {
     data(){
       return {
-        showTable: true
+        showTable: true,
+        currentTranslation: false
       }
     },
     computed: {
@@ -163,10 +164,23 @@
         });
       },
       edit(row, col, idx){
-        this.$refs.table.edit(row, {
-          title: bbn._('Updating option') + ' "' + row.text + '"',
-          maximizable: true
-        }, idx);
+        this.post(appui.plugins['appui-option'] + '/data/text', {
+          id: row.id
+        }, d => {
+          if (d.success) {
+            this.currentTranslation = d.translations;
+            if (d.text !== row.text) {
+              row = bbn.fn.extend(true, {}, row, {text: d.text});
+            }
+          }
+          else {
+            this.currentTranslation = false;
+          }
+          this.$refs.table.edit(row, {
+            title: bbn._('Updating option') + ' "' + row.text + '"',
+            maximizable: true
+          }, idx);
+        })
       },
       duplicate(row){
         let newRow = bbn.fn.extend({}, row, {
