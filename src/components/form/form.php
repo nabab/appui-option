@@ -11,9 +11,19 @@
     <div v-if="cfg.show_id"><?=_('ID')?></div>
     <div v-if="cfg.show_id" v-text="currentSource.id"></div>
     <div v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"><?=_('Text')?></div>
-    <bbn-input v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"
-               v-model="currentSource.text"
-    ></bbn-input>
+    <div class="bbn-flex-width">
+      <bbn-input v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"
+                 v-model="currentSource.text"
+                 class="bbn-flex-fill"/>
+      <div v-if="currentTranslation !== false"
+           class="bbn-vmiddle bbn-left-space bbn-radius bbn-hspadded bbn-secondary bbn-unselectable bbn-p"
+           :title="_('Current translations')"
+           @click="openI18n">
+        <i class="nf nf-fa-flag"/>
+        <span v-text="currentTranslation"
+              class="bbn-left-sspace bbn-b"/>
+      </div>
+    </div>
     <div v-if="cfg.show_code && !schemaHasField('code')"><?=_('Code')?></div>
     <bbn-input v-if="cfg.show_code && !schemaHasField('code')"
                v-model="currentSource.code"

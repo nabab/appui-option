@@ -145,7 +145,9 @@
           this.optionSelected.id = node.data.id;
           this.optionSelected.code = node.data.code;
           this.optionSelected.text = node.data.text;
-          bbn.fn.link(appui.plugins['appui-option'] + '/tree/option/' + node.data.id + this.currentUrl, true);
+          this.$nextTick(() => {
+            bbn.fn.link(appui.plugins['appui-option'] + '/tree/option/' + node.data.id + this.currentUrl, true);
+          })
         }
       },
       moveOpt(node, nodeDest, ev){
