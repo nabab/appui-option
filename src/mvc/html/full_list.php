@@ -1,4 +1,4 @@
-<bbn-table :source="source.root + '/full_list'"
+<bbn-table :source="source.root + 'full_list'"
            :pageable="true"
            :info="true"
            :filterable="true"

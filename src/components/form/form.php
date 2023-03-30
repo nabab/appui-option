@@ -11,9 +11,9 @@
     <div v-if="cfg.show_id"><?=_('ID')?></div>
     <div v-if="cfg.show_id" v-text="currentSource.id"></div>
     <div v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"><?=_('Text')?></div>
-    <div class="bbn-flex-width">
-      <bbn-input v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"
-                 v-model="currentSource.text"
+    <div class="bbn-flex-width"
+         v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)">
+      <bbn-input v-model="currentSource.text"
                  class="bbn-flex-fill"/>
       <div v-if="currentTranslation !== false"
            class="bbn-vmiddle bbn-left-space bbn-radius bbn-hspadded bbn-secondary bbn-unselectable bbn-p"

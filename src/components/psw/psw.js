@@ -6,8 +6,8 @@
       return {
         ready: false,
         showInput: false,
-        root: appui.plugins['appui-option'],
-        url: appui.plugins['appui-option'] + '/actions/store_psw',
+        root: appui.plugins['appui-option'] + '/',
+        url: appui.plugins['appui-option'] + 'actions/store_psw',
         password: '',
         newPassword: '',
         inputType: 'password'
@@ -53,7 +53,7 @@
       }
     },
     mounted(){
-      bbn.fn.post( this.root + '/actions/get_psw',{
+      bbn.fn.post( this.root + 'actions/get_psw',{
         id_option: this.source.option.id
       }, d =>{
         if ( d.success ){

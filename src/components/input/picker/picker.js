@@ -43,7 +43,7 @@
         this.ready = true;
       });
       if (this.value) {
-        this.post(this.root + '/data/option', {id: this.value}, d => {
+        this.post(this.root + 'data/option', {id: this.value}, d => {
           this.rootAlias = d.data.text || (d.data.alias ? d.data.alias.text : d.data.code);
         });
       }
