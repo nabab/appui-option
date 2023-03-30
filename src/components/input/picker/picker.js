@@ -37,7 +37,7 @@
       }
     },
     mounted() {
-      this.post(this.root + '/root_options_tree', {
+      this.post(this.root + 'root_options_tree', {
         id: this.id_root || false
       }, (d) => {
         this.ready = true;
