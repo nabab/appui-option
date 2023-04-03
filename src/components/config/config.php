@@ -77,8 +77,7 @@
                       style="margin-right: 1.5em"
                       title="<?=_('Hide the text column')?>"
                       label="<?=_('No text')?>"/>
-        <bbn-checkbox v-if="!data.cfg.show_value"
-                      v-model.number="data.cfg.show_icon"
+        <bbn-checkbox v-model.number="data.cfg.show_icon"
                       :disabled="!!source.cfg.frozen"
                       :value="1"
                       label="<?=_('Icon')?>"
