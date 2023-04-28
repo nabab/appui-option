@@ -124,8 +124,8 @@
                     value: 'default',
                   }]"/>
 
-      <label v-if="permissionsText"><?=_('Permissions')?></label>
-      <div v-if="permissionsText">
+      <label v-if="data.cfg.permissions !== 1"><?=_('Permissions')?></label>
+      <div v-if="data.cfg.permissions !== 1">
         <div class="bbn-w-100">
           <bbn-radio class="bbn-options-inheritance"
                      v-model="data.cfg.permissions"
