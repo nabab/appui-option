@@ -3,11 +3,12 @@
   return {
     props: ['source'],
     data() {
+      const root = appui.plugins['appui-option'] + '/';
       return {
         ready: false,
         showInput: false,
-        root: appui.plugins['appui-option'] + '/',
-        url: appui.plugins['appui-option'] + 'actions/store_psw',
+        root,
+        url: root + 'actions/store_psw',
         password: '',
         newPassword: '',
         inputType: 'password'
