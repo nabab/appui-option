@@ -247,7 +247,7 @@
         props: ['source'],
         computed: {
           list(){
-            return bbn.vue.closest(this, 'appui-option-list');
+            return this.closest('appui-option-list');
           },
           src(){
             return Array.from({length: this.list.$refs.table.total}, (v, k) => k + 1);

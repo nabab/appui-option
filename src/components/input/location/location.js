@@ -1,6 +1,6 @@
 (() => {
   return {
-    mixins: [bbn.vue.basicComponent, bbn.vue.inputComponent],
+    mixins: [bbn.cp.mixins.basic, bbn.cp.mixins.input],
     data(){
       return {
         sourceURL: appui.plugins['appui-option'] + '/data/permissions/sources',

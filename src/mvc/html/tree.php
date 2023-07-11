@@ -1,26 +1,13 @@
 <!-- HTML Document -->
 <div class="bbn-overlay appui-option-tree">
   <bbn-splitter :resizable="true" :collapsible="true" orientation="horizontal">
-    <bbn-pane :resizable="true" :collapsible="true" size="30%">
+    <bbn-pane :resizable="true" :collapsible="true" :size="300">
       <div class="bbn-flex-height">
         <bbn-toolbar class="bbn-flex-width bbn-spadded">
           <div class="bbn-flex-fill">
             <bbn-button icon="nf nf-fa-trash"
                         @click="deleteCache"
-                        text='<?=_("Delete cache")?>'
-            ></bbn-button>
-          </div>
-          <div v-if="source.is_admin"
-               class="bbn-vmiddle">
-            <span :class="['bbn-b', 'bbn-i', {'bbn-primary-text-alt': !appuiTree}]"><?=_('App.')?></span>
-            <bbn-switch v-model="appuiTree"
-                        :novalue="false"
-                        off-icon="nf nf-fa-arrow_left"
-                        on-icon="nf nf-fa-arrow_right"
-                        :no-icon="false"
-                        class="bbn-hsmargin"
-            ></bbn-switch>
-            <span :class="['bbn-b', 'bbn-i', {'bbn-primary-text-alt': appuiTree}]"><?=_('Appui')?></span>
+                        text='<?=_("Delete cache")?>'/>
           </div>
         </bbn-toolbar>
         <div class="bbn-flex-fill">
@@ -36,8 +23,7 @@
                       :menu="treeMenu"
                       :sortable="true"
                       :storage="true"
-                      :storage-full-name="storageName"
-            ></bbn-tree>
+                      :storage-full-name="storageName"/>
           </div>
         </div>
       </div>

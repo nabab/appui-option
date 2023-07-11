@@ -205,8 +205,8 @@
         return true;
       },
       onSuccess() {
-        let tab = bbn.vue.closest(this, 'bbn-container'),
-            list = bbn.vue.find(tab, 'appui-option-list'),
+        let tab = this.closest('bbn-container'),
+            list = tab.find('appui-option-list'),
             table = list ? list.getRef('table') : false;
         if ( table && table.hasStorage ){
           table.storage.remove(table._getStorageRealName());

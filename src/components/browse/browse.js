@@ -39,7 +39,7 @@
     },
     mounted(){
       this.post(this.root + 'root_options_tree', {
-        id: bbn.vue.find(this.getPopup(), 'appui-option-config') ? false : (this.source.idRootTree || false)
+        id: bbn.cp.find(this.getPopup(), 'appui-option-config') ? false : (this.source.idRootTree || false)
       }, (d) => {
         this.isMounted = true;
         this.cat = d.data.cat;

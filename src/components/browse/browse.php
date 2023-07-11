@@ -5,6 +5,5 @@
             uid="id"
             :root="cat"
             :map="treeMapper"
-            @select="optionSelect"
-  ></bbn-tree>
+            @select="optionSelect"/>    
 </div>
