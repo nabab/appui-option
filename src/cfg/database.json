@@ -75,13 +75,13 @@
                 "type": "binary",
                 "null": 0,
                 "key": "PRI",
-                        "maxlength": 16
+                "maxlength": 16
             },
             "id_parent": {
                 "type": "binary",
                 "null": 1,
                 "key": "MUL",
-                        "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 16
             },
@@ -89,7 +89,7 @@
                 "type": "binary",
                 "null": 1,
                 "key": "MUL",
-                        "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 16
             },
@@ -105,27 +105,27 @@
                 "type": "varchar",
                 "null": 1,
                 "key": "MUL",
-                        "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 255
             },
             "text": {
                 "type": "varchar",
                 "null": 1,
-                                "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 255
             },
             "value": {
                 "type": "json",
                 "null": 1,
-                                "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1
             },
             "cfg": {
                 "type": "mediumtext",
                 "null": 1,
-                                "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1
             }
         }
@@ -185,13 +185,13 @@
                 "type": "binary",
                 "null": 0,
                 "key": "PRI",
-                        "maxlength": 16
+                "maxlength": 16
             },
             "id_option": {
                 "type": "binary",
                 "null": 1,
                 "key": "UNI",
-                        "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 16
             },
@@ -199,7 +199,7 @@
                 "type": "binary",
                 "null": 1,
                 "key": "UNI",
-                        "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 16
             },
@@ -207,14 +207,14 @@
                 "type": "binary",
                 "null": 1,
                 "key": "UNI",
-                        "default": "NULL",
+                "default": "NULL",
                 "defaultExpression": 1,
                 "maxlength": 16
             },
             "password": {
                 "type": "text",
                 "null": 0,
-                                "generation": ""
+                "generation": ""
             }
         }
     }
