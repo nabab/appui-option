@@ -1,6 +1,6 @@
 <!-- HTML Document -->
 
-<bbn-form :action="source.root + 'actions/import'"
+<bbn-form :action="root + 'actions/import'"
           :source="source.data"
           class="bbn-overlay"
 >
