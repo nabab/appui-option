@@ -3,6 +3,7 @@
   return {
     data(){
       return {
+        root: appui.plugins['appui-option'] + '/',
         option: '{}',
         cfg: '{}',
         optionSelected: {
@@ -91,7 +92,7 @@
           title: 'Import into option ' + node.data.text,
           component: 'appui-option-import',
           source: {
-            root: this.source.root,
+            root: this.root,
             data: {
               id: node.data.id,
               option: ''
@@ -105,7 +106,7 @@
       },
       exportOption(node, mode) {
         let data = {id: node.data.id, mode: mode || 'single'};
-        this.post(this.source.root + 'actions/export', data, (d) => {
+        this.post(this.root + 'actions/export', data, (d) => {
           if ( d.success ){
             this.getPopup({
               content: '<div class="bbn-overlay"><textarea class="bbn-100">' + d.export + '</textarea></div>',
@@ -123,7 +124,7 @@
         bbn.fn.log(arguments);
       },
       deleteCache(node){
-        this.post(this.source.root + 'actions/delete_cache', (d) => {
+        this.post(this.root + 'actions/delete_cache', (d) => {
           if ( d.success ){
             appui.success();
             this.$refs.listOptions.reset();
