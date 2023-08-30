@@ -1,7 +1,12 @@
 // Javascript Document
 (() => {
-  let controllers = false;
   return {
+    statics() {
+      return {
+        controllers: false
+      };
+    },
+    mixins: [bbn.cp.mixins.basic],
     props: ['source'],
     data() {
       let defScfg = {
@@ -151,7 +156,7 @@
         return !!this.closest('bbn-popup');
       },
       controllers(){
-        return controllers
+        return this.constructor.controllers;
       },
       tree(){
         return this.closest('appui-option-option') || null
@@ -258,13 +263,13 @@
       }
     },
     mounted(){
-      if (!appui.plugins['appui-option'] || controllers) {
+      if (!appui.plugins['appui-option'] || this.constructor.controllers) {
         this.ready = true;
       }
       else{
         this.post(appui.plugins['appui-option'] + '/plugins', (d) => {
           if (d.controllers) {
-            controllers = d.controllers;
+            this.constructor.controllers = d.controllers;
           }
           this.ready = true;
         });
