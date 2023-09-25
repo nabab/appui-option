@@ -80,7 +80,12 @@
       },
       currentUrl(){
         if ( this.$refs.router && this.$refs.router.routed ){
-          return '/' + this.$refs.router.getCurrentURL();
+          // URL is like option/5ccdd4ef2c5c11eca47652540000cfbe/values
+          let url = this.$refs.router.getCurrentURL().split('/');
+          bbn.fn.log(["URL LEN", url]);
+          if ((url.length > 2) && url[2]) {
+            return '/' + url.pop();
+          }
         }
 
         return '';
@@ -135,9 +140,12 @@
         })
       },
       treeMapper(d, l, n){
-        n.text = d.text || (d.alias && d.alias.text ? '<em style="color:#4285f4">'+ d.alias.text +'</em>' : d.code);
+        if (!n.data) {
+          n.data = bbn.fn.createOject();
+        }
+        n.data.text = d.text || (d.alias && d.alias.text ? '<em style="color:#4285f4">'+ d.alias.text +'</em>' : d.code);
         if ( (d.code !== undefined) && (d.code !== null) ){
-          n.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
+          n.data.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
         }
         return n;
       },
@@ -147,14 +155,15 @@
           this.optionSelected.code = node.data.code;
           this.optionSelected.text = node.data.text;
           this.$nextTick(() => {
-            bbn.fn.link(appui.plugins['appui-option'] + '/tree/option/' + node.data.id + this.currentUrl, true);
+            bbn.fn.log([this.root + 'tree/option/' + node.data.id + this.currentUrl, this.currentUrl])
+            bbn.fn.link(this.root + 'tree/option/' + node.data.id + this.currentUrl, true);
           })
         }
       },
       moveOpt(node, nodeDest, ev){
         if (ev.cancelable) {
           ev.preventDefault();
-          this.post(appui.plugins['appui-option'] + '/actions/move', {
+          this.post(this.root + 'actions/move', {
             idNode: node.data.id,
             idParentNode: nodeDest.data.id
           }, d => {
@@ -183,8 +192,10 @@
       }
     },
     watch: {
-      appuiTree(){
-        this.post(appui.plugins['appui-option'] + '/tree/typeTree',{appuiTree: this.appuiTree}, d => {
+      appuiTree(v) {
+        this.post(this.root + 'tree/typeTree', {
+          appuiTree: v
+        }, d => {
           if ( this.source.cat !== d.data.id_cat ){
             this.$set(this.source, 'cat', d.data.id_cat);
             if ( this.optionSelected.id.length > -1 ){

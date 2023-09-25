@@ -15,9 +15,9 @@
     },
     methods: {
       treeMapper(d, l, n){
-        n.text = d.text || (d.alias && d.alias.text ? '<em style="color:#4285f4">'+ d.alias.text +'</em>' : d.code);
-        if ( (d.code !== undefined) && (d.code !== null) ){
-          n.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
+        n.text = d.text || (d.data.alias && d.data.alias.text ? '<em style="color:#4285f4">'+ d.data.alias.text +'</em>' : d.data.code);
+        if ( (d.data.code !== undefined) && (d.data.code !== null) ){
+          n.text += ' &nbsp; <span class="bbn-grey"> (' + d.data.code + ')</span>';
         }
         return n;
       },
