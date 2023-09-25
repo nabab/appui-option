@@ -23,43 +23,31 @@
         }, {
           text: bbn._('Import'),
           icon: 'nf nf-fa-arrow_up',
-          action: this.importOption
+          action: node => this.importOption(node)
         }, {
           text: bbn._('Export option for database'),
           icon: 'nf nf-fa-arrow_down',
-          action: (node) => {
-            this.exportOption(node)
-          }
+          action: node => this.exportOption(node)
         }, {
           text: bbn._('Export option for import'),
           icon: 'nf nf-fa-arrow_down',
-          action: (node) => {
-            this.exportOption(node, 'simple')
-          }
+          action: node => this.exportOption(node, 'simple')
         }, {
           text: bbn._('Export children for import'),
           icon: 'nf nf-fa-arrow_down',
-          action: (node) => {
-            this.exportOption(node, 'schildren')
-          }
+          action: node => this.exportOption(node, 'schildren')
         }, {
           text: bbn._('Export children for database'),
           icon: 'nf nf-fa-arrow_down',
-          action: (node) => {
-            this.exportOption(node, 'children')
-          }
+          action: node => this.exportOption(node, 'children')
         }, {
           text: bbn._('Export tree for import'),
           icon: 'nf nf-fa-arrow_down',
-          action: (node) => {
-            this.exportOption(node, 'sfull')
-          }
+          action: node => this.exportOption(node, 'sfull')
         }, {
           text: bbn._('Export tree for database'),
           icon: 'nf nf-fa-arrow_down',
-          action: (node) => {
-            this.exportOption(node, 'full')
-          }
+          action: node => this.exportOption(node, 'full')
         }],
         isAdmin: appui.app.user.isAdmin,
         appuiTree: false,
