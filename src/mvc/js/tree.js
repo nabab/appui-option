@@ -19,7 +19,7 @@
         treeMenu: [{
           text: bbn._('Delete'),
           icon: 'nf nf-fa-times',
-          action: this.deleteOption
+          action: node => this.deleteOption(node)
         }, {
           text: bbn._('Import'),
           icon: 'nf nf-fa-arrow_up',
