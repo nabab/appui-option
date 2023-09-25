@@ -93,7 +93,7 @@
     },
     methods: {
       importOption(node){
-        this.getPopup({
+        this.closest('bbn-container').getPopup({
           title: 'Import into option ' + node.data.text,
           component: 'appui-option-import',
           source: {
