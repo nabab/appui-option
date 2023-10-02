@@ -1,7 +1,8 @@
 // Javascript Document
 (()=>{
   return {
-    data(){
+    mixins: [bbn.cp.mixins.basic],
+    data() {
       return {
         root: appui.plugins['appui-option'] + '/',
         option: '{}',

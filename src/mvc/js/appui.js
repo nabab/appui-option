@@ -1,6 +1,7 @@
 // Javascript Document
 (() => {
   return {
+    mixins: [bbn.cp.mixins.basic],
     props: ['source'],
     methods: {
       save(row, col, idx){

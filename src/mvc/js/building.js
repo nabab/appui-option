@@ -12,7 +12,7 @@
     var $tree = ele.querySelectorAll("div.bbn_options_tree2"),
         $treeEmpty = ele.querySelectorAll("div.bbn_options_tree3"),
         src = function(id){
-          return this.post(data.root + "building/" + id).promise().then(function(d){
+          return bbn.fn.post(data.root + "building/" + id).promise().then(function(d){
 
             return bbn.fn.map(d.data, function(v){
               var r = {
@@ -145,7 +145,7 @@
          ds = tree.dataItem(e.sourceNode),
          prev = $(e.sourceNode).prev(),
          parent = $(e.sourceNode).parent();
-         this.post(data.root + 'actions/move', {
+         bbn.fn.post(data.root + 'actions/move', {
          dest: dd.id,
          src: ds.id
          }, function(d){

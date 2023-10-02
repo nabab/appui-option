@@ -1,6 +1,7 @@
 (() => {
   return {
-    data(){
+    mixins: [bbn.cp.mixins.basic],
+    data() {
       return {
         isMine: this.closest('bbn-container').url === 'preferences'
       }

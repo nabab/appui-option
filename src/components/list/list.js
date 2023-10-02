@@ -2,6 +2,7 @@
 /* jshint esversion: 6 */
 (() => {
   return {
+    mixins: [bbn.cp.mixins.basic],
     data(){
       return {
         showTable: true,

@@ -2,6 +2,7 @@
 
 (() => {
   return {
+    mixins: [bbn.cp.mixins.basic],
     props: ['source', 'parent', 'users', 'groups', 'url'],
     data(){
       return {};

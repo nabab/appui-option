@@ -84,7 +84,7 @@
       },
       refreshPermissions(){
         this.confirm(bbn._("Are you sure you want to update all permissions? It might take a while..."), () => {
-          this.post(this.source.root + 'actions/update_permissions', (d) => {
+          bbn.fn.post(this.source.root + 'actions/update_permissions', (d) => {
             if (d && d.res && d.res.total) {
               appui.success(d.res.total + ' ' + bbn._("permissions have been added"));
             }
@@ -103,7 +103,7 @@
         return n;
       },
       permissionSelect(n){
-        this.post(this.source.root + 'permissions', {
+        bbn.fn.post(this.source.root + 'permissions', {
           id: n.data.id,
           full: 1
         }, (d) => {
@@ -119,7 +119,7 @@
       },
       submitConf(){
         if ( this.getRef('form_cfg').dirty ){
-          this.post(this.source.root + 'permissions/update', this.conf, (d) => {
+          bbn.fn.post(this.source.root + 'permissions/update', this.conf, (d) => {
             if ( d.data && d.data.success ){
               appui.success(bbn._('Saved!'));
             }
@@ -131,7 +131,7 @@
       },
       submitNew(){
         if ( this.newPerm.id_parent && this.newPerm.code && this.getRef('form_new').dirty ){
-          this.post(this.source.root + 'permissions/insert', this.newPerm, (d) => {
+          bbn.fn.post(this.source.root + 'permissions/insert', this.newPerm, (d) => {
             if ( d.data && d.data.success ){
               /** @todo to add the new permission to tre (permissions list) */
               this.clearNewPerm();
@@ -146,7 +146,7 @@
       delPerm(){
         if ( this.selected.id ){
           this.confirm(bbn._('Are you sure you want to delete this permission?'), ()  => {
-            this.post(this.source.root + 'permissions/delete', {id: this.selected.id}, (d) => {
+            bbn.fn.post(this.source.root + 'permissions/delete', {id: this.selected.id}, (d) => {
               if ( d.data && d.data.success ){
                 appui.success(bbn._('Deleted!'));
                 this.selected = {};
@@ -175,7 +175,7 @@
       setGroupPerm(group){
         if ( group && group.id && !this.selected.public ){
           let isChecked = !this.selected['group' + group.id];
-          this.post(this.source.root + 'permissions/' + (isChecked ? 'add' : 'remove'), {
+          bbn.fn.post(this.source.root + 'permissions/' + (isChecked ? 'add' : 'remove'), {
             id_group: group.id,
             id_option: this.selected.id
           }, (d) => {
@@ -191,7 +191,7 @@
       setUserPerm(user){
         if ( user && user.id && !this.selected.public && !this.selected['group' + user.id_group] ){
           let isChecked = !this.selected['user' + user.id];
-          this.post(this.source.root + 'permissions/' + (isChecked ? 'add' : 'remove'), {
+          bbn.fn.post(this.source.root + 'permissions/' + (isChecked ? 'add' : 'remove'), {
             id_user: user.id,
             id_option: this.selected.id
           }, (d) => {

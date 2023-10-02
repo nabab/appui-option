@@ -26,7 +26,7 @@
       setGroupPerm(group){
         if ( group && group.id && !this.source.public ){
           let isChecked = !this.source['group' + group.id];
-          this.post((this.url || (this.parent.root + 'actions/')) + (isChecked ? 'add' : 'remove'), {
+          bbn.fn.post((this.url || (this.parent.root + 'actions/')) + (isChecked ? 'add' : 'remove'), {
             id_group: group.id,
             id_option: this.source.id
           }, (d) => {

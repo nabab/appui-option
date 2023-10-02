@@ -6,6 +6,7 @@
  */
 (() => {
   return {
+    mixins: [bbn.cp.mixins.basic],
     data(){
       return {
         isMounted: false,

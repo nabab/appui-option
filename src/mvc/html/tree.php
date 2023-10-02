@@ -16,7 +16,7 @@
                       uid="id"
                       :root="source.cat"
                       :map="treeMapper"
-                      @nodeclick="treeNodeActivate"
+                      @select="treeNodeActivate"
                       ref="listOptions"
                       :draggable="true"
                       @move="moveOpt"

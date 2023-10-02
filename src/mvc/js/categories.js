@@ -1,7 +1,7 @@
 // Javascript Document
 (() => {
   return {
-    props: ['source'],
+    mixins: [bbn.cp.mixins.basic],
     methods: {
       save(row, col, idx){
         if ( !row.text || !row.code ){
