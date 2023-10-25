@@ -2,35 +2,29 @@
            editable="popup"
            :toolbar="$options.components.toolbar"
            ref="table"
-           :expander="$options.components.bits"
->
+           :expander="$options.components.bits">
   <bbns-column :hidden="true"
                :showable="true"
                field="id_option"
-               :default="source.option.id">
-  </bbns-column>
+               :default="source.option.id"/>
   <bbns-column title="<?=_('ID')?>"
                field="id"
-               :width="isMine ? undefined : '250'"
-  ></bbns-column>
+               :width="isMine ? undefined : '250'"/>
   <bbns-column title="<?=_('Type')?>"
                :render="renderType"
                :width="100"
                cls="bbn-c"
-               v-if="isMine"
-  ></bbns-column>
+               v-if="isMine"/>
   <bbns-column title="<?=_('User')?>"
                field="id_user"
                :source="users"
                cls="bbn-c"
-               v-if="!isMine"
-  ></bbns-column>
+               v-if="!isMine"/>
   <bbns-column title="<?=_('Group')?>"
                field="id_group"
                :source="groups"
                cls="bbn-c"
-               v-if="!isMine"
-  ></bbns-column>
+               v-if="!isMine"/>
   <bbns-column :buttons="[{
                  icon: 'nf nf-fa-edit',
                  text: '<?=_('Edit')?>',
@@ -43,6 +37,5 @@
                  action: remove
                }]"
                :width="100"
-               cls="bbn-c"
-  ></bbns-column>
+               cls="bbn-c"/>
 </bbn-table>
