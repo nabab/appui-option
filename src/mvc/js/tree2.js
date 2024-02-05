@@ -78,7 +78,7 @@
             this.$refs.listOptions.reset();
           }
           else{
-            appui.error();
+            appui.error(d);
           }
         })
       },

@@ -164,7 +164,7 @@
                 appui.info(bbn._("No permission has been added"));
               }
               else {
-                appui.error();
+                appui.error(d);
               }
 		        }
           }
@@ -195,7 +195,7 @@
                 cp.getRef('tree').updateData();
               }
               else {
-                appui.error();
+                appui.error(d);
               }
 		        }
           }

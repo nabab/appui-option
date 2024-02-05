@@ -92,7 +92,7 @@
               appui.success(bbn._("No permission has been added"));
             }
             else {
-              appui.error();
+              appui.error(d);
             }
             //load();
           });

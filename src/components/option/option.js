@@ -31,7 +31,7 @@
             appui.success("Deleted");
           }
           else{
-            appui.error();
+            appui.error(d);
           }
         })
       },
