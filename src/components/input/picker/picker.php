@@ -4,13 +4,13 @@
   <bbn-button @click="showFloater = !showFloater"
               ref="button"
               type="button">
-    <?=_("Browse")?>
+    <?= _("Browse") ?>
   </bbn-button> &nbsp;
   <bbn-input v-model="rootAlias"/>
   <bbn-button v-if="value"
               class="bbn-space-left"
               @click="emitInput(null)">
-    <?=_("Clear")?>
+    <?= _("Clear") ?>
   </bbn-button>
   <bbn-input type="hidden"
              v-model="value"/>

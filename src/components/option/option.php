@@ -36,7 +36,7 @@
     >
       <bbns-container url="values"
                       :static="true"
-                      title="<?=_('Values')?>"
+                      title="<?= _('Values') ?>"
                       component="appui-option-form"
                       :source="source.option"
                       :load="false"
@@ -46,7 +46,7 @@
       ></bbns-container>
       <bbns-container url="cfg"
                       :static="true"
-                      title="<?=_('Configuration')?>"
+                      title="<?= _('Configuration') ?>"
                       component="appui-option-config"
                       :load="false"
                       :source="source"
@@ -56,7 +56,7 @@
       ></bbns-container>
       <bbns-container url="preferences"
                       :static="true"
-                      title="<?=_('My preferences')?>"
+                      title="<?= _('My preferences') ?>"
                       component="appui-option-preferences"
                       bcolor="yellowgreen"
                       fcolor="white"
@@ -66,7 +66,7 @@
       ></bbns-container>
       <bbns-container url="upreferences"
                       :static="true"
-                      title="<?=_('Users preferences')?>"
+                      title="<?= _('Users preferences') ?>"
                       component="appui-option-preferences"
                       bcolor="tomato"
                       fcolor="white"
@@ -76,7 +76,7 @@
       ></bbns-container>
       <bbns-container url="stats"
                       :static="true"
-                      title="<?=_('Stats')?>"
+                      title="<?= _('Stats') ?>"
                       component="appui-option-stats"
                       bcolor="skyblue"
                       fcolor="white"
@@ -85,7 +85,7 @@
       ></bbns-container>
       <bbns-container url="password"
                       :static="true"
-                      title="<?=_('Password')?>"
+                      title="<?= _('Password') ?>"
                       component="appui-option-psw"
                       bcolor="#32a852"
                       fcolor="white"

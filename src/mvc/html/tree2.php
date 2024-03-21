@@ -6,7 +6,7 @@
         <div class="bbn-padded">
           <bbn-button icon="nf nf-fa-times"
                       @click="deleteCache"
-                      text='<?=_("Delete cache")?>'
+                      text='<?= _("Delete cache") ?>'
           ></bbn-button>
         </div>
       </div>
@@ -34,15 +34,15 @@
         <div class="bbn-padded" v-if="optionSelected.id.length">
           <bbn-button icon="nf nf-fa-times"
                       @click="deleteSingleCache"
-                      text="<?=_('Delete cache option')?>"
+                      text="<?= _('Delete cache option') ?>"
           ></bbn-button>
           <bbn-button icon="nf nf-fa-link"
                       @click="linkOption"
-                      :text="'<?=_('Go to')?>' +' '+ optionSelected.text"
+                      :text="'<?= _('Go to') ?>' +' '+ optionSelected.text"
           ></bbn-button>
           <bbn-button icon="nf nf-fa-eye"
                       @click="showUsageOpt">
-                      <?=_('Show Usage')?>
+                      <?= _('Show Usage') ?>
           </bbn-button>
         </div>
       </div>
@@ -53,7 +53,7 @@
     <div class="bbn-h-100 bbn-middle" v-else>
       <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
           <span class="bbn-xxxl bbn-c">
-            <?=_("Select Option")?>
+            <?= _("Select Option") ?>
           </span>
       </div>
     </div>

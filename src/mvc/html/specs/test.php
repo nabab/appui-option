@@ -1,3 +1,3 @@
 <!-- HTML Document -->
 
-Hello <?=$thomas?>!
+Hello <?= $thomas ?>!

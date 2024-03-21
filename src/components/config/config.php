@@ -13,17 +13,17 @@
       <bbn-button type="button"
                   @click="unlock"
                   icon="nf nf-fa-unlock_alt"
-                  title="<?=_('Unlock')?>"
+                  title="<?= _('Unlock') ?>"
                   :notext="true"/>
     </div>
     <div v-if="source.cfg.inherit_from"
          class="bbn-w-100 bbn-c bbn-bottom-margin bbn-lg">
-      <?=_('Inherited from')?> <a :href="root + 'list/' + source.cfg.inherit_from" v-text="source.cfg_inherit_from_text"/>
+      <?= _('Inherited from') ?> <a :href="root + 'list/' + source.cfg.inherit_from" v-text="source.cfg_inherit_from_text"/>
       &nbsp;
       <bbn-button type="button"
                   @click="unlock"
                   icon="nf nf-fa-unlock_alt"
-                  title="<?=_('Unlock')?>"
+                  title="<?= _('Unlock') ?>"
                   :notext="true"/>
     </div>
     <div v-if="showReset"
@@ -31,72 +31,72 @@
       <bbn-button type="button"
                   @click="reset"
                   icon="nf nf-fa-undo"
-                  title="<?=_('Back to default')?>"
+                  title="<?= _('Back to default') ?>"
                   :notext="true"/>
     </div>
 
     <div class="bbn-grid-fields">
 
-      <label style="width: 15em"><?=_("Presets")?></label>
+      <label style="width: 15em"><?= _("Presets") ?></label>
       <div>
         <bbn-checkbox class="k-checkbox"
                       v-model.number="data.cfg.categories"
                       :disabled="!!source.cfg.frozen"
                       style="margin-right: 1.5em"
-                      label="<?=_("Categories' page")?>"
+                      label="<?= _("Categories' page") ?>"
                       :value="1"/>
         <bbn-checkbox v-model.number="data.cfg.noparent"
                       :value="1"
-                      title="<?=_('Hide the parent button')?>"
-                      label="<?=_('Hide parent')?>"
+                      title="<?= _('Hide the parent button') ?>"
+                      label="<?= _('Hide parent') ?>"
                       :disabled="!!source.cfg.frozen"/>
       </div>
 
-      <label v-if="!source.cfg.categories"><?=_('Allow children')?></label>
+      <label v-if="!source.cfg.categories"><?= _('Allow children') ?></label>
       <bbn-checkbox v-if="!source.cfg.categories"
                     v-model.number="data.cfg.allow_children"
                     :value="1"
                     :disabled="!!source.cfg.frozen"/>
 
-      <label v-if="!data.cfg.categories"><?=_('Show')?></label>
+      <label v-if="!data.cfg.categories"><?= _('Show') ?></label>
       <div v-if="!data.cfg.categories">
         <bbn-checkbox v-model.number="data.cfg.show_code"
                       :disabled="!!source.cfg.frozen"
                       :value="1"
-                      label="<?=_('Code')?>"
+                      label="<?= _('Code') ?>"
                       style="margin-right: 1.5em"/>
         <bbn-checkbox v-model.number="data.cfg.show_alias"
                       :disabled="!!source.cfg.frozen"
                       :value="1"
-                      label="<?=_('Alias')?>"
+                      label="<?= _('Alias') ?>"
                       style="margin-right: 1.5em"/>
         <bbn-checkbox v-if="source.cfg.show_alias"
                       v-model.number="data.cfg.notext"
                       :disabled="!!source.cfg.frozen"
                       :value="1"
                       style="margin-right: 1.5em"
-                      title="<?=_('Hide the text column')?>"
-                      label="<?=_('No text')?>"/>
+                      title="<?= _('Hide the text column') ?>"
+                      label="<?= _('No text') ?>"/>
         <bbn-checkbox v-model.number="data.cfg.show_icon"
                       :disabled="!!source.cfg.frozen"
                       :value="1"
-                      label="<?=_('Icon')?>"
+                      label="<?= _('Icon') ?>"
                       style="margin-right: 1.5em"/>
       </div>
 
-      <label v-if="source.cfg.show_alias"><?=_("Alias' root")?></label>
+      <label v-if="source.cfg.show_alias"><?= _("Alias' root") ?></label>
       <div class="bbn-flex-width"
            v-if="source.cfg.show_alias">
         <appui-option-input-picker :disabled="!!source.cfg.frozen"
                                    v-model="data.cfg.id_root_alias"/>
       </div>
 
-      <label v-if="source.cfg.show_alias"><?=_("Alias' name")?></label>
+      <label v-if="source.cfg.show_alias"><?= _("Alias' name") ?></label>
       <bbn-input v-if="source.cfg.show_alias"
                  v-model="data.cfg.alias_name"
                  :disabled="!!source.cfg.frozen"/>
 
-      <label v-if="!source.cfg.categories"><?=_('Orderable')?></label>
+      <label v-if="!source.cfg.categories"><?= _('Orderable') ?></label>
       <bbn-checkbox v-if="!source.cfg.categories"
                     v-model.number="data.cfg.sortable"
                     :disabled="!!source.cfg.frozen"
@@ -104,27 +104,27 @@
 
       <label class="bbn-options-inheritance"
              v-if="source.cfg.allow_children">
-        <?=_('Inheritance')?>
+        <?= _('Inheritance') ?>
       </label>
       <bbn-radio class="bbn-options-inheritance"
                  v-if="source.cfg.allow_children"
                  v-model="data.cfg.inheritance"
                  :disabled="!!source.cfg.frozen || showScfg"
                  :source="[{
-                    text: '<?=\bbn\str::escape(_('None'))?>',
+                    text: '<?= \bbn\str::escape(_('None')) ?>',
                     value: '',
                   }, {
-                    text: '<?=\bbn\str::escape(_('Only children'))?>',
+                    text: '<?= \bbn\str::escape(_('Only children')) ?>',
                     value: 'children',
                   }, {
-                    text: '<?=\bbn\str::escape(_('Cascade'))?>',
+                    text: '<?= \bbn\str::escape(_('Cascade')) ?>',
                     value: 'cascade',
                   }, {
-                    text: '<?=\bbn\str::escape(_('Default'))?>',
+                    text: '<?= \bbn\str::escape(_('Default')) ?>',
                     value: 'default',
                   }]"/>
 
-      <label v-if="data.cfg.permissions !== 1"><?=_('Permissions')?></label>
+      <label v-if="data.cfg.permissions !== 1"><?= _('Permissions') ?></label>
       <div v-if="data.cfg.permissions !== 1">
         <div class="bbn-w-100">
           <bbn-radio class="bbn-options-inheritance"
@@ -139,14 +139,14 @@
         </div>
       </div>
 
-      <label><?=_('Default value')?></label>
+      <label><?= _('Default value') ?></label>
       <bbn-dropdown :source="root + 'text_value/' + data.id"
                     :disabled="!!source.cfg.frozen"
                     source-value="id"
                     v-model="data.cfg.default_value"
                     placeholder=" - "/>
 
-      <label><?=_('External MV')?></label>
+      <label><?= _('External MV') ?></label>
       <bbn-dropdown id="bbn_options_cfg_model"
                     :nullable="true"
                     :source="controllers"
@@ -173,7 +173,7 @@
                     :disabled="!!source.cfg.inherit_from"
                     placeholder=" - "/>-->
 
-      <label v-if="!data.cfg.categories || !data.cfg.view"><?=_('Form')?></label>
+      <label v-if="!data.cfg.categories || !data.cfg.view"><?= _('Form') ?></label>
       <bbn-dropdown v-if="!data.cfg.categories || !data.cfg.view"
                     :source="views"
                     v-model="data.cfg.form"
@@ -181,7 +181,7 @@
                     placeholder=" - "/>
 
       <label v-if="!showSchema">
-        <?=_('Show value')?>
+        <?= _('Show value') ?>
       </label>
       <bbn-checkbox v-if="!showSchema" 
                     v-model.number="data.cfg.show_value"
@@ -189,7 +189,7 @@
                     :value="1"/>
 
       <label v-if="!data.cfg.show_value">
-        <a class="bbn-p" @click="toggleSchema"><?=_('Schema')?></a>
+        <a class="bbn-p" @click="toggleSchema"><?= _('Schema') ?></a>
       </label>
       <div v-if="showSchema && !data.cfg.show_value">
         <bbn-json-editor v-model="data.cfg.schema"
@@ -200,7 +200,7 @@
       </div>
       <div v-else-if="!data.cfg.show_value"> </div>
 
-      <label><?=_('Language')?></label>
+      <label><?= _('Language') ?></label>
       <bbn-dropdown :source="source.languages"
                     v-model="data.cfg.i18n"
                     placeholder=" - "
@@ -209,36 +209,36 @@
                     :disabled="!!source.cfg.frozen"/>
       <label class="bbn-options-inheritance"
              v-if="source.cfg.allow_children && data.cfg.i18n">
-        <?=_('Language inheritance')?>
+        <?= _('Language inheritance') ?>
       </label>
       <bbn-radio class="bbn-options-inheritance"
                  v-if="source.cfg.allow_children && data.cfg.i18n"
                  v-model="data.cfg.i18n_inheritance"
                  :disabled="!!source.cfg.frozen || showScfg"
                  :source="[{
-                    text: '<?=\bbn\str::escape(_('None'))?>',
+                    text: '<?= \bbn\str::escape(_('None')) ?>',
                     value: '',
                   }, {
-                    text: '<?=\bbn\str::escape(_('Only children'))?>',
+                    text: '<?= \bbn\str::escape(_('Only children')) ?>',
                     value: 'children',
                   }, {
-                    text: '<?=\bbn\str::escape(_('Cascade'))?>',
+                    text: '<?= \bbn\str::escape(_('Cascade')) ?>',
                     value: 'cascade',
                   }]"/>
 
-      <label><?=_('Description')?></label>
+      <label><?= _('Description') ?></label>
       <bbn-textarea style="min-height: 120px"
                     v-model="data.cfg.desc"
                     :disabled="!!source.cfg.frozen"/>
 
 
-      <label><?=_('Help')?></label>
+      <label><?= _('Help') ?></label>
       <bbn-markdown v-model="data.cfg.help"
                     :disabled="!!source.cfg.frozen"/>
 
       <label v-if="source.cfg.allow_children"
              class="bbn-p">
-        <?=_('SubConfigurator')?>
+        <?= _('SubConfigurator') ?>
       </label>
       <bbn-switch v-model="showScfg"
                   :disabled="!!source.cfg.frozen"
@@ -247,9 +247,9 @@
                   v-if="data.cfg.allow_children"/>
     </div>
     <div v-if="showScfg && data.cfg.allow_children" class="bbn-box bbn-top-sspace">
-      <div class="bbn-header bbn-c bbn-no-border-left bbn-no-border-top bbn-no-border-right bbn-spadded bbn-radius-top-left bbn-radius-top-right"><?=_('SubConfigurator')?></div>
+      <div class="bbn-header bbn-c bbn-no-border-left bbn-no-border-top bbn-no-border-right bbn-spadded bbn-radius-top-left bbn-radius-top-right"><?= _('SubConfigurator') ?></div>
       <div class="bbn-grid-fields bbn-padded">
-        <label style="width: 15em"><?=_("Categories' page")?></label>
+        <label style="width: 15em"><?= _("Categories' page") ?></label>
         <div>
           <bbn-checkbox v-model.number="data.scfg.categories"
                         :disabled="!!data.scfg.frozen"
@@ -257,61 +257,61 @@
                         :value="1"/>
           <bbn-checkbox v-model.number="data.scfg.noparent"
                         :value="1"
-                        title="<?=_('Hide the parent button')?>"
-                        label="<?=_('Hide parent')?>"
+                        title="<?= _('Hide the parent button') ?>"
+                        label="<?= _('Hide parent') ?>"
                         :disabled="!!data.scfg.frozen"/>
         </div>
 
-        <label v-if="!data.scfg.categories"><?=_('Show')?></label>
+        <label v-if="!data.scfg.categories"><?= _('Show') ?></label>
         <div v-if="!data.scfg.categories">
           <bbn-checkbox v-model.number="data.scfg.show_code"
                         :disabled="!!source.cfg.frozen"
                         :value="1"
-                        label="<?=_('Code')?>"
+                        label="<?= _('Code') ?>"
                         style="margin-right: 1.5em"/>
           <bbn-checkbox v-model.number="data.scfg.show_alias"
                         :disabled="!!source.cfg.frozen"
                         :value="1"
-                        label="<?=_('Alias')?>"
+                        label="<?= _('Alias') ?>"
                         style="margin-right: 1.5em"/>
           <bbn-checkbox v-if="source.show_alias"
                         v-model.number="data.scfg.notext"
                         :disabled="!!source.cfg.frozen"
                         :value="1"
-                        label="<?=_('No text')?>"
+                        label="<?= _('No text') ?>"
                         style="margin-right: 1.5em"/>
           <bbn-checkbox v-model.number="data.scfg.show_icon"
                         :disabled="!!source.cfg.frozen"
                         :value="1"
-                        label="<?=_('Icon')?>"
+                        label="<?= _('Icon') ?>"
                         style="margin-right: 1.5em"/>
         </div>
 
-        <label v-if="data.scfg.show_alias"><?=_("Alias' root")?></label>
+        <label v-if="data.scfg.show_alias"><?= _("Alias' root") ?></label>
         <div class="bbn-flex-width"
               v-if="data.scfg.show_alias">
           <bbn-button @click="browseAlias(data.scfg)"
                       type="button"
-          ><?=_("Browse")?></bbn-button>
+          ><?= _("Browse") ?></bbn-button>
           <bbn-button @click="setToRootScfg"
                       type="button"
-          ><?=_("Root")?></bbn-button>
+          ><?= _("Root") ?></bbn-button>
           <bbn-input readonly="readonly"
                       class="bbn-flex-fill"
                       :value="data.scfg.root_alias"/>
         </div>
 
-        <label v-if="data.scfg.show_alias"><?=_("Alias' name")?></label>
+        <label v-if="data.scfg.show_alias"><?= _("Alias' name") ?></label>
         <bbn-input v-if="data.scfg.show_alias"
                     v-model="data.scfg.alias_name"/>
 
-        <label v-if="!data.scfg.categories"><?=_('Orderable')?></label>
+        <label v-if="!data.scfg.categories"><?= _('Orderable') ?></label>
         <bbn-checkbox v-if="!data.scfg.categories"
                       v-model.number="data.scfg.sortable"
                       :disabled="!!source.cfg.frozen"
                       :value="1"/>
 
-        <label v-if="!data.scfg.categories"><?=_('Allow children')?></label>
+        <label v-if="!data.scfg.categories"><?= _('Allow children') ?></label>
         <bbn-checkbox v-if="!data.scfg.categories"
                       v-model.number="data.scfg.allow_children"
                       :disabled="!!source.cfg.frozen"
@@ -319,34 +319,34 @@
 
         <label class="bbn-options-inheritance"
                 v-if="data.scfg.allow_children">
-          <?=_('Inheritance')?>
+          <?= _('Inheritance') ?>
         </label>
         <bbn-radio class="bbn-options-inheritance"
                     v-if="data.scfg.allow_children"
                     v-model="data.scfg.inheritance"
                     :disabled="!!source.cfg.frozen"
                     :source="[{
-                      text: '<?=_('None')?>',
+                      text: '<?= _('None') ?>',
                       value: '',
                     }, {
-                      text: '<?=_('Only children')?>',
+                      text: '<?= _('Only children') ?>',
                       value: 'children',
                     }, {
-                      text: '<?=_('Cascade')?>',
+                      text: '<?= _('Cascade') ?>',
                       value: 'cascade',
                     }, {
-                      text: '<?=_('Default')?>',
+                      text: '<?= _('Default') ?>',
                       value: 'default',
                     }]"/>
 
-        <label><?=_('Default value')?></label>
+        <label><?= _('Default value') ?></label>
         <bbn-dropdown :source="root + 'text_value/' + data.id"
                       :disabled="!!source.cfg.frozen"
                       source-value="id"
                       v-model="data.scfg.default_value"
                       placeholder=" - "/>
 
-        <label><?=_('External MV')?></label>
+        <label><?= _('External MV') ?></label>
         <bbn-dropdown id="bbn_options_cfg_model"
                       :source="controllers"
                       v-model="data.model"
@@ -374,21 +374,21 @@
                       placeholder=" - "
         ></bbn-dropdown>-->
 
-        <label v-if="!data.scfg.categories || !data.scfg.view"><?=_('Form')?></label>
+        <label v-if="!data.scfg.categories || !data.scfg.view"><?= _('Form') ?></label>
         <bbn-dropdown v-if="!data.scfg.categories || !data.scfg.view"
                       :source="views"
                       v-model="data.scfg.form"
                       :disabled="!!source.cfg.frozen"
                       placeholder=" - "/>
 
-        <label><?=_('Language')?></label>
+        <label><?= _('Language') ?></label>
         <bbn-dropdown :source="source.languages"
                       v-model="data.scfg.i18n"
                       placeholder=" - "
                       source-value="code"/>
 
         <label v-if="source.cfg.allow_children && !showSchemaScfg">
-          <?=_('Show value')?>
+          <?= _('Show value') ?>
         </label>
         <bbn-checkbox v-if="!showSchema"
                       v-model.number="data.scfg.show_value"
@@ -396,7 +396,7 @@
                       :value="1"/>
 
         <label v-if="showSchemaScfg && !data.scfg.show_value">
-          <a class="bbn-p" @click="toggleSchemaScfg"><?=_('Schema')?></a>
+          <a class="bbn-p" @click="toggleSchemaScfg"><?= _('Schema') ?></a>
         </label>
         <div v-if="showSchemaScfg && !data.scfg.show_value">
           <bbn-json-editor v-model="data.scfg.schema"
@@ -405,14 +405,14 @@
                            style="height: 300px"/>
         </div>
 
-        <label><?=_('Description')?></label>
+        <label><?= _('Description') ?></label>
         <div>
           <bbn-textarea style="width: 100%; min-height: 120px"
                         v-model="data.scfg.desc"
                         :disabled="!!source.cfg.frozen"/>
         </div>
 
-        <label><?=_('Help')?></label>
+        <label><?= _('Help') ?></label>
         <bbn-markdown v-model="data.scfg.help"/>
       </div>
     </div>

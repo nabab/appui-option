@@ -7,32 +7,32 @@
                :showable="true"
                field="id_option"
                :default="source.option.id"/>
-  <bbns-column title="<?=_('ID')?>"
+  <bbns-column title="<?= _('ID') ?>"
                field="id"
                :width="isMine ? undefined : '250'"/>
-  <bbns-column title="<?=_('Type')?>"
+  <bbns-column title="<?= _('Type') ?>"
                :render="renderType"
                :width="100"
                cls="bbn-c"
                v-if="isMine"/>
-  <bbns-column title="<?=_('User')?>"
+  <bbns-column title="<?= _('User') ?>"
                field="id_user"
                :source="users"
                cls="bbn-c"
                v-if="!isMine"/>
-  <bbns-column title="<?=_('Group')?>"
+  <bbns-column title="<?= _('Group') ?>"
                field="id_group"
                :source="groups"
                cls="bbn-c"
                v-if="!isMine"/>
   <bbns-column :buttons="[{
                  icon: 'nf nf-fa-edit',
-                 text: '<?=_('Edit')?>',
+                 text: '<?= _('Edit') ?>',
                  notext: true,
                  action: edit
                }, {
                  icon: 'nf nf-fa-trash',
-                 text: '<?=_('Delete')?>',
+                 text: '<?= _('Delete') ?>',
                  notext: true,
                  action: remove
                }]"

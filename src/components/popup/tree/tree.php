@@ -5,7 +5,7 @@
       <div>
         <span>
           <strong>
-            <?=_('Option')?>:
+            <?= _('Option') ?>:
           </strong>
         </span>
         <span v-text="' '+source.option"></span>
@@ -13,7 +13,7 @@
       <div v-if="source.codeOpt">
         <span>
           <strong>
-            <?=_('Code')?>:
+            <?= _('Code') ?>:
           </strong>
         </span>
         <span v-text="' '+source.codeOpt"></span>
@@ -21,7 +21,7 @@
       <div>
         <span>
           <strong>
-            <?=_('Option used')?>:
+            <?= _('Option used') ?>:
           </strong>
         </span>
         <span  v-text="info"></span>

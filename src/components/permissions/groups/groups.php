@@ -4,11 +4,11 @@
     <div class="bbn-w-100">
       <div class="bbn-iblock bbn-s bbn-hlmargin">
         <bbn-button @click="checkAllGroups"
-                    title="<?=_("Check all")?>"
+                    title="<?= _("Check all") ?>"
                     style="padding: 0 4px"
                     icon="nf nf-fa-check_square"/>
         <bbn-button @click="uncheckAllGroups"
-                    title="<?=_("Uncheck all")?>"
+                    title="<?= _("Uncheck all") ?>"
                     style="padding: 0 4px"
                     icon="nf nf-fa-square"/>
       </div>

@@ -1,7 +1,7 @@
 <bbn-table :source="source.root +'actions/get_appui_categories'"
            ref="table"
            :toolbar="[{
-             text: '<?=_('Add')?>',
+             text: '<?= _('Add') ?>',
              icon: 'nf nf-fa-plus',
              action: 'edit'
            }]"
@@ -23,17 +23,17 @@
               :default="source.id_root"
   ></bbns-column>
 	<bbns-column field="text"
-              title="<?=_('Categorie\'s name')?>"
+              title="<?= _('Categorie\'s name') ?>"
               :required="true"
   ></bbns-column>
 	<bbns-column field="code"
-              title="<?=_('Code')?>"
+              title="<?= _('Code') ?>"
               :width="150"
               :required="true"
               cls="bbn-c"
   ></bbns-column>
 	<bbns-column field="icon"
-              title="<?=_('Icon')?>"
+              title="<?= _('Icon') ?>"
               :width="50"
               :render="(e) => {return '<i class=\'bbn-lg ' + (e.icon ? e.icon : 'nf nf-fa-cog') + '\'> </i>'}"
               cls="bbn-c"
@@ -41,12 +41,12 @@
 	<bbns-column field="num_children"
               title="<i class='nf nf-fa-sitemap bbn-xl'></i>"
               :editable="false"
-              ftitle="<?=_('Number of items')?>"
+              ftitle="<?= _('Number of items') ?>"
               :width="50"
               cls="bbn-c"
   ></bbns-column>
 	<bbns-column field="tekname"
-              title="<?=_('Access name')?>"
+              title="<?= _('Access name') ?>"
               :width="150"
               :render="(e) => {return e.tekname ? e.tekname : '-'}"
               cls="bbn-c"
@@ -60,7 +60,7 @@
  <bbn-table :source="source.options"
            ref="table"
            :toolbar="[{
-             text: '<?=_('Add')?>',
+             text: '<?= _('Add') ?>',
              icon: 'nf nf-fa-plus',
              action: 'edit'
            }]"
@@ -82,17 +82,17 @@
               :default="source.id_root"
   ></bbns-column>
 	<bbns-column field="text"
-              title="<?=_('Categorie\'s name')?>"
+              title="<?= _('Categorie\'s name') ?>"
               :required="true"
   ></bbns-column>
 	<bbns-column field="code"
-              title="<?=_('Code')?>"
+              title="<?= _('Code') ?>"
               :width="150"
               :required="true"
               cls="bbn-c"
   ></bbns-column>
 	<bbns-column field="icon"
-              title="<?=_('Icon')?>"
+              title="<?= _('Icon') ?>"
               :width="50"
               :render="(e) => {return '<i class=\'bbn-lg ' + (e.icon ? e.icon : 'nf nf-fa-cog') + '\'> </i>'}"
               cls="bbn-c"
@@ -100,12 +100,12 @@
 	<bbns-column field="num_children"
               title="<i class='nf nf-fa-sitemap bbn-xl'></i>"
               :editable="false"
-              ftitle="<?=_('Number of items')?>"
+              ftitle="<?= _('Number of items') ?>"
               :width="50"
               cls="bbn-c"
   ></bbns-column>
 	<bbns-column field="tekname"
-              title="<?=_('Access name')?>"
+              title="<?= _('Access name') ?>"
               :width="150"
               :render="(e) => {return e.tekname ? e.tekname : '-'}"
               cls="bbn-c"

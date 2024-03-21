@@ -8,9 +8,9 @@
           :scrollable="!inPopup"
 >
   <div class="bbn-grid-fields bbn-padded">
-    <div v-if="cfg.show_id"><?=_('ID')?></div>
+    <div v-if="cfg.show_id"><?= _('ID') ?></div>
     <div v-if="cfg.show_id" v-text="currentSource.id"></div>
-    <div v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"><?=_('Text')?></div>
+    <div v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"><?= _('Text') ?></div>
     <div class="bbn-flex-width"
          v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)">
       <bbn-input v-model="currentSource.text"
@@ -24,7 +24,7 @@
               class="bbn-left-sspace bbn-b"/>
       </div>
     </div>
-    <div v-if="cfg.show_code && !schemaHasField('code')"><?=_('Code')?></div>
+    <div v-if="cfg.show_code && !schemaHasField('code')"><?= _('Code') ?></div>
     <bbn-input v-if="cfg.show_code && !schemaHasField('code')"
                v-model="currentSource.code"
     ></bbn-input>
@@ -36,7 +36,7 @@
       ></bbn-field>
     </template>
     <div v-if="cfg.show_alias && !schemaHasField('id_alias')"
-        v-text="cfg.alias_name || '<?=bbn\Str::escapeSquotes(_('Alias'))?>'">
+        v-text="cfg.alias_name || '<?= bbn\Str::escapeSquotes(_('Alias')) ?>'">
     </div>
     <div v-if="cfg.show_alias && !schemaHasField('id_alias')"
         class="bbn-flex-width">
@@ -52,7 +52,7 @@
                     class="bbn-w-100"
                     v-model="currentSource.id_alias"/>
     </div>
-    <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"><?=_('Icon')?></div>
+    <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"><?= _('Icon') ?></div>
     <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"
         class="bbn-middle"
         style="justify-content: flex-start"
@@ -64,17 +64,17 @@
         ></i>
         <div style="width: 2em; height: 2em"></div>
       </div>
-      <bbn-button @click="selectIcon"><?=_("Browse")?></bbn-button>
+      <bbn-button @click="selectIcon"><?= _("Browse") ?></bbn-button>
       <bbn-button v-if="currentSource.icon"
                   @click="currentSource.icon = ''"
                   class="bbn-left-sspace"
-      ><?=_("Clear")?></bbn-button>
+      ><?= _("Clear") ?></bbn-button>
     </div>
-    <div v-if="cfg.categories && !schemaHasField('tekname')"><?=_('Tekname')?></div>
+    <div v-if="cfg.categories && !schemaHasField('tekname')"><?= _('Tekname') ?></div>
     <bbn-input v-if="cfg.categories && !schemaHasField('tekname')"
               v-model="currentSource.tekname"
     ></bbn-input>
-    <div v-if="cfg.show_value"><?=_('Value')?></div>
+    <div v-if="cfg.show_value"><?= _('Value') ?></div>
     <div v-if="cfg.show_value"
          style="height: 300px"
     >

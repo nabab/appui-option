@@ -15,11 +15,11 @@
       </div>
       <bbn-button icon="nf nf-fa-refresh"
                   :notext="true"
-                  title="<?=_("Refresh all permissions")?>"
+                  title="<?= _("Refresh all permissions") ?>"
                   @click="refresh"/>
       <bbn-button icon="nf nf-mdi-broom"
                   :notext="true"
-                  title="<?=_("Clean up permissions (delete obsoletes)")?>"
+                  title="<?= _("Clean up permissions (delete obsoletes)") ?>"
                   @click="cleanUp"/>
       <div class="bbn-toolbar-separator">
       </div>
@@ -31,7 +31,7 @@
       </div>
       <div v-else
            class="bbn-lg bbn-b">
-        <?=_("No item selected")?>
+        <?= _("No item selected") ?>
       </div>
       <div v-if="selected && selected.path"
            class="bbn-toolbar-separator">
@@ -39,7 +39,7 @@
       <bbn-button v-if="selected && !selected.isFile && !selected.items"
                   class="bbn-red"
                   icon="nf nf-fa-times"
-                  title="<?=_("Delete")?>"
+                  title="<?= _("Delete") ?>"
                   @click="delPerm"/>
     </bbn-toolbar>
     <!-- Toolbar -->
@@ -74,7 +74,7 @@
           </div>
           <div v-else
                class="bbn-overlay bbn-middle">
-            <div class="bbn-xl bbn-block"><?=_("Select an item...")?></div>
+            <div class="bbn-xl bbn-block"><?= _("Select an item...") ?></div>
           </div>
         </div>
       </bbn-pane>

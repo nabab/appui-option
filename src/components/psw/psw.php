@@ -8,7 +8,7 @@
 >
 <div class="bbn-grid-fields bbn-padded">
     <div>
-      <label class="bbn-xl"><?=_('Password')?></label>
+      <label class="bbn-xl"><?= _('Password') ?></label>
       <i class="nf nf-mdi-key bbn-xl bbn-smargin"></i>
     </div>
     <bbn-input readonly

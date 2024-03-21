@@ -7,7 +7,7 @@
           <div class="bbn-flex-fill">
             <bbn-button icon="nf nf-fa-trash"
                         @click="deleteCache"
-                        text='<?=_("Delete cache")?>'/>
+                        text='<?= _("Delete cache") ?>'/>
           </div>
         </bbn-toolbar>
         <div class="bbn-flex-fill">
@@ -41,7 +41,7 @@
              v-else>
           <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
               <div class="bbn-xxxl bbn-c">
-                <?=_("Select Option")?>
+                <?= _("Select Option") ?>
               </div>
           </div>
         </div>

@@ -15,7 +15,7 @@
           <div>
             <bbn-button class="bbn-option-refresh-permissions"
                         icon="nf nf-fa-refresh"
-                        title="<?=_("Refresh all permissions")?>"
+                        title="<?= _("Refresh all permissions") ?>"
                         @click="refreshPermissions"
             ></bbn-button>
           </div>
@@ -40,13 +40,13 @@
       <div class="bbn-full-screen">
         <div class="bbn-flex-height">
           <div v-if="selected" class="bbn-header bbn-bordered bbn-c bbn-middle" style="height: 39px; font-size: large">
-            <b><?=_("Permission for")?>
+            <b><?= _("Permission for") ?>
               <a :href="selected.path"
                   v-text="selected.text"
               ></a>
             </b>
           </div>
-          <h2 v-else><?=_("Select an item...")?></h2>
+          <h2 v-else><?= _("Select an item...") ?></h2>
           <transition name="expand"
                       @enter="enter"
                       @after-enter="afterEnter"
@@ -64,7 +64,7 @@
                         }"
                       ></i>
                     </span>
-                    <?=_("Configuration")?>
+                    <?= _("Configuration") ?>
                   </div>
                   <transition name="expand">
                     <div v-show="sections.configuration" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
@@ -74,34 +74,34 @@
                                 ref="form_cfg"
                       >
                         <div class="bbn-grid-fields">
-                          <div><?=_('Type')?></div>
+                          <div><?= _('Type') ?></div>
                           <i class="fa" :class="'fa-' + (selected.type ? selected.type : 'key')" style="font-size: large"></i>
 
-                          <div><?=_('Code')?></div>
+                          <div><?= _('Code') ?></div>
                           <div v-if="!selected.is_perm"
                                v-text="selected.code"
                           ></div>
                           <bbn-input v-else v-model="selected.code" maxlength="255"></bbn-input>
 
-                          <div><?=_('Text')?></div>
+                          <div><?= _('Text') ?></div>
                           <bbn-input v-model="selected.text" maxlength="255"
                                      @keydown.enter.prevent="submitConf"
                                      class="bbn-w-100"
                           ></bbn-input>
 
-                          <div><?=_('Help')?></div>
+                          <div><?= _('Help') ?></div>
                           <bbn-markdown v-model="selected.help"></bbn-markdown>
 
 
-                          <div><?=_('Public')?></div>
+                          <div><?= _('Public') ?></div>
                           <bbn-checkbox v-model="selected.public"></bbn-checkbox>
 
-                          <div><?=_('Cascade')?></div>
+                          <div><?= _('Cascade') ?></div>
                           <bbn-checkbox v-model="selected.cascade"></bbn-checkbox>
 
                           <div class="bbn-grid-full bbn-margin">
-                            <bbn-button @click="submitConf" icon="nf nf-fa-save"><?=_("Save")?></bbn-button>
-                            <bbn-button v-if="!selected.exist" @click="delPerm" icon="nf nf-fa-trash"><?=_("Delete")?></bbn-button>
+                            <bbn-button @click="submitConf" icon="nf nf-fa-save"><?= _("Save") ?></bbn-button>
+                            <bbn-button v-if="!selected.exist" @click="delPerm" icon="nf nf-fa-trash"><?= _("Delete") ?></bbn-button>
                           </div>
                         </div>
                       </bbn-form>
@@ -119,7 +119,7 @@
                           }"
                       ></i>
                     </span>
-                    <?=_("New permission (under this one)")?>
+                    <?= _("New permission (under this one)") ?>
                   </div>
                   <transition name="expand">
                     <div v-show="sections.newPermission" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
@@ -130,25 +130,25 @@
                                 ref="form_new"
                       >
                         <div class="bbn-grid-fields">
-                          <div><?=_('Code')?></div>
+                          <div><?= _('Code') ?></div>
                           <bbn-input v-model="newPerm.code"
                                      required="required"
                                      class="bbn-w-100"
                                      @keydown.enter.prevent="submitNew"
                           ></bbn-input>
 
-                          <div><?=_('Text')?></div>
+                          <div><?= _('Text') ?></div>
                           <bbn-input v-model="newPerm.text"
                                      class="bbn-w-100"
                                      required="required"
                                      @keydown.enter.prevent="submitNew"
                           ></bbn-input>
 
-                          <div><?=_('Help')?></div>
+                          <div><?= _('Help') ?></div>
                           <bbn-markdown v-model="newPerm.help"></bbn-markdown>
 
                           <div class="bbn-grid-full bbn-margin">
-                            <bbn-button @click="submitNew" icon="nf nf-fa-save"><?=_("Save")?></bbn-button>
+                            <bbn-button @click="submitNew" icon="nf nf-fa-save"><?= _("Save") ?></bbn-button>
                           </div>
                         </div>
                       </bbn-form>
@@ -166,15 +166,15 @@
                           }"
                       ></i>
                     </span>
-                    <div class="bbn-iblock"><?=_("Groups")?></div>
+                    <div class="bbn-iblock"><?= _("Groups") ?></div>
                     <div v-if="sections.groups" class="bbn-iblock bbn-s bbn-hlmargin">
                       <bbn-button @click="checkAllGroups"
-                                  title="<?=_("Check all")?>"
+                                  title="<?= _("Check all") ?>"
                                   style="padding: 0 4px"
                                   icon="nf nf-fa-check_square"
                       ></bbn-button>
                       <bbn-button @click="uncheckAllGroups"
-                                  title="<?=_("Uncheck all")?>"
+                                  title="<?= _("Uncheck all") ?>"
                                   style="padding: 0 4px"
                                   icon="nf nf-fa-square"
                       ></bbn-button>
@@ -213,7 +213,7 @@
                           }"
                       ></i>
                     </span>
-                    <?=_('Users')?>
+                    <?= _('Users') ?>
                   </div>
                   <transition name="expand">
                     <div v-show="sections.users" class="bbn-padded">
