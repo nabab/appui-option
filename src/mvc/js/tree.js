@@ -62,6 +62,9 @@
         }],
         isAdmin: appui.app.user.isAdmin,
         appuiTree: false,
+        dataObj: {
+          appuiTree: false,
+        },
         routerRoot: appui.plugins['appui-option'] + '/tree/'
       }
     },
@@ -182,20 +185,15 @@
       }
     },
     watch: {
-      appuiTree(){
-        this.post(appui.plugins['appui-option'] + '/tree/typeTree',{appuiTree: this.appuiTree}, d => {
-          if ( this.source.cat !== d.data.id_cat ){
-            this.$set(this.source, 'cat', d.data.id_cat);
-            if ( this.optionSelected.id.length > -1 ){
-              this.optionSelected.id = '';
-              this.optionSelected.text = '';
-              this.optionSelected.code = null;
-              this.option = '{}';
-              this.cfg = '{}';
-            }
-            this.$refs.listOptions.reload();
-          }
-        });
+      appuiTree(v) {
+        this.dataObj.appuiTree = v;
+        this.optionSelected.id = '';
+        this.optionSelected.text = '';
+        this.optionSelected.code = null;
+        this.option = '{}';
+        this.cfg = '{}';
+        this.$refs.listOptions.updateData();
+        delete this.dataObj.appuiTree;
       }
     }
   }

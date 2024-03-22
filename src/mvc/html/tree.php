@@ -7,8 +7,7 @@
           <div class="bbn-flex-fill">
             <bbn-button icon="nf nf-fa-trash"
                         @click="deleteCache"
-                        text='<?=_("Delete cache")?>'
-            ></bbn-button>
+                        text='<?=_("Delete cache")?>'/>
           </div>
           <div v-if="source.is_admin"
                class="bbn-vmiddle">
@@ -18,9 +17,8 @@
                         off-icon="nf nf-fa-arrow_left"
                         on-icon="nf nf-fa-arrow_right"
                         :no-icon="false"
-                        class="bbn-hsmargin"
-            ></bbn-switch>
-            <span :class="['bbn-b', 'bbn-i', {'bbn-primary-text-alt': appuiTree}]"><?=_('Appui')?></span>
+                        class="bbn-hsmargin"/>
+            <span :class="['bbn-b', 'bbn-i', {'bbn-primary-text-alt': appuiTree}]"><?=_('Root')?></span>
           </div>
         </bbn-toolbar>
         <div class="bbn-flex-fill">
@@ -33,6 +31,7 @@
                       ref="listOptions"
                       :draggable="true"
                       @move="moveOpt"
+                      :data="dataObj"
                       :menu="treeMenu"
                       :sortable="true"
                       :storage="true"

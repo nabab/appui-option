@@ -1,10 +1,10 @@
 <?php
 /** @var $model \bbn\Mvc\Model*/
-$routes = array_values($model->getRoutes());
 $todo = [];
 $parents = [];
 $id_page = $model->inc->perm->getOptionId('access');
 $withApp = false;
+$routes = array_values($model->getRoutes());
 foreach ($model->data as $id => $v) {
   if (bbn\Str::isUid($id) && $v) {
     $opt = $model->inc->options->option($id);
