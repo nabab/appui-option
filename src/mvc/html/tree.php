@@ -7,7 +7,19 @@
           <div class="bbn-flex-fill">
             <bbn-button icon="nf nf-fa-trash"
                         @click="deleteCache"
-                        text='<?= _("Delete cache") ?>'/>
+                        text='<?=_("Delete cache")?>'/>
+          </div>
+          <div v-if="source.is_admin"
+               class="bbn-vmiddle">
+            <span :class="['bbn-b', 'bbn-i', {'bbn-primary-text-alt': !appuiTree}]"><?=_('App.')?></span>
+            <bbn-switch v-model="appuiTree"
+                        :novalue="false"
+                        :value="true"
+                        off-icon="nf nf-fa-arrow_left"
+                        on-icon="nf nf-fa-arrow_right"
+                        :no-icon="false"
+                        class="bbn-hsmargin"/>
+            <span :class="['bbn-b', 'bbn-i', {'bbn-primary-text-alt': appuiTree}]"><?=_('Root')?></span>
           </div>
         </bbn-toolbar>
         <div class="bbn-flex-fill">
@@ -20,9 +32,12 @@
                       ref="listOptions"
                       :draggable="true"
                       @move="moveOpt"
+                      :data="dataObj"
                       :menu="treeMenu"
+                      :multiple="false"
                       :sortable="true"
                       :storage="true"
+                      @dataloaded="delete dataObj.appuiTree"
                       :storage-full-name="storageName"/>
           </div>
         </div>

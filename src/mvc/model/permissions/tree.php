@@ -12,7 +12,7 @@ if ($model->hasData('data', true)
     && ($opt = $model->inc->options->option($model->data['data']['id']))
 ) {
   $appui = $model->inc->options->fromCode('appui');
-  $root = $model->inc->options->fromCode('permissions', $appui);
+  $root = $model->inc->options->fromCode('permissions');
   $mode = $model->data['data']['mode'] === 'options' ? 'options' : 'access';
   $from = $model->inc->options->fromCode($mode, $root);
 

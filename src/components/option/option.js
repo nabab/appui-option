@@ -17,7 +17,7 @@
         return this.closest('bbn-container').closest('bbn-container').getComponent()
       },
       isAdmin(){
-        return appui.app.user.isAdmin
+        return appui.user.isAdmin
       }
     },
     methods: {

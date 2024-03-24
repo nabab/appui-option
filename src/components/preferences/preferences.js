@@ -8,10 +8,10 @@
     },
     computed: {
       users(){
-        return appui.app.users
+        return appui.users
       },
       groups(){
-        return appui.app.groups
+        return appui.groups
       }
     },
     methods: {

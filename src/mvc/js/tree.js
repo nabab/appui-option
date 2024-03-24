@@ -1,5 +1,5 @@
 // Javascript Document
-(()=>{
+(() => {
   return {
     mixins: [bbn.cp.mixins.basic],
     data() {
@@ -12,7 +12,7 @@
           text: '',
           code: null,
           showUsage: {
-            tree : false,
+            tree: false,
             occourences: false,
             dataTables: false
           }
@@ -20,15 +20,15 @@
         treeMenu: [{
           text: bbn._('Delete'),
           icon: 'nf nf-fa-times',
-          action: node => this.deleteOption(node)
+          action: this.deleteOption
         }, {
           text: bbn._('Import'),
           icon: 'nf nf-fa-arrow_up',
-          action: node => this.importOption(node)
+          action: this.importOption
         }, {
           text: bbn._('Export option for database'),
           icon: 'nf nf-fa-arrow_down',
-          action: node => this.exportOption(node)
+          action: this.exportOption
         }, {
           text: bbn._('Export option for import'),
           icon: 'nf nf-fa-arrow_down',
@@ -50,38 +50,36 @@
           icon: 'nf nf-fa-arrow_down',
           action: node => this.exportOption(node, 'full')
         }],
-        isAdmin: appui.app.user.isAdmin,
+        isAdmin: appui.user.isAdmin,
         appuiTree: false,
+        dataObj: {
+          appuiTree: false,
+        },
         routerRoot: appui.plugins['appui-option'] + '/tree/'
       }
     },
     computed: {
-      storageName(){
+      storageName() {
         if (this.closest('bbn-floater')) {
           return undefined;
         }
         return 'appui-option-tree';
       },
-      hasChildren(){
-        if ( this.option ){
+      hasChildren() {
+        if (this.option) {
           return !!JSON.parse(this.option)['num_children']
         }
       },
-      currentUrl(){
-        if ( this.$refs.router && this.$refs.router.routed ){
-          // URL is like option/5ccdd4ef2c5c11eca47652540000cfbe/values
-          let url = this.$refs.router.getCurrentURL().split('/');
-          bbn.fn.log(["URL LEN", url]);
-          if ((url.length > 2) && url[2]) {
-            return '/' + url.pop();
-          }
+      currentUrl() {
+        if (this.$refs.router && this.$refs.router.routed) {
+          return '/' + this.$refs.router.getCurrentURL();
         }
 
         return '';
       }
     },
     methods: {
-      importOption(node){
+      importOption(node) {
         this.closest('bbn-container').getPopup({
           title: 'Import into option ' + node.data.text,
           component: 'appui-option-import',
@@ -99,9 +97,9 @@
         })
       },
       exportOption(node, mode) {
-        let data = {id: node.data.id, mode: mode || 'single'};
+        let data = { id: node.data.id, mode: mode || 'single' };
         this.post(this.root + 'actions/export', data, (d) => {
-          if ( d.success ){
+          if (d.success) {
             this.getPopup({
               content: '<div class="bbn-overlay"><textarea class="bbn-100">' + d.export + '</textarea></div>',
               title: 'Export option ' + node.data.text + (node.data.code ? ' (' + node.data.code + ')' : ''),
@@ -114,53 +112,51 @@
           }
         })
       },
-      deleteOption(node){
-        bbn.fn.log(arguments);
+      deleteOption(node) {
+        bbn.fn.log(['ON DELETE OPTION', arguments]);
       },
-      deleteCache(node){
+      deleteCache(node) {
         this.post(this.root + 'actions/delete_cache', (d) => {
-          if ( d.success ){
+          if (d.success) {
             appui.success();
             this.$refs.listOptions.reset();
           }
-          else{
+          else {
             appui.error();
           }
         })
       },
-      treeMapper(d, l, n){
+      treeMapper(d, l, n) {
         if (!n.data) {
           n.data = bbn.fn.createOject();
         }
-        n.data.text = d.text || (d.alias && d.alias.text ? '<em style="color:#4285f4">'+ d.alias.text +'</em>' : d.code);
-        if ( (d.code !== undefined) && (d.code !== null) ){
+        n.data.text = d.text || (d.alias && d.alias.text ? '<em style="color:#4285f4">' + d.alias.text + '</em>' : d.code);
+        if ((d.code !== undefined) && (d.code !== null)) {
           n.data.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
         }
         return n;
       },
-      treeNodeActivate(node){
+      treeNodeActivate(node) {
         if (node && node.data && node.data.id) {
           this.optionSelected.id = node.data.id;
           this.optionSelected.code = node.data.code;
           this.optionSelected.text = node.data.text;
-          this.$nextTick(() => {
-            bbn.fn.log([this.root + 'tree/option/' + node.data.id + this.currentUrl, this.currentUrl])
-            bbn.fn.link(this.root + 'tree/option/' + node.data.id + this.currentUrl, true);
-          })
+          bbn.fn.log(['treeNodeActivate', this.root + 'tree/option/' + node.data.id, this.currentUrl])
+          bbn.fn.link(this.root + 'tree/option/' + node.data.id, true);
         }
       },
-      moveOpt(node, nodeDest, ev){
+      moveOpt(node, nodeDest, ev) {
         if (ev.cancelable) {
           ev.preventDefault();
           this.post(this.root + 'actions/move', {
             idNode: node.data.id,
             idParentNode: nodeDest.data.id
           }, d => {
-            if ( d.success ){
+            if (d.success) {
               appui.success(bbn._('Option successfully moved'));
               this.getRef('listOptions').move(node, nodeDest, true);
             }
-            else{
+            else {
               appui.error(bbn._('Error!! Option not moved'))
             }
           });
@@ -170,8 +166,8 @@
         }
       }
     },
-    beforeMount(){
-      if ( this.source.option ){
+    beforeMount() {
+      if (this.source.option) {
         let opt = JSON.parse(this.source.option.info);
         this.cfg = this.source.option.cfg;
         this.option = this.source.option.info
@@ -182,21 +178,14 @@
     },
     watch: {
       appuiTree(v) {
-        this.post(this.root + 'tree/typeTree', {
-          appuiTree: v
-        }, d => {
-          if ( this.source.cat !== d.data.id_cat ){
-            this.$set(this.source, 'cat', d.data.id_cat);
-            if ( this.optionSelected.id.length > -1 ){
-              this.optionSelected.id = '';
-              this.optionSelected.text = '';
-              this.optionSelected.code = null;
-              this.option = '{}';
-              this.cfg = '{}';
-            }
-            this.$refs.listOptions.reload();
-          }
-        });
+        this.dataObj.appuiTree = v;
+        this.optionSelected.id = '';
+        this.optionSelected.text = '';
+        this.optionSelected.code = null;
+        this.option = '{}';
+        this.cfg = '{}';
+        this.$refs.listOptions.updateData();
+        delete this.dataObj.appuiTree;
       }
     }
   }

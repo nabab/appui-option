@@ -9,8 +9,8 @@
 $mgr    = $model->inc->user->getManager();
 $cfg    = $model->inc->user->getClassCfg();
 $src    = $model->inc->perm->getSources(false);
-$access = $model->inc->options->fromCode('access', 'permissions', 'appui');
-$options = $model->inc->options->fromCode('options', 'permissions', 'appui');
+$access = $model->inc->options->fromCode('access', 'permissions');
+$options = $model->inc->options->fromCode('options', 'permissions');
 return $model->addData([
   'sources' => $src,
   'groups' => $mgr->groups(),
