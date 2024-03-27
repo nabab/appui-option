@@ -16,7 +16,7 @@
               appui.success();
             }
             else{
-              appui.error();
+              appui.error(d);
             }
           });
         }
@@ -30,7 +30,7 @@
                 appui.success(bbn._('Deleted'));
               }
               else {
-                appui.error();
+                appui.error(d);
               }
             });
           });

@@ -35,7 +35,7 @@
                 :breadcrumb="isMobile"
     >
       <bbns-container url="values"
-                      :static="true"
+                      :fixed="true"
                       title="<?= _('Values') ?>"
                       component="appui-option-form"
                       :source="source.option"
@@ -45,7 +45,7 @@
                       icon="nf nf-fa-list_alt"
       ></bbns-container>
       <bbns-container url="cfg"
-                      :static="true"
+                      :fixed="true"
                       title="<?= _('Configuration') ?>"
                       component="appui-option-config"
                       :load="false"
@@ -55,7 +55,7 @@
                       icon="nf nf-fa-gears"
       ></bbns-container>
       <bbns-container url="preferences"
-                      :static="true"
+                      :fixed="true"
                       title="<?= _('My preferences') ?>"
                       component="appui-option-preferences"
                       bcolor="yellowgreen"
@@ -65,7 +65,7 @@
                       v-if="isAdmin"
       ></bbns-container>
       <bbns-container url="upreferences"
-                      :static="true"
+                      :fixed="true"
                       title="<?= _('Users preferences') ?>"
                       component="appui-option-preferences"
                       bcolor="tomato"
@@ -75,7 +75,7 @@
                       v-if="isAdmin"
       ></bbns-container>
       <bbns-container url="stats"
-                      :static="true"
+                      :fixed="true"
                       title="<?= _('Stats') ?>"
                       component="appui-option-stats"
                       bcolor="skyblue"
@@ -84,7 +84,7 @@
                       :source="source"
       ></bbns-container>
       <bbns-container url="password"
-                      :static="true"
+                      :fixed="true"
                       title="<?= _('Password') ?>"
                       component="appui-option-psw"
                       bcolor="#32a852"

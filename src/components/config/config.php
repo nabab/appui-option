@@ -111,16 +111,16 @@
                  v-model="data.cfg.inheritance"
                  :disabled="!!source.cfg.frozen || showScfg"
                  :source="[{
-                    text: '<?= \bbn\str::escape(_('None')) ?>',
+                    text: '<?= st::escape(_('None')) ?>',
                     value: '',
                   }, {
-                    text: '<?= \bbn\str::escape(_('Only children')) ?>',
+                    text: '<?= st::escape(_('Only children')) ?>',
                     value: 'children',
                   }, {
-                    text: '<?= \bbn\str::escape(_('Cascade')) ?>',
+                    text: '<?= st::escape(_('Cascade')) ?>',
                     value: 'cascade',
                   }, {
-                    text: '<?= \bbn\str::escape(_('Default')) ?>',
+                    text: '<?= st::escape(_('Default')) ?>',
                     value: 'default',
                   }]"/>
 
@@ -216,13 +216,13 @@
                  v-model="data.cfg.i18n_inheritance"
                  :disabled="!!source.cfg.frozen || showScfg"
                  :source="[{
-                    text: '<?= \bbn\str::escape(_('None')) ?>',
+                    text: '<?= st::escape(_('None')) ?>',
                     value: '',
                   }, {
-                    text: '<?= \bbn\str::escape(_('Only children')) ?>',
+                    text: '<?= st::escape(_('Only children')) ?>',
                     value: 'children',
                   }, {
-                    text: '<?= \bbn\str::escape(_('Cascade')) ?>',
+                    text: '<?= st::escape(_('Cascade')) ?>',
                     value: 'cascade',
                   }]"/>
 

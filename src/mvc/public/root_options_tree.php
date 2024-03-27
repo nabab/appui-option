@@ -13,7 +13,7 @@ if( !empty($ctrl->post['id']) ){
 }
 
 $ctrl->addData([
-   'cat' => $ctrl->inc->user->isDev() ? $ctrl->inc->options->fromRootCode($id) : $ctrl->inc->options->fromCode($id)
+   'cat' => $ctrl->inc->user->isDev() ? $ctrl->inc->options->fromCode($id) : $ctrl->inc->options->fromCode($id)
   ]);
 
 $ctrl->obj->data = $ctrl->data;

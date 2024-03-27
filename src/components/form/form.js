@@ -105,7 +105,7 @@
                 this.list.source.options[idx] = d.data;
               }
               else{
-                appui.error();
+                appui.error(d);
               }
             }
             else {
@@ -134,7 +134,7 @@
           appui.success(bbn._('Saved'));
         }
         else {
-          appui.error();
+          appui.error(d);
         }
       },
       openI18n(){
