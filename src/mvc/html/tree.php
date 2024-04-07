@@ -55,9 +55,9 @@
         <div class="bbn-overlay bbn-middle"
              v-else>
           <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
-              <div class="bbn-xxxl bbn-c">
-                <?= _("Select Option") ?>
-              </div>
+            <div class="bbn-xxxl bbn-c">
+              <?= _("Select Option") ?>
+            </div>
           </div>
         </div>
       </div>

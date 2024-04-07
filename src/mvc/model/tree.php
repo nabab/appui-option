@@ -1,8 +1,19 @@
 <?php
 
-/** @var $model \bbn\Mvc\Model */
+/** @var bbn\Mvc\Model $model */
+/** @var bbn\Appui\Option $model->inc->options */
+
 
 if ($model->hasData('main')) {
+  if ($model->hasData('id_option', true)) {
+    $model->addData([
+      'option' => [
+        'info' => $model->inc->options->option($model->data['id_option']),
+        'cfg' => $model->inc->options->getCfg($model->data['id_option'])
+      ]
+    ]);
+  }
+
   return $model->addData([
     'cat' => $model->inc->options->fromCode(false),
     'is_dev' => $model->inc->user->isDev(),

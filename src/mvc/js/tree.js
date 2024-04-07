@@ -67,7 +67,7 @@
       },
       hasChildren() {
         if (this.option) {
-          return !!JSON.parse(this.option)['num_children']
+          return !!this.option?.num_children
         }
       },
       currentUrl() {
@@ -168,12 +168,18 @@
     },
     beforeMount() {
       if (this.source.option) {
-        let opt = JSON.parse(this.source.option.info);
+        let opt = this.source.option.info;
         this.cfg = this.source.option.cfg;
         this.option = this.source.option.info
         this.optionSelected.id = opt.id;
         this.optionSelected.code = opt.code;
         this.optionSelected.text = opt.text;
+      }
+      else {
+        const ct = this.closest('bbn-container');
+        if (ct.currentCurrent !== ct.currentURL) {
+          bbn.fn.warning("JJJJJJJJJJJJ")
+        }
       }
     },
     watch: {
