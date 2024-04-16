@@ -16,7 +16,7 @@
                class="bbn-w-50"
                :type="inputType"
                :buttonRight="'nf nf-fa-eye' + (inputType === 'text' ? '_slash' : '')"
-               @clickRightButton="inputType = inputType === 'text' ? 'password' : 'text'"
+               @clickrightbutton="inputType = inputType === 'text' ? 'password' : 'text'"
     ></bbn-input>
     <bbn-button icon="nf nf-mdi-key_plus"
                 :title="_('Change Passwod')"
