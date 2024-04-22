@@ -1,10 +1,10 @@
 (() => {
   return {
+    mixins: [bbn.cp.mixins.basic],
     data(){
-      let src = this.source.row || this.source;
       return {
         root: appui.plugins['appui-option'] + '/',
-        currentSource: src
+        currentSource: this.source.row || this.source
       }
     },
     computed: {

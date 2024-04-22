@@ -122,19 +122,26 @@
             this.$refs.listOptions.reset();
           }
           else {
-            appui.error();
+            appui.error(d);
           }
         })
       },
-      treeMapper(d, l, n) {
-        if (!n.data) {
-          n.data = bbn.fn.createOject();
+      treeMapper(node) {
+        const d = node.data;
+        if (!d.text && d.alias?.text) {
+          d.text = '<em style="var(--primary-background)">' + d.alias.text;
+          if (!d.code && d.alias.code) {
+            d.text += '&nbsp; <span class="bbn-grey"> (' + d.alias.code + ')</span>';
+          }
+
+          d.text += '</em>';
         }
-        n.data.text = d.text || (d.alias && d.alias.text ? '<em style="color:#4285f4">' + d.alias.text + '</em>' : d.code);
-        if ((d.code !== undefined) && (d.code !== null)) {
-          n.data.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
+
+        if (![undefined, null].includes(d.code)) {
+          d.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
         }
-        return n;
+
+        return node;
       },
       treeNodeActivate(node) {
         if (node && node.data && node.data.id) {

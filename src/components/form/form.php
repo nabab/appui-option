@@ -5,18 +5,19 @@
           :source="currentSource"
           @success="success"
           :validation="beforeSend"
-          :scrollable="!inPopup"
->
+          :scrollable="!inPopup">
   <div class="bbn-grid-fields bbn-padded">
     <div v-if="cfg.show_id"><?= _('ID') ?></div>
-    <div v-if="cfg.show_id" v-text="currentSource.id"></div>
+    <div v-if="cfg.show_id"
+         v-text="currentSource.id"/>
+
     <div v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"><?= _('Text') ?></div>
-    <div class="bbn-flex-width"
-         v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)">
+    <div v-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)">
       <bbn-input v-model="currentSource.text"
-                 class="bbn-flex-fill"/>
+                 class="bbn-wide"
+                 :nullable="!!currentSource.id_alias"/>
       <div v-if="currentTranslation !== false"
-           class="bbn-vmiddle bbn-left-space bbn-radius bbn-hspadded bbn-secondary bbn-unselectable bbn-p"
+           class="bbn-iblock bbn-vmiddle bbn-left-space bbn-radius bbn-hspadded bbn-secondary bbn-unselectable bbn-p"
            :title="_('Current translations')"
            @click="openI18n">
         <i class="nf nf-fa-flag"/>
@@ -24,17 +25,21 @@
               class="bbn-left-sspace bbn-b"/>
       </div>
     </div>
+
     <div v-if="cfg.show_code && !schemaHasField('code')"><?= _('Code') ?></div>
     <bbn-input v-if="cfg.show_code && !schemaHasField('code')"
                v-model="currentSource.code"
-    ></bbn-input>
-    <template v-for="sch in currentComp.schema" v-if="currentComp.schema && showField(sch)">
-      <div v-text="sch.title"></div>
+               class="bbn-wide"
+               :nullable="!!currentSource.id_alias"/>
+
+    <template v-for="sch in currentComp.schema"
+              v-if="currentComp.schema && showField(sch)">
+      <div v-text="sch.title"/>
       <bbn-field mode="write"
                 v-bind="sch"
-                v-model="currentSource[sch.field]"
-      ></bbn-field>
+                v-model="currentSource[sch.field]"/>
     </template>
+
     <div v-if="cfg.show_alias && !schemaHasField('id_alias')"
         v-text="cfg.alias_name || '<?= bbn\Str::escapeSquotes(_('Alias')) ?>'">
     </div>
@@ -52,17 +57,16 @@
                     class="bbn-w-100"
                     v-model="currentSource.id_alias"/>
     </div>
+
     <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"><?= _('Icon') ?></div>
     <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"
         class="bbn-middle"
-        style="justify-content: flex-start"
-    >
+        style="justify-content: flex-start">
       <div class="bbn-box bbn-xspadded bbn-right-sspace">
         <i :class="['bbn-xxxlarge', 'bbn-block', currentSource.icon]"
           :title="currentSource.icon"
-          v-if="currentSource.icon"
-        ></i>
-        <div style="width: 2em; height: 2em"></div>
+          v-if="currentSource.icon"/>
+        <div style="width: 2em; height: 2em"/>
       </div>
       <bbn-button @click="selectIcon"><?= _("Browse") ?></bbn-button>
       <bbn-button v-if="currentSource.icon"
@@ -70,15 +74,15 @@
                   class="bbn-left-sspace"
       ><?= _("Clear") ?></bbn-button>
     </div>
+
     <div v-if="cfg.categories && !schemaHasField('tekname')"><?= _('Tekname') ?></div>
     <bbn-input v-if="cfg.categories && !schemaHasField('tekname')"
-              v-model="currentSource.tekname"
-    ></bbn-input>
+              v-model="currentSource.tekname"/>
+
     <div v-if="cfg.show_value"><?= _('Value') ?></div>
     <div v-if="cfg.show_value"
-         style="height: 300px"
-    >
-      <bbn-json-editor v-model="currentSource.value"></bbn-json-editor>
+         style="height: 300px">
+      <bbn-json-editor v-model="currentSource.value"/>
     </div>
   </div>
 </bbn-form>

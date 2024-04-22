@@ -26,8 +26,8 @@
         return st;
       },
       treeMapper(d, l, n){
-        n.text = this.getText(d);
-        return n;
+        d.text = this.getText(d);
+        return d;
       },
       optionSelect(d) {
         bbn.fn.log("SDELECT", d);

@@ -32,8 +32,7 @@
                 :nav="true"
                 :master="true"
                 :show-switch="false"
-                :breadcrumb="isMobile"
-    >
+                :breadcrumb="isMobile">
       <bbns-container url="values"
                       :fixed="true"
                       title="<?= _('Values') ?>"
@@ -42,8 +41,7 @@
                       :load="false"
                       bcolor="teal"
                       fcolor="white"
-                      icon="nf nf-fa-list_alt"
-      ></bbns-container>
+                      icon="nf nf-fa-list_alt"/>
       <bbns-container url="cfg"
                       :fixed="true"
                       title="<?= _('Configuration') ?>"
@@ -52,8 +50,7 @@
                       :source="source"
                       bcolor="sandybrown"
                       fcolor="white"
-                      icon="nf nf-fa-gears"
-      ></bbns-container>
+                      icon="nf nf-fa-gears"/>
       <bbns-container url="preferences"
                       :fixed="true"
                       title="<?= _('My preferences') ?>"
@@ -62,8 +59,7 @@
                       fcolor="white"
                       icon="nf nf-mdi-account_settings_variant"
                       :source="source"
-                      v-if="isAdmin"
-      ></bbns-container>
+                      v-if="isAdmin"/>
       <bbns-container url="upreferences"
                       :fixed="true"
                       title="<?= _('Users preferences') ?>"
@@ -72,8 +68,7 @@
                       fcolor="white"
                       icon="nf nf-fa-users"
                       :source="source"
-                      v-if="isAdmin"
-      ></bbns-container>
+                      v-if="isAdmin"/>
       <bbns-container url="stats"
                       :fixed="true"
                       title="<?= _('Stats') ?>"
@@ -81,8 +76,7 @@
                       bcolor="skyblue"
                       fcolor="white"
                       icon="nf nf-fa-bar_chart"
-                      :source="source"
-      ></bbns-container>
+                      :source="source"/>
       <bbns-container url="password"
                       :fixed="true"
                       title="<?= _('Password') ?>"
@@ -91,8 +85,7 @@
                       fcolor="white"
                       icon="nf nf-mdi-key"
                       :source="source"
-                      v-if="isAdmin"
-      ></bbns-container>
+                      v-if="isAdmin"/>
     </bbn-router>
   </div>
 </div>
