@@ -174,7 +174,7 @@
       }
     },
     beforeMount() {
-      if (this.source.option) {
+      if (this.source.option?.info) {
         let opt = this.source.option.info;
         this.cfg = this.source.option.cfg;
         this.option = this.source.option.info
