@@ -129,16 +129,16 @@
       treeMapper(node) {
         const d = node.data;
         if (!d.text && d.alias?.text) {
-          d.text = '<em style="var(--primary-background)">' + d.alias.text;
+          node.text = '<em style="var(--primary-background)">' + d.alias.text;
           if (!d.code && d.alias.code) {
-            d.text += '&nbsp; <span class="bbn-grey"> (' + d.alias.code + ')</span>';
+            node.text += '&nbsp; <span class="bbn-grey"> (' + d.alias.code + ')</span>';
           }
 
-          d.text += '</em>';
+          node.text += '</em>';
         }
 
         if (![undefined, null].includes(d.code)) {
-          d.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
+          node.text += ' &nbsp; <span class="bbn-grey"> (' + d.code + ')</span>';
         }
 
         return node;
