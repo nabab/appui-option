@@ -3,7 +3,19 @@
 use bbn\X;
 /** @var $ctrl \bbn\Mvc\Controller */
 if ($ctrl->hasArguments() && !empty($ctrl->post)) {
-  $ctrl->addToObj('./permissions/'.X::join($ctrl->arguments, '/'), $ctrl->post, true);
+  $ok = true;
+  foreach ($ctrl->arguments as $v) {
+    if (strpos($v, '../') !== false) {
+      $ok = false;
+    }
+  }
+
+  if ($ok && $ctrl->controllerExists('./permissions/'.X::join($ctrl->arguments, '/'))) {
+    $ctrl->obj = $ctrl->addToObj('./permissions/'.X::join($ctrl->arguments, '/'), $ctrl->post, true);
+  }
+  else {
+    $ctrl->obj = ['success' => false, 'error' => 'Invalid path'];
+  }
 }
 else {
   $ctrl->combo(_("Access control"), true);
