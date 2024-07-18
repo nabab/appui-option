@@ -3,8 +3,17 @@
   return {
     mixins: [bbn.cp.mixins.basic],
     data() {
+      const root = appui.plugins['appui-option'] + '/';
+      let currentTab = 'values';
+      if (bbn.env.path.indexOf(root + 'tree/option/') === 0) {
+        const last = bbn.env.path.split('/').pop();
+        if (['values', 'cfg', 'preferences', 'upreferences', 'stats', 'password'].includes(last)) {
+          currentTab = last;
+        }
+      }
       return {
-        root: appui.plugins['appui-option'] + '/',
+        root,
+        currentTab,
         option: '{}',
         cfg: '{}',
         optionSelected: {
@@ -148,8 +157,14 @@
           this.optionSelected.id = node.data.id;
           this.optionSelected.code = node.data.code;
           this.optionSelected.text = node.data.text;
-          bbn.fn.log(['treeNodeActivate', this.root + 'tree/option/' + node.data.id, this.currentUrl])
-          bbn.fn.link(this.root + 'tree/option/' + node.data.id, true);
+          bbn.fn.log(['treeNodeActivate', this.root + 'tree/option/' + node.data.id, this.currentTab])
+          const router = this.getRef('router');
+          if (router) {
+            router.route('option/' + node.data.id + '/' + this.currentTab)
+          }
+          else {
+            bbn.fn.link(this.root + 'tree/option/' + node.data.id + '/' + this.currentTab, true);
+          }
         }
       },
       moveOpt(node, nodeDest, ev) {

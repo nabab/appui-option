@@ -3,7 +3,7 @@
           :action="root + 'actions/cfg'"
           :source="data"
           :validation="beforeSend"
-          refs="config"
+          ref="config"
           @success="onSuccess"
           :scrollable="!inPopup">
   <div class="bbn-padded">
