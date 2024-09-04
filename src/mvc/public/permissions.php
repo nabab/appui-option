@@ -14,7 +14,8 @@ if ($ctrl->hasArguments() && !empty($ctrl->post)) {
     $ctrl->obj = $ctrl->addToObj('./permissions/'.X::join($ctrl->arguments, '/'), $ctrl->post, true);
   }
   else {
-    $ctrl->obj = ['success' => false, 'error' => 'Invalid path'];
+    $ctrl->obj->success = false;
+    $ctrl->obj->error = _('Invalid path');
   }
 }
 else {
