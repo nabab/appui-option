@@ -87,22 +87,16 @@
         });
       },
       mapTable(row){
-        if ( this.schema && this.schema.length && row.value ){
-          let val = typeof row.value === 'string' ? JSON.parse(row.value, (k, v) => {
-            if ( 'null' === v ){
-              v = null;
-            }
-            return v;
-          }) : row.value;
-          bbn.fn.iterate(val, (v, k) => {
-            this.$set(row, k, v);
-          })
-          bbn.fn.each(this.schema, obj => {
-            if ( row[obj.field] === undefined ){
-              this.$set(row, obj.field, obj.default !== undefined ? (obj.default === 'null' ? null : obj.default) : null);
-            }
-            else if ( (row[obj.field] !== undefined) && (obj.type !== undefined) && (obj.type.toLowerCase() === 'json') ){
-              row[obj.field] = JSON.stringify(row[obj.field]);
+        const value = row.value ? JSON.parse(row.value) : {};
+        if (this.schema && this.schema.length) {
+          bbn.fn.each(this.schema, v => {
+            if (v.field && !Object.hasOwn(row, v.field)) {
+              if (Object.hasOwn(value, v.field)) {
+                row[v.field] = value[v.field];
+              }
+              else {
+                row[v.field] = v.default === undefined ? null : v.default;
+              }
             }
           });
         }
@@ -236,6 +230,7 @@
     },
     components: {
       'appui-option-list-fixnum': {
+        mixins: [bbn.cp.mixins.basic],
         name: 'appui-option-list-fixnum',
         template: `
   <bbn-dropdown :source="src"
