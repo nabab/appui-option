@@ -1,6 +1,6 @@
 <?php
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 $perm =& $ctrl->inc->perm;
 $o =& $ctrl->inc->options;
 $cf = $o->getClassCfg();

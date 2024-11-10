@@ -1,7 +1,7 @@
 <?php
 
 use bbn\X;
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 if ($ctrl->hasArguments() && !empty($ctrl->post)) {
   $ok = true;
   foreach ($ctrl->arguments as $v) {

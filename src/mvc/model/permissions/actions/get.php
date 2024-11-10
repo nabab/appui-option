@@ -6,7 +6,7 @@
 
 use bbn\X;
 
-/** @var $model \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 $res = ['success' => false];
 if ($model->hasData('id', true)) {
   $row = $model->inc->options->option($model->data['id']);

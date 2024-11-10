@@ -4,7 +4,7 @@
  *
  **/
 
-/** @var $model \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 $res = ['success' => false];
 if (!empty($model->data['id_parent']) &&
     !empty($model->data['code'])  &&

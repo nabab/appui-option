@@ -1,6 +1,6 @@
 <?php
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 $ctrl->obj->res = 0;
 if ( !empty($ctrl->arguments[0]) ){
   /** @var \bbn\Appui\Option $o */

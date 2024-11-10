@@ -1,6 +1,6 @@
 <?php
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 // Case for the whole page
 if ( !empty($ctrl->post['data']) ){
   $ctrl->post = $ctrl->post['data'];

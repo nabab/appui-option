@@ -4,7 +4,7 @@
  *
  **/
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 
 $ctrl->data['routes'] = $ctrl->getRoutes();
 $ctrl->obj->res = $ctrl->getModel();

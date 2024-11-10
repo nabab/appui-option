@@ -1,7 +1,7 @@
 <?php
 use bbn\X;
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 $ctrl->obj->success = false;
 if ( isset($ctrl->post['text'], $ctrl->post['id']) ){
   $cfg = $ctrl->inc->options->getParentCfg($ctrl->post['id']);

@@ -1,6 +1,6 @@
 <?php
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 $ctrl->obj->success = false;
 if ( isset($ctrl->post['id'], $ctrl->post['num']) ){
   $o =& $ctrl->inc->options;

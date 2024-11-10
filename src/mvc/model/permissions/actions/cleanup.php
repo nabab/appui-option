@@ -7,7 +7,7 @@
 use bbn\X;
 use bbn\Str;
 
-/** @var $model \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 
 $res = ['success' => true, 'total' => 0, 'tested' => 0];
 foreach ($model->data as $id => $v) {

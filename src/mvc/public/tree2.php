@@ -1,6 +1,6 @@
 <?php
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 if ( !isset($ctrl->post['id']) ){
   $ctrl->addData([
     'cat' => $ctrl->inc->options->fromCode(false),

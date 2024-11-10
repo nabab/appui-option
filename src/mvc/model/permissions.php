@@ -4,7 +4,7 @@
  *
  **/
 
-/** @var $model \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 
 $mgr    = $model->inc->user->getManager();
 $cfg    = $model->inc->user->getClassCfg();

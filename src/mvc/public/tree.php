@@ -1,7 +1,7 @@
 <?php
 use bbn\Str;
 
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 if (empty($ctrl->post)) {
   if ($ctrl->hasArguments(2) && Str::isUid($ctrl->arguments[1])) {
     $ctrl->addData(['id_option' => $ctrl->arguments[1]]);

@@ -1,5 +1,5 @@
 <?php
-/** @var $model \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 $todo = [];
 $parents = [];
 $id_page = $model->inc->perm->getOptionId('access');

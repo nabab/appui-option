@@ -4,7 +4,7 @@
  *
  **/
 
-/** @var $model \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 $res = ['success' => false, 'data' => []];
 if ($model->hasData('id_option', true)) {
   $mgr = new bbn\User\Manager($model->inc->user);
