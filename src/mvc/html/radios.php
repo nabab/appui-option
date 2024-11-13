@@ -1,6 +1,6 @@
 <!-- HTML Document -->
 <bbn-dashboard>
-  <bbn-widget v-for="r of radios"
+  <bbn-widget bbn-for="r of radios"
               :title="r.name"
               :key="r.src"
               :buttons-right="[{text: _('Reset stream'), icon: 'nf nf-fa-refresh', action: reset}]"

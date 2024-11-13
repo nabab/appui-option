@@ -29,9 +29,9 @@
     </div>
   </bbn-pane>
   <bbn-pane :resizable="true" :collapsible="true">
-    <div class="bbn-flex-height" v-if="optionSelected.id.length">
+    <div class="bbn-flex-height" bbn-if="optionSelected.id.length">
       <div class="heightTop">
-        <div class="bbn-padded" v-if="optionSelected.id.length">
+        <div class="bbn-padded" bbn-if="optionSelected.id.length">
           <bbn-button icon="nf nf-fa-times"
                       @click="deleteSingleCache"
                       text="<?= _('Delete cache option') ?>"
@@ -47,10 +47,10 @@
         </div>
       </div>
       <div class="bbn-flex-fill bbn-padded">
-        <bbn-json-editor v-model="option" :readonly="true"></bbn-json-editor>
+        <bbn-json-editor bbn-model="option" :readonly="true"></bbn-json-editor>
       </div>
     </div>
-    <div class="bbn-h-100 bbn-middle" v-else>
+    <div class="bbn-h-100 bbn-middle" bbn-else>
       <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
           <span class="bbn-xxxl bbn-c">
             <?= _("Select Option") ?>

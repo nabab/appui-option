@@ -39,19 +39,19 @@
     <div class="bbn-permissions-form bbn-nopadding bbn-100">
       <div class="bbn-full-screen">
         <div class="bbn-flex-height">
-          <div v-if="selected" class="bbn-header bbn-bordered bbn-c bbn-middle" style="height: 39px; font-size: large">
+          <div bbn-if="selected" class="bbn-header bbn-bordered bbn-c bbn-middle" style="height: 39px; font-size: large">
             <b><?= _("Permission for") ?>
               <a :href="selected.path"
-                  v-text="selected.text"
+                  bbn-text="selected.text"
               ></a>
             </b>
           </div>
-          <h2 v-else><?= _("Select an item...") ?></h2>
+          <h2 bbn-else><?= _("Select an item...") ?></h2>
           <transition name="expand"
                       @enter="enter"
                       @after-enter="afterEnter"
                       @leave="leave">
-            <div v-if="selected" class="bbn-flex-fill bbn-margin">
+            <div bbn-if="selected" class="bbn-flex-fill bbn-margin">
               <bbn-scroll>
                 <div class="bbn-block bbn-w-100 bbn-widget bbn-no-border">
                   <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b','bbn-padded', {'header-no-border': !sections.configuration}]"
@@ -67,7 +67,7 @@
                     <?= _("Configuration") ?>
                   </div>
                   <transition name="expand">
-                    <div v-show="sections.configuration" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
+                    <div bbn-show="sections.configuration" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
                       <bbn-form :source="selected"
                                 :buttons="[]"
                                 :fixedFooter="false"
@@ -78,30 +78,30 @@
                           <i class="fa" :class="'fa-' + (selected.type ? selected.type : 'key')" style="font-size: large"></i>
 
                           <div><?= _('Code') ?></div>
-                          <div v-if="!selected.is_perm"
-                               v-text="selected.code"
+                          <div bbn-if="!selected.is_perm"
+                               bbn-text="selected.code"
                           ></div>
-                          <bbn-input v-else v-model="selected.code" maxlength="255"></bbn-input>
+                          <bbn-input bbn-else bbn-model="selected.code" maxlength="255"></bbn-input>
 
                           <div><?= _('Text') ?></div>
-                          <bbn-input v-model="selected.text" maxlength="255"
+                          <bbn-input bbn-model="selected.text" maxlength="255"
                                      @keydown.enter.prevent="submitConf"
                                      class="bbn-w-100"
                           ></bbn-input>
 
                           <div><?= _('Help') ?></div>
-                          <bbn-markdown v-model="selected.help"></bbn-markdown>
+                          <bbn-markdown bbn-model="selected.help"></bbn-markdown>
 
 
                           <div><?= _('Public') ?></div>
-                          <bbn-checkbox v-model="selected.public"></bbn-checkbox>
+                          <bbn-checkbox bbn-model="selected.public"></bbn-checkbox>
 
                           <div><?= _('Cascade') ?></div>
-                          <bbn-checkbox v-model="selected.cascade"></bbn-checkbox>
+                          <bbn-checkbox bbn-model="selected.cascade"></bbn-checkbox>
 
                           <div class="bbn-grid-full bbn-margin">
                             <bbn-button @click="submitConf" icon="nf nf-fa-save"><?= _("Save") ?></bbn-button>
-                            <bbn-button v-if="!selected.exist" @click="delPerm" icon="nf nf-fa-trash"><?= _("Delete") ?></bbn-button>
+                            <bbn-button bbn-if="!selected.exist" @click="delPerm" icon="nf nf-fa-trash"><?= _("Delete") ?></bbn-button>
                           </div>
                         </div>
                       </bbn-form>
@@ -122,7 +122,7 @@
                     <?= _("New permission (under this one)") ?>
                   </div>
                   <transition name="expand">
-                    <div v-show="sections.newPermission" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
+                    <div bbn-show="sections.newPermission" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
                       <bbn-form class="bbn-w-100"
                                 :buttons="[]"
                                 :fixedFooter="false"
@@ -131,21 +131,21 @@
                       >
                         <div class="bbn-grid-fields">
                           <div><?= _('Code') ?></div>
-                          <bbn-input v-model="newPerm.code"
+                          <bbn-input bbn-model="newPerm.code"
                                      required="required"
                                      class="bbn-w-100"
                                      @keydown.enter.prevent="submitNew"
                           ></bbn-input>
 
                           <div><?= _('Text') ?></div>
-                          <bbn-input v-model="newPerm.text"
+                          <bbn-input bbn-model="newPerm.text"
                                      class="bbn-w-100"
                                      required="required"
                                      @keydown.enter.prevent="submitNew"
                           ></bbn-input>
 
                           <div><?= _('Help') ?></div>
-                          <bbn-markdown v-model="newPerm.help"></bbn-markdown>
+                          <bbn-markdown bbn-model="newPerm.help"></bbn-markdown>
 
                           <div class="bbn-grid-full bbn-margin">
                             <bbn-button @click="submitNew" icon="nf nf-fa-save"><?= _("Save") ?></bbn-button>
@@ -167,7 +167,7 @@
                       ></i>
                     </span>
                     <div class="bbn-iblock"><?= _("Groups") ?></div>
-                    <div v-if="sections.groups" class="bbn-iblock bbn-s bbn-hlmargin">
+                    <div bbn-if="sections.groups" class="bbn-iblock bbn-s bbn-hlmargin">
                       <bbn-button @click="checkAllGroups"
                                   title="<?= _("Check all") ?>"
                                   style="padding: 0 4px"
@@ -181,18 +181,18 @@
                     </div>
                   </div>
                   <transition name="expand">
-                    <div v-show="sections.groups" class="bbn-padded">
+                    <div bbn-show="sections.groups" class="bbn-padded">
                       <ul style="list-style: none">
-                          <li v-for="g in source.groups">
-                            <bbn-checkbox v-if="!!selected.public"
+                          <li bbn-for="g in source.groups">
+                            <bbn-checkbox bbn-if="!!selected.public"
                                           :disabled="true"
                                           :checked="true"
                                           :label="g.nom || g.group"
                                           :key="g.id+'a'"
                             ></bbn-checkbox>
-                            <bbn-checkbox v-else
+                            <bbn-checkbox bbn-else
                                           @click="setGroupPerm(g)"
-                                          v-model="selected['group' + g.id]"
+                                          bbn-model="selected['group' + g.id]"
                                           :label="g.nom || g.group"
                                           :novalue="false"
                                           :key="g.id+'b'"
@@ -216,17 +216,17 @@
                     <?= _('Users') ?>
                   </div>
                   <transition name="expand">
-                    <div v-show="sections.users" class="bbn-padded">
+                    <div bbn-show="sections.users" class="bbn-padded">
                       <ul style="list-style: none">
-                          <li v-for="u in source.users">
-                            <bbn-checkbox v-if="!!selected.public || !!selected['group' + u.id_group]"
+                          <li bbn-for="u in source.users">
+                            <bbn-checkbox bbn-if="!!selected.public || !!selected['group' + u.id_group]"
                                           :disabled="true"
                                           :checked="true"
                                           :label="u.nom"
                                           :key="u.id+'a'"
                             ></bbn-checkbox>
-                            <bbn-checkbox v-else
-                                          v-model="selected['user' + u.id]"
+                            <bbn-checkbox bbn-else
+                                          bbn-model="selected['user' + u.id]"
                                           @click="setUserPerm(u)"
                                           :label="u.nom || u.username"
                                           :novalue="false"

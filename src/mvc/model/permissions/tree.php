@@ -83,19 +83,37 @@ if ($model->hasData('data', true)
             $parents = array_reverse($model->inc->options->parents($r['id']));
             if (in_array($access, $parents, true)) {
               $path_to_file = $model->inc->options->toPath($r['id'], '', $access);
+              $st = '';
+              foreach ($path_to_file as $p) {
+                $st .= $model->inc->options->code($p);
+              }
               if (file_exists($model->appPath().'mvc/public/'.$path_to_file.'.php')) {
                 $real = true;
               }
             }
-            else {
-              $plugin_name = $model->inc->options->code($parents[2]);
-              if ($model->inc->options->code($parents[1]) === 'appui') {
-                $plugin_name = 'appui-'.$plugin_name;
-              }
-              $path_to_file = $model->inc->options->toPath($r['id'], '', $parents[4]);
+            elseif (in_array($appui, $parents, true)) {
+              $plugin_name = 'appui-' . $model->inc->options->code($parents[4]);
+              $path_to_file = $model->inc->options->toPath($r['id'], '', $parents[6]);
               $url = $model->pluginUrl($plugin_name);
               if (file_exists($model->pluginPath($plugin_name).'mvc/public/'.$path_to_file.'.php')) {
                 $real = true;
+              }
+            }
+            else {
+              $id_plugins = $model->inc->options->fromCode('plugins');
+              if (in_array($id_plugins, $parents, true)) {
+                $plugin_name = $model->inc->options->code($parents[3]);
+                if ($model->inc->options->code($parents[1]) === 'appui') {
+                  $plugin_name = 'appui-'.$plugin_name;
+                }
+                $path_to_file = $model->inc->options->toPath($r['id'], '', $parents[5]);
+                $url = $model->pluginUrl($plugin_name);
+                if (file_exists($model->pluginPath($plugin_name).'mvc/public/'.$path_to_file.'.php')) {
+                  $real = true;
+                }
+              }
+              else {
+                throw new Exception(X::_("Invalid path for option ID %s", $r['id']));
               }
             }
 

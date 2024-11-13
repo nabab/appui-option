@@ -31,6 +31,13 @@
         if (this.selected) {
           return [
             {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("Configuration") + '</span>',
+              component: 'appui-option-permissions-configuration',
+              componentOptions: {
+                source: this.selected,
+                parent: this
+            	}
+            }, {
               header: '<span class="bbn-lg bbn-b">' + bbn._("Groups") + '</span>',
               component: 'appui-option-permissions-groups',
               componentOptions: {
@@ -48,13 +55,6 @@
                 source: this.selected,
                 parent: this
               }
-            }, {
-              header: '<span class="bbn-lg bbn-b">' + bbn._("Configuration") + '</span>',
-              component: 'appui-option-permissions-configuration',
-              componentOptions: {
-                source: this.selected,
-                parent: this
-            	}
             }, {
               header: '<span class="bbn-lg bbn-b">' + bbn._("New permission (under this one)") + '</span>',
               component: 'appui-option-permissions-new',
