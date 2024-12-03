@@ -214,7 +214,7 @@
         return n;
       },
       permissionSelect(n){
-        this.post(this.root + 'actions/get', {
+        this.post(this.root + 'data/get', {
           id: n.data.id,
           full: 1
         }, (d) => {

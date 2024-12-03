@@ -1,4 +1,4 @@
-<bbn-table :source="source.root +'actions/get_categories'"
+<bbn-table :source="source.root +'data/get_categories'"
            ref="table"
            :toolbar="[{
              text: '<?= _('Add') ?>',

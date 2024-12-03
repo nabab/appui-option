@@ -1,21 +1,67 @@
 <?php
 
+use bbn\X;
+
 /** @var bbn\Mvc\Model $model */
-/** @var bbn\Appui\Option $model->inc->options */
+/** @var bbn\Appui\Option $opt */
 
-
+$opt = $model->inc->options;
 if ($model->hasData('main')) {
   if ($model->hasData('id_option', true)) {
     $model->addData([
-      'option' => [
-        'info' => $model->inc->options->option($model->data['id_option']),
-        'cfg' => $model->inc->options->getCfg($model->data['id_option'])
-      ]
+      'info' => $model->getModel('./data/get_info', ['id' => $model->data['id_option']])
     ]);
   }
 
+  if ($model->inc->user->isAdmin()) {
+    $roots = $opt->getDefaults();
+    foreach ($roots as &$r) {
+      $r['plugins'] = $opt->getPlugins($r['id']);
+      foreach ($r['plugins'] as &$p) {
+        $p['rootOptions'] = $opt->fromCode('options', $p['id']);
+        $p['rootTemplates'] = $opt->fromCode('templates', $p['id']);
+        $p['rootPermissions'] = $opt->fromCode('permissions', $p['id']);
+        $p['rootPlugins'] = $opt->fromCode('plugins', $p['id']);
+      }
+
+      unset($p);
+      $r['rootOptions'] = $opt->fromCode('options', $r['id']);
+      $r['rootTemplates'] = $opt->fromCode('templates', $r['id']);
+      $r['rootPermissions'] = $opt->fromCode('permissions', $r['id']);
+      $r['rootPlugins'] = $opt->fromCode('plugins', $r['id']);
+  }
+
+    unset($r);
+    $model->addData(['roots' => $roots]);
+  }
+
+  if ($model->hasData('id_option', true)) {
+    $parents = $opt->parents($model->data['id_option']);
+    $num = count($parents);
+    if ($num === 1) {
+      $model->addData(['appId' => $model->data['id_option']]);
+    }
+    elseif ($num) {
+      foreach ($roots as $r) {
+        if ($r['id'] === $parents[count($parents) - 2]) {
+          $model->addData(['appId'  => $r['id']]);
+        }
+      }
+    }
+  }
+
+  if (!$model->hasData('appId', true)) {
+    $model->addData(['appId' => X::getField($roots, ['code' => BBN_APP_NAME], 'id')]);
+  }
+
+  if (!$model->hasData('appId', true)) {
+    throw new Exception(X::_("Impossible to find the app's root"));
+  }
+
   return $model->addData([
-    'cat' => $model->inc->options->fromCode(false),
+    'absoluteRoot' => $opt->getRoot(),
+    'plugins' => $opt->getPlugins(),
+    'rootTemplate' => $opt->fromCode('templates', $opt->getRoot()),
     'is_dev' => $model->inc->user->isDev(),
     'is_admin' => $model->inc->user->isAdmin(),
     'lng' => [
@@ -28,15 +74,15 @@ if ($model->hasData('main')) {
 
 if ($model->hasData('data', true)) {
   $data = $model->data['data'];
-  if (isset($data['appuiTree'])) {
-    $root = $data['appuiTree'] && $model->inc->user->isAdmin() ? $model->inc->options->getRoot() : $model->inc->options->fromCode(false);
+  if (empty($data['id']) && $model->inc->user->isAdmin()) {
+    $root = empty($data['appuiTree']) ? $opt->fromCode(false) : $opt->getRoot();
   }
-  else {
-    $root = !empty($data['id']) ? $data['id'] : ($model->inc->user->isAdmin() ? $model->inc->options->getRoot() : $model->inc->options->fromCode(false));
+  elseif (!empty($data['id'])) {
+    $root = $data['id'];
   }
 
-  $cfg = $model->inc->options->getCfg($root);
-  $arr = $model->inc->options->fullOptions($root);
+  $cfg = $opt->getCfg($root);
+  $arr = $opt->fullOptions($root);
   if (is_array($arr)) {
     return [
       'success' => true,

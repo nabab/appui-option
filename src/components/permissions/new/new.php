@@ -1,6 +1,6 @@
 <!-- HTML Document -->
 
-<div class="bbn-block bbn-lmargin bbn-lpadding bbn-bordered bbn-radius">
+<div class="bbn-block bbn-lmargin bbn-lpadding bbn-border bbn-radius">
   <bbn-form class="bbn-w-100"
             :action="parent.root + 'actions/create'"
             :source="newPerm"

@@ -3,7 +3,7 @@
   <bbn-pane :resizable="true" :collapsible="true" :size="400">
     <div class="bbn-flex-height">
       <div class="heightTop">
-        <div class="bbn-padded">
+        <div class="bbn-padding">
           <bbn-button icon="nf nf-fa-times"
                       @click="deleteCache"
                       text='<?= _("Delete cache") ?>'
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="bbn-flex-fill">
-        <div class="bbn-hpadded bbn-overlay">
+        <div class="bbn-hpadding bbn-overlay">
           <bbn-tree2 :source="source.root + 'tree'"
                     uid="id"
                     :root="0"
@@ -31,7 +31,7 @@
   <bbn-pane :resizable="true" :collapsible="true">
     <div class="bbn-flex-height" bbn-if="optionSelected.id.length">
       <div class="heightTop">
-        <div class="bbn-padded" bbn-if="optionSelected.id.length">
+        <div class="bbn-padding" bbn-if="optionSelected.id.length">
           <bbn-button icon="nf nf-fa-times"
                       @click="deleteSingleCache"
                       text="<?= _('Delete cache option') ?>"
@@ -46,12 +46,12 @@
           </bbn-button>
         </div>
       </div>
-      <div class="bbn-flex-fill bbn-padded">
+      <div class="bbn-flex-fill bbn-padding">
         <bbn-json-editor bbn-model="option" :readonly="true"></bbn-json-editor>
       </div>
     </div>
     <div class="bbn-h-100 bbn-middle" bbn-else>
-      <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadded">
+      <div class="bbn-card bbn-vmiddle bbn-c bbn-lpadding">
           <span class="bbn-xxxl bbn-c">
             <?= _("Select Option") ?>
           </span>

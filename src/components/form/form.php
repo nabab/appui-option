@@ -6,7 +6,7 @@
           @success="success"
           :validation="beforeSend"
           :scrollable="!inPopup">
-  <div class="bbn-grid-fields bbn-padded">
+  <div class="bbn-grid-fields bbn-padding">
     <div v-if="cfg.show_id"><?= _('ID') ?></div>
     <div v-if="cfg.show_id"
          v-text="currentSource.id"/>
@@ -17,7 +17,7 @@
                  class="bbn-wide"
                  :nullable="!!currentSource.id_alias"/>
       <div v-if="currentTranslation !== false"
-           class="bbn-iblock bbn-vmiddle bbn-left-space bbn-radius bbn-hspadded bbn-secondary bbn-unselectable bbn-p"
+           class="bbn-iblock bbn-vmiddle bbn-left-space bbn-radius bbn-hspadding bbn-secondary bbn-unselectable bbn-p"
            :title="_('Current translations')"
            @click="openI18n">
         <i class="nf nf-fa-flag"/>
@@ -62,7 +62,7 @@
     <div v-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"
         class="bbn-middle"
         style="justify-content: flex-start">
-      <div class="bbn-box bbn-xspadded bbn-right-sspace">
+      <div class="bbn-box bbn-xspadding bbn-right-sspace">
         <i :class="['bbn-xxxlarge', 'bbn-block', currentSource.icon]"
           :title="currentSource.icon"
           v-if="currentSource.icon"/>

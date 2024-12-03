@@ -9,7 +9,9 @@
           show_value: true,
           show_id: true
         },
-        isMobile: bbn.fn.isMobile()
+        isMobile: bbn.fn.isMobile(),
+        isReady: true,
+        data: this.source.option ? this.source : null
       }
     },
     computed: {
@@ -21,12 +23,15 @@
       }
     },
     methods: {
+      onRoute(route) {
+        this.$emit('route', route);
+      },
       linkOption(){
-        bbn.fn.link(appui.plugins['appui-option'] + "/list/" + this.source.option.id)
+        bbn.fn.link(appui.plugins['appui-option'] + "/list/" + this.data.option.id)
       },
       deleteCache(){
         this.post(appui.plugins['appui-option'] + '/actions/delete_cache',{
-          id: this.source.option.id
+          id: this.data.option.id
         }, (d) => {
           if ( d.success ){
             appui.success("Deleted");
@@ -38,7 +43,7 @@
       },
       removeOpt(){
         this.confirm(bbn._('Are you sure you want to delete this option?'), ()=>{
-          this.post(appui.plugins['appui-option'] + '/actions/remove', this.source.option, d => {
+          this.post(appui.plugins['appui-option'] + '/actions/remove', this.data.option, d => {
               if ( d.success ){
                 appui.success(bbn._('Deleted'));
                 this.tree.$refs.listOptions.selectedNode.$parent.reload();
@@ -50,7 +55,7 @@
       removeOptHistory(){
         this.confirm(bbn._('Are you sure you want to delete this option\'s history?'), () => {
           this.post(appui.plugins['appui-option'] + '/actions/remove',
-            bbn.fn.extend({}, this.source.option, {history : true}),
+            bbn.fn.extend({}, this.data.option, {history : true}),
             d => {
               if ( d.success ){
                 appui.success(bbn._('Deleted'));
@@ -76,13 +81,28 @@
               source: {
                 treeData: d.tree,
                 result: d.totalReferences,
-                option: this.source.option.text,
-                codeOpt: this.source.option.code || false,
+                option: this.data.option.text,
+                codeOpt: this.data.option.code || false,
               }
             });
           }
           else if ( d.success && !d.tree ){
             this.alert(bbn._('No occurrence of this option found'))
+          }
+        })
+      }
+    },
+    mounted() {
+      let id = this.source.id;
+      if (!id && this.closest('bbn-container').hasArguments()) {
+        id = this.closest('bbn-container').args[0];
+      }
+
+      if (!this.data && id) {
+        bbn.fn.post(appui.plugins['appui-option'] + '/tree/option', {id}, d => {
+          if (d.success) {
+            delete d.success;
+            this.data = d;
           }
         })
       }

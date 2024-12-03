@@ -1,5 +1,5 @@
 <div class="bbn-flex-height bbn-overlay">
-  <bbn-toolbar class="bbn-spadded bbn-flex-width">
+  <bbn-toolbar class="bbn-spadding bbn-flex-width">
     <div class="bbn-flex-fill bbn-b bbn-c bbn-large" v-text="source.option.text"></div>
     <div>
       <bbn-button icon="nf nf-fa-link"

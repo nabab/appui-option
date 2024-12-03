@@ -2,7 +2,7 @@
   <bbn-input type="hidden"
              v-model="currentValue"
              v-show="false"/>
-  <div class="bbn-vspadded bbn-w-100">
+  <div class="bbn-vspadding bbn-w-100">
     <span v-text="_('Current path') + ':'"
           class="bbn-iblock bbn-right-space"/>
     <span class="bbn-iblock"

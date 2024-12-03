@@ -6,7 +6,7 @@
           :validation="beforeSend"
           :scrollable="true"
 >
-<div class="bbn-grid-fields bbn-padded">
+<div class="bbn-grid-fields bbn-padding">
     <div>
       <label class="bbn-xl"><?= _('Password') ?></label>
       <i class="nf nf-mdi-key bbn-xl bbn-smargin"></i>

@@ -1,7 +1,7 @@
 <!-- HTML Document -->
 <bbn-splitter orientation="vertical">
   <bbn-pane :size="40">
-    <bbn-toolbar class="bbn-permissions-toolbar bbn-widget bbn-hspadded bbn-h-100">
+    <bbn-toolbar class="bbn-permissions-toolbar bbn-widget bbn-hspadding bbn-h-100">
       <bbn-dropdown :source="modes"
                     class="bbn-narrow"
                     bbn-model="mode"/>
@@ -60,7 +60,7 @@
       </bbn-pane>
       <bbn-pane :collapsible="true" :resizable="true">
         <div class="bbn-permissions-form bbn-100">
-          <div bbn-if="selected" class="bbn-overlay bbn-bordered">
+          <div bbn-if="selected" class="bbn-overlay bbn-border">
             <bbn-panelbar class="bbn-100"
                           :flex="true"
                           @select="changeSection"

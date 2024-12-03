@@ -1,13 +1,13 @@
 <div class="bbn-overlay">
   <bbn-splitter v-if="loaded">
     <bbn-pane>
-      <div class="bbn-flex-height bbn-padded">
+      <div class="bbn-flex-height bbn-padding">
         <div>
           <span><strong><?= _('Option used') ?>: </strong></span>
           <span v-text="result"></span>
           <span> <?= _('times') ?></span>
         </div>
-        <div class="bbn-flex-fill bbn-padded">
+        <div class="bbn-flex-fill bbn-padding">
           <div  class="bbn-overlay">
               <bbn-tree :source="treeData"></bbn-tree>
           </div>

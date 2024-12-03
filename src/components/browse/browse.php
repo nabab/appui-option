@@ -1,4 +1,4 @@
-<div class="bbn-overlay bbn-padded">
+<div class="bbn-overlay bbn-padding">
   <bbn-tree v-if="isMounted"
             class="tree"
             :source="root + 'tree'"

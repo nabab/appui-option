@@ -6,7 +6,7 @@
           ref="config"
           @success="onSuccess"
           :scrollable="!inPopup">
-  <div class="bbn-padded">
+  <div class="bbn-padding">
     <div class="bbn-w-100 bbn-c bbn-bottom-margin bbn-xl">
       <?= _('Configuration for items in option') ?> <span v-text="source.option.text"/> 
       &nbsp;
@@ -247,8 +247,8 @@
                   v-if="data.cfg.allow_children"/>
     </div>
     <div v-if="showScfg && data.cfg.allow_children" class="bbn-box bbn-top-sspace">
-      <div class="bbn-header bbn-c bbn-no-border-left bbn-no-border-top bbn-no-border-right bbn-spadded bbn-radius-top-left bbn-radius-top-right"><?= _('SubConfigurator') ?></div>
-      <div class="bbn-grid-fields bbn-padded">
+      <div class="bbn-header bbn-c bbn-no-border-left bbn-no-border-top bbn-no-border-right bbn-spadding bbn-radius-top-left bbn-radius-top-right"><?= _('SubConfigurator') ?></div>
+      <div class="bbn-grid-fields bbn-padding">
         <label style="width: 15em"><?= _("Categories' page") ?></label>
         <div>
           <bbn-checkbox v-model.number="data.scfg.categories"

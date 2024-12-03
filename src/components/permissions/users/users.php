@@ -1,5 +1,5 @@
 <!-- HTML Document -->
-<div class="bbn-block bbn-lmargin bbn-lpadding bbn-bordered bbn-radius">
+<div class="bbn-block bbn-lmargin bbn-lpadding bbn-border bbn-radius">
   <ul style="list-style: none">
     <li v-for="u in users">
       <bbn-checkbox v-if="!!source.public || !!source['group' + u.id_group]"

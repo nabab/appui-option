@@ -93,6 +93,7 @@
     },
     components: {
       form: {
+        mixins: [bbn.cp.mixins.basic],
         props: ['source'],
         template: `
 <bbn-form :action="root + 'actions/preferences/' + (source.id ? 'edit' : 'add')"
@@ -104,7 +105,7 @@
           @success="afterSubmit"
 >
   <div style="height: 500px">
-    <bbn-json-editor v-model="formData"></bbn-json-editor>
+    <bbn-json-editor bbn-model="formData"></bbn-json-editor>
   </div>
 </bbn-form>
         `,
@@ -134,9 +135,10 @@
         }
       },
       bits: {
+        mixins: [bbn.cp.mixins.basic],
         props: ['source'],
         template: `
-<bbn-json-editor v-model="bits" v-if="ready" readonly="readonly"></bbn-json-editor>
+<bbn-json-editor bbn-model="bits" bbn-if="ready" readonly="readonly"></bbn-json-editor>
         `,
         data(){
           return {
@@ -157,7 +159,7 @@
       },
       toolbar: {
         template: `
-<div class="bbn-flex-width bbn-header bbn-vmiddle bbn-h-100 bbn-spadded">
+<div class="bbn-flex-width bbn-header bbn-vmiddle bbn-h-100 bbn-spadding">
   <div class="bbn-flex-fill">
     <bbn-button icon="nf nf-fa-plus"
                 text="` + bbn._('Add') + `"

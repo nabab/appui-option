@@ -1,5 +1,7 @@
-<bbn-table :source="isMine ? source.prefs : source.uprefs"
+<bbn-table :source="appui.plugins['appui-option'] + '/data/preferences/list'"
            editable="popup"
+           :pageable="true"
+           :data="{id: source.option.id}"
            :toolbar="$options.components.toolbar"
            ref="table"
            :expander="$options.components.bits">

@@ -39,7 +39,7 @@
     <div class="bbn-permissions-form bbn-nopadding bbn-100">
       <div class="bbn-full-screen">
         <div class="bbn-flex-height">
-          <div bbn-if="selected" class="bbn-header bbn-bordered bbn-c bbn-middle" style="height: 39px; font-size: large">
+          <div bbn-if="selected" class="bbn-header bbn-border bbn-c bbn-middle" style="height: 39px; font-size: large">
             <b><?= _("Permission for") ?>
               <a :href="selected.path"
                   bbn-text="selected.text"
@@ -54,7 +54,7 @@
             <div bbn-if="selected" class="bbn-flex-fill bbn-margin">
               <bbn-scroll>
                 <div class="bbn-block bbn-w-100 bbn-widget bbn-no-border">
-                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b','bbn-padded', {'header-no-border': !sections.configuration}]"
+                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b','bbn-padding', {'header-no-border': !sections.configuration}]"
                        @click="openSection('configuration')"
                   >
                     <span style="position: absolute; left: 10px; top: 0;height:100%" class="bbn-middle">
@@ -67,7 +67,7 @@
                     <?= _("Configuration") ?>
                   </div>
                   <transition name="expand">
-                    <div bbn-show="sections.configuration" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
+                    <div bbn-show="sections.configuration" class="bbn-block bbn-w-100 bbn-padding bbn-widget bbn-no-border">
                       <bbn-form :source="selected"
                                 :buttons="[]"
                                 :fixedFooter="false"
@@ -109,7 +109,7 @@
                   </transition>
                 </div>
                 <div class="bbn-block bbn-w-100 bbn-widget bbn-no-border">
-                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b', 'bbn-padded', {'header-no-border': !sections.newPermission}]"
+                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b', 'bbn-padding', {'header-no-border': !sections.newPermission}]"
                        @click="openSection('newPermission')"
                   >
                     <span style="position: absolute; left: 10px; top: 0;height:100%" class="bbn-middle">
@@ -122,7 +122,7 @@
                     <?= _("New permission (under this one)") ?>
                   </div>
                   <transition name="expand">
-                    <div bbn-show="sections.newPermission" class="bbn-block bbn-w-100 bbn-padded bbn-widget bbn-no-border">
+                    <div bbn-show="sections.newPermission" class="bbn-block bbn-w-100 bbn-padding bbn-widget bbn-no-border">
                       <bbn-form class="bbn-w-100"
                                 :buttons="[]"
                                 :fixedFooter="false"
@@ -156,7 +156,7 @@
                   </transition>
                 </div>
                 <div class="bbn-permissions-groups bbn-block bbn-w-100 bbn-widget bbn-no-border">
-                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b', 'bbn-padded',{'header-no-border': !sections.groups}]"
+                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b', 'bbn-padding',{'header-no-border': !sections.groups}]"
                        @click="openSection('groups')"
                   >
                     <span style="position: absolute; left: 10px; top: 0;height:100%" class="bbn-middle">
@@ -181,7 +181,7 @@
                     </div>
                   </div>
                   <transition name="expand">
-                    <div bbn-show="sections.groups" class="bbn-padded">
+                    <div bbn-show="sections.groups" class="bbn-padding">
                       <ul style="list-style: none">
                           <li bbn-for="g in source.groups">
                             <bbn-checkbox bbn-if="!!selected.public"
@@ -203,7 +203,7 @@
                   </transition>
                 </div>
                 <div class="bbn-permissions-users bbn-block bbn-w-100 bbn-widget bbn-no-border">
-                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b', 'bbn-padded', {'header-no-border': !sections.users}]"
+                  <div :class="['bbn-header', 'bbn-c', 'bbn-p', 'bbn-b', 'bbn-padding', {'header-no-border': !sections.users}]"
                        @click="openSection('users')"
                   >
                     <span style="position: absolute; left: 10px; top: 0;height:100%" class="bbn-middle">
@@ -216,7 +216,7 @@
                     <?= _('Users') ?>
                   </div>
                   <transition name="expand">
-                    <div bbn-show="sections.users" class="bbn-padded">
+                    <div bbn-show="sections.users" class="bbn-padding">
                       <ul style="list-style: none">
                           <li bbn-for="u in source.users">
                             <bbn-checkbox bbn-if="!!selected.public || !!selected['group' + u.id_group]"

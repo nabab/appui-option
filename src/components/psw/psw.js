@@ -54,7 +54,7 @@
       }
     },
     mounted(){
-      bbn.fn.post( this.root + 'actions/get_psw',{
+      bbn.fn.post( this.root + 'data/get_psw',{
         id_option: this.source.option.id
       }, d =>{
         if ( d.success ){

@@ -111,7 +111,7 @@
         return obj
       },
       treeNodeActivate(d){
-        this.post(this.source.root + 'actions/get_info',{
+        this.post(this.source.root + 'data/get_info',{
           id: d.data.id
         }, ele => {
           if( ele.success ){

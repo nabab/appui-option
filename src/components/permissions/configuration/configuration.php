@@ -1,5 +1,5 @@
 <!-- HTML Document -->
-<div class="bbn-block bbn-lmargin bbn-lpadding bbn-bordered bbn-radius">
+<div class="bbn-block bbn-lmargin bbn-lpadding bbn-border bbn-radius">
   <bbn-form :action="(url || (parent.root + 'actions/')) + 'update'"
             @success="success"
             :source="source"

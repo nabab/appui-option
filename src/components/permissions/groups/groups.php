@@ -1,5 +1,5 @@
 <!-- HTML Document -->
-<div class="bbn-block bbn-lmargin bbn-lpadding bbn-bordered bbn-radius">
+<div class="bbn-block bbn-lmargin bbn-lpadding bbn-border bbn-radius">
   <div>
     <div class="bbn-iblock bbn-s bbn-hlmargin">
       <bbn-button @click="checkAllGroups"
