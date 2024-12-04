@@ -1,9 +1,13 @@
 <div class="bbn-flex-height bbn-overlay appui-option-option">
-  <div class="bbn-header bbn-spadding bbn-w-100 bbn-flex-width"
+  <div class="bbn-padding bbn-flex-width"
+       :style="{
+          backgroundColor: closest('bbn-container').closest('bbn-container').currentBcolor,
+          color: closest('bbn-container').closest('bbn-container').currentFcolor
+        }"
        bbn-if="data?.option">
     <div class="bbn-flex-fill bbn-b bbn-c bbn-large"
          bbn-text="data.option.text"/>
-    <div>
+    <div class="bbn-button-group" style="width: auto">
       <bbn-button icon="nf nf-fa-link"
                   @click="linkOption"
                   :text="'<?= _('Go to') ?> ' + data.option.text"
@@ -11,8 +15,7 @@
       <bbn-button icon="nf nf-fa-history"
                   @click="deleteCache"
                   text="<?= _('Delete cache option') ?>"
-                  :notext="true"
-                  class="bbn-hsmargin"/>
+                  :notext="true"/>
       <bbn-button icon="nf nf-fa-trash_o"
                   @click="removeOpt"
                   title="<?= _('Remove option from db') ?>"
@@ -23,7 +26,7 @@
                   title="<?= _('Remove option\'s history') ?>"
                   bbn-if="isAdmin"
                   text="<?= _('Remove history') ?>"
-                  class="bbn-hsmargin bbn-bg-red"
+                  class="bbn-bg-red"
                   :notext="true"/>
     </div>
   </div>
@@ -39,7 +42,6 @@
                 :breadcrumb="isMobile">
       <bbns-container :url="data.option.id + '/values'"
                       :fixed="true"
-                      bbn-if="!data.isApp"
                       title="<?= _('Values') ?>"
                       component="appui-option-form"
                       :source="data.option"
@@ -49,7 +51,6 @@
                       icon="nf nf-fa-list_alt"/>
       <bbns-container :url="data.option.id + '/cfg'"
                       :fixed="true"
-                      :disabled="data.isApp"
                       title="<?= _('Configuration') ?>"
                       component="appui-option-config"
                       :load="false"

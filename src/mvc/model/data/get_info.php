@@ -46,6 +46,7 @@ if (isset($model->inc->options)) {
         'prefs' => $prefs->getAll($model->data['id']),
         'isTemplate' => $o->isInTemplate($model->data['id']),
         'isApp' => ($option['code'] !== 'templates') && ($option['id_parent'] === $model->inc->options->getRoot()),
+        'parent' => $o->parent($model->data['id']),
         'template' => $o->getOptionTemplate($model->data['id']),
         'parentTemplate' => $o->parentTemplate($model->data['id']),
         'parentPlugin' => $o->getParentPlugin($model->data['id']),

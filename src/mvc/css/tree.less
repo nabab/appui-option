@@ -4,4 +4,22 @@
   .bbn-toolbar {
     height: 3.5em;
   }
+  .bbn-button {
+    &:disabled {
+      border-color: inherit !important;
+      padding: 0;
+    }
+    bbn-menu {
+      ul:first-child {
+        width: 100%;
+      }
+      bbn-menu, ul, li.bbn-reactive-block {
+        border: 0 !important;
+      }
+      li.bbn-reactive-block:hover,li.bbn-reactive-block:focus {
+        background-color: inherit;
+      }
+    }
+  }
+
 }

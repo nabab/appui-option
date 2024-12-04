@@ -61,7 +61,7 @@ if ($model->hasData('main')) {
   return $model->addData([
     'absoluteRoot' => $opt->getRoot(),
     'plugins' => $opt->getPlugins(),
-    'rootTemplate' => $opt->fromCode('templates', $opt->getRoot()),
+    'rootTemplates' => $opt->fromCode('templates', $opt->getRoot()),
     'is_dev' => $model->inc->user->isDev(),
     'is_admin' => $model->inc->user->isAdmin(),
     'lng' => [
