@@ -16,17 +16,17 @@
                :render="renderType"
                :width="100"
                cls="bbn-c"
-               v-if="isMine"/>
+               bbn-if="isMine"/>
   <bbns-column title="<?= _('User') ?>"
                field="id_user"
                :source="users"
                cls="bbn-c"
-               v-if="!isMine"/>
+               bbn-if="!isMine"/>
   <bbns-column title="<?= _('Group') ?>"
                field="id_group"
                :source="groups"
                cls="bbn-c"
-               v-if="!isMine"/>
+               bbn-if="!isMine"/>
   <bbns-column :buttons="[{
                  icon: 'nf nf-fa-edit',
                  text: '<?= _('Edit') ?>',

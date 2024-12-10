@@ -6,20 +6,20 @@
               type="button">
     <?= _("Browse") ?>
   </bbn-button> &nbsp;
-  <bbn-input v-model="rootAlias"/>
-  <bbn-button v-if="value"
+  <bbn-input bbn-model="rootAlias"/>
+  <bbn-button bbn-if="value"
               class="bbn-space-left"
               @click="emitInput(null)">
     <?= _("Clear") ?>
   </bbn-button>
   <bbn-input type="hidden"
-             v-model="value"/>
-  <bbn-floater v-if="showFloater"
+             bbn-model="value"/>
+  <bbn-floater bbn-if="showFloater"
                :element="$refs.button.$el"
                height="40em"
                width="25em">
     <div class="bbn-overlay">
-      <bbn-tree v-if="ready"
+      <bbn-tree bbn-if="ready"
                 class="tree"
                 :source="root + 'tree'"
                 uid="id"

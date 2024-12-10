@@ -1,5 +1,5 @@
 <div class="bbn-overlay bbn-padding">
-  <bbn-tree v-if="isMounted"
+  <bbn-tree bbn-if="isMounted"
             class="tree"
             :source="root + 'tree'"
             uid="id"

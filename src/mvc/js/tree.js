@@ -1,5 +1,69 @@
 // Javascript Document
 (() => {
+  bbn.cp.mixins['appui-option-tree'] = {
+    props: {
+      source: {
+        type: Object,
+        required: true,
+        validation: a => {
+          return !!a?.id_parent;
+        }
+      }
+    },
+    data() {
+      return {
+        root: appui.plugins['appui-option'] + '/',
+        isCodeManual: false,
+        isAdmin: appui.user.isAdmin,
+      }
+    },
+    computed: {
+      generatedCode() {
+        return this.source.text ? bbn.fn.sanitize(this.source.text, '-').toLowerCase() : '';
+      },
+      currentText() {
+        const d = this.data?.option || this.source;
+        return d.text || d.alias?.text ||'';
+      },
+      currentCode() {
+        const d = this.data?.option || this.source;
+        return d.code || d.alias?.code || '';
+      },
+      currentIcon() {
+        const d = this.data?.option || this.source;
+        return d.icon || d.alias?.icon || '';
+      },
+      currentValue() {
+        const d = this.data?.option || this.source;
+        const res = bbn.fn.createObject();
+        for (let n in d) {
+          if (!['text', 'code', 'id', 'id_parent', 'id_alias', 'cfg', 'value'].includes(n)) {
+            res[n] = d[n];
+          }
+        }
+
+        return res;
+      }
+    },
+    methods: {
+      onCreate(res) {
+        this.$emit('create', res);
+      }
+    },
+    watch: {
+      "source.text"(v) {
+        if (!this.isCodeManual) {
+          this.source.code = this.generatedCode;
+        }
+      },
+      "source.code"(v) {
+        if (!this.isCodeManual && (v !== this.generatedCode)) {
+          this.isCodeManual = true;
+        }
+      }
+    }
+  };
+
   const getTreeMenu = (tree) => {
     return [{
       text: bbn._('Delete'),
@@ -39,6 +103,7 @@
   const generateBlocks = t => {
     const root = {
       id: 'root',
+      title: bbn._("Root tree"),
       index: -2,
       condition: () => t.isAdmin,
       buttons: [
@@ -51,12 +116,13 @@
       ],
       source: t.source.root + "tree",
       root: t.source.absoluteRoot,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeOption(node),
       draggable: true
     };
 
     const apps = {
       id: 'apps',
+      title: bbn._("Applications"),
       index: -1,
       condition: () => t.isAdmin,
       buttons: [
@@ -76,8 +142,7 @@
             }, {
               text: bbn._("New app"),
               action: () => {
-                t.resetNewItem(t.source.absoluteRoot);
-                bbn.fn.link(t.source.root + 'tree/new_app');
+                t.popnew('app', t.source.absoluteRoot);
               },
               icon: "nf nf-md-package_variant_plus"
             }]
@@ -87,13 +152,21 @@
           action: () => t.goToBlock(0)
         }
       ],
-      source: t.roots,
+      source: t.source.roots.map(a => {
+        const b = bbn.fn.extend({}, a);
+        b.name = a.text;
+        b.text = t.convertNodeText(a);
+        b.numChildren = 0;
+        return b;
+      }),
+      root: t.source.absoluteRoot,
       select: node => t.changeApp(node),
       draggable: false
     };
 
     const options = {
       id: 'options',
+      title: bbn._("Options for %s", t.currentApp?.text),
       index: 0,
       condition: () => !t.templateSelected,
       buttons: [
@@ -107,20 +180,28 @@
             items: [{
               text: bbn._("New category"),
               action: () => {
-                t.resetNewItem(t.currentApp?.rootOptions);
-                bbn.fn.link(t.source.root + 'tree/new_option');
+                t.popnew('option', t.currentApp?.rootOptions);
               }
             }, {
               text: bbn._("New category as link"),
               action: () => {
-                t.resetNewItem(t.currentApp?.rootOptions);
-                bbn.fn.link(t.source.root + 'tree/new_alias');
+                t.popnew('alias', t.currentApp?.rootOptions);
               }
             }, {
-              text: bbn._("App templates"),
+              text: bbn._("Templates"),
               action: () => {
                 t.templateSelected = true;
                 t.goToBlock(1);
+              }
+            }, {
+              text: bbn._("Delete cache"),
+              action: () => {
+                t.deleteCache();
+              }
+            }, {
+              text: bbn._("Refresh tree"),
+              action: () => {
+                t.getRef('treeoptions').updateData();
               }
             }]
           }],
@@ -133,12 +214,13 @@
       ],
       source: t.source.root + 'tree',
       root: t.currentApp?.rootOptions,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeOption(node),
       draggable: true
     };
 
     const rootTemplates = {
       id: 'rootTemplates',
+      title: bbn._("Root templates"),
       index: 0,
       condition: () => t.templateSelected,
       buttons: [
@@ -150,19 +232,19 @@
           text: bbn._("New root template"),
           icon: "nf nf-md-receipt_text_plus_outline",
           action: () => {
-            t.resetNewItem(t.source.rootTemplates);
-            bbn.fn.link(t.source.root + 'tree/new_template');
+            t.popnew('template', t.source.rootTemplates);
           },
         }
       ],
       source: t.source.root + 'tree',
       root: t.source.rootTemplates,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeTemplate(node),
       draggable: true
     };
 
     const plugins = {
       id: 'plugins',
+      title: bbn._("Plugins"),
       index: 1,
       buttons: [
         {
@@ -176,51 +258,50 @@
               text: bbn._("New Plugin"),
               icon: "nf nf-md-puzzle_plus",
               action: () => {
-                t.resetNewItem(t.currentApp?.rootPlugins);
-                bbn.fn.link(t.source.root + 'tree/new_plugin');
+                t.popnew('plugin', t.currentApp?.rootPlugins);
               }
             }, {
               text: bbn._("New Plugin alias"),
               icon: "nf nf-md-puzzle_plus",
               action: () => {
-                t.resetNewItem(t.currentApp?.rootPlugins);
-                bbn.fn.link(t.source.root + 'tree/new_alias');
+                t.popnew('alias', t.currentApp?.rootPlugins);
               }
             }]
           }],
         }
       ],
       source: t.currentApp?.plugins,
-      select: node => t.activatePlugin(node),
+      select: node => t.changePlugin(node),
       draggable: false
     };
 
     const appTemplates = {
       id: 'appTemplates',
+      title: bbn._("Templates"),
       index: 1,
       condition: () => t.templateSelected,
       buttons: [
         {
-          text: bbn._("Back to Apps"),
+          text: bbn._("Back to Options"),
           icon: "nf nf-md-chevron_double_left",
           action: () => t.backFromTemplate()
         }, {
           text: bbn._("New template"),
           icon: "nf nf-md-receipt_text_plus_outline",
           action: () => {
-            t.resetNewItem(t.currentApp?.rootTemplates);
-            bbn.fn.link(t.source.root + 'tree/new_template');
+            t.popnew('template', t.currentApp?.rootTemplates);
           },
         }
       ],
       source: t.source.root + 'tree',
       root: t.currentApp?.rootTemplates,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeTemplate(node),
       draggable: true
     };
 
     const plugin = {
       id: 'plugin',
+      title: bbn._("Plugin %s", t.currentPlugin?.text),
       index: 2,
       buttons: [
         {
@@ -240,8 +321,7 @@
               text: bbn._("New option"),
               icon: "nf nf-md-table_column_plus_after",
               action: () => {
-                t.resetNewItem(t.currentPlugin?.rootOptions);
-                bbn.fn.link(t.source.root + 'tree/new_option');
+                t.popnew('option', t.currentPlugin?.rootOptions);
               },
             }]
           }],
@@ -254,12 +334,13 @@
       ],
       source: t.source.root + 'tree',
       root: t.currentPlugin?.rootOptions,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeOption(node),
       draggable: true
     };
 
     const subplugins = {
       id: 'subplugins',
+      title: bbn._("Subplugins for %s", t.currentPlugin?.text),
       index: 3,
       buttons: [
         {
@@ -274,36 +355,43 @@
           text: bbn._("New"),
           icon: "nf nf-md-table_column_plus_after",
           action: () => {
-            t.resetNewItem(t.currentPlugin?.rootPlugins);
-            bbn.fn.link(t.source.root + 'tree/new_subplugin');
+            t.popnew('subplugin', t.currentPlugin?.rootPlugins);
           },
         }
       ],
       source: t.source.root + 'tree',
       root: t.currentPlugin?.rootPlugins,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeOption(node),
       draggable: true
     };
 
     const pluginTemplates = {
       id: 'pluginTemplates',
+      title: bbn._("Templates for plugin %s", t.currentPlugin?.text),
       index: 3,
       condition: () => t.templateSelected,
       buttons: [
         {
-          text: bbn._("Back to Apps"),
+          text: bbn._("Back to Plugin"),
           icon: "nf nf-md-chevron_double_left",
           action: () => t.backFromTemplate()
+        }, {
+          text: bbn._("New template"),
+          icon: "nf nf-md-receipt_text_plus_outline",
+          action: () => {
+            t.popnew('template', t.currentPlugin?.rootTemplates);
+          },
         }
       ],
       source: t.source.root + 'tree',
       root: t.currentPlugin?.rootTemplates,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeTemplate(node),
       draggable: true
     };
 
     const subplugin = {
       id: 'subplugin',
+      title: bbn._("Subplugin %s for plugin %s", t.currentSubplugin?.text, t.currentPlugin?.text),
       index: 4,
       buttons: [
         {
@@ -314,7 +402,9 @@
             text: bbn._("Menu"),
             items: [{
               text: bbn._("New option"),
-              url: t.source.root + 'tree/new_app',
+              action: () => {
+                t.popnew('option', t.currentApp?.rootOptions);
+              },
               icon: "nf nf-md-table_column_plus_after"
             }, {
               text: bbn._("Back to plugin %s", t.currentPlugin?.code),
@@ -345,7 +435,7 @@
       ],
       source: t.source.root + 'tree',
       root: t.currentPlugin?.rootOptions,
-      select: node => t.treeNodeActivate(node),
+      select: node => t.changeSubplugin(node),
       draggable: true
     };
 
@@ -359,31 +449,17 @@
       let currentTab = 'values';
       if (bbn.env.path.indexOf(root + 'tree/option/') === 0) {
         const last = bbn.env.path.split('/').pop();
-        if (['values', 'cfg', 'preferences', 'upreferences', 'stats', 'password'].includes(last)) {
+        if (['values', 'cfg', 'preferences', 'stats', 'password'].includes(last)) {
           currentTab = last;
         }
       }
 
       return {
         root,
-        roots: this.source.roots.map(a => {
-          const b = bbn.fn.extend({}, a);
-          b.name = a.text;
-          b.text = this.convertNodeText(a);
-          b.numChildren = 0;
-          return b;
-        }),
         currentTab,
         currentIndex: 0,
         option: '{}',
         cfg: '{}',
-        newItem: {
-          id: null,
-          id_parent: null,
-          text: null,
-          id_alias: null,
-          code: null
-        },
         newAlias: {
           id_plugin: ''
         },
@@ -462,11 +538,21 @@
       }
     },
     methods: {
-      resetNewItem(id_parent, hasAlias) {
-        this.newItem.id_parent = id_parent;
-        this.newItem.text = hasAlias ? null : '';
-        this.newItem.code = hasAlias ? null : '';
-        this.newItem.id_alias = null;
+      popnew(type, id_parent) {
+        this.getPopup({
+          title: false,
+          component: 'appui-option-new-' + type,
+          componentEvents: {
+            create: res => this.onCreate(res)
+          },
+          closable: false,
+          source: {
+            id_parent,
+            text: null,
+            code: null,
+            id_alias: null
+          }
+        })
       },
       setDefaultTab(route) {
         const bits = route.split('/');
@@ -478,24 +564,67 @@
         if ((idx <= 1) && this.currentPluginId) {
           this.currentPluginId = null;
         }
+        if ((idx <= 3) && this.currentSubpluginId) {
+          this.currentSubpluginId = null;
+        }
 
         this.currentPosition = idx ? (-100*idx) + '%' : '0px';
         this.currentIndex = idx;
       },
-      onCreate(res) {
-        if (res.success && res.data) {
-          const block = bbn.fn.getRow(this.blocks, {root: res.data.id_parent});
-          if (block) {
-            this.getRef('tree' + block.id).updateData();
-          }
-          else {
-            bbn.fn.warning("Block not found", res.data);
-          }
+      updateTrees(data, del) {
+        const blocks = bbn.fn.filter(this.blocks, {root: data.id_parent});
+        if (blocks.length) {
+          bbn.fn.each(blocks, block => {
+            if (bbn.fn.isArray(block.source)) {
+              let src;
+              if (data.id_parent === this.source.absoluteRoot) {
+                src = this.source.roots;
+              }
+              else {
+                src = block.source;
+              }
 
-          this.treeNodeActivate(res);
+              if (del) {
+                let idx = bbn.fn.search(src, a => a.id === data.id);
+                if (idx > -1) {
+                  src.splice(idx, 1);
+                }
+                else {
+                  throw new Error("Option not found");
+                }
+              }
+              else {
+                src.push(data);
+              }
+            }
+
+            const tree = this.getRef('tree' + block.id);
+            tree.updateData();
+          });
         }
-
-        this.resetNewItem(null);
+        else {
+          bbn.fn.warning("Block not found", res.data);
+        }
+      },
+      onCreate(res) {
+        bbn.fn.log("ON CREATE", res)
+        if (res.success && res.data) {
+          this.updateTrees(res.data);
+          this.changeOption(res);
+        }
+      },
+      onDeleteApp(opt) {
+        this.goToBlock(-1);
+      },
+      onDeletePlugin(opt) {
+        this.goToBlock(1);
+      },
+      onDeleteSubplugin(opt) {
+        this.goToBlock(3);
+      },
+      onDelete(opt) {
+        this.updateTrees(opt, true);
+        bbn.fn.link(this.root + 'tree/home');
       },
       importOption(node) {
         this.closest('bbn-container').getPopup({
@@ -548,7 +677,7 @@
       deleteOption(node) {
         bbn.fn.log(['ON DELETE OPTION', arguments]);
       },
-      deleteCache(node) {
+      deleteCache() {
         this.post(this.root + 'actions/delete_cache', (d) => {
           if (d.success) {
             appui.success();
@@ -576,13 +705,20 @@
         return text;
       },
       treeMapper(node) {
-        if (node.text.indexOf('(') === -1) {
-          node.text = this.convertNodeText(node.data || node);
+        const data = node.data || node;
+        if (!data.text && data.alias) {
+          if (!data.num_children && data.alias.num_children) {
+            data.num_children = data.alias.num_children;
+          }
+
+          node.numChildren = data.num_children;
+          data.bbnRealId = data.id;
+          data.id = data.id_alias;
         }
 
         return node;
       },
-      treeNodeActivate(node) {
+      changeOption(node) {
         const data = node.data;
         if (data && data.id) {
           this.isReady = false;
@@ -597,26 +733,86 @@
             setTimeout(() => {
               this.isReady = true;
             }, 100);
-            bbn.fn.log(['treeNodeActivate', this.root + 'tree/option/' + data.id, this.currentTab])
+            bbn.fn.log(['changeOption', this.root + 'tree/option/' + data.id, this.currentTab])
           });
         }
       },
       changeApp(node) {
         const data = node.data;
         if (data?.id) {
+          this.isReady = false;
           this.currentAppId = data.id;
           this.$nextTick(() => {
             this.goToBlock(0);
-            this.treeNodeActivate(node);
+            this.optionSelected = {
+              code: data.code,
+              text: data.text,
+              id: data.id
+            };
+            this.getRef('router').activateIndex(2);
+            this.closest('bbn-container').router.changeURL(this.root + 'tree/app/' + data.id, data.name || data.text);
+            setTimeout(() => {
+              this.isReady = true;
+            }, 100);
           });
         }
       },
-      activatePlugin(node) {
+      changeTemplate(node) {
         const data = node.data;
-        bbn.fn.log("activatePlugin", data);
         if (data?.id) {
+          this.isReady = false;
+          this.$nextTick(() => {
+            this.optionSelected = {
+              code: data.code,
+              text: data.text,
+              id: data.id
+            };
+            this.getRef('router').activateIndex(3);
+            this.closest('bbn-container').router.changeURL(this.root + 'tree/template/' + data.id + '/values', data.name || data.text);
+            setTimeout(() => {
+              this.isReady = true;
+            }, 100);
+          });
+        }
+      },
+      changePlugin(node) {
+        const data = node.data;
+        if (data?.id) {
+          this.isReady = false;
           this.currentPluginId = data.id;
-          this.goToBlock(2);
+          this.$nextTick(() => {
+            this.goToBlock(2);
+            this.optionSelected = {
+              code: data.code,
+              text: data.text,
+              id: data.id
+            };
+            this.getRef('router').activateIndex(4);
+            this.closest('bbn-container').router.changeURL(this.root + 'tree/plugin/' + data.id, data.name || data.text);
+            setTimeout(() => {
+              this.isReady = true;
+            }, 100);
+          });
+        }
+      },
+      changeSubplugin(node) {
+        const data = node.data;
+        if (data?.id) {
+          this.isReady = false;
+          this.currentSubpluginId = data.id;
+          this.$nextTick(() => {
+            this.goToBlock(5);
+            this.optionSelected = {
+              code: data.code,
+              text: data.text,
+              id: data.id
+            };
+            this.getRef('router').activateIndex(5);
+            this.closest('bbn-container').router.changeURL(this.root + 'tree/subplugin/' + data.id, data.name || data.text);
+            setTimeout(() => {
+              this.isReady = true;
+            }, 100);
+          });
         }
       },
       moveOpt(node, nodeDest, ev) {
@@ -676,20 +872,6 @@
           this.changingRoot = false;
         }, 250);
       },
-      appuiTree(v) {
-        bbn.fn.log("appuiTree", v);
-        this.dataObj.appuiTree = v;
-        this.dataObj.id = '';
-        bbn.fn.log(JSON.stringify(this.dataObj));
-        this.optionSelected.id = '';
-        this.optionSelected.text = '';
-        this.optionSelected.code = null;
-        this.option = '{}';
-        this.cfg = '{}';
-        this.$nextTick(() => {
-          this.$refs.listOptions.updateData();
-        });
-      }
     }
   }
 })();

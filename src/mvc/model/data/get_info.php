@@ -5,7 +5,7 @@ if (isset($model->inc->options)) {
   //info option for spliter
   if (!empty($model->data['id'])) {
     $all = $o->option($model->data['id']);
-    $cfg = $o->getCfg($model->data['id']);
+    $cfg = $o->getCfg($model->data['id']) ?: [];
     $aliases = $o->getAliases($model->data['id']);
     $prefs = new \bbn\User\Preferences($model->db);
     $permissions = $model->inc->perm->getParentCfg($model->data['id']);
@@ -25,26 +25,34 @@ if (isset($model->inc->options)) {
 
     if (
       !empty($all) &&
-      ($option = $o->nativeOption($model->data['id']))
+      ($option = $o->option($model->data['id']))
     ) {
       if (!empty($all['id_alias'])) {
         $option['alias'] = $o->option($all['id_alias']);
       }
 
       $parents = $o->parents($model->data['id']);
+      $breadcrumb = array_reverse(array_map(function($a) use (&$o) {
+        return $o->option($a);
+      }, $parents));
+      array_shift($breadcrumb);
+      array_push($breadcrumb, $option);
       return [
         'success' => true,
         'info' => json_encode($all),
         'option' => $option,
-        'cfg' => json_encode($cfg),
+        'cfg' => $cfg,
         'cfg_inherit_from_text' => !empty($cfg['inherit_from']) ? $model->inc->options->text($cfg['inherit_from']) : '',
         'aliases' => $aliases,
         'permissions' => $permissions,
         'id_permission' => $model->inc->perm->optionToPermission($model->data['id']),
         'public' => $pub,
         'parents' => $parents,
+        'breadcrumb' => $breadcrumb,
         'prefs' => $prefs->getAll($model->data['id']),
         'isTemplate' => $o->isInTemplate($model->data['id']),
+        'isPlugin' => $option['id_alias'] === $o->getMagicPluginTemplateId(),
+        'isSubplugin' => $option['id_alias'] === $o->getMagicSubpluginTemplateId(),
         'isApp' => ($option['code'] !== 'templates') && ($option['id_parent'] === $model->inc->options->getRoot()),
         'parent' => $o->parent($model->data['id']),
         'template' => $o->getOptionTemplate($model->data['id']),

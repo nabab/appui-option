@@ -1,6 +1,6 @@
 <div class="bbn-flex-height bbn-overlay">
   <bbn-toolbar class="bbn-spadding bbn-flex-width">
-    <div class="bbn-flex-fill bbn-b bbn-c bbn-large" v-text="source.option.text"></div>
+    <div class="bbn-flex-fill bbn-b bbn-c bbn-large" bbn-text="source.option.text"></div>
     <div>
       <bbn-button icon="nf nf-fa-link"
                   @click="linkOption"
@@ -22,7 +22,7 @@
       <bbn-button icon="nf nf-fa-trash"
                   @click="removeOptHistory"
                   title="<?= _('Remove option\'s history') ?>"
-                  v-if="isAdmin"
+                  bbn-if="isAdmin"
                   text="<?= _('Remove history') ?>"
                   class="bbn-hsmargin bbn-bg-red"
                   :notext="true"
@@ -64,7 +64,7 @@
                       fcolor="white"
                       icon="nf nf-mdi-account_settings_variant"
                       :source="source"
-                      v-if="isAdmin"
+                      bbn-if="isAdmin"
       ></bbns-container>
       <bbns-container url="upreferences"
                       :fixed="true"
@@ -74,7 +74,7 @@
                       fcolor="white"
                       icon="nf nf-fa-users"
                       :source="source"
-                      v-if="isAdmin"
+                      bbn-if="isAdmin"
       ></bbns-container>
       <bbns-container url="stats"
                       :fixed="true"
@@ -93,7 +93,7 @@
                       fcolor="white"
                       icon="nf nf-mdi-key"
                       :source="source"
-                      v-if="isAdmin"
+                      bbn-if="isAdmin"
       ></bbns-container>
     </bbn-router>
   </div>

@@ -1,6 +1,6 @@
 <!-- HTML Document -->
 <span :class="['bbn-iblock', componentClass]">
-  <bbn-dropdown v-model="currentValue"
+  <bbn-dropdown bbn-model="currentValue"
                 :source="sourceURL"
                 :required="true"
                 source-value="rootAccess"

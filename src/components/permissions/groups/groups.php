@@ -14,15 +14,15 @@
   </div>
   <div>
     <ul style="list-style: none">
-      <li v-for="g in groups">
-        <bbn-checkbox v-if="!!source.public"
+      <li bbn-for="g in groups">
+        <bbn-checkbox bbn-if="!!source.public"
                       :disabled="true"
                       :checked="true"
                       :label="g.nom || g.group"
                       :key="g.id+'a'"/>
-        <bbn-checkbox v-else
+        <bbn-checkbox bbn-else
                       @click="setGroupPerm(g)"
-                      v-model="source['group' + g.id]"
+                      bbn-model="source['group' + g.id]"
                       :label="g.nom || g.group"
                       :novalue="false"
                       :key="g.id+'b'"/>

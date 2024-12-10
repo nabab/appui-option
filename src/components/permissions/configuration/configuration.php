@@ -12,26 +12,26 @@
           style="font-size: large"></i>
 
       <div><?= _('Code') ?></div>
-      <div v-if="!source.is_perm"
-            v-text="source.code"/>
-      <bbn-input v-else
-                  v-model="source.code"
+      <div bbn-if="!source.is_perm"
+            bbn-text="source.code"/>
+      <bbn-input bbn-else
+                  bbn-model="source.code"
                   maxlength="255"/>
 
       <div><?= _('Text') ?></div>
-      <bbn-input v-model="source.text" maxlength="255"
+      <bbn-input bbn-model="source.text" maxlength="255"
                   @keydown.enter.prevent="submitConf"
                   class="bbn-w-100"/>
 
       <div><?= _('Help') ?></div>
-      <bbn-editable type="markdown" v-model="source.help"/>
+      <bbn-editable type="markdown" bbn-model="source.help"/>
 
 
       <div><?= _('Public') ?></div>
-      <bbn-checkbox v-model="source.public"/>
+      <bbn-checkbox bbn-model="source.public"/>
 
       <div><?= _('Cascade') ?></div>
-      <bbn-checkbox v-model="source.cascade"/>
+      <bbn-checkbox bbn-model="source.cascade"/>
     </div>
   </bbn-form>
 </div>

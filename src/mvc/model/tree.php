@@ -87,7 +87,7 @@ if ($model->hasData('data', true)) {
     return [
       'success' => true,
       'data' => array_map(
-        function ($o) use ($cfg) {
+        function ($o) use ($cfg, $opt) {
           $icon = $o['icon'] ?? '';
           if (!$icon && !empty($o['alias']) && !empty($o['alias']['icon'])) {
             $icon = $o['alias']['icon'];
@@ -96,6 +96,9 @@ if ($model->hasData('data', true)) {
           return [
             'text' => $o['text'],
             'icon' => $icon,
+            'template' => $opt->isInTemplate($o['id']),
+            'plugin' => $opt->isPlugin($o['id']),
+            'app' => $opt->isApp($o['id']),
             'numChildren' => $o['num_children'],
             'sortable' => !empty($cfg['sortable']),
             'data' => $o

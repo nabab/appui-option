@@ -8,15 +8,15 @@
             <?= _('Option') ?>:
           </strong>
         </span>
-        <span v-text="' '+source.option"></span>
+        <span bbn-text="' '+source.option"></span>
       </div>
-      <div v-if="source.codeOpt">
+      <div bbn-if="source.codeOpt">
         <span>
           <strong>
             <?= _('Code') ?>:
           </strong>
         </span>
-        <span v-text="' '+source.codeOpt"></span>
+        <span bbn-text="' '+source.codeOpt"></span>
       </div>
       <div>
         <span>
@@ -24,7 +24,7 @@
             <?= _('Option used') ?>:
           </strong>
         </span>
-        <span  v-text="info"></span>
+        <span  bbn-text="info"></span>
       </div>
     </div>
     <div class="bbn-flex-fill bbn-padding">

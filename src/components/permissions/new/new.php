@@ -8,19 +8,19 @@
             ref="form">
     <div class="bbn-grid-fields">
       <div><?= _('Code') ?></div>
-      <bbn-input v-model="newPerm.code"
+      <bbn-input bbn-model="newPerm.code"
                   required="required"
                   class="bbn-w-100"
                   @keydown.enter.prevent="submitNew"/>
 
       <div><?= _('Text') ?></div>
-      <bbn-input v-model="newPerm.text"
+      <bbn-input bbn-model="newPerm.text"
                   class="bbn-w-100"
                   required="required"
                   @keydown.enter.prevent="submitNew"/>
 
       <div><?= _('Help') ?></div>
-      <bbn-markdown v-model="newPerm.help"/>
+      <bbn-markdown bbn-model="newPerm.help"/>
 
     </div>
   </bbn-form>
