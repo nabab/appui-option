@@ -709,11 +709,8 @@
         if (!data.text && data.alias) {
           if (!data.num_children && data.alias.num_children) {
             data.num_children = data.alias.num_children;
+            node.numChildren = data.num_children;
           }
-
-          node.numChildren = data.num_children;
-          data.bbnRealId = data.id;
-          data.id = data.id_alias;
         }
 
         return node;

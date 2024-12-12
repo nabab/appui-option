@@ -16,13 +16,7 @@ if ($model->hasData('main')) {
   if ($model->inc->user->isAdmin()) {
     $roots = $opt->getDefaults();
     foreach ($roots as &$r) {
-      $r['plugins'] = $opt->getPlugins($r['id']);
-      foreach ($r['plugins'] as &$p) {
-        $p['rootOptions'] = $opt->fromCode('options', $p['id']);
-        $p['rootTemplates'] = $opt->fromCode('templates', $p['id']);
-        $p['rootPermissions'] = $opt->fromCode('permissions', $p['id']);
-        $p['rootPlugins'] = $opt->fromCode('plugins', $p['id']);
-      }
+      $r['plugins'] = $opt->getPlugins($r['id'], true, true);
 
       unset($p);
       $r['rootOptions'] = $opt->fromCode('options', $r['id']);
@@ -83,6 +77,13 @@ if ($model->hasData('data', true)) {
 
   $cfg = $opt->getCfg($root);
   $arr = $opt->fullOptions($root);
+  if (empty($arr)) {
+    $info = $opt->option($root);
+    if (!$info['text'] && !empty($info['alias'])) {
+      $arr = $opt->fullOptions($info['id_alias']);
+    }
+  }
+
   if (is_array($arr)) {
     return [
       'success' => true,
