@@ -6,12 +6,14 @@ if (!empty($r['cfg']) && is_string($r['cfg'])) {
 }
 
 $i81nCls = new \bbn\Appui\I18n($model->db);
-$r['languages'] = $i81nCls->getPrimariesLangs();
-if (($t = $model->getModel(APPUI_OPTION_ROOT.'data/text', $model->data))
-  && !empty($t['success'])
-) {
-  $r['option']['text'] = $t['text'];
-  $r['translations'] = $t['translations'];
+if ($r['option']['text']) {
+  $r['languages'] = $i81nCls->getPrimariesLangs();
+  if (($t = $model->getModel(APPUI_OPTION_ROOT.'data/text', $model->data))
+    && !empty($t['success'])
+  ) {
+    $r['option']['text'] = $t['text'];
+    $r['translations'] = $t['translations'];
+  }
 }
 
 return $r;

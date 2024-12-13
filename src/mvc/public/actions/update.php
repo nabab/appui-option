@@ -18,6 +18,7 @@ if ( isset($ctrl->post['text'], $ctrl->post['id']) ){
         if (
           (($idx = X::find($schema, ['field' => $i])) !== null) &&
           isset($schema[$idx]['type']) &&
+          is_string($d) &&
           (strtolower($schema[$idx]['type']) === 'json')
         ){
           $ctrl->post[$i] = json_decode($d, true);
