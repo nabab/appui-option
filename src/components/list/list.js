@@ -257,7 +257,7 @@
                 num: val
               }, (d) => {
                 if ( d.success && d.data ){
-                  this.$set(this.list.source, 'options', d.data);
+                  this.list.source.options = d.data;
                   this.$nextTick(() => {
                     this.list.$refs.table.updateData();
                     appui.success(bbn._('Saved'));

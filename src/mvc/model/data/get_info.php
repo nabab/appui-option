@@ -25,7 +25,7 @@ if (isset($model->inc->options)) {
 
     if (
       !empty($all) &&
-      ($option = $o->option($model->data['id']))
+      ($option = $o->nativeOption($model->data['id']))
     ) {
       if (!empty($all['id_alias'])) {
         $option['alias'] = $o->option($all['id_alias']);

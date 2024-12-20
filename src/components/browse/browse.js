@@ -38,9 +38,10 @@
         }, 250);
       }
     },
-    mounted(){
+    mounted() {
+      const popup = this.getPopup();
       this.post(this.root + 'root_options_tree', {
-        id: bbn.cp.find(this.getPopup(), 'appui-option-config') ? false : (this.source.idRootTree || false)
+        id: popup && popup.find('appui-option-config') ? false : (this.source.idRootTree || false)
       }, (d) => {
         this.isMounted = true;
         this.cat = d.data.cat;
