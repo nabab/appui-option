@@ -26,7 +26,7 @@
           <bbn-button icon="nf nf-mdi-key_plus"
                       :title="_('Change Passwod')"
                       @click="changePsw"
-                      :text="_('New password')"/>
+                      :label="_('New password')"/>
           <bbn-input bbn-if="showInput"
                     class="bbn-wide"
                     bbn-model='newPassword'

@@ -4,26 +4,26 @@
     <div>
       <bbn-button icon="nf nf-fa-link"
                   @click="linkOption"
-                  :text="'<?= _('Go to') ?> ' + source.option.text"
+                  :label="'<?= _('Go to') ?> ' + source.option.text"
                   :notext="true"
       ></bbn-button>
       <bbn-button icon="nf nf-fa-history"
                   @click="deleteCache"
-                  text="<?= _('Delete cache option') ?>"
+                  label="<?= _('Delete cache option') ?>"
                   :notext="true"
                   class="bbn-hsmargin"
       ></bbn-button>
       <bbn-button icon="nf nf-fa-trash_o"
                   @click="removeOpt"
                   title="<?= _('Remove option from db') ?>"
-                  text="<?= _('Remove') ?>"
+                  label="<?= _('Remove') ?>"
                   :notext="true"
       ></bbn-button>
       <bbn-button icon="nf nf-fa-trash"
                   @click="removeOptHistory"
                   title="<?= _('Remove option\'s history') ?>"
                   bbn-if="isAdmin"
-                  text="<?= _('Remove history') ?>"
+                  label="<?= _('Remove history') ?>"
                   class="bbn-hsmargin bbn-bg-red"
                   :notext="true"
       ></bbn-button>
@@ -38,7 +38,7 @@
     >
       <bbns-container url="values"
                       :fixed="true"
-                      title="<?= _('Values') ?>"
+                      label="<?= _('Values') ?>"
                       component="appui-option-form"
                       :source="source.option"
                       :load="false"
@@ -48,7 +48,7 @@
       ></bbns-container>
       <bbns-container url="cfg"
                       :fixed="true"
-                      title="<?= _('Configuration') ?>"
+                      label="<?= _('Configuration') ?>"
                       component="appui-option-config"
                       :load="false"
                       :source="cfgObj"
@@ -58,7 +58,7 @@
       ></bbns-container>
       <bbns-container url="preferences"
                       :fixed="true"
-                      title="<?= _('My preferences') ?>"
+                      label="<?= _('My preferences') ?>"
                       component="appui-option-preferences"
                       bcolor="yellowgreen"
                       fcolor="white"
@@ -68,7 +68,7 @@
       ></bbns-container>
       <bbns-container url="upreferences"
                       :fixed="true"
-                      title="<?= _('Users preferences') ?>"
+                      label="<?= _('Users preferences') ?>"
                       component="appui-option-preferences"
                       bcolor="tomato"
                       fcolor="white"
@@ -78,7 +78,7 @@
       ></bbns-container>
       <bbns-container url="stats"
                       :fixed="true"
-                      title="<?= _('Stats') ?>"
+                      label="<?= _('Stats') ?>"
                       component="appui-option-stats"
                       bcolor="skyblue"
                       fcolor="white"
@@ -87,7 +87,7 @@
       ></bbns-container>
       <bbns-container url="password"
                       :fixed="true"
-                      title="<?= _('Password') ?>"
+                      label="<?= _('Password') ?>"
                       component="appui-option-psw"
                       bcolor="#32a852"
                       fcolor="white"

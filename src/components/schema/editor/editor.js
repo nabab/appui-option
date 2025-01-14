@@ -3,7 +3,7 @@
     mixins: [bbn.cp.mixins.basic],
     data() {
       return {
-        showFtitle: !!this.source.ftitle,
+        showFlabel: !!this.source.flabel,
         widthType: this.source.width ? 'fixed' : (this.source.maxWidth || this.source.minWidth ? 'dynamic' : 'auto'),
         widthRadio: [
           {text: bbn._("Auto"), value: "auto"},

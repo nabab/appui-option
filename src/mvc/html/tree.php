@@ -62,11 +62,11 @@
                     class="bbn-overlay">
           <!-- INDEX 0 -->
           <bbn-container url="home"
-                         title="<?= _("Home") ?>"
+                         label="<?= _("Home") ?>"
                          component="appui-option-page-home"/>
           <!-- INDEX 1 -->
           <bbn-container url="option"
-                         title="<?= _("Option") ?>"
+                         label="<?= _("Option") ?>"
                          ref="optionContainer">
             <appui-option-option :source="optionSelected"
                                  bbn-if="optionSelected && isReady"
@@ -79,7 +79,7 @@
           </bbn-container>
           <!-- INDEX 2 -->
           <bbn-container url="app"
-                         title="<?= _("App") ?>"
+                         label="<?= _("App") ?>"
                          ref="appContainer">
             <appui-option-page-app :source="optionSelected"
                               bbn-if="optionSelected && isReady"
@@ -88,7 +88,7 @@
           </bbn-container>
           <!-- INDEX 3 -->
           <bbn-container url="template"
-                         title="<?= _("Template") ?>"
+                         label="<?= _("Template") ?>"
                          ref="templateContainer">
             <appui-option-template :source="optionSelected"
                                     bbn-if="optionSelected && isReady"
@@ -97,7 +97,7 @@
           </bbn-container>
           <!-- INDEX 4 -->
           <bbn-container url="plugin"
-                         title="<?= _("Plugin") ?>"
+                         label="<?= _("Plugin") ?>"
                          ref="pluginContainer">
             <appui-option-page-plugin :source="optionSelected"
                                  bbn-if="optionSelected && isReady"
@@ -106,7 +106,7 @@
           </bbn-container>
           <!-- INDEX 5 -->
           <bbn-container url="subplugin"
-                         title="<?= _("Subplugin") ?>"
+                         label="<?= _("Subplugin") ?>"
                          ref="subpluginContainer">
             <appui-option-page-subplugin :source="optionSelected"
                                     bbn-if="optionSelected && isReady"

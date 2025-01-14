@@ -7,27 +7,27 @@
            :order="[{field: 'text', dir: 'ASC'}]"
            :limit="50"
 >
-  <bbns-column title="UID"
+  <bbns-column label="UID"
                field="id"               
                :showable="true"
                cls="bbn-c"
   ></bbns-column>
-  <bbns-column title="<?= _("Text") ?>"
+  <bbns-column label="<?= _("Text") ?>"
                field="text"               
                :showable="true"
                width="250"
                cls="bbn-c"               
   ></bbns-column>
-  <bbns-column title="<?= _("Code") ?>"
+  <bbns-column label="<?= _("Code") ?>"
                field="code"                            
                :showable="true"               
                cls="bbn-c"               
   ></bbns-column>
-  <bbns-column title="<?= _("ID Alias") ?>"
+  <bbns-column label="<?= _("ID Alias") ?>"
                field="id_alias"               
                :showable="true"               
   ></bbns-column>
-  <bbns-column title="<?= _("Parent") ?>"
+  <bbns-column label="<?= _("Parent") ?>"
                field="parent"               
                :showable="true"
                :filterable="false"               

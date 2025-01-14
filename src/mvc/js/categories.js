@@ -258,23 +258,23 @@
         bbn.fn.log(e);
       },
       columns: [{
-        title: data.lng.id,
+        label: data.lng.id,
         field: "id",
         width: 100,
         hidden: !data.is_dev,
       }, {
-        title: data.lng.parent,
+        label: data.lng.parent,
         field: "id_parent",
         hidden: true
       }, {
-        title: data.lng.name,
+        label: data.lng.name,
         field: "text",
       }, {
-        title: data.lng.code,
+        label: data.lng.code,
         field: "code",
         width: 80,
       }, {
-        title: data.lng.icon,
+        label: data.lng.icon,
         field: "icon",
         width: 50,
         template: function(e){
@@ -297,18 +297,18 @@
           container.append($input, $icon, '&nbsp;&nbsp;', $button);
         }
       }, {
-        title: data.lng.subcategories,
+        label: data.lng.subcategories,
         field: "num_children",
         width: 40,
       }, {
-        title: data.lng.accessible,
+        label: data.lng.accessible,
         field: "tekname",
         width: 150,
         template: function(e){
           return e.tekname ? e.tekname : "-";
         }
       }, {
-        title: data.lng.actions,
+        label: data.lng.actions,
         field: "id",
         width: 120,
         template: function(e){

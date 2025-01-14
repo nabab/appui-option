@@ -60,10 +60,10 @@
         return true;
       },
       selectAlias(){
-        this.getPopup().open({
+        this.getPopup({
           width: 500,
           height: 600,
-          title: bbn._('Options'),
+          label: bbn._('Options'),
           component: 'appui-option-browse',
           source: {
             idRootTree: this.cfg.id_root_alias,
@@ -76,10 +76,10 @@
         this.alias = '';
       },
       selectIcon(){
-        this.getPopup().open({
+        this.getPopup({
           width: '80%',
           height: '80%',
-          title: bbn._('Icon Picker'),
+          label: bbn._('Icon Picker'),
           component: 'appui-core-popup-iconpicker',
           source: {
             field: 'icon',

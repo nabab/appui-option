@@ -142,7 +142,7 @@
       refresh(){
         let cp = this;
         this.getPopup({
-          title: bbn._("Choose plugins to refresh"),
+          label: bbn._("Choose plugins to refresh"),
           width: 400,
           component: 'appui-core-form-plugins',
           componentOptions: {
@@ -174,7 +174,7 @@
       cleanUp(){
         let cp = this;
         this.getPopup({
-          title: bbn._("Choose plugins to refresh"),
+          label: bbn._("Choose plugins to refresh"),
           width: 400,
           component: 'appui-core-form-plugins',
           componentOptions: {

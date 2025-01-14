@@ -37,7 +37,7 @@
             this.getPopup({
               width: 450,
               height: 550,
-              title: bbn._('Usage'),
+              label: bbn._('Usage'),
               component: 'appui-option-popup-tree',
               source: {
                 treeData: d.tree,

@@ -103,7 +103,7 @@
   const generateBlocks = t => {
     const root = {
       id: 'root',
-      title: bbn._("Root tree"),
+      label: bbn._("Root tree"),
       index: -2,
       condition: () => t.isAdmin,
       buttons: [
@@ -122,7 +122,7 @@
 
     const apps = {
       id: 'apps',
-      title: bbn._("Applications"),
+      label: bbn._("Applications"),
       index: -1,
       condition: () => t.isAdmin,
       buttons: [
@@ -166,7 +166,7 @@
 
     const options = {
       id: 'options',
-      title: bbn._("Options for %s", t.currentApp?.text),
+      label: bbn._("Options for %s", t.currentApp?.text),
       index: 0,
       condition: () => !t.templateSelected,
       buttons: [
@@ -220,7 +220,7 @@
 
     const rootTemplates = {
       id: 'rootTemplates',
-      title: bbn._("Root templates"),
+      label: bbn._("Root templates"),
       index: 0,
       condition: () => t.templateSelected,
       buttons: [
@@ -244,7 +244,7 @@
 
     const plugins = {
       id: 'plugins',
-      title: bbn._("Plugins"),
+      label: bbn._("Plugins"),
       index: 1,
       buttons: [
         {
@@ -277,7 +277,7 @@
 
     const appTemplates = {
       id: 'appTemplates',
-      title: bbn._("Templates"),
+      label: bbn._("Templates"),
       index: 1,
       condition: () => t.templateSelected,
       buttons: [
@@ -301,7 +301,7 @@
 
     const plugin = {
       id: 'plugin',
-      title: bbn._("Plugin %s", t.currentPlugin?.text),
+      label: bbn._("Plugin %s", t.currentPlugin?.text),
       index: 2,
       buttons: [
         {
@@ -340,7 +340,7 @@
 
     const subplugins = {
       id: 'subplugins',
-      title: bbn._("Subplugins for %s", t.currentPlugin?.text),
+      label: bbn._("Subplugins for %s", t.currentPlugin?.text),
       index: 3,
       buttons: [
         {
@@ -367,7 +367,7 @@
 
     const pluginTemplates = {
       id: 'pluginTemplates',
-      title: bbn._("Templates for plugin %s", t.currentPlugin?.text),
+      label: bbn._("Templates for plugin %s", t.currentPlugin?.text),
       index: 3,
       condition: () => t.templateSelected,
       buttons: [
@@ -391,7 +391,7 @@
 
     const subplugin = {
       id: 'subplugin',
-      title: bbn._("Subplugin %s for plugin %s", t.currentSubplugin?.text, t.currentPlugin?.text),
+      label: bbn._("Subplugin %s for plugin %s", t.currentSubplugin?.text, t.currentPlugin?.text),
       index: 4,
       buttons: [
         {
@@ -540,7 +540,7 @@
     methods: {
       popnew(type, id_parent) {
         this.getPopup({
-          title: false,
+          label: false,
           component: 'appui-option-new-' + type,
           componentEvents: {
             create: res => this.onCreate(res)
@@ -628,7 +628,7 @@
       },
       importOption(node) {
         this.closest('bbn-container').getPopup({
-          title: 'Import into option ' + node.data.text,
+          label: 'Import into option ' + node.data.text,
           component: 'appui-option-import',
           source: {
             root: this.root,
@@ -649,7 +649,7 @@
           if (d.success) {
             this.getPopup({
               content: '<div class="bbn-overlay"><textarea class="bbn-100">' + d.export + '</textarea></div>',
-              title: 'Export option ' + node.data.text + (node.data.code ? ' (' + node.data.code + ')' : ''),
+              label: 'Export option ' + node.data.text + (node.data.code ? ' (' + node.data.code + ')' : ''),
               width: '90%',
               height: '90%',
               scrollable: false,

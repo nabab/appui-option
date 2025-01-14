@@ -27,7 +27,7 @@
                 :breadcrumb="isMobile">
       <bbns-container :url="data.option.id + '/values'"
                       :fixed="true"
-                      title="<?= _('Values') ?>"
+                      label="<?= _('Values') ?>"
                       component="appui-option-template-form"
                       :source="data"
                       :load="false"
@@ -36,7 +36,7 @@
                       icon="nf nf-fa-list_alt"/>
       <bbns-container :url="data.option.id + '/cfg'"
                       :fixed="true"
-                      title="<?= _('Configuration') ?>"
+                      label="<?= _('Configuration') ?>"
                       component="appui-option-tab-config"
                       :load="false"
                       :source="data"

@@ -38,7 +38,7 @@
     methods: {
       importOption(node){
         this.getPopup({
-          title: 'Import into option ' + node.text,
+          label: 'Import into option ' + node.text,
           component: 'appui-option-import',
           source: {
             root: this.source.root,
@@ -58,7 +58,7 @@
           if ( d.success ){
             this.getPopup({
               content: '<textarea class="bbn-100">' + d.export + '</textarea>',
-              title: 'Export option ' + node.text,
+              label: 'Export option ' + node.text,
               width: '100%',
               height: '100%',
               scrollable: false,
@@ -142,7 +142,7 @@
             this.getPopup({
               width: 450,
               height: 550,
-              title: bbn._('Usage'),
+              label: bbn._('Usage'),
               component: 'appui-option-popup-tree',
               source: {
                 treeData: d.tree,

@@ -63,7 +63,7 @@
         this.post(this.source.root + 'tree/option/' + this.source.id, d => {
           if (d && d.data) {
             this.getPopup({
-              title: bbn._("Option's configuration"),
+              label: bbn._("Option's configuration"),
               component: 'appui-option-config',
               source: d.data,
               maxWidth: 1000,
@@ -154,7 +154,7 @@
       },
       insert(){
         this.$refs.table.insert({}, {
-          title: bbn._('New option'),
+          label: bbn._('New option'),
           maximizable: true
         });
       },
@@ -172,7 +172,7 @@
             this.currentTranslation = false;
           }
           this.$refs.table.edit(row, {
-            title: bbn._('Updating option') + ' "' + row.text + '"',
+            label: bbn._('Updating option') + ' "' + row.text + '"',
             maximizable: true
           }, idx);
         })
@@ -202,7 +202,7 @@
       openDuplicateForm(newRow){
         if ( newRow ){
           this.$refs.table.insert(newRow, {
-            title: bbn._('Copy option'),
+            label: bbn._('Copy option'),
             height: 600,
             width: 700
           });

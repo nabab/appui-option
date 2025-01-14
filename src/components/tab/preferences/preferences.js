@@ -29,8 +29,8 @@
         return r + '</span>'
       },
       add(){
-        this.getPopup().open({
-          title: bbn._('Add preference'),
+        this.getPopup({
+          label: bbn._('Add preference'),
           component: this.$options.components.form,
           source: {
             id_option: this.source.id,
@@ -46,8 +46,8 @@
         })
       },
       edit(row){
-        this.getPopup().open({
-          title: bbn._('Edit preference'),
+        this.getPopup({
+          label: bbn._('Edit preference'),
           component: this.$options.components.form,
           source: row,
           width: '90%'
@@ -162,12 +162,12 @@
 <div class="bbn-flex-width bbn-header bbn-vmiddle bbn-h-100 bbn-spadding">
   <div class="bbn-flex-fill">
     <bbn-button icon="nf nf-fa-plus"
-                text="` + bbn._('Add') + `"
+                label="` + bbn._('Add') + `"
                 @click="add"
     ></bbn-button>  
   </div>
   <bbn-button icon="nf nf-fa-trash"
-              text="` + bbn._('Delete all') + `"
+              label="` + bbn._('Delete all') + `"
               @click="removeAll"
   ></bbn-button>
 </div>

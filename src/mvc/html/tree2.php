@@ -6,7 +6,7 @@
         <div class="bbn-padding">
           <bbn-button icon="nf nf-fa-times"
                       @click="deleteCache"
-                      text='<?= _("Delete cache") ?>'
+                      label='<?= _("Delete cache") ?>'
           ></bbn-button>
         </div>
       </div>
@@ -34,11 +34,11 @@
         <div class="bbn-padding" bbn-if="optionSelected.id.length">
           <bbn-button icon="nf nf-fa-times"
                       @click="deleteSingleCache"
-                      text="<?= _('Delete cache option') ?>"
+                      label="<?= _('Delete cache option') ?>"
           ></bbn-button>
           <bbn-button icon="nf nf-fa-link"
                       @click="linkOption"
-                      :text="'<?= _('Go to') ?>' +' '+ optionSelected.text"
+                      :label="'<?= _('Go to') ?>' +' '+ optionSelected.text"
           ></bbn-button>
           <bbn-button icon="nf nf-fa-eye"
                       @click="showUsageOpt">

@@ -51,7 +51,7 @@
           title: bbn._('Insert a form field'),
           className: 'jsoneditor-type-object',
           value: {
-            title: bbn._('Insert a title'),
+            label: bbn._('Insert a title'),
             field: bbn._("Insert the field's name"),
             type: 'string',
             showable: true,
@@ -227,10 +227,10 @@
         }
       },
       browseAlias(src) {
-        this.getPopup().open({
+        this.getPopup({
           width: 500,
           height: 600,
-          title: bbn._('Options'),
+          label: bbn._('Options'),
           component: 'appui-option-browse',
           source: {
             data: src

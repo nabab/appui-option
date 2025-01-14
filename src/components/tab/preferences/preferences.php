@@ -9,20 +9,20 @@
                :showable="true"
                field="id_option"
                :default="source.option.id"/>
-  <bbns-column title="<?= _('ID') ?>"
+  <bbns-column label="<?= _('ID') ?>"
                field="id"
                :width="isMine ? undefined : '250'"/>
-  <bbns-column title="<?= _('Type') ?>"
+  <bbns-column label="<?= _('Type') ?>"
                :render="renderType"
                :width="100"
                cls="bbn-c"
                bbn-if="isMine"/>
-  <bbns-column title="<?= _('User') ?>"
+  <bbns-column label="<?= _('User') ?>"
                field="id_user"
                :source="users"
                cls="bbn-c"
                bbn-if="!isMine"/>
-  <bbns-column title="<?= _('Group') ?>"
+  <bbns-column label="<?= _('Group') ?>"
                field="id_group"
                :source="groups"
                cls="bbn-c"
