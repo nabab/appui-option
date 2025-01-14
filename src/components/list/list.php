@@ -13,17 +13,17 @@
 						 bbn-if="showTable">
     <bbns-column field="id"
                 :width="250"
-                :hidden="true"
+                :invisible="true"
                 label="<?= _('ID') ?>"
                 :editable="false"/>
     <bbns-column field="id_parent"
-                :hidden="true"
+                :invisible="true"
                 :showable="false"
                 :editable="false"
                 label="<?= _('Parent') ?>"
                 :default="source.id"/>
     <bbns-column field="source_children"
-                :hidden="true"
+                :invisible="true"
                 :showable="false"
                 :editable="false"/>
     <bbns-column bbn-if="!!source.cfg.sortable"
@@ -56,7 +56,7 @@
                 :render="renderAlias"
                 :editable="!!source.cfg.show_alias"/>
     <bbns-column field="value"
-                :hidden="true"
+                :invisible="true"
                 label="<?= _('Value') ?>"
                 :showable="!!source.cfg.show_value"
                 :editable="!!source.cfg.show_value"/>

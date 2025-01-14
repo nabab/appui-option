@@ -14,11 +14,11 @@
            }]"
 >
 	<bbns-column field="id"
-              :hidden="true"
+              :invisible="true"
               :editable="false"
   ></bbns-column>
 	<bbns-column field="id_parent"
-              :hidden="true"
+              :invisible="true"
               :editable="false"
               :default="source.id_root"
   ></bbns-column>
@@ -73,11 +73,11 @@
            }]"
 >
 	<bbns-column field="id"
-              :hidden="true"
+              :invisible="true"
               :editable="false"
   ></bbns-column>
 	<bbns-column field="id_parent"
-              :hidden="true"
+              :invisible="true"
               :editable="false"
               :default="source.id_root"
   ></bbns-column>

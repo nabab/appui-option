@@ -5,7 +5,7 @@
            :toolbar="$options.components.toolbar"
            ref="table"
            :expander="$options.components.bits">
-  <bbns-column :hidden="true"
+  <bbns-column :invisible="true"
                :showable="true"
                field="id_option"
                :default="source.option.id"/>
