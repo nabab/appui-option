@@ -48,7 +48,7 @@
                       component="appui-option-tab-preferences"
                       bcolor="tomato"
                       fcolor="white"
-                      icon="nf nf-mdi-account_settings_variant"
+                      icon="nf nf-md-account_settings_variant"
                       :source="data"
                       :disabled="data.template || data.isApp"/>
       <bbns-container :url="data.option.id + '/stats'"
@@ -67,7 +67,7 @@
                       component="appui-option-tab-psw"
                       bcolor="#32a852"
                       fcolor="white"
-                      icon="nf nf-mdi-key"
+                      icon="nf nf-md-key"
                       :source="data"/>
       </bbn-router>
     <bbn-loader bbn-else/>

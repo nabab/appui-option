@@ -62,7 +62,7 @@
                       component="appui-option-preferences"
                       bcolor="yellowgreen"
                       fcolor="white"
-                      icon="nf nf-mdi-account_settings_variant"
+                      icon="nf nf-md-account_settings_variant"
                       :source="source"
                       bbn-if="isAdmin"
       ></bbns-container>
@@ -91,7 +91,7 @@
                       component="appui-option-psw"
                       bcolor="#32a852"
                       fcolor="white"
-                      icon="nf nf-mdi-key"
+                      icon="nf nf-md-key"
                       :source="source"
                       bbn-if="isAdmin"
       ></bbns-container>

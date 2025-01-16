@@ -14,7 +14,7 @@
         <div class="bbn-grid-fields bbn-padding">
           <div class="bbn-label">
             <label class="bbn-xl"><?= _('Password') ?></label>
-            <i class="nf nf-mdi-key bbn-xl bbn-smargin"/>
+            <i class="nf nf-md-key bbn-xl bbn-smargin"/>
           </div>
           <bbn-input readonly
                     bbn-model='password'
@@ -23,7 +23,7 @@
                     :buttonRight="'nf nf-fa-eye' + (inputType === 'text' ? '_slash' : '')"
                     @clickrightbutton="inputType = inputType === 'text' ? 'password' : 'text'"/>
 
-          <bbn-button icon="nf nf-mdi-key_plus"
+          <bbn-button icon="nf nf-md-key_plus"
                       :title="_('Change Passwod')"
                       @click="changePsw"
                       :label="_('New password')"/>

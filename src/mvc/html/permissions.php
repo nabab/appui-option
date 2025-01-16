@@ -15,7 +15,7 @@
                   :notext="true"
                   title="<?= _("Refresh all permissions") ?>"
                   @click="refresh"/>
-      <bbn-button icon="nf nf-mdi-broom"
+      <bbn-button icon="nf nf-md-broom"
                   :notext="true"
                   title="<?= _("Clean up permissions (delete obsoletes)") ?>"
                   @click="cleanUp"/>

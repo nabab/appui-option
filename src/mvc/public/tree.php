@@ -10,7 +10,7 @@ if (empty($ctrl->post)) {
   $ctrl->setColor('#1D481F', '#FFF')
     ->addData(['main' => 1])
     ->setObj(['scrollable' => false])
-    ->setIcon('nf nf-mdi-file_tree')
+    ->setIcon('nf nf-md-file_tree')
     ->setUrl(APPUI_OPTION_ROOT . 'tree')
     ->combo(_("Options' tree"), true);
 }
