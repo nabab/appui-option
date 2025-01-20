@@ -1,8 +1,8 @@
 <!-- HTML Document -->
 <div class="bbn-overlay appui-option-tree">
   <bbn-splitter :resizable="true" :collapsible="true" orientation="horizontal">
-    <bbn-pane :resizable="true" :collapsible="true" :size="300">
-      <div class="bbn-overlay"
+    <bbn-pane :resizable="true" :collapsible="true" :size="300" :scrollable="false">
+      <div class="bbn-100"
            ref="container"
            :style="{overflow: 'visible', transition: 'margin-left 0.5s', width: '100% !important', marginLeft: currentPosition}">
         <div bbn-for="c in blocks"
@@ -33,7 +33,7 @@
               </div>
             </div>
             <h3 class="bbn-c bbn-hxspadding bbn-vpadding bbn-no-margin"
-                bbn-text="c.title"/>
+                bbn-text="c.label"/>
             <div class="bbn-flex-fill bbn-hpadding"
                  bbn-if="(changingRoot !== c.id) && ((typeof c.source === 'string') && c.root) || bbn.fn.isArray(c.source)">
               <bbn-tree :source="c.source"
