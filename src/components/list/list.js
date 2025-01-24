@@ -25,7 +25,7 @@
         let res = [];
         if ( this.source.parent && !this.source.cfg.noparent ){
           res.push({
-            text: this.source.parent_text,
+            label: this.source.parent_text,
             icon: 'nf nf-fa-angle_double_left',
             action: this.goParent,
             disabled: !this.source.parent
@@ -33,21 +33,21 @@
         }
         if ( this.source.is_dev ){
           res.push({
-            text: bbn._('Configuration'),
+            label: bbn._('Configuration'),
             icon: 'nf nf-fa-cog',
             action: this.openConfig
           });
         }
         if ( this.source.cfg.sortable && this.source.cfg.write ){
           res.push({
-            text: bbn._('Fix order'),
+            label: bbn._('Fix order'),
             icon: 'nf nf-fa-sort_numeric_asc',
             action: this.fixNum
           });
         }
         if ( this.source.cfg.write ){
           res.push({
-            text: bbn._('Add'),
+            label: bbn._('Add'),
             icon: 'nf nf-fa-plus',
             action: this.insert
           });
@@ -124,19 +124,19 @@
         let res = [];
         if ( this.source.cfg.write ){
           res.push({
-            text: bbn._('Edit'),
+            label: bbn._('Edit'),
             icon: 'nf nf-fa-edit',
             action: this.edit,
             notext: true
           });
           res.push({
-            text: bbn._('Copy'),
+            label: bbn._('Copy'),
             icon: 'nf nf-fa-copy',
             action: this.duplicate,
             notext: true
           });
           res.push({
-            text: bbn._('Delete'),
+            label: bbn._('Delete'),
             icon: 'nf nf-fa-trash',
             action: this.remove,
             notext: true
@@ -144,7 +144,7 @@
         }
         if ( this.source.cfg.allow_children || this.source.cfg.categories ){
           res.push({
-            text: bbn._('List'),
+            label: bbn._('List'),
             icon: 'nf nf-fa-list',
             url: this.source.root + 'list/' + row.id,
             notext: true
