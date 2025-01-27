@@ -19,7 +19,7 @@
                     @select="treeNodeActivate"
                     :path="['03a480db025011e8beb3005056014c9f', '16e090ac025011e8beb3005056014c9f', '16ec799a025011e8beb3005056014c9f']"
                     ref="listOptions"
-                    :draggable="true"
+                    :drag="true"
                     @dragend="moveOpt"
                     :min-expand-level="1"
                     :menu="treeMenu"

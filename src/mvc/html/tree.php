@@ -43,7 +43,7 @@
                         item-component="appui-option-tree-item"
                         @select="node => c.select(node)"
                         :ref="'tree' + c.id"
-                        :draggable="c.draggable"
+                        :drag="c.draggable"
                         @move="moveOpt"
                         :menu="treeMenu"
                         :multiple="false"
