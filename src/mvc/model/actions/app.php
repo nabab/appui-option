@@ -10,7 +10,7 @@ if ($model->hasData('action')) {
           'text' => $model->data['text'],
           'code' => $model->data['code'],
           'id_parent' => $model->inc->options->getRoot(),
-          'id_alias' => $model->inc->options->getMagicPluginTemplateId()
+          'id_alias' => $model->inc->options->getPluginTemplateId()
         ];
         if ($id = $model->inc->options->add($newParadigm)) {
           $model->inc->options->applyTemplate($id);

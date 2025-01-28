@@ -9,20 +9,52 @@ use bbn\X;
 /** @var bbn\Mvc\Model $model */
 $res = ['success' => false];
 if ($model->hasData('id', true)) {
-  $row = $model->inc->options->option($model->data['id']);
-  $mgr = new \bbn\User\Manager($model->inc->user);
-  $groups = $mgr->groups();
-  $users = $mgr->getList();
-  $is_file = substr($row['code'], -1) !== '/';
+  $o           =& $model->inc->options;
+  $row         = $o->option($model->data['id']);
+  $mgr         = new \bbn\User\Manager($model->inc->user);
+  $groups      = $mgr->groups();
+  $users       = $mgr->getList();
+  $is_file     = substr($row['code'], -1) !== '/';
+  $pluginTplId = $o->getPluginTemplateId();
+  $permTplId   = $o->getPermissionsTemplateId();
   // Check if it's an option
-  $is_option = $model->inc->options->isParent($model->data['id'], $model->inc->options->fromCode('options', 'permissions'));
+  $optionTplId = $o->fromCode('options', $permTplId);
+  if (!$optionTplId) {
+    throw new Exception(X::_("Impossible to find the options' permissions' template"));
+  }
+
+  $parents   = $o->parents($model->data['id']);
+  $ok        = false;
+  $is_option = false;
+  $root      = null;
+  $plugin    = null;
+  foreach ($parents as $i => $p) {
+    if ($alias = $o->getIdAlias($p)) {
+      if ($alias === $optionTplId) {
+        $is_option = true;
+        $root      = $p;
+      }
+      elseif (!$root && ($alias === $permTplId)) {
+        $root = $parents[$i-1];
+      }
+      elseif ($alias = $pluginTplId) {
+        $plugin = $p;
+        break;
+      }
+    }
+  }
+
+  if (!$root) {
+    throw new Exception(X::_("The given option is not a permission"));
+  }
+
   $data = [
     'id' => $row['id'],
     'text' => !empty($row['text']) ? $row['text'] : '',
     'code' => $row['code'],
     'path' => empty($is_option) ?
-      //$model->inc->options->toPath($model->data['id'], '', \bbn\User\Permissions::getOptionId('page')) :
-      $model->inc->options->toPath($model->data['id'], '', $model->inc->options->fromCode('access', 'permissions')) :
+      //$o->toPath($model->data['id'], '', \bbn\User\Permissions::getOptionId('page')) :
+      $o->toPath($model->data['id'], '', $root) :
       'options/list/'.$row['id'],
     'help' => !empty($row['help']) ? $row['help'] : '',
     'public' => !empty($row['public']) ? $row['public'] : 0,
@@ -38,13 +70,12 @@ if ($model->hasData('id', true)) {
   }
 
   // Check if it's a real file/dir (page)
-  //$id_page = $model->inc->options->fromCode('page', 'permission', 'appui');
-  $id_page = $model->inc->options->fromCode('access', 'permissions');
-  if ( $model->inc->options->isParent($model->data['id'], $id_page) ){
+  //$id_page = $o->fromCode('page', 'permission', 'appui');
+  if (!$is_option){
     $id_parent = $row['id_parent'];
     $p = [];
-    while ( $id_parent !== $id_page ){
-      $o = $model->inc->options->option($id_parent);
+    while ( $id_parent !== $root ){
+      $o = $o->option($id_parent);
       array_push($p, $o['code']);
       $id_parent = $o['id_parent'];
     }

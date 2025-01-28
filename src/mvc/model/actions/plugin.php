@@ -4,7 +4,7 @@ use bbn\X;
 if ($model->hasData(['action', 'id_parent'])) {
   $res = ['success' => false];
   $o =& $model->inc->options;
-  $idPlugins = $o->getMagicPluginsTemplateId();
+  $idPlugins = $o->getPluginsTemplateId();
   if ($o->getIdAlias($model->data['id_parent']) === $idPlugins) {
     switch ($model->data['action']) {
       case 'create':
@@ -20,7 +20,7 @@ if ($model->hasData(['action', 'id_parent'])) {
             'text' => $model->data['text'],
             'code' => $model->data['code'],
             'id_parent' => $model->data['id_parent'],
-            'id_alias' => $o->getMagicPluginTemplateId()
+            'id_alias' => $o->getPluginTemplateId()
           ];
 
           if ($id = $o->add($newParadigm)) {
