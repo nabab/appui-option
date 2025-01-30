@@ -64,43 +64,8 @@
     }
   };
 
-  const getTreeMenu = (tree) => {
-    return [{
-      text: bbn._('Delete'),
-      icon: 'nf nf-fa-times',
-      action: node => tree.deleteOption(node)
-    }, {
-      text: bbn._('Import'),
-      icon: 'nf nf-fa-arrow_up',
-      action: node => tree.importOption(node)
-    }, {
-      text: bbn._('Export option for database'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node)
-    }, {
-      text: bbn._('Export option for import'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'simple')
-    }, {
-      text: bbn._('Export children for import'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'schildren')
-    }, {
-      text: bbn._('Export children for database'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'children')
-    }, {
-      text: bbn._('Export tree for import'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'sfull')
-    }, {
-      text: bbn._('Export tree for database'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'full')
-    }];
-  };
 
-  const generateBlocks = t => {
+  const makeBlocks = t => {
     const root = {
       id: 'root',
       label: bbn._("Root tree"),
@@ -442,6 +407,43 @@
     return [root, apps, options, rootTemplates, plugins, appTemplates, plugin, subplugins, pluginTemplates, subplugin];
   };
 
+
+  const getTreeMenu = tree => {
+    return [{
+      text: bbn._('Delete'),
+      icon: 'nf nf-fa-times',
+      action: node => tree.deleteOption(node)
+    }, {
+      text: bbn._('Import'),
+      icon: 'nf nf-fa-arrow_up',
+      action: node => tree.importOption(node)
+    }, {
+      text: bbn._('Export option for database'),
+      icon: 'nf nf-fa-arrow_down',
+      action: node => tree.exportOption(node)
+    }, {
+      text: bbn._('Export option for import'),
+      icon: 'nf nf-fa-arrow_down',
+      action: node => tree.exportOption(node, 'simple')
+    }, {
+      text: bbn._('Export children for import'),
+      icon: 'nf nf-fa-arrow_down',
+      action: node => tree.exportOption(node, 'schildren')
+    }, {
+      text: bbn._('Export children for database'),
+      icon: 'nf nf-fa-arrow_down',
+      action: node => tree.exportOption(node, 'children')
+    }, {
+      text: bbn._('Export tree for import'),
+      icon: 'nf nf-fa-arrow_down',
+      action: node => tree.exportOption(node, 'sfull')
+    }, {
+      text: bbn._('Export tree for database'),
+      icon: 'nf nf-fa-arrow_down',
+      action: node => tree.exportOption(node, 'full')
+    }];
+  };
+
   return {
     mixins: [bbn.cp.mixins.basic],
     data() {
@@ -456,6 +458,7 @@
 
       return {
         root,
+        blocks: null,
         currentTab,
         currentIndex: 0,
         option: '{}',
@@ -494,9 +497,6 @@
       }
     },
     computed: {
-      blocks() {
-        return generateBlocks(this)
-      },
       currentApp() {
         if (this.currentAppId) {
           return bbn.fn.getRow(this.source.roots, {id: this.currentAppId});
@@ -777,6 +777,7 @@
         if (data?.id) {
           this.isReady = false;
           this.currentPluginId = data.id;
+          bbn.fn.log("DATA", data)
           this.$nextTick(() => {
             this.goToBlock(2);
             this.optionSelected = {
@@ -833,6 +834,9 @@
         }
       }
     },
+    created() {
+      this.blocks = makeBlocks(this);
+    },
     beforeMount() {
       if (this.source.option?.info) {
         let opt = this.source.option.info;
@@ -857,8 +861,14 @@
       }
     },
     watch: {
-      currentPluginId() {
+      currentPluginId(v) {
         this.changingRoot = 'plugin';
+        if (v) {
+          const block = bbn.fn.getRow(this.blocks, {id: 'plugin'});
+          if (block) {
+            block.root = this.currentPlugin.rootOptions;
+          }
+        }
         setTimeout(() => {
           this.changingRoot = false;
         }, 250);

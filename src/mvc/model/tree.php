@@ -17,13 +17,11 @@ if ($model->hasData('main')) {
     $roots = $opt->getDefaults();
     foreach ($roots as &$r) {
       $r['plugins'] = $opt->getPlugins($r['id'], true, true);
-
-      unset($p);
       $r['rootOptions'] = $opt->fromCode('options', $r['id']);
       $r['rootTemplates'] = $opt->fromCode('templates', $r['id']);
       $r['rootPermissions'] = $opt->fromCode('permissions', $r['id']);
       $r['rootPlugins'] = $opt->fromCode('plugins', $r['id']);
-  }
+    }
 
     unset($r);
     $model->addData(['roots' => $roots]);
@@ -52,9 +50,18 @@ if ($model->hasData('main')) {
     throw new Exception(X::_("Impossible to find the app's root"));
   }
 
+  $idPluginsTemplateId = $opt->getPluginsTemplateId();
+  $pluginsContainers = array_filter(
+    $opt->fullOptions('plugins', $model->data['appId']), 
+    function($a) use ($idPluginsTemplateId){
+      return $a['id_alias'] === $idPluginsTemplateId;
+    }
+  );
+
   return $model->addData([
     'absoluteRoot' => $opt->getRoot(),
     'plugins' => $opt->getPlugins(),
+    'pluginsContainers' => $pluginsContainers,
     'rootTemplates' => $opt->fromCode('templates', $opt->getRoot()),
     'is_dev' => $model->inc->user->isDev(),
     'is_admin' => $model->inc->user->isAdmin(),

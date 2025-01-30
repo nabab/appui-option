@@ -15,6 +15,15 @@
           {text: bbn._("None"), value: null},
           {text: bbn._("Only source"), value: 'source'},
           {text: bbn._("Full options"), value: 'options'}
+        ],
+        types: [
+          "url",
+          "boolean",
+          "string",
+          "number",
+          "json",
+          "textarea",
+          "bool",
         ]
       }
     },

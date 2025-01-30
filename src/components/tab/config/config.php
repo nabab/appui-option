@@ -22,7 +22,7 @@
           </div>
           <div bbn-if="data.cfg.inherit_from"
               class="bbn-w-100 bbn-c bbn-bottom-margin bbn-lg">
-            <?= _('Inherited from') ?> <a :href="root + 'list/' + data.cfg.inherit_from" bbn-text="data.cfg_inherit_from_text"/>
+            <?= _('Inherited from') ?> <a :href="root + 'list/' + data.cfg.inherit_from" bbn-text="data.cfg.inherit_from_text"/>
             &nbsp;
             <bbn-button type="button"
                         @click="unlock"
@@ -92,9 +92,10 @@
             <label bbn-if="!data.cfg.show_value">
               <a class="bbn-p" @click="toggleSchema"><?= _('Schema') ?></a>
             </label>
-            <div bbn-if="showSchema && !data.cfg.show_value">
-              <appui-option-schema :source="data.cfg.schema"
-                                    class="bbn-widest bbn-section bbn-no-pdding"/>
+            <div bbn-if="!data.cfg.show_value">
+              <appui-option-schema bbn-if="showSchema"
+                                   :source="currentSchema"
+                                    class="bbn-widest bbn-no-padding"/>
             </div>
 
             <!-- INTERNAL RELATIONS -->

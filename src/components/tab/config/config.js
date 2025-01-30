@@ -42,6 +42,7 @@
           scfg: this.source.cfg.scfg || defScfg,
           id: this.source.option ? this.source.option.id : this.source.id
         },
+        currentSchema: this.source.cfg.schema || [],
         ready: false,
         models: [],
         views: [],
@@ -276,6 +277,9 @@
       }
     },
     watch:{
+      currentSchema(newVal){
+        this.data.cfg.schema = newVal;
+      },
       /*
       rootAlias(val, oldVal){
         cfg: bbn.fn.extend(this.source.cfg, {root_alias: val}),

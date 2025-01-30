@@ -7,7 +7,8 @@
            :style="{overflow: 'visible', transition: 'margin-left 0.5s', width: '100% !important', marginLeft: currentPosition}">
         <div bbn-for="c in blocks"
              class="bbn-100 bbn-abs bbn-background"
-             :style="{left: c.index ? c.index*100 + '%' : '0px'}"
+             :style="{left: c.index ? (c.index*100) + '%' : '0px'}"
+             key="id"
              bbn-if="(undefined === c.condition) || c.condition()">
           <div class="bbn-flex-height">
             <div class="bbn-hpadding"
