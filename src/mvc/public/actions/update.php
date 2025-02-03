@@ -3,7 +3,7 @@ use bbn\X;
 
 /** @var bbn\Mvc\Controller $ctrl */
 $ctrl->obj->success = false;
-if ( isset($ctrl->post['text'], $ctrl->post['id']) ){
+if ( isset($ctrl->post['id']) && (!empty($ctrl->post['id_alias']) || !empty($ctrl->post['text'])) ){
   $cfg = $ctrl->inc->options->getParentCfg($ctrl->post['id']);
   if (!empty($cfg['schema'])) {
     if (is_array($cfg['schema'])) {

@@ -7,18 +7,25 @@
 use bbn\X;
 
 /** @var bbn\Mvc\Model $model */
+$o =& $model->inc->options;
 if ($model->hasData('data', true)
     && X::hasProps($model->data['data'], ['id', 'mode'], true)
-    && ($opt = $model->inc->options->option($model->data['data']['id']))
+    && ($opt = $o->option($model->data['data']['id']))
 ) {
-  $appui = $model->inc->options->fromCode('appui');
-  $root = $model->inc->options->fromCode('permissions');
-  $mode = $model->data['data']['mode'] === 'options' ? 'options' : 'access';
-  $from = $model->inc->options->fromCode($mode, $root);
-
-  $options = $model->inc->options->fromCode('options', $root);
-  $access = $model->inc->options->fromCode('access', $root);
-  $plugins = $model->inc->options->fromCode('plugins');
+  $mode = $model->data['data']['mode'];
+  $root = $model->data['data']['id'];
+  $res = $model->getModel($model->pluginUrl('appui-option') . '/tree', ['data' => ['id' => $root]]);
+  $res['opt'] = $opt;
+  if (!empty($res['success'])) {
+    $tree = $res['data'];
+    return $res;
+  }
+  else {
+    return $res;
+  }
+  /*
+  X::ddump();
+  $plugins = $o->fromCode('plugins');
   if ($opt['id'] === $root) {
     $rows = [$model->inc->options->option($from)];
     $rows[0]['text'] = _("Main application");
@@ -141,6 +148,7 @@ if ($model->hasData('data', true)
       ];
     }
   }
+  */
 }
 
 return $model->addData(['success' => false])->data;

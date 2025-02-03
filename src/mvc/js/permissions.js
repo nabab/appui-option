@@ -23,7 +23,8 @@
           }
         ],
         currentSource: this.source.rootAccess,
-        currentSection: 0
+        currentSection: 0,
+        currentPlugin: this.source.sources[0]
       }
     },
     computed: {
@@ -229,23 +230,17 @@
       },
     },
     watch: {
-      currentSource(){
+      currentSource(v) {
+        const prop = this.mode === 'options' ? 'rootOptions' : 'rootAccess';
+        const idx = bbn.fn.search(this.source.sources, {[prop]: v});
+        this.currentPlugin = this.source.sources[idx];
         this.$nextTick(() => {
           this.getRef('tree').updateData()
         })
       },
-      mode(v, ov) {
-        let idx = bbn.fn.search(
-          this.source.sources,
-          {[v === 'options' ? 'rootOptions' : 'rootAccess']: this.currentSource}
-        );
-
-        if (v === 'options') {
-          this.currentSource = this.source.sources[idx] ? this.source.sources[idx].rootOptions : this.source.rootOptions;
-        }
-        else {
-          this.currentSource = this.source.sources[idx] ? this.source.sources[idx].rootAccess : this.source.rootAccess;
-        }
+      mode(v) {
+        const prop = v === 'options' ? 'rootOptions' : 'rootAccess';
+        this.currentSource = this.currentPlugin[prop];
       }
     }
   };

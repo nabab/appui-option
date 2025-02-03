@@ -1,10 +1,9 @@
 <!-- HTML Document -->
 <bbn-splitter orientation="vertical">
   <bbn-pane :size="40">
-    <bbn-toolbar class="bbn-permissions-toolbar bbn-widget bbn-hspadding bbn-h-100">
-      <bbn-dropdown :source="modes"
-                    class="bbn-narrow"
-                    bbn-model="mode"/>
+    <bbn-toolbar class="bbn-permissions-toolbar">
+      <bbn-radio :source="modes"
+                 bbn-model="mode"/>
       <div class="bbn-toolbar-separator"/>
       <bbn-dropdown :source="source.sources"
                     source-text="text"
