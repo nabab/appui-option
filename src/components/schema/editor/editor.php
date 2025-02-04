@@ -1,5 +1,6 @@
 <div class="bbn-section">
-  <bbn-form @submit.prevent.stop="onSubmit">
+  <bbn-form @submit.prevent.stop="onSubmit"
+            :source="source">
     <div class="bbn-grid-fields">
       <label>
         <bbn-tooltip source="<?= ("A concise title to show in table columns and on editor label") ?>">
@@ -23,7 +24,7 @@
       </label>
       <bbn-input bbn-if="showFlabel"
                 class="wide"
-                bbn-model="source.title"
+                bbn-model="source.ftitle"
                 :required="true"/>
     
       <label><?= _("Field") ?></label>
@@ -34,8 +35,8 @@
       <label><?= _("Type") ?></label>
       <bbn-combo class="wide"
                 bbn-model="source.type"
-                :source="types"
-                :required="true"/>
+                :nullable="true"
+                :source="types"/>
     
       <div class="bbn-grid-full bbn-b"><?= _("Edition") ?></div>
     

@@ -7,7 +7,7 @@
         widthType: this.source.width ? 'fixed' : (this.source.maxWidth || this.source.minWidth ? 'dynamic' : 'auto'),
         widthRadio: [
           {text: bbn._("Auto"), value: "auto"},
-          {text: bbn._("Fixed"), value: "fixed"},
+          {text: bbn._("Pre-set"), value: "fixed"},
           {text: bbn._("Dynamic"), value: "dynamic"}
         ],
         optionsType: this.source.source ? 'source' : (this.source.options ? 'options' : 'auto'),
@@ -28,6 +28,10 @@
       }
     },
     computed: {},
-    methods: {}
+    methods: {
+      onSubmit() {
+        this.$emit('save', this.source)
+      }
+    }
   }
 })();
