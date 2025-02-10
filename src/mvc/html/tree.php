@@ -39,6 +39,8 @@
                  bbn-if="(changingRoot !== c.id) && ((typeof c.source === 'string') && c.root) || bbn.fn.isArray(c.source)">
               <bbn-tree :source="c.source"
                         uid="id"
+                        :storage="true"
+                        :storage-full-name="'appui-options-tree-' + c.id"
                         :root="c.root || undefined"
                         :map="treeMapper"
                         item-component="appui-option-tree-item"
