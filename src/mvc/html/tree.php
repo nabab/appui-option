@@ -48,7 +48,7 @@
                         :ref="'tree' + c.id"
                         :drag="c.draggable"
                         @move="moveOpt"
-                        :menu="treeMenu"
+                        :menu="getTreeMenu"
                         :multiple="false"
                         :sortable="c.draggable"/>
             </div>

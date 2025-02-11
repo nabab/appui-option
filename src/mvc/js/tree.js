@@ -407,43 +407,6 @@
     return [root, apps, options, rootTemplates, plugins, appTemplates, plugin, subplugins, pluginTemplates, subplugin];
   };
 
-
-  const getTreeMenu = tree => {
-    return [{
-      text: bbn._('Delete'),
-      icon: 'nf nf-fa-times',
-      action: node => tree.deleteOption(node)
-    }, {
-      text: bbn._('Import'),
-      icon: 'nf nf-fa-arrow_up',
-      action: node => tree.importOption(node)
-    }, {
-      text: bbn._('Export option for database'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node)
-    }, {
-      text: bbn._('Export option for import'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'simple')
-    }, {
-      text: bbn._('Export children for import'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'schildren')
-    }, {
-      text: bbn._('Export children for database'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'children')
-    }, {
-      text: bbn._('Export tree for import'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'sfull')
-    }, {
-      text: bbn._('Export tree for database'),
-      icon: 'nf nf-fa-arrow_down',
-      action: node => tree.exportOption(node, 'full')
-    }];
-  };
-
   return {
     mixins: [bbn.cp.mixins.basic],
     data() {
@@ -481,7 +444,6 @@
         dataObj: {
           appuiTree: false,
         },
-        treeMenu: getTreeMenu(this),
         routerRoot: appui.plugins['appui-option'] + '/tree/',
         isReady: true,
         templateSelected: false,
@@ -538,6 +500,48 @@
       }
     },
     methods: {
+      getTreeMenu(node) {
+        const arr = [{
+          text: bbn._('Delete'),
+          icon: 'nf nf-fa-times',
+          action: node => this.deleteOption(node)
+        }, {
+          text: bbn._('Import'),
+          icon: 'nf nf-fa-arrow_up',
+          action: node => this.importOption(node)
+        }, {
+          text: bbn._('Export option for database'),
+          icon: 'nf nf-fa-arrow_down',
+          action: node => this.exportOption(node)
+        }, {
+          text: bbn._('Export option for import'),
+          icon: 'nf nf-fa-arrow_down',
+          action: node => this.exportOption(node, 'simple')
+        }, {
+          text: bbn._('Export children for import'),
+          icon: 'nf nf-fa-arrow_down',
+          action: node => this.exportOption(node, 'schildren')
+        }, {
+          text: bbn._('Export children for database'),
+          icon: 'nf nf-fa-arrow_down',
+          action: node => this.exportOption(node, 'children')
+        }, {
+          text: bbn._('Export tree for import'),
+          icon: 'nf nf-fa-arrow_down',
+          action: node => this.exportOption(node, 'sfull')
+        }, {
+          text: bbn._('Export tree for database'),
+          icon: 'nf nf-fa-arrow_down',
+          action: node => this.exportOption(node, 'full')
+        }];
+        if (node.template) {
+          arr.push({
+            text: bbn._('Apply template'),
+            icon: 'nf nf-cod-notebook_template',
+            action: node => this.applyTemplate(node)
+          })
+        }
+      },
       popnew(type, id_parent) {
         this.getPopup({
           label: false,
@@ -625,6 +629,9 @@
       onDelete(opt) {
         this.updateTrees(opt, true);
         bbn.fn.link(this.root + 'tree/home');
+      },
+      applyTemplate(node) {
+        bbn.fn.log("APPLY TPL", node);
       },
       importOption(node) {
         this.closest('bbn-container').getPopup({
