@@ -45,6 +45,5 @@ foreach ($model->data['plugins'] as $id => $v) {
   }
 }
 
-X::ddump($todo);
 
 return ['res' => $model->inc->perm->updateAll($todo, $withApp)];

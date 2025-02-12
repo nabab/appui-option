@@ -19,6 +19,7 @@ if ($model->hasData('id', true)) {
   $permTplId   = $o->getPermissionsTemplateId();
   // Check if it's an option
   $optionTplId = $o->fromCode('options', $permTplId);
+  $accessTplId = $o->fromCode('access', $permTplId);
   if (!$optionTplId) {
     throw new Exception(X::_("Impossible to find the options' permissions' template"));
   }
@@ -34,10 +35,10 @@ if ($model->hasData('id', true)) {
         $is_option = true;
         $root      = $p;
       }
-      elseif (!$root && ($alias === $permTplId)) {
-        $root = $parents[$i-1];
+      elseif ($alias === $accessTplId) {
+        $root = $p;
       }
-      elseif ($alias = $pluginTplId) {
+      elseif ($alias === $pluginTplId) {
         $plugin = $p;
         break;
       }
