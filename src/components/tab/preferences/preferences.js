@@ -53,7 +53,7 @@
           width: '90%'
         })
       },
-      remove(row){
+      removeItem(row){
         if ( row.id ){
           this.confirm(bbn._('Are you sure you want to to delete this preference?'), () => {
             this.post(appui.plugins['appui-option'] + '/actions/preferences/remove', {id: row.id} , d => {

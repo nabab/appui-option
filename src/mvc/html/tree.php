@@ -58,9 +58,11 @@
     </bbn-pane>
     <bbn-pane :resizable="true"
               :collapsible="true">
-      <div class="bbn-overlay">
+      <div bbn-if="!changingRoot"
+           class="bbn-overlay">
         <bbn-router :root="routerRoot"
                     :autoload="false"
+                    :url="routerURL"
                     ref="router"
                     class="bbn-overlay">
           <!-- INDEX 0 -->
@@ -78,7 +80,8 @@
                                  @deleteplugin="onDeletePlugin"
                                  @deletesubplugin="onDeleteSubplugin"
                                  @delete="onDelete"/>
-            <bbn-loader bbn-else/>
+            <bbn-loader bbn-else
+                        class="bbn-overlay bbn-middle"/>
           </bbn-container>
           <!-- INDEX 2 -->
           <bbn-container url="app"
@@ -87,7 +90,8 @@
             <appui-option-page-app :source="optionSelected"
                               bbn-if="optionSelected && isReady"
                               @delete="onDeleteApp"/>
-            <bbn-loader bbn-else/>
+            <bbn-loader bbn-else
+                        class="bbn-overlay bbn-middle"/>
           </bbn-container>
           <!-- INDEX 3 -->
           <bbn-container url="template"
@@ -96,7 +100,8 @@
             <appui-option-template :source="optionSelected"
                                     bbn-if="optionSelected && isReady"
                                     @delete="onDeleteTemplate"/>
-            <bbn-loader bbn-else/>
+            <bbn-loader bbn-else
+                        class="bbn-overlay bbn-middle"/>
           </bbn-container>
           <!-- INDEX 4 -->
           <bbn-container url="plugin"
@@ -105,7 +110,8 @@
             <appui-option-page-plugin :source="optionSelected"
                                  bbn-if="optionSelected && isReady"
                                  @delete="onDeletePlugin"/>
-            <bbn-loader bbn-else/>
+            <bbn-loader bbn-else
+                        class="bbn-overlay bbn-middle"/>
           </bbn-container>
           <!-- INDEX 5 -->
           <bbn-container url="subplugin"
@@ -114,7 +120,8 @@
             <appui-option-page-subplugin :source="optionSelected"
                                     bbn-if="optionSelected && isReady"
                                     @delete="onDeleteSubplugin"/>
-            <bbn-loader bbn-else/>
+            <bbn-loader bbn-else
+                        class="bbn-overlay bbn-middle"/>
           </bbn-container>
         </bbn-router>
       </div>

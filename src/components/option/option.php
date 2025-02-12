@@ -70,6 +70,7 @@
                       icon="nf nf-md-key"
                       :source="data"/>
       </bbn-router>
-    <bbn-loader bbn-else/>
+      <bbn-loader bbn-else
+                  class="bbn-overlay bbn-middle"/>
   </div>
 </div>

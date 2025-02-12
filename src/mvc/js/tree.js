@@ -456,6 +456,7 @@
         currentPluginId: null,
         currentSubpluginId: null,
         currentURL: '',
+        routerURL: 'home',
       }
     },
     computed: {
@@ -543,6 +544,16 @@
         }
       },
       popnew(type, id_parent) {
+        const source = {
+          id_parent,
+          text: null,
+          code: null,
+          id_alias: null
+        };
+        if (type === 'plugin') {
+          source.prefix = null;
+        }
+
         this.getPopup({
           label: false,
           component: 'appui-option-new-' + type,
@@ -550,12 +561,7 @@
             create: res => this.onCreate(res)
           },
           closable: false,
-          source: {
-            id_parent,
-            text: null,
-            code: null,
-            id_alias: null
-          }
+          source
         })
       },
       setDefaultTab(route) {
@@ -726,13 +732,13 @@
         const data = node.data;
         if (data && data.id) {
           this.isReady = false;
+          this.routerURL = 'option';
           this.$nextTick(() => {
             this.optionSelected = {
               code: data.code,
               text: data.text,
               id: data.id
             };
-            this.getRef('router').activateIndex(1);
             this.closest('bbn-container').router.changeURL(this.root + 'tree/option/' + data.id + '/' + this.currentTab, data.name || data.text);
             setTimeout(() => {
               this.isReady = true;
@@ -746,6 +752,7 @@
         if (data?.id) {
           this.isReady = false;
           this.currentAppId = data.id;
+          this.routerURL = 'app';
           this.$nextTick(() => {
             this.goToBlock(0);
             this.optionSelected = {
@@ -753,7 +760,6 @@
               text: data.text,
               id: data.id
             };
-            this.getRef('router').activateIndex(2);
             this.closest('bbn-container').router.changeURL(this.root + 'tree/app/' + data.id, data.name || data.text);
             setTimeout(() => {
               this.isReady = true;
@@ -765,13 +771,13 @@
         const data = node.data;
         if (data?.id) {
           this.isReady = false;
+          this.routerURL = 'template';
           this.$nextTick(() => {
             this.optionSelected = {
               code: data.code,
               text: data.text,
               id: data.id
             };
-            this.getRef('router').activateIndex(3);
             this.closest('bbn-container').router.changeURL(this.root + 'tree/template/' + data.id + '/values', data.name || data.text);
             setTimeout(() => {
               this.isReady = true;
@@ -784,6 +790,7 @@
         if (data?.id) {
           this.isReady = false;
           this.currentPluginId = data.id;
+          this.routerURL = 'plugin';
           bbn.fn.log("DATA", data)
           this.$nextTick(() => {
             this.goToBlock(2);
@@ -792,9 +799,8 @@
               text: data.text,
               id: data.id
             };
-            this.getRef('router').activateIndex(4);
-            this.closest('bbn-container').router.changeURL(this.root + 'tree/plugin/' + data.id, data.name || data.text);
             setTimeout(() => {
+              this.closest('bbn-container').router.changeURL(this.root + 'tree/plugin/' + data.id, data.name || data.text);
               this.isReady = true;
             }, 100);
           });
@@ -805,6 +811,8 @@
         if (data?.id) {
           this.isReady = false;
           this.currentSubpluginId = data.id;
+          this.routerURL = 'subplugin';
+
           this.$nextTick(() => {
             this.goToBlock(5);
             this.optionSelected = {
@@ -812,7 +820,7 @@
               text: data.text,
               id: data.id
             };
-            this.getRef('router').activateIndex(5);
+
             this.closest('bbn-container').router.changeURL(this.root + 'tree/subplugin/' + data.id, data.name || data.text);
             setTimeout(() => {
               this.isReady = true;

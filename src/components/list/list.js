@@ -138,7 +138,7 @@
           res.push({
             label: bbn._('Delete'),
             icon: 'nf nf-fa-trash',
-            action: this.remove,
+            action: this.removeItem,
             notext: true
           });
         }
@@ -208,7 +208,7 @@
           });
         }
       },
-      remove(row){
+      removeItem(row){
         if ( row.id ){
           appui.confirm(bbn._('Are you sure you want to delete this entry?'), () => {
             this.post(this.source.root + 'actions/delete', {id: row.id}, (d) => {

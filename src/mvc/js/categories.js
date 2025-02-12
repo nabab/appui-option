@@ -21,7 +21,7 @@
           });
         }
       },
-      remove(row, col, idx){
+      removeItem(row, col, idx){
         if ( row.id ){
           this.confirm(bbn._('Are you sure you want to delete this entry?'), () => {
             this.post(this.source.root + 'actions/delete', {id: row.id}, (d) => {
@@ -57,7 +57,7 @@
           res.push({
             text: bbn._('Delete'),
             icon: 'nf nf-fa-trash',
-            action: this.remove,
+            action: this.removeItem,
             notext: true
           });
         }
@@ -103,7 +103,7 @@
           });
         }
       },
-      remove(row, col, idx){
+      removeItem(row, col, idx){
         if ( row.id && this.source.options[idx] ){
           this.confirm('Are you sure you want to delete this entry?', () => {
             this.post(this.source.root + 'actions/delete', {id: row.id}, (d) => {
@@ -140,7 +140,7 @@
           res.push({
             text: bbn._('Delete'),
             icon: 'nf nf-fa-trash',
-            action: this.remove,
+            action: this.removeItem,
             notext: true
           });
         }

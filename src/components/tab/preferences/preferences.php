@@ -36,7 +36,7 @@
                  icon: 'nf nf-fa-trash',
                  text: '<?= _('Delete') ?>',
                  notext: true,
-                 action: remove
+                 action: removeItem
                }]"
                :width="100"
                cls="bbn-c"/>
