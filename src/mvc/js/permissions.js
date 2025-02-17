@@ -205,11 +205,11 @@
       },
       treeMapper(n){
         let addedCls = ''
-        if (!n.text && n.alias) {
-          n.text = n.alias.text + ' <span class="bbn-permissions-list-code bbn-blue">' + n.alias.code + '</span>';
+        if (!n.text && n.data?.alias) {
+          n.text = n.data.alias.text + ' <span class="bbn-permissions-list-code bbn-blue">' + n.data.alias.code + '</span>';
         }
         else {
-          n.text += ' <span class="bbn-permissions-list-code">' + n.code + '</span>';
+          n.text += ' <span class="bbn-permissions-list-code">' + n.data?.code + '</span>';
         }
 
         return n;

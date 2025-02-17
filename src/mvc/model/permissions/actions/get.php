@@ -76,9 +76,9 @@ if ($model->hasData('id', true)) {
     $id_parent = $row['id_parent'];
     $p = [];
     while ( $id_parent !== $root ){
-      $o = $o->option($id_parent);
-      array_push($p, $o['code']);
-      $id_parent = $o['id_parent'];
+      $op = $o->option($id_parent);
+      array_push($p, $op['code']);
+      $id_parent = $op['id_parent'];
     }
     $p = array_reverse($p);
     $path = implode('', $p).$row['code'].($is_file ? '.php' : '');
