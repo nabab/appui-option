@@ -1,12 +1,12 @@
 {
   "text": "Templates",
   "code": "templates",
-  "icon": "nf nf-mdi-file_tree",
+  "icon": "nf nf-md-file_tree",
   "items": [
       {
           "text": "Plugin",
           "code": "plugin",
-          "icon": "nf nf-mdi-puzzle",
+          "icon": "nf nf-md-puzzle",
           "items": [
               {
                   "text": "Options",
@@ -21,13 +21,13 @@
                           "num": 1,
                           "text": "Access",
                           "code": "access",
-                          "icon": "nf nf-mdi-door"
+                          "icon": "nf nf-md-door"
                       },
                       {
                           "num": 2,
                           "text": "Plugins",
                           "code": "plugins",
-                          "icon": "nf nf-mdi-puzzle"
+                          "icon": "nf nf-md-puzzle"
                       },
                       {
                           "num": 3,
@@ -48,7 +48,7 @@
               {
                   "text": "Plugins",
                   "code": "plugins",
-                  "icon": "nf nf-mdi-puzzle",
+                  "icon": "nf nf-md-puzzle",
                   "items": [
                       {
                           "text": "App-UI",
