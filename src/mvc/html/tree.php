@@ -25,7 +25,8 @@
                             :url="b.url || undefined"
                             :icon="b.icon || undefined"
                             :disabled="b.menu ? true : false"
-                            :icon-position="b.iconPosition || 'left'">
+                            :icon-position="b.iconPosition || 'left'"
+                            :style="b.menu ? {padding: '0px'} : ''">
                   <bbn-menu bbn-if="b.menu"
                             :source="b.menu"
                             class="bbn-no-border"/>
@@ -44,6 +45,7 @@
                         :root="c.root || undefined"
                         :map="treeMapper"
                         item-component="appui-option-tree-item"
+                        :no-data-component="c.noData || null"
                         @select="node => c.select(node)"
                         :ref="'tree' + c.id"
                         :drag="c.draggable"
@@ -58,13 +60,13 @@
     </bbn-pane>
     <bbn-pane :resizable="true"
               :collapsible="true">
-      <div bbn-if="!changingRoot"
-           class="bbn-overlay">
+      <div class="bbn-overlay">
         <bbn-router :root="routerRoot"
                     :autoload="false"
                     :url="routerURL"
                     ref="router"
-                    class="bbn-overlay">
+                    class="bbn-overlay"
+                    bbn-if="!changingRoot">
           <!-- INDEX 0 -->
           <bbn-container url="home"
                          label="<?= _("Home") ?>"

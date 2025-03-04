@@ -48,7 +48,7 @@
                       component="appui-option-tab-preferences"
                       bcolor="tomato"
                       fcolor="white"
-                      icon="nf nf-md-account_settings_variant"
+                      icon="nf nf-md-account_settings_outline"
                       :source="data"
                       :disabled="data.template || data.isApp"/>
       <bbns-container :url="data.option.id + '/stats'"

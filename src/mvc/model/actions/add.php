@@ -1,4 +1,5 @@
 <?php
+use bbn\X;
 
 if ($model->hasData('id_parent', true) 
   && ($model->hasData('text', true) || $model->hasData('id_alias', true))
@@ -13,8 +14,8 @@ if ($model->hasData('id_parent', true)
   ];
   $template = false;
 
-  if ($model->hasData('__bbnExtraParam__', true)) {
-    switch ($model->data['__bbnExtraParam__']) {
+  if ($model->hasData('action', true)) {
+    switch ($model->data['action']) {
       case 'plugin':
         if (!empty($model->data['prefix'])) {
           if (!($newOpt['id_parent'] = $model->inc->options->fromCode($model->data['prefix'], 'plugins'))) {
@@ -35,6 +36,9 @@ if ($model->hasData('id_parent', true)
         break;
 
       case 'app':
+        $newOpt['id_alias'] = $model->inc->options->getPluginTemplateId();
+        $newOpt['id_parent'] = $model->inc->options->getRoot();
+        $template = true;
         break;
 
     }

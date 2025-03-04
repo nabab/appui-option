@@ -58,10 +58,13 @@ if ($model->hasData('main')) {
     }
   );
 
-  return $model->addData([
+  $default = $opt->getDefault();
+  if ($default !== $model->data['appId']) {
+    $opt->setDefault($model->data['appId']);
+  }
+
+  $model->addData([
     'absoluteRoot' => $opt->getRoot(),
-    'plugins' => $opt->getPlugins(),
-    'pluginsContainers' => $pluginsContainers,
     'rootTemplates' => $opt->fromCode('templates', $opt->getRoot()),
     'is_dev' => $model->inc->user->isDev(),
     'is_admin' => $model->inc->user->isAdmin(),
@@ -70,13 +73,18 @@ if ($model->hasData('main')) {
       'please_refresh' => _("Please refresh the tab in order to see the awful truth..."),
       'confirm_move' => _("Are you sure you want to move this option? Although the configuration will remain the same, the access path will be changed.")
     ]
-  ])->data;
+    ]);
+    if ($default !== $model->data['appId']) {
+      $opt->setDefault($default);
+    }
+  
+    return $model->data;
 }
 
 if ($model->hasData('data', true)) {
   $data = $model->data['data'];
   if (empty($data['id']) && $model->inc->user->isAdmin()) {
-    $root = empty($data['appuiTree']) ? $opt->fromCode(false) : $opt->getRoot();
+    $root = $opt->getRoot();
   }
   elseif (!empty($data['id'])) {
     $root = $data['id'];
@@ -102,7 +110,7 @@ if ($model->hasData('data', true)) {
           }
 
           return [
-            'text' => $o['text'],
+            'text' => $o['text'] ?: $o['alias']['text'],
             'icon' => $icon,
             'template' => $opt->isInTemplate($o['id']),
             'plugin' => $opt->isPlugin($o['id']),

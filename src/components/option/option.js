@@ -10,7 +10,6 @@
           show_id: true
         },
         isMobile: bbn.fn.isMobile(),
-        isReady: true,
         data: this.source.option ? this.source : null
       }
     },

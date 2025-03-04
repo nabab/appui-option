@@ -1,7 +1,7 @@
 <div class="bbn-padding bbn-background">
   <div class="bbn-section bbn-c">
     <legend><?= _("Your application informations") ?></legend>
-    <bbn-form :action="root + 'actions/add'"
+    <bbn-form :action="root + 'actions/add/app'"
               :source="source"
               @success="onCreate">
       <div class="bbn-grid-fields bbn-c">
