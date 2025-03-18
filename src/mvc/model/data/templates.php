@@ -6,7 +6,7 @@
 
 use bbn\X;
 use bbn\Str;
-/** @var $model \bbn\Mvc\Model*/
+/** @var $model bbn\Mvc\Model */
 
 return [
   'data' => $model->inc->options->textValueTemplates(),
