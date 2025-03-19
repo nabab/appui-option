@@ -930,6 +930,16 @@
           this.currentAppId = data.id;
           this.routerURL = 'app';
           this.$nextTick(() => {
+            this.blocks.splice(2, 8, 
+              this.genBlockOptions(),
+              this.genBlockTemplates(),
+              this.genBlockPlugins(),
+              this.genBlockAppTemplates(), 
+              this.genBlockPlugin(),
+              this.genBlockSubplugins(),
+              this.genBlockPluginTemplates(),
+              this.genBlockSubplugin()
+            );
             this.goToBlock(0);
             this.optionSelected = {
               code: data.code,
@@ -962,6 +972,12 @@
           this.currentPluginId = data.id;
           this.routerURL = 'plugin/' + data.id;
           this.$nextTick(() => {
+            this.blocks.splice(6, 4,
+              this.genBlockPlugin(),
+              this.genBlockSubplugins(),
+              this.genBlockPluginTemplates(),
+              this.genBlockSubplugin(),
+            );
             this.goToBlock(2);
             this.optionSelected = {
               code: data.code,
@@ -981,6 +997,9 @@
           this.routerURL = 'subplugin';
 
           this.$nextTick(() => {
+            this.blocks.splice(9, 1,
+              this.genBlockSubplugin()
+            );
             this.goToBlock(5);
             this.optionSelected = {
               code: data.code,
