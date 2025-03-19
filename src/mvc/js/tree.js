@@ -901,6 +901,7 @@
         this.readyTimeout = setTimeout(() => {
           this.isReady = true;
           this.$nextTick(() => {
+            bbn.fn.log("URL ON NEXT TICJ", url);
             this.closest('bbn-container').router.changeURL(this.root + 'tree/' + url, title);
           })
         }, 250);
@@ -960,7 +961,6 @@
           this.isReady = false;
           this.currentPluginId = data.id;
           this.routerURL = 'plugin/' + data.id;
-          bbn.fn.log("DATA", data)
           this.$nextTick(() => {
             this.goToBlock(2);
             this.optionSelected = {
@@ -968,6 +968,7 @@
               text: data.text,
               id: data.id
             };
+            bbn.fn.log("DATA", data)
             this.launchReady('plugin/' + data.id, data.name || data.text);
           });
         }

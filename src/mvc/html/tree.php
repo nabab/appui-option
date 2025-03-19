@@ -65,8 +65,7 @@
                     :autoload="false"
                     :url="routerURL"
                     ref="router"
-                    class="bbn-overlay"
-                    bbn-if="!changingRoot">
+                    class="bbn-overlay">
           <!-- INDEX 0 -->
           <bbn-container url="home"
                          label="<?= _("Home") ?>"
@@ -76,7 +75,7 @@
                          label="<?= _("Option") ?>"
                          ref="optionContainer">
             <appui-option-option :source="optionSelected"
-                                 bbn-if="optionSelected && isReady"
+                                 bbn-if="!routerURL.indexOf('option') && optionSelected && isReady"
                                  @route="setDefaultTab"
                                  @deleteapp="onDeleteApp"
                                  @deleteplugin="onDeletePlugin"
@@ -90,7 +89,7 @@
                          label="<?= _("App") ?>"
                          ref="appContainer">
             <appui-option-page-app :source="optionSelected"
-                              bbn-if="optionSelected && isReady"
+                              bbn-if="!routerURL.indexOf('app') && optionSelected && isReady"
                               @delete="onDeleteApp"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
@@ -100,7 +99,7 @@
                          label="<?= _("Template") ?>"
                          ref="templateContainer">
             <appui-option-template :source="optionSelected"
-                                    bbn-if="optionSelected && isReady"
+                                    bbn-if="!routerURL.indexOf('template') && optionSelected && isReady"
                                     @delete="onDeleteTemplate"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
@@ -110,7 +109,7 @@
                          label="<?= _("Plugin") ?>"
                          ref="pluginContainer">
             <appui-option-page-plugin :source="optionSelected"
-                                 bbn-if="optionSelected && isReady"
+                                 bbn-if="!routerURL.indexOf('plugin') && optionSelected && isReady"
                                  @delete="onDeletePlugin"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
@@ -120,7 +119,7 @@
                          label="<?= _("Subplugin") ?>"
                          ref="subpluginContainer">
             <appui-option-page-subplugin :source="optionSelected"
-                                    bbn-if="optionSelected && isReady"
+                                    bbn-if="!routerURL.indexOf('subplugin') && optionSelected && isReady"
                                     @delete="onDeleteSubplugin"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
