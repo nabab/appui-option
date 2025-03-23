@@ -36,7 +36,7 @@
 
           <template bbn-for="sch in currentComp.schema"
                     bbn-if="currentComp.schema && showField(sch)">
-            <div bbn-text="sch.title"/>
+            <div bbn-text="sch.label"/>
             <bbn-field mode="write"
                       bbn-bind="sch"
                       bbn-model="currentSource[sch.field]"/>

@@ -1,3 +1,3 @@
 <div class="bbn-iblock">
-  <span bbn-text="source.title"></span>
+  <span bbn-text="source.label"></span>
 </div>

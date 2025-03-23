@@ -104,10 +104,25 @@
               <?= _('Internal relations') ?>
             </div>
 
-            <label bbn-if="!data.cfg.categories"><?= _('Alias') ?></label>
-            <bbn-checkbox bbn-if="!data.cfg.categories"
-                          bbn-model.number="data.cfg.show_alias"
-                          :value="1"
+            <div class="bbn-grid-full bbn-c">
+              <bbn-radio class="bbn-options-relations"
+                        bbn-model="data.cfg.relations"
+                        :disabled="!!data.cfg.frozen || showScfg"
+                        :source="[{
+                            text: '<?= st::escape(_('No relations')) ?>',
+                            value: '',
+                          }, {
+                            text: '<?= st::escape(_('Use alias')) ?>',
+                            value: 'alias',
+                          }, {
+                            text: '<?= st::escape(_('Use template')) ?>',
+                            value: 'template',
+                          }]"/>
+            </div>
+            <label bbn-if="data.cfg.relations === 'template'"><?= _('Template used by children') ?></label>
+            <bbn-dropdown bbn-if="data.cfg.relations === 'template'"
+                          bbn-model="data.cfg.id_template"
+                          :source="templates"
                           :disabled="!!data.cfg.frozen"/>
 
             <label bbn-if="data.cfg.show_alias"><?= _("Alias' root") ?></label>
@@ -135,36 +150,31 @@
                           :value="1"
                           :disabled="!!data.cfg.frozen"/>
 
-            <label class="bbn-options-inheritance"
-                  bbn-if="data.cfg.allow_children">
-              <?= _('Inheritance') ?>
-            </label>
-            <bbn-radio class="bbn-options-inheritance"
-                      bbn-if="data.cfg.allow_children"
-                      bbn-model="data.cfg.inheritance"
-                      :disabled="!!data.cfg.frozen || showScfg"
-                      :source="[{
-                          text: '<?= st::escape(_('None')) ?>',
-                          value: '',
-                        }, {
-                          text: '<?= st::escape(_('Only children')) ?>',
-                          value: 'children',
-                        }, {
-                          text: '<?= st::escape(_('Cascade')) ?>',
-                          value: 'cascade',
-                        }, {
-                          text: '<?= st::escape(_('Default')) ?>',
-                          value: 'default',
-                        }]"/>
+            <div class="bbn-grid-full bbn-c">
+              <bbn-radio class="bbn-options-inheritance"
+                        bbn-if="data.cfg.allow_children"
+                        bbn-model="data.cfg.inheritance"
+                        :disabled="!!data.cfg.frozen || showScfg"
+                        :source="[{
+                            text: '<?= st::escape(_('None')) ?>',
+                            value: '',
+                          }, {
+                            text: '<?= st::escape(_('Only children')) ?>',
+                            value: 'children',
+                          }, {
+                            text: '<?= st::escape(_('Cascade')) ?>',
+                            value: 'cascade',
+                          }, {
+                            text: '<?= st::escape(_('Default')) ?>',
+                            value: 'default',
+                          }]"/>
+            </div>
 
             <!-- PERMISSIONS -->
             <hr>
-            <div class="bbn-grid-full bbn-m bbn-b">
-              <?= _('Permissions') ?>
-            </div>
 
-            <label bbn-if="data.cfg.permissions !== 1"><?= _('Permissions') ?></label>
-            <div bbn-if="data.cfg.permissions !== 1">
+            <div class="bbn-grid-full bbn-c"
+                 bbn-if="data.cfg.permissions !== 1">
               <div class="bbn-w-100">
                 <bbn-radio class="bbn-options-inheritance"
                           bbn-model="data.cfg.permissions"

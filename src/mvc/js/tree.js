@@ -116,6 +116,7 @@
         currentSubpluginId: null,
         currentURL: '',
         routerURL: 'home',
+        debug: JSON.stringify(this.source)
       }
     },
     computed: {
@@ -819,7 +820,7 @@
           this.goToBlock(-1);
         }
         else if (this.currentPlugin) {
-          this.goToBlock(1);
+          this.goToBlock(2);
         }
         else {
           this.goToBlock(0);
@@ -1037,10 +1038,10 @@
       this.blocks = this.getBlocks();
     },
     beforeMount() {
-      if (this.source.option?.info) {
-        let opt = this.source.option.info;
-        this.cfg = this.source.option.cfg;
-        this.option = this.source.option.info
+      if (this.source.info?.option) {
+        let opt = this.source.info.option;
+        this.cfg = this.source.info.cfg;
+        this.option = opt;
         this.optionSelected.id = opt.id;
         this.optionSelected.code = opt.code;
         this.optionSelected.text = opt.text;
@@ -1048,7 +1049,7 @@
       else {
         const ct = this.closest('bbn-container');
         if (ct.currentCurrent !== ct.currentURL) {
-          bbn.fn.warning("JJJJJJJJJJJJ")
+          bbn.fn.warning("CURRENT AND URL ARE DIFFERENT: " + ct.currentCurrent + ' - ' + ct.currentURL)
         }
       }
 
@@ -1060,6 +1061,11 @@
       }
     },
     watch: {
+      optionSelected(v) {
+        if (appui.user.isAdmin) {
+          this.debug = JSON.stringify(v, null, 2);
+        }
+      },
       currentPluginId(v) {
         this.changingRoot = 'plugin';
         setTimeout(() => {

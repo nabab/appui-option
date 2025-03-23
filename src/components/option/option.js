@@ -63,6 +63,7 @@
           if (d.success) {
             delete d.success;
             this.data = d;
+            this.$emit('update', d);
           }
         })
       }

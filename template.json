@@ -63,9 +63,7 @@
                       "show_alias": 1,
                       "show_value": 1,
                       "id_root_alias": [
-                          "appui",
-                          "plugins",
-                          "apst-app"
+                          "appui"
                       ]
                   }
               },

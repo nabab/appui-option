@@ -9,7 +9,7 @@
       </label>
       <div>
         <bbn-input class="wide"
-                  bbn-model="source.title"
+                  bbn-model="source.label"
                   :required="true"/>&nbsp;
         <a bbn-if="showFlabel"
           @click="showFlabel = false; source.flabel = null"><?= _("Remove the longer title") ?></a>

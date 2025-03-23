@@ -1,10 +1,25 @@
 (() => {
   return {
     mixins: [bbn.cp.mixins.basic],
-    data(){
+    data() {
+      const target = this.source.row || this.source;
+      const currentSource = new Proxy(target, {
+        set(obj, prop, value) {
+          obj[prop] = value;
+          return true;
+        },
+        get(obj, prop) {
+          const value = target[prop];
+          if (!(prop in obj)) {
+            target[prop] = '';
+          }
+
+          return obj[prop];
+        }
+      });
       return {
         root: appui.plugins['appui-option'] + '/',
-        currentSource: this.source.row || this.source
+        currentSource
       }
     },
     computed: {
@@ -51,7 +66,7 @@
       },
       showField(f){
         if ( ((f.field === 'code') && !this.cfg.show_code) ||
-          ((f.field === 'id_lias') && !this.cfg.show_alias) ||
+          ((f.field === 'id_alias') && !this.cfg.show_alias) ||
           ((f.field === 'value') && !this.cfg.show_value) ||
           ((f.field === 'tekname') && !this.cfg.categories)
         ){
@@ -96,7 +111,7 @@
         }
         return true;
       },
-      success(d){
+      success(d) {
         if ( d.success && d.data ){
           if ( this.list ){
             if ( this.currentSource.id ){
@@ -114,7 +129,7 @@
             this.list.$refs.table.updateData();
           }
           else if ( this.tree ){
-            let list = this.tree.tree.getRef('listOptions');
+            let list = this.tree.tree.getRef('tree' + bbn.fn.getField(this.tree.tree.blocks, 'id', a => a.index === this.tree.tree.currentIndex));
             this.tree.tree.optionSelected.id = false;
             this.$nextTick(() => {
               if ( list.selectedNode ){

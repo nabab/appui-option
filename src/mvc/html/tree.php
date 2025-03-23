@@ -80,7 +80,8 @@
                                  @deleteapp="onDeleteApp"
                                  @deleteplugin="onDeletePlugin"
                                  @deletesubplugin="onDeleteSubplugin"
-                                 @delete="onDelete"/>
+                                 @delete="onDelete"
+                                 @update="d => debug = JSON.stringify(d, null, 2)"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>
@@ -90,7 +91,8 @@
                          ref="appContainer">
             <appui-option-page-app :source="optionSelected"
                               bbn-if="!routerURL.indexOf('app') && optionSelected && isReady"
-                              @delete="onDeleteApp"/>
+                              @delete="onDeleteApp"
+                              @update="d => debug = JSON.stringify(d, null, 2)"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>
@@ -126,6 +128,14 @@
           </bbn-container>
         </bbn-router>
       </div>
+    </bbn-pane>
+    <bbn-pane bbn-if="appui.user.isAdmin"
+              :resizable="true"
+              :collapsible="true"
+              :collapsed="true"
+              :size="250">
+      <bbn-json-editor v-model="debug"
+                       :readonly="true"/>
     </bbn-pane>
   </bbn-splitter>
 </div>

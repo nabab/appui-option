@@ -26,6 +26,7 @@
         permissions: "",
         schema: null,
         show_alias: null,
+        template: null,
         show_code: null,
         show_icon: 0,
         show_value: null,
