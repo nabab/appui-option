@@ -90,12 +90,11 @@
             </div>
 
             <label bbn-if="!data.cfg.show_value">
-              <a class="bbn-p" @click="toggleSchema"><?= _('Schema') ?></a>
+              <?= _('Schema') ?>
             </label>
             <div bbn-if="!data.cfg.show_value">
-              <appui-option-schema bbn-if="showSchema"
-                                   :source="currentSchema"
-                                    class="bbn-widest bbn-no-padding"/>
+              <appui-option-schema :source="currentSchema"
+                                    class="bbn-w-100 bbn-no-padding"/>
             </div>
 
             <!-- INTERNAL RELATIONS -->

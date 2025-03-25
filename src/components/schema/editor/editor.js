@@ -31,6 +31,9 @@
     methods: {
       onSubmit() {
         this.$emit('save', this.source)
+      },
+      submit() {
+        return this.getRef('form').submit()
       }
     }
   }

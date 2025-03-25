@@ -70,10 +70,18 @@
     data() {
       const root = appui.plugins['appui-option'] + '/';
       let currentTab = 'values';
-      if (bbn.env.path.indexOf(root + 'tree/option/') === 0) {
-        const last = bbn.env.path.split('/').pop();
-        if (['values', 'cfg', 'preferences', 'stats', 'password'].includes(last)) {
-          currentTab = last;
+      let routerURL = 'home';
+      if (bbn.env.path.indexOf(root + 'tree/') === 0) {
+        let tmp = bbn.env.path.substr(root.length + 5);
+        tmp = tmp.split('/');
+        if (tmp.length) {
+          routerURL = tmp.shift();
+          if (tmp.length) {
+            const last = tmp.pop();
+            if (['values', 'cfg', 'preferences', 'stats', 'password'].includes(last)) {
+              currentTab = last;
+            }
+          }
         }
       }
 
@@ -115,7 +123,7 @@
         currentPluginId: null,
         currentSubpluginId: null,
         currentURL: '',
-        routerURL: 'home',
+        routerURL,
         debug: JSON.stringify(this.source)
       }
     },

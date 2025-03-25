@@ -17,7 +17,9 @@
     },
     methods: {
       cancel() {
-        bbn.fn.log("CANCEL ITEM TO DO")
+        this.isEditing = false;
+        this.source.pop();
+        this.edited = null;
       },
       saveItem(item) {
         bbn.fn.log("SAVE ITEM DONE", item)

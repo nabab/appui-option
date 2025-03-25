@@ -38,7 +38,8 @@
                 bbn-text="c.label"/>
             <div class="bbn-flex-fill bbn-hpadding"
                  bbn-if="(changingRoot !== c.id) && ((typeof c.source === 'string') && c.root) || bbn.fn.isArray(c.source)">
-              <bbn-tree :source="c.source"
+              <bbn-tree bbn-if="c.source"
+                        :source="c.source"
                         uid="id"
                         :storage="true"
                         :storage-full-name="'appui-options-tree-' + c.id"
