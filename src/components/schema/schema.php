@@ -22,14 +22,7 @@
                   :disabled="!isEditing"/>
     </div>
   </div>
-  <div class="bbn-w-100"
-       bbn-if="edited">
-    <appui-option-schema-editor :source="edited"
-                                @close="edited = false"
-                                ref="editor"
-                                @save="saveItem"/>
-  </div>
-  <div bbn-elseif="source?.length"
+  <div bbn-if="source?.length"
        class="bbn-w-100">
     <div class="bbn-flex"
          style="flex-flow: column; margin: auto">

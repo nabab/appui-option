@@ -32,7 +32,7 @@
       },
       addItem() {
         this.source.push({
-          title: '',
+          label: '',
           field: '',
           type: '',
         });
@@ -42,6 +42,21 @@
       deleteItem(idx) {
         if (this.source[idx]) {
           this.source.splice(idx, 1);
+        }
+      }
+    },
+    watch: {
+      isEditing(val) {
+        if (val && this.edited) {
+          this.getPopup({
+            label: bbn._("Schema editor"),
+            component: "appui-option-schema-editor",
+            source: this.edited,
+            onClose: () => { this.edited = false; this.isEditing = false},
+            events: {
+              save: this.saveItem
+            }
+          })
         }
       }
     }
