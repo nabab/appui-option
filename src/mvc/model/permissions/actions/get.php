@@ -11,7 +11,8 @@ $res = ['success' => false];
 if ($model->hasData('id', true)) {
   $o           =& $model->inc->options;
   $row         = $o->option($model->data['id']);
-  $mgr         = new \bbn\User\Manager($model->inc->user);
+  $user        = bbn\User::getInstance();
+  $mgr         = $model->inc->user->getManager();
   $groups      = $mgr->groups();
   $users       = $mgr->getList();
   $is_file     = substr($row['code'], -1) !== '/';

@@ -4,8 +4,7 @@
             @success="success"
             :source="source"
             :fixedFooter="false"
-            ref="form_cfg"
-            >
+            ref="form_cfg">
     <div class="bbn-grid-fields">
       <div><?= _('Type') ?></div>
       <i :class="'nf nf-fa-' + (source.type ? source.type : 'key')"
@@ -19,19 +18,22 @@
                   maxlength="255"/>
 
       <div><?= _('Text') ?></div>
-      <bbn-input bbn-model="source.text" maxlength="255"
-                  @keydown.enter.prevent="submitConf"
-                  class="bbn-w-100"/>
+      <bbn-input bbn-model="source.text"
+                 maxlength="255"
+                 class="bbn-w-100"/>
 
       <div><?= _('Help') ?></div>
-      <bbn-editable type="markdown" bbn-model="source.help"/>
-
+      <!-- <bbn-editable type="markdown"
+                    bbn-model="source.help"/> -->
+      <bbn-markdown bbn-model="source.help"/>
 
       <div><?= _('Public') ?></div>
-      <bbn-checkbox bbn-model="source.public"/>
+      <bbn-checkbox bbn-model="source.public"
+                    :novalue="0"/>
 
       <div><?= _('Cascade') ?></div>
-      <bbn-checkbox bbn-model="source.cascade"/>
+      <bbn-checkbox bbn-model="source.cascade"
+                    :novalue="0"/>
     </div>
   </bbn-form>
 </div>

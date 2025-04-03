@@ -8,9 +8,9 @@
 
 $res = ['success' => false];
 if (isset($model->data['id_option'])
-    && (!empty($model->data['id_user']) || !empty($model->data['id_group']))
+  && (!empty($model->data['id_user']) || !empty($model->data['id_group']))
+  && ($mgr = $model->inc->user->getManager())
 ) {
-  $mgr = new bbn\User\Manager($model->inc->user);
   $res['success'] = $mgr->removePermission(
     $model->data['id_option'],
     $model->data['id_user'] ?? null,

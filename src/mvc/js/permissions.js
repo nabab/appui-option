@@ -24,52 +24,11 @@
         ],
         currentSource: this.source.rootAccess,
         currentSection: 0,
-        currentPlugin: this.source.sources[0]
+        currentPlugin: this.source.sources[0],
+        panelSource: []
       }
     },
     computed: {
-      panelSource() {
-        if (this.selected) {
-          return [
-            {
-              header: '<span class="bbn-lg bbn-b">' + bbn._("Configuration") + '</span>',
-              component: 'appui-option-permissions-configuration',
-              componentOptions: {
-                source: this.selected,
-                parent: this
-            	}
-            }, {
-              header: '<span class="bbn-lg bbn-b">' + bbn._("Groups") + '</span>',
-              component: 'appui-option-permissions-groups',
-              componentOptions: {
-                users: this.source.users,
-                groups: this.source.groups,
-                source: this.selected,
-                parent: this
-              }
-            }, {
-              header: '<span class="bbn-lg bbn-b">' + bbn._("Users") + '</span>',
-              component: 'appui-option-permissions-users',
-              componentOptions: {
-                users: this.source.users,
-                groups: this.source.groups,
-                source: this.selected,
-                parent: this
-              }
-            }, {
-              header: '<span class="bbn-lg bbn-b">' + bbn._("New permission (under this one)") + '</span>',
-              component: 'appui-option-permissions-new',
-              componentOptions: {
-                source: {
-                  selected: this.selected
-                },
-                parent: this
-              }
-            }
-          ];
-        }
-        return [];
-      },
       idParent(){
         return this.selected.id || null;
       },
@@ -228,6 +187,55 @@
            this.sections[i] = i === section
         });
       },
+      setPanelSource(selected){
+        if (selected) {
+          this.panelSource =  [
+            {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("Configuration") + '</span>',
+              component: 'appui-option-permissions-configuration',
+              componentOptions: {
+                source: selected,
+                parent: this
+            	}
+            }, {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("Groups") + '</span>',
+              component: 'appui-option-permissions-groups',
+              componentOptions: {
+                users: this.source.users,
+                groups: this.source.groups,
+                source: selected,
+                parent: this
+              }
+            }, {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("Users") + '</span>',
+              component: 'appui-option-permissions-users',
+              componentOptions: {
+                users: this.source.users,
+                groups: this.source.groups,
+                source: selected,
+                parent: this
+              }
+            }, {
+              header: '<span class="bbn-lg bbn-b">' + bbn._("New permission (under this one)") + '</span>',
+              component: 'appui-option-permissions-new',
+              componentOptions: {
+                source: {
+                  selected: selected
+                },
+                parent: this
+              }
+            }
+          ];
+        }
+        else {
+          this.panelSource = [];
+        }
+      }
+    },
+    mounted(){
+      if (this.selected && !this.panelSource.length) {
+        this.setPanelSource(this.selected);
+      }
     },
     watch: {
       currentSource(v) {
@@ -241,6 +249,11 @@
       mode(v) {
         const prop = v === 'options' ? 'rootOptions' : 'rootAccess';
         this.currentSource = this.currentPlugin[prop];
+      },
+      selected(v, o){
+        if (v && (!o || (v.id !== o.id))) {
+          this.setPanelSource(v);
+        }
       }
     }
   };

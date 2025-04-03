@@ -21,6 +21,7 @@ if (!empty($model->data['id'])
   if (!empty($model->data['code'])) {
     $cfg['code'] = $model->data['code'];
   }
+
   if ($model->inc->options->set($model->data['id'], $cfg)) {
     $res['success'] = 1;
   }
