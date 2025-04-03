@@ -12,17 +12,21 @@
         class="bbn-iblock"
         bbn-text="_('None')"/>
   </div>
-  <div class="bbn-flex-fill bbn-w-100">
-    <bbn-tree bbn-if="root"
-              :source="sourceURL"
-              :scrollable="false"
-              :map="mapPermissions"
-              :data="{mode: 'access'}"
-              uid="id"
-              :root="root"
-              @select="selectPermission"
-              @unselect="currentValue = ''"
-              ref="tree"
-              @ready="treeReady = true"/>
+  <div class="bbn-flex-fill">
+    <div style="float: left"
+         class="bbn-w-100 bbn-radius bbn-border"
+         bbn-if="root">
+      <bbn-tree :source="sourceURL"
+                :scrollable="true"
+                style="max-height: 40rem; float: left"
+                :map="mapPermissions"
+                :data="{mode: 'access'}"
+                uid="id"
+                :root="root"
+                :selectable="d => d.data.code.substr(-1) !== '/'"
+                @select="selectPermission"
+                @unselect="currentValue = ''"
+                ref="tree"
+                @ready="treeReady = true"/>
   </div>
 </div>

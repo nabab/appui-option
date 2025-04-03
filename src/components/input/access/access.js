@@ -4,7 +4,6 @@
     props: {
       root: {
         type: String,
-        required: true
       },
       rootCode: {
         type: String
