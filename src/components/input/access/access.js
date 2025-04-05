@@ -27,8 +27,11 @@
     },
     methods: {
       isSelectable(d) {
-        if (d.data?.code) {
+        if (d.data?.code && d.data.code.substr) {
           return d.data.code.substr(-1) !== '/';
+        }
+        else {
+          bbn.fn.log("What?", d.data)
         }
 
         return false;
