@@ -23,7 +23,7 @@
                 :data="{mode: 'access'}"
                 uid="id"
                 :root="root"
-                :selectable="d => d.data.code.substr(-1) !== '/'"
+                :selectable="isSelectable"
                 @select="selectPermission"
                 @unselect="currentValue = ''"
                 ref="tree"

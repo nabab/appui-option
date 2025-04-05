@@ -26,6 +26,13 @@
       }
     },
     methods: {
+      isSelectable(d) {
+        if (d.data?.code) {
+          return d.data.code.substr(-1) !== '/';
+        }
+
+        return false;
+      },
       selectPermission(node) {
         this.currentValue = node.data.id;
         let pluginUrl = this.rootCode ? appui.plugins[this.rootCode] + '/' : '';
