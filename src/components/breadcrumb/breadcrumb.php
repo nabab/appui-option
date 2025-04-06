@@ -1,5 +1,6 @@
 <div class="bbn-nowrap bbn-xs bbn-w-100">
-  <bbn-scroll axis="x">
+  <bbn-scroll axis="x"
+              invisible="x">
     <div class="bbn-nowrap">
       <div bbn-for="(o, i) in options"
            class="bbn-iblock"

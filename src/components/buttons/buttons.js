@@ -40,7 +40,7 @@
           )
         })
       },
-      onDelete() {
+      onDelete(data) {
         appui.success(bbn._('Deleted'));
         if (data.isApp) {
           this.$emit('deleteapp', this.source);

@@ -90,6 +90,7 @@
         blocks: null,
         currentTab,
         currentIndex: 0,
+        currentNode: null,
         option: '{}',
         cfg: '{}',
         newAlias: {
@@ -122,7 +123,6 @@
         currentAppId: this.source.appId,
         currentPluginId: null,
         currentSubpluginId: null,
-        currentURL: '',
         routerURL,
         debug: JSON.stringify(this.source)
       }
@@ -783,9 +783,26 @@
       onDeleteSubplugin(opt) {
         this.goToBlock(3);
       },
-      onDelete(opt) {
-        this.updateTrees(opt, true);
-        bbn.fn.link(this.root + 'tree/home');
+      async onDelete(data) {
+        bbn.fn.log("ON DELETE", arguments);
+        if (this.currentNode?.isConnected && this.currentNode.parent) {
+          const idx = this.currentNode.idx;
+          const parent = this.currentNode.parent;
+          await parent.reload();
+          this.$nextTick(() => {
+            let node = parent.getNodeByIdx(idx);
+            if (node) {
+              node.select();
+            }
+            else {
+              parent.node.select();
+            }
+          })
+        }
+
+        appui.success(bbn._('Deleted'));
+        this.updateTrees(data, true);
+        //bbn.fn.link(this.currentUrl);
       },
       applyTemplate(node) {
         bbn.fn.log("APPLY TPL", node);
@@ -842,7 +859,6 @@
         this.confirm(bbn._('Are you sure you want to delete this option?'), ()=>{
           this.post(this.root + 'actions/remove', node.data, d => {
               if (d.success) {
-                appui.success(bbn._('Deleted'));
                 this.onDelete(node.data)
               }
             }
@@ -854,7 +870,7 @@
           this.post(this.root + 'actions/remove',
             bbn.fn.extend({}, node.data, {history : true}),
             d => {
-              if ( d.success ){
+              if ( d.success ) {
                 this.onDelete(node.data)
               }
             }
@@ -917,6 +933,7 @@
 
       },
       changeOption(node) {
+        this.currentNode = node;
         const data = node.data;
         if (data && data.id) {
           this.isReady = false;
@@ -933,6 +950,7 @@
         }
       },
       changeApp(node) {
+        this.currentNode = node;
         const data = node.data;
         if (data?.id) {
           this.isReady = false;
@@ -960,6 +978,7 @@
         }
       },
       changeTemplate(node) {
+        this.currentNode = node;
         const data = node.data;
         if (data?.id) {
           this.isReady = false;
@@ -975,6 +994,7 @@
         }
       },
       changePlugin(node) {
+        this.currentNode = node;
         const data = node.data;
         if (data?.id) {
           this.isReady = false;
@@ -999,6 +1019,7 @@
         }
       },
       changeSubplugin(node) {
+        this.currentNode = node;
         const data = node.data;
         if (data?.id) {
           this.isReady = false;

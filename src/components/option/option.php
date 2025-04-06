@@ -9,7 +9,11 @@
        bbn-if="data?.option">
     <div class="bbn-flex-fill bbn-b bbn-c bbn-large"
          bbn-text="data.option.text"/>
-    <appui-option-buttons :source="data.option"/>
+    <appui-option-buttons :source="data.option"
+                          @deleteapp="a => $emit('deleteapp', a)"
+                          @deleteplugin="a => $emit('deleteplugin', a)"
+                          @deletesubplugin="a => $emit('deletesubplugin', a)"
+                          @delete="a => $emit('delete', a)"/>
     <div class="bbn-bottom-left bbn-vxxspadding bbn-hxspadding">
       <appui-option-breadcrumb :source="data.breadcrumb"/>
     </div>
@@ -70,7 +74,12 @@
                       icon="nf nf-md-key"
                       :source="data"/>
       </bbn-router>
-      <bbn-loader bbn-else
+      <bbn-loader bbn-elseif="isLoading"
                   class="bbn-overlay bbn-middle"/>
+      <div bbn-else
+           class="bbn-overlay bbn-middle">
+        <div class="bbn-xxl bbn-block bbn-padding bbn-radius bbn-border">
+          <?= _("Option not found") ?>
+        </div>
   </div>
 </div>

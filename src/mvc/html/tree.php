@@ -92,7 +92,6 @@
                          ref="appContainer">
             <appui-option-page-app :source="optionSelected"
                               bbn-if="!routerURL.indexOf('app') && optionSelected && isReady"
-                              @delete="onDeleteApp"
                               @update="d => debug = JSON.stringify(d, null, 2)"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>

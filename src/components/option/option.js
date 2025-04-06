@@ -10,7 +10,8 @@
           show_id: true
         },
         isMobile: bbn.fn.isMobile(),
-        data: this.source.option ? this.source : null
+        data: this.source.option ? this.source : null,
+        isLoading: true
       }
     },
     computed: {
@@ -58,14 +59,21 @@
         id = this.closest('bbn-container').args[0];
       }
 
-      if (!this.data && id) {
+      if (this.data) {
+        this.isLoading = false;
+      }
+      else if (id) {
         bbn.fn.post(appui.plugins['appui-option'] + '/tree/option', {id}, d => {
           if (d.success) {
             delete d.success;
             this.data = d;
             this.$emit('update', d);
           }
+          this.isLoading = false;
         })
+      }
+      else {
+        this.isLoading = false;
       }
     }
   }
