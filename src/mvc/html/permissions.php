@@ -46,16 +46,18 @@
                   :resizable="true">
       <bbn-pane :collapsible="true"
                 :size="350"
-                :resizable="true">
+                :resizable="true"
+                :scrollable="false">
         <!-- Tree -->
         <bbn-tree :source="root + 'tree'"
                   uid="id"
                   :data="{mode: mode}"
+                  :scrollable="true"
                   :root="currentSource"
                   :map="treeMapper"
                   @select="permissionSelect"
                   ref="tree"
-                  class="bbn-permissions-list"/>
+                  class="bbn-permissions-list bbn-overlay"/>
       </bbn-pane>
       <bbn-pane :collapsible="true" :resizable="true">
         <div class="bbn-permissions-form bbn-100">
