@@ -66,7 +66,7 @@
       },
       showField(f){
         if ( ((f.field === 'code') && !this.cfg.show_code) ||
-          ((f.field === 'id_alias') && !this.cfg.show_alias) ||
+          ((f.field === 'id_alias') && (this.cfg.relation !== 'alias')) ||
           ((f.field === 'value') && !this.cfg.show_value) ||
           ((f.field === 'tekname') && !this.cfg.categories)
         ){

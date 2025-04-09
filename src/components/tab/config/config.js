@@ -25,7 +25,7 @@
         inheritance: "",
         permissions: "",
         schema: null,
-        show_alias: null,
+        relations: '',
         template: null,
         show_code: null,
         show_icon: 0,
@@ -48,6 +48,16 @@
         models: [],
         views: [],
         showSchema: !!this.source.cfg.schema,
+        aliasRelations: [{
+          text: bbn._('No relations'),
+          value: '',
+        }, {
+          text: bbn._('Use alias'),
+          value: 'alias',
+        }, {
+          text: bbn._('Use template'),
+          value: 'template',
+        }],
         jsonDataTemplate: [{
           text: bbn._('Field'),
           title: bbn._('Insert a form field'),
@@ -287,11 +297,11 @@
       }
       */
       showScfg(newVal){
-        if ( !newVal ){
-          this.data.scfg = this.defaultScfg;
+        if (newVal) {
+          this.data.scfg = bbn.fn.extend({}, this.defaultScfg, true);
         }
         else {
-          this.data.cfg.inheritance = '';
+          delete this.data.scfg;
         }
       },
       'data.cfg.allow_children'(newVal){

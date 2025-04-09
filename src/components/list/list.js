@@ -107,7 +107,7 @@
       },
       showSchemaField(field){
         return !(((field === 'code') && !this.source.cfg.show_code) ||
-          ((field === 'id_alias') && !this.source.cfg.show_alias));
+          ((field === 'id_alias') && (this.source.cfg.relations !== 'alias')));
       },
       renderAlias(row){
         if ( row.id_alias && row.alias ){

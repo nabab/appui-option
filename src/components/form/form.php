@@ -13,8 +13,8 @@
           <div bbn-if="cfg.show_id"
               bbn-text="currentSource.id"/>
 
-          <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)"><?= _('Text') ?></div>
-          <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.show_alias)">
+          <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.relations)"><?= _('Text') ?></div>
+          <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.relations)">
             <bbn-input bbn-model="currentSource.text"
                       class="bbn-wide"
                       :nullable="!!currentSource.id_alias"/>
@@ -42,10 +42,10 @@
                       bbn-model="currentSource[sch.field]"/>
           </template>
 
-          <div bbn-if="cfg.show_alias && !schemaHasField('id_alias')"
+          <div bbn-if="(cfg.relations === 'alias') && !schemaHasField('id_alias')"
               bbn-text="cfg.alias_name || '<?= bbn\Str::escapeSquotes(_('Alias')) ?>'">
           </div>
-          <div bbn-if="cfg.show_alias && !schemaHasField('id_alias')"
+          <div bbn-if="(cfg.relations === 'alias') && !schemaHasField('id_alias')"
               class="bbn-flex-width">
             <appui-option-input-picker bbn-if="!cfg.root_alias || !cfg.root_alias.last_level"
                                       :nullable="true"

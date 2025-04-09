@@ -35,7 +35,7 @@
                 type="number"
                 cls="bbn-c"
                 :component="$options.components['appui-option-list-fixnum']"/>
-    <bbns-column bbn-if="!schemaHasField('text') && (!source.cfg.notext || !source.cfg.show_alias)"
+    <bbns-column bbn-if="!schemaHasField('text') && (!source.cfg.notext || (source.cfg.relations !== 'alias'))"
                 field="text"
                 label="<?= _('Text') ?>"/>
     <bbns-column bbn-if="!!source.cfg.show_code && !schemaHasField('code')"
@@ -49,12 +49,12 @@
                 :type="sch.type === 'string' ? undefined: sch.type"
                 :key="idx"
                 bbn-if="showSchemaField(sch.field)"/>
-    <bbns-column bbn-if="!!source.cfg.show_alias && !schemaHasField('id_alias')"
+    <bbns-column bbn-if="(source.cfg.relations === 'alias') && !schemaHasField('id_alias')"
                 field="id_alias"
-                :width="!schemaHasField('text') && (!source.cfg.notext || !source.cfg.show_alias) ? 150 : null"
+                :width="!schemaHasField('text') && (!source.cfg.notext || (source.cfg.relations !== 'alias')) ? 150 : null"
                 :label="source.cfg.alias_name || '<?= st::escapeSquotes(_('Alias')) ?>'"
                 :render="renderAlias"
-                :editable="!!source.cfg.show_alias"/>
+                :editable="source.cfg.relations === 'alias'"/>
     <bbns-column field="value"
                 :invisible="true"
                 label="<?= _('Value') ?>"

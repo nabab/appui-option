@@ -3,12 +3,6 @@
     mixins: [bbn.cp.mixins.basic],
     data(){
       return {
-        cfg: {
-          show_code: true,
-          show_alias: true,
-          show_value: true,
-          show_id: true
-        },
         isMobile: bbn.fn.isMobile(),
         data: this.source.option ? this.source : null,
         isLoading: true
