@@ -1,8 +1,9 @@
 (() => {
   return {
     mixins: [bbn.cp.mixins.basic],
+    props: ['source', 'configuration'],
     data() {
-      const target = this.source.row || this.source;
+      const target = this.source.option || this.source.row || this.source;
       const currentSource = new Proxy(target, {
         set(obj, prop, value) {
           obj[prop] = value;
@@ -19,12 +20,13 @@
       });
       return {
         root: appui.plugins['appui-option'] + '/',
-        currentSource
+        currentSource,
+        cfg: this.configuration || this.source.cfg
       }
     },
     computed: {
       alias(){
-        return this.source.row && this.source.row.alias ? this.source.row.alias.text : (this.source.alias ? this.source.alias.text : '')
+        return this.currentSource.alias ? this.currentSource.alias.text : '';
       },
       list(){
         let tab = this.closest('bbn-container')
@@ -35,15 +37,6 @@
       },
       currentComp(){
         return this.list || this.tree
-      },
-      cfg(){
-        if ( this.list ){
-          return this.list.source.cfg
-        }
-        else if ( this.tree ){
-          return this.tree.cfg
-        }
-        return {}
       },
       inPopup(){
         return !!this.closest('bbn-popup');

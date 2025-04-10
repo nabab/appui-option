@@ -6,6 +6,9 @@
              :editable="!!source.cfg.write"
              :showable="source.is_dev"
              editor="appui-option-form"
+             :editor-options="{
+               configuration: source.cfg
+             }"
              :filterable="!source.cfg.orderable"
              :pageable="!source.cfg.orderable"
              :search="true"

@@ -231,8 +231,8 @@
               tab.reload();
           });
         }
-        else if( this.tree ){
-          this.tree.tree.$refs.listOptions.selectedNode.$parent.reload();
+        else if (this.tree && (this.tree.selectedNode?.data?.id === this.data.id)) {
+          this.tree.selectedNode.parent.reload();
         }
         else{
           tab.reload();

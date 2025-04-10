@@ -32,7 +32,7 @@
                       :fixed="true"
                       label="<?= _('Values') ?>"
                       component="appui-option-form"
-                      :source="data.option"
+                      :source="data"
                       :load="false"
                       bcolor="teal"
                       fcolor="white"

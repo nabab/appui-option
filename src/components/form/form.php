@@ -11,7 +11,7 @@
         <div class="bbn-grid-fields bbn-padding">
           <div bbn-if="cfg.show_id"><?= _('ID') ?></div>
           <div bbn-if="cfg.show_id"
-              bbn-text="currentSource.id"/>
+               bbn-text="currentSource.id"/>
 
           <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.relations)"><?= _('Text') ?></div>
           <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.relations)">
@@ -49,6 +49,7 @@
               class="bbn-flex-width">
             <appui-option-input-picker bbn-if="!cfg.root_alias || !cfg.root_alias.last_level"
                                       :nullable="true"
+                                      :id_root="cfg.root_alias?.id || ''"
                                       bbn-model="currentSource.id_alias"/>
             <bbn-dropdown bbn-if="cfg.root_alias && cfg.root_alias.last_level"
                           :source="cfg.root_alias.last_level_children"
