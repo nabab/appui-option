@@ -1,4 +1,6 @@
 <?php
+use bbn\X;
+
 if (isset($model->inc->options)) {
   /** @var bbn\Appui\Option */
   $o = $model->inc->options;
@@ -42,6 +44,7 @@ if (isset($model->inc->options)) {
         'info' => json_encode($all),
         'option' => $option,
         'cfg' => $cfg,
+        'parentCfg' => $o->getCfg($option['id_parent']),
         'cfg_inherit_from_text' => !empty($cfg['inherit_from']) ? $model->inc->options->text($cfg['inherit_from']) : '',
         'aliases' => $aliases,
         'permissions' => $permissions,

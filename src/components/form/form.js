@@ -21,7 +21,8 @@
       return {
         root: appui.plugins['appui-option'] + '/',
         currentSource,
-        cfg: this.configuration || this.source.cfg
+        cfg: this.configuration || this.source.cfg,
+        parentCfg: this.source.parentCfg || this.configuration
       }
     },
     computed: {

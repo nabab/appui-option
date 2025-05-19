@@ -9,12 +9,12 @@
                 :scrollable="false"
                 mode="big">
         <div class="bbn-grid-fields bbn-padding">
-          <div bbn-if="cfg.show_id"><?= _('ID') ?></div>
-          <div bbn-if="cfg.show_id"
+          <div bbn-if="parentCfg.show_id"><?= _('ID') ?></div>
+          <div bbn-if="parentCfg.show_id"
                bbn-text="currentSource.id"/>
 
-          <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.relations)"><?= _('Text') ?></div>
-          <div bbn-if="!schemaHasField('text') && (!cfg.notext || !cfg.relations)">
+          <div bbn-if="!schemaHasField('text') && (!parentCfg.notext || !parentCfg.relations)"><?= _('Text') ?></div>
+          <div bbn-if="!schemaHasField('text') && (!parentCfg.notext || !parentCfg.relations)">
             <bbn-input bbn-model="currentSource.text"
                       class="bbn-wide"
                       :nullable="!!currentSource.id_alias"/>
@@ -28,8 +28,8 @@
             </div>
           </div>
 
-          <div bbn-if="cfg.show_code && !schemaHasField('code')"><?= _('Code') ?></div>
-          <bbn-input bbn-if="cfg.show_code && !schemaHasField('code')"
+          <div bbn-if="parentCfg.show_code && !schemaHasField('code')"><?= _('Code') ?></div>
+          <bbn-input bbn-if="parentCfg.show_code && !schemaHasField('code')"
                     bbn-model="currentSource.code"
                     class="bbn-wide"
                     :nullable="!!currentSource.id_alias"/>
@@ -42,17 +42,17 @@
                       bbn-model="currentSource[sch.field]"/>
           </template>
 
-          <div bbn-if="(cfg.relations === 'alias') && !schemaHasField('id_alias')"
-              bbn-text="cfg.alias_name || '<?= bbn\Str::escapeSquotes(_('Alias')) ?>'">
+          <div bbn-if="(parentCfg.relations === 'alias') && !schemaHasField('id_alias')"
+              bbn-text="parentCfg.alias_name || '<?= bbn\Str::escapeSquotes(_('Alias')) ?>'">
           </div>
-          <div bbn-if="(cfg.relations === 'alias') && !schemaHasField('id_alias')"
+          <div bbn-if="(parentCfg.relations === 'alias') && !schemaHasField('id_alias')"
               class="bbn-flex-width">
-            <appui-option-input-picker bbn-if="!cfg.root_alias || !cfg.root_alias.last_level"
+            <appui-option-input-picker bbn-if="!parentCfg.root_alias || !parentCfg.root_alias.last_level"
                                       :nullable="true"
-                                      :id_root="cfg.root_alias?.id || ''"
+                                      :id_root="parentCfg.root_alias?.id || ''"
                                       bbn-model="currentSource.id_alias"/>
-            <bbn-dropdown bbn-if="cfg.root_alias && cfg.root_alias.last_level"
-                          :source="cfg.root_alias.last_level_children"
+            <bbn-dropdown bbn-if="parentCfg.root_alias && parentCfg.root_alias.last_level"
+                          :source="parentCfg.root_alias.last_level_children"
                           placeholder="Select Alias"
                           :nullable="true"
                           source-text="text"
@@ -61,8 +61,8 @@
                           bbn-model="currentSource.id_alias"/>
           </div>
 
-          <div bbn-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"><?= _('Icon') ?></div>
-          <div bbn-if="(cfg.categories || !!cfg.show_icon) && !schemaHasField('icon')"
+          <div bbn-if="(parentCfg.categories || !!parentCfg.show_icon) && !schemaHasField('icon')"><?= _('Icon') ?></div>
+          <div bbn-if="(parentCfg.categories || !!parentCfg.show_icon) && !schemaHasField('icon')"
               class="bbn-middle"
               style="justify-content: flex-start">
             <div class="bbn-box bbn-xspadding bbn-right-sspace">
@@ -78,12 +78,12 @@
             ><?= _("Clear") ?></bbn-button>
           </div>
 
-          <div bbn-if="cfg.categories && !schemaHasField('tekname')"><?= _('Tekname') ?></div>
-          <bbn-input bbn-if="cfg.categories && !schemaHasField('tekname')"
+          <div bbn-if="parentCfg.categories && !schemaHasField('tekname')"><?= _('Tekname') ?></div>
+          <bbn-input bbn-if="parentCfg.categories && !schemaHasField('tekname')"
                     bbn-model="currentSource.tekname"/>
 
-          <div bbn-if="cfg.show_value"><?= _('Value') ?></div>
-          <div bbn-if="cfg.show_value"
+          <div bbn-if="parentCfg.show_value"><?= _('Value') ?></div>
+          <div bbn-if="parentCfg.show_value"
               style="height: 300px"
               class="bbn-widest">
             <bbn-json-editor bbn-model="currentSource.value"/>
