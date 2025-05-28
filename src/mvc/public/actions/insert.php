@@ -21,7 +21,7 @@ if (isset($ctrl->post['id_parent'])) {
     }
     foreach ($ctrl->post as $i => $d) {
       if (
-        (($idx = \bbn\X::find($schema, ['field' => $i])) !== null) &&
+        (($idx = \bbn\X::search($schema, ['field' => $i])) !== null) &&
         isset($schema[$idx]['type']) &&
         (strtolower($schema[$idx]['type']) === 'json') &&
         !is_array($d)

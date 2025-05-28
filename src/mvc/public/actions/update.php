@@ -16,7 +16,7 @@ if ( isset($ctrl->post['id']) && (!empty($ctrl->post['id_alias']) || !empty($ctr
     if (!empty($schema)) {
       foreach ( $ctrl->post as $i => $d ){
         if (
-          (($idx = X::find($schema, ['field' => $i])) !== null) &&
+          (($idx = X::search($schema, ['field' => $i])) !== null) &&
           isset($schema[$idx]['type']) &&
           is_string($d) &&
           (strtolower($schema[$idx]['type']) === 'json')
