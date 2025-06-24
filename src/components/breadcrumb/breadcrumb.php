@@ -7,7 +7,7 @@
            style="white-space: collapse">
         <span bbn-if="i"
              class="nf nf-fa-angle_right bbn-hxsmargin"/>
-        <a :href="root + 'tree/' + o.id">
+        <a :href="root + 'tree/option/' + o.id">
           <span bbn-if="o.text"
                 bbn-text="o.text"/>
           <span bbn-elseif="o.alias?.text"

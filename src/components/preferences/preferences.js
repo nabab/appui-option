@@ -11,7 +11,7 @@
         return appui.users
       },
       groups(){
-        return appui.groups
+        return appui.groups.map(a => ({text: a.nom, value: a.id}))
       }
     },
     methods: {
@@ -138,7 +138,11 @@
         mixins: [bbn.cp.mixins.basic],
         props: ['source'],
         template: `
-<bbn-json-editor bbn-model="bits" bbn-if="ready" readonly="readonly"></bbn-json-editor>
+<div class="bbn-w-100">
+  <h5>` + bbn._('Preference bits') + `</h5>
+  <bbn-json-editor bbn-model="bits" bbn-if="ready" readonly="readonly"></bbn-json-editor>
+  <h5>` + bbn._('Preference value') + `</h5>
+  <bbn-json-editor bbn-model="source.value" bbn-if="ready" readonly="readonly"></bbn-json-editor>
         `,
         data(){
           return {

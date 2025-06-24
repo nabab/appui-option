@@ -172,8 +172,8 @@
             this.currentTranslation = false;
           }
           this.$refs.table.edit(row, {
-            label: bbn._('Updating option') + ' "' + row.text + '"',
-            maximizable: true
+            label: false,
+            closable: true
           }, idx);
         })
       },

@@ -5,20 +5,61 @@
       return {
         isMobile: bbn.fn.isMobile(),
         data: this.source.option ? this.source : null,
-        isLoading: true
-      }
-    },
-    computed: {
-      tree(){
-        return this.closest('bbn-container').closest('bbn-container').getComponent()
-      },
-      isAdmin(){
-        return appui.user.isAdmin
+        isLoading: true,
+        tree: appui.getRegistered('appui-option-tree') || null,
+        isAdmin: appui.user.isAdmin
       }
     },
     methods: {
+      onNotFound(e, uid) {
+        const currentUid = this.getRef('router').currentURL.split('/')[0];
+        if (bbn.fn.isUid(uid) && (uid !== currentUid)) {
+          e.preventDefault();
+          if (this.tree.currentId === currentUid) {
+            this.tree.changeSelected(uid, 'options');
+          }
+
+          bbn.fn.log(["notfound", "currentId: " + this.tree.currentId, "Uid from router: " + currentUid, "UID given: " + uid, this.data, arguments, this.getRef('router').currentURL]);
+        }
+      },
       onRoute(route) {
         this.$emit('route', route);
+      },
+      deleteValues() {
+        const obj = {
+          id: this.data.option.id,
+          id_alias: this.data.option.id_alias,
+          value: null,
+          text: null,
+          code: null
+        };
+        this.post(appui.plugins['appui-option'] + "/actions/update", obj, d => {
+          if (d.success) {
+            bbn.fn.iterate(obj, (v, k) => {
+              if (v !== this.data.option[k]) {
+                this.data.option[k] = obj[k];
+              }
+            });
+            appui.success(bbn._('Values deleted'));
+          }
+          else {
+            appui.error(d.error || '');
+          }
+        });
+      },
+      deleteConfig() {
+        this.post(appui.plugins['appui-option'] + "/actions/cfg", {
+          id: this.data.option.id,
+          cfg: null
+        }, d => {
+          if (d.success) {
+            this.data.realCfg = null;
+            appui.success(bbn._('Configuration deleted'));
+          }
+          else {
+            appui.error(d.error || '');
+          }
+        });
       },
       showUsageOpt(){
         this.post(appui.plugins['appui-option'] + "/actions/show_used_option", {
@@ -45,29 +86,6 @@
             this.alert(bbn._('No occurrence of this option found'))
           }
         })
-      }
-    },
-    mounted() {
-      let id = this.source.id;
-      if (!id && this.closest('bbn-container').hasArguments()) {
-        id = this.closest('bbn-container').args[0];
-      }
-
-      if (this.data) {
-        this.isLoading = false;
-      }
-      else if (id) {
-        bbn.fn.post(appui.plugins['appui-option'] + '/tree/option', {id}, d => {
-          if (d.success) {
-            delete d.success;
-            this.data = d;
-            this.$emit('update', d);
-          }
-          this.isLoading = false;
-        })
-      }
-      else {
-        this.isLoading = false;
       }
     }
   }

@@ -7,47 +7,14 @@
       };
     },
     mixins: [bbn.cp.mixins.basic],
-    props: ['source'],
+    props: ['source', 'optionId'],
     data() {
-      let defScfg = {
-        allow_children: null,
-        alias_name: "",
-        categories: null,
-        controller: null,
-        default: "",
-        default_value: null,
-        desc: "",
-        form: null,
-        frozen: 0,
-        i18n: "",
-        i18n_inheritance: "",
-        id: "",
-        inheritance: "",
-        permissions: "",
-        schema: null,
-        relations: '',
-        template: null,
-        show_code: null,
-        show_icon: 0,
-        show_value: null,
-        sortable: null,
-        write: true,
-        help: '',
-        notext: 0,
-        view: 0,
-        root_alias: bbn._('Root')
-      };
       return {
-        data: {
-          cfg: this.source.cfg,
-          scfg: this.source.cfg.scfg || defScfg,
-          id: this.source.option ? this.source.option.id : this.source.id
-        },
-        currentSchema: this.source.cfg.schema || [],
+        currentSchema: this.source.schema || [],
         ready: false,
         models: [],
         views: [],
-        showSchema: !!this.source.cfg.schema,
+        showSchema: !!this.source.schema,
         aliasRelations: [{
           text: bbn._('No relations'),
           value: '',
@@ -58,6 +25,7 @@
           text: bbn._('Use template'),
           value: 'template',
         }],
+        tree: appui.getRegistered('appui-option-tree') || null,
         jsonDataTemplate: [{
           text: bbn._('Field'),
           title: bbn._('Insert a form field'),
@@ -102,15 +70,49 @@
             "required": ["title", "field"]
           }
         },
-        //rootAlias: this.source.cfg.root_alias !== undefined ? this.source.cfg.root_alias.text : bbn._('Root'),
-        showScfg: !!this.source.cfg.scfg,
-        showSchemaScfg: !!this.source.cfg.scfg && !!this.source.cfg.scfg.schema,
-        defaultScfg: defScfg,
-        showReset: !this.source.cfg.frozen,
-        root: appui.plugins['appui-option'] + '/'
+        structureTypes: [{
+          text: bbn._("No properties"),
+          value: 'none'
+        }, {
+          text: bbn._("Free structure"),
+          value: 'json'
+        }, {
+          text: bbn._("Schema"),
+          value: 'schema'
+        }],
+        showReset: !this.source.frozen,
+        root: appui.plugins['appui-option'] + '/',
+        isFrozen: !!this.source.frozen || this.source.useTemplate,
       }
     },
     computed: {
+      structureType: {
+        get() {
+          if (this.source.show_value) {
+            return 'json';
+          }
+          else if (this.source.schema) {
+            return 'schema';
+          }
+          else {
+            return 'none';
+          }
+        },
+        set(v) {
+          if (v === 'json') {
+            this.source.show_value = true;
+            this.source.schema = null;
+          }
+          else if (v === 'schema') {
+            this.source.schema = this.currentSchema;
+            this.source.show_value = false;
+          }
+          else {
+            this.source.schema = null;
+            this.source.show_value = false;
+          }
+        }
+      },
       canDefineSubPermissions(){
         if (this.source.permissions) {
           return !['all', 'cascade'].includes(this.source.permissions.cfg)
@@ -123,8 +125,8 @@
       },
       permissionsText(){
         let str = '';
-        if (this.source.cfg.permissions) {
-          str += ' <strong>' + this.source.cfg.permissions.from_text + '</strong>';
+        if (this.source.permissions) {
+          str += ' <strong>' + this.source.permissions.from_text + '</strong>';
         }
         else if (!this.canDefineSubPermissions) {
           str += bbn._("The permissions' configuration comes from the parent option");
@@ -146,7 +148,7 @@
           });
         }
 
-        if (this.source.cfg.allow_children && this.canDefineSubPermissions) {
+        if (this.source.allow_children && this.canDefineSubPermissions) {
           r.push({
             text: bbn._("Children"),
             value: 'children'
@@ -170,9 +172,6 @@
       controllers(){
         return this.constructor.controllers;
       },
-      tree(){
-        return this.closest('appui-option-option') || null
-      }
     },
     methods: {
       toggleSchema() {
@@ -180,46 +179,6 @@
       },
       toggleSchemaScfg() {
         this.showSchemaScfg = !this.showSchemaScfg;
-      },
-      beforeSend(data) {
-        let clearData = (d) => {
-          if ( d.frozen !== undefined ){
-            delete d.frozen;
-          }
-          if ( d.inherit_from !== undefined ){
-            delete d.inherit_from;
-          }
-          if ( d.inherit_from_text !== undefined ){
-            delete d.inherit_from_text;
-          }
-          if ( d.write !== undefined ){
-            delete d.write;
-          }
-          if ( !d.i18n || !d.i18n.length ){
-            delete d.i18n;
-          }
-          if (!d.i18n || !d.i18n.length || !d.allow_children) {
-            delete d.i18n_inheritance;
-          }
-          if ( d.root_alias ){
-            delete d.root_alias;
-          }
-          if ( d.id ){
-            delete d.id;
-          }
-          return d;
-        };
-        data.cfg = clearData(data.cfg);
-        if ( this.showScfg ){
-          data.cfg.scfg = clearData(data.scfg);
-        }
-        else {
-          if ( data.cfg.scfg !== undefined ){
-            delete data.cfg.scfg;
-          }
-        }
-        delete data.scfg;
-        return true;
       },
       onSuccess() {
         let tab = this.closest('bbn-container'),
@@ -231,8 +190,8 @@
               tab.reload();
           });
         }
-        else if (this.tree && (this.tree.selectedNode?.data?.id === this.data.id)) {
-          this.tree.selectedNode.parent.reload();
+        else if (this.tree?.currentNode && (this.tree.currentNode.data?.id === this.data.id)) {
+          this.tree.currentNode.parent.reload();
         }
         else{
           tab.reload();
@@ -249,66 +208,28 @@
           }
         });
       },
-      setToRoot(){
-        this.$set(this.data.cfg, 'id_root_alias', '');
-        this.$set(this.data.cfg, 'root_alias', bbn._('Root'));
-      },
-      setToRootScfg(){
-        this.$set(this.data.scfg, 'id_root_alias', '');
-        this.$set(this.data.scfg, 'root_alias', bbn._('Root'));
-      },
-      unlock(){
-        this.data.cfg.frozen = false;
-        this.data.cfg.inherit_from = '';
-        //this.data.cfg.inherit_from_text = '';
-        this.data.cfg_inherit_from_text = '';
-      },
-      reset(){
-        this.confirm(bbn._('Are you sure you want to back to the default configuration?'), () => {
-          this.post(this.root + 'actions/default', {id: this.source.id}, d => {
-            if ( d.success ){
-              appui.success(bbn._('Success'));
-              this.onSuccess();
-            }
-          })
-        });
-      }
     },
     mounted(){
       if (!appui.plugins['appui-option'] || this.constructor.controllers) {
         this.ready = true;
       }
       else{
-        this.post(appui.plugins['appui-option'] + '/plugins', (d) => {
-          if (d.controllers) {
-            this.constructor.controllers = d.controllers;
+        this.post(appui.plugins['appui-option'] + '/controllers', (d) => {
+          if (d.data) {
+            this.constructor.controllers = d.data;
           }
           this.ready = true;
         });
       }
     },
     watch:{
-      currentSchema(newVal){
-        this.data.cfg.schema = newVal;
-      },
-      /*
-      rootAlias(val, oldVal){
-        cfg: bbn.fn.extend(this.source.cfg, {root_alias: val}),
-      }
-      */
-      showScfg(newVal){
+      isFrozen(newVal){
         if (newVal) {
-          this.data.scfg = bbn.fn.extend({}, this.defaultScfg, true);
-        }
-        else {
-          delete this.data.scfg;
         }
       },
-      'data.cfg.allow_children'(newVal){
-        if ( newVal && !!this.source.cfg.scfg ){
-          this.showScfg = !!newVal;
-        }
-      }
+      currentSchema(newVal){
+        this.source.schema = newVal;
+      },
     }
   }
 })();

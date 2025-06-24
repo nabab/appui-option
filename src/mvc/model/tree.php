@@ -30,7 +30,7 @@ if ($model->hasData('main')) {
   if ($model->hasData('id_option', true)) {
     $parents = $opt->parents($model->data['id_option']);
     $num = count($parents);
-    if ($num === 1) {
+    if (($num === 1) && ($model->data['id'] !== $opt->getTemplateId())) {
       $model->addData(['appId' => $model->data['id_option']]);
     }
     elseif ($num) {

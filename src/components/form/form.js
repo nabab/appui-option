@@ -3,21 +3,7 @@
     mixins: [bbn.cp.mixins.basic],
     props: ['source', 'configuration'],
     data() {
-      const target = this.source.option || this.source.row || this.source;
-      const currentSource = new Proxy(target, {
-        set(obj, prop, value) {
-          obj[prop] = value;
-          return true;
-        },
-        get(obj, prop) {
-          const value = target[prop];
-          if (!(prop in obj)) {
-            target[prop] = '';
-          }
-
-          return obj[prop];
-        }
-      });
+      const currentSource = this.source.option || this.source.row || this.source;
       return {
         root: appui.plugins['appui-option'] + '/',
         currentSource,
@@ -26,6 +12,37 @@
       }
     },
     computed: {
+      currentIcon: {
+        get() {
+          if (!('icon' in this.currentSource) && ('value' in this.currentSource)) {
+            try {
+              const v = bbn.fn.isString(this.currentSource.value) ? JSON.parse(this.currentSource.value) : this.currentSource.value;
+              if (v && ('icon' in v)) {
+                return v.icon;
+              }
+            }
+            catch (e) {}
+
+            return '';
+          }
+
+          return this.currentSource.icon || '';
+        },
+        set(value) {
+          if (!('icon' in this.currentSource) && ('value' in this.currentSource)) {
+            try {
+              const v = bbn.fn.isString(this.currentSource.value) ? JSON.parse(this.currentSource.value) : this.currentSource.value;
+              v.icon = value;
+              this.currentSource.value = JSON.stringify(v);
+              return true;
+            }
+            catch (e) {}
+          }
+
+          this.currentSource.icon = value;
+          return true;
+        }
+      },
       alias(){
         return this.currentSource.alias ? this.currentSource.alias.text : '';
       },
@@ -52,6 +69,40 @@
           return this.tree.source.translations;
         }
         return false;
+      },
+      unnecessaryFields() {
+        const pc = this.parentCfg || {};
+        const fields = [];
+        const authorized = ['id', 'id_parent'];
+        if (pc.schema) {
+          pc.schema.forEach(f => {
+            if (f.field && !authorized.includes(f.field)) {
+              authorized.push(f.field);
+            }
+          });
+        }
+        if (pc.show_code) {
+          authorized.push('code');
+        }
+
+        if (pc.show_icon) {
+          authorized.push('icon');
+        }
+
+        if (pc.relations) {
+          authorized.push('id_alias');
+        }
+
+        for (let n in this.currentSource) {
+          if (!authorized.includes(n)) {
+            if ((n === 'id_alias') && !pc.relations) {
+              fields.push(n);
+            }
+            else if (!pc.show_value) {
+              fields.push(n);
+            }
+          }
+        }
       }
     },
     methods: {
@@ -61,11 +112,11 @@
       showField(f){
         if ( ((f.field === 'code') && !this.cfg.show_code) ||
           ((f.field === 'id_alias') && (this.cfg.relation !== 'alias')) ||
-          ((f.field === 'value') && !this.cfg.show_value) ||
-          ((f.field === 'tekname') && !this.cfg.categories)
+          ((f.field === 'value') && !this.cfg.show_value)
         ){
           return false;
         }
+
         return true;
       },
       selectAlias(){
@@ -91,8 +142,8 @@
           label: bbn._('Icon Picker'),
           component: 'appui-core-popup-iconpicker',
           source: {
-            field: 'icon',
-            obj: this.currentSource
+            field: 'currentIcon',
+            obj: this
           }
         });
       },
@@ -124,16 +175,10 @@
           }
           else if ( this.tree ){
             let list = this.tree.tree.getRef('tree' + bbn.fn.getField(this.tree.tree.blocks, 'id', a => a.index === this.tree.tree.currentIndex));
-            this.tree.tree.optionSelected.id = false;
+            const node = this.tree.tree.currentNode;
             this.$nextTick(() => {
-              if ( list.selectedNode ){
-                let parent = list.selectedNode.parent;
-                let id = list.selectedNode.source.data.id;
-                list.selectedNode.parent.reload().then(() => {
-                  this.$nextTick(() => {
-                    parent.selectPath(id);
-                  })
-                });
+              if (node){
+                node.parent.reload()
               }
               else {
                 list.reload();

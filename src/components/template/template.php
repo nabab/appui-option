@@ -1,4 +1,5 @@
 <div class="bbn-overlay bbn-flex-height">
+  <appui-option-loader :source="source"/>
   <div class="bbn-padding bbn-w-100 bbn-flex-width"
        bbn-if="data"
        :style="{
@@ -37,7 +38,7 @@
       <bbns-container :url="data.option.id + '/cfg'"
                       :fixed="true"
                       label="<?= _('Configuration') ?>"
-                      component="appui-option-tab-config"
+                      component="appui-option-config"
                       :load="false"
                       :source="data"
                       bcolor="sandybrown"

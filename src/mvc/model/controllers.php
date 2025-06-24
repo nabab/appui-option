@@ -36,4 +36,4 @@ foreach ( $res as $n => $re ){
     'value' => ($re['plugin'] ? $re['plugin'].'/' : '').$re['fn']
   ];
 }
-return ['controllers' => $r];
+return ['data' => $r];

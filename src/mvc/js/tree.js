@@ -15,7 +15,8 @@
         root: appui.plugins['appui-option'] + '/',
         isCodeManual: false,
         isAdmin: appui.user.isAdmin,
-        blocks: null
+        blocks: null,
+        tree: appui.getRegistered('appui-option-tree'),
       }
     },
     computed: {
@@ -70,16 +71,27 @@
     data() {
       const root = appui.plugins['appui-option'] + '/';
       let currentTab = 'values';
+      let currentTemplateTab = 'values';
       let routerURL = 'home';
+      let currentId = null;
       if (bbn.env.path.indexOf(root + 'tree/') === 0) {
         let tmp = bbn.env.path.substr(root.length + 5);
         tmp = tmp.split('/');
         if (tmp.length) {
           routerURL = tmp.shift();
           if (tmp.length) {
-            const last = tmp.pop();
-            if (['values', 'cfg', 'preferences', 'stats', 'password'].includes(last)) {
-              currentTab = last;
+            currentId = tmp.shift();
+            if (routerURL === 'option') {
+              const last = tmp.pop();
+              if (['values', 'cfg', 'preferences', 'stats', 'password'].includes(last)) {
+                currentTab = last;
+              }
+            }
+            else if (routerURL === 'template') {
+              const last = tmp.pop();
+              if (['values', 'cfg'].includes(last)) {
+                currentTemplateTab = last;
+              }
             }
           }
         }
@@ -88,9 +100,13 @@
       return {
         root,
         blocks: null,
+        treeSeen: [],
+        treeExpanded: {},
         currentTab,
+        currentTemplateTab,
         currentIndex: 0,
         currentNode: null,
+        currentId,
         option: '{}',
         cfg: '{}',
         newAlias: {
@@ -142,18 +158,19 @@
 
         return null;
       },
+      currentSubplugin() {
+        if (this.currentPlugin && this.currentSubpluginId) {
+          return bbn.fn.getRow(this.currentPlugin.subplugins, {id: this.currentSubpluginId});
+        }
+
+        return null;
+      },
       rootOptions() {
         if (this.currentApp) {
           return this.currentApp.rootOptions;
         }
 
         return null
-      },
-      storageName() {
-        if (this.closest('bbn-floater')) {
-          return undefined;
-        }
-        return 'appui-option-tree';
       },
       hasChildren() {
         if (this.option) {
@@ -198,9 +215,59 @@
               action: () => this.goToBlock(-1)
             }
           ],
+          storage: true,
+          storageName: 'appui-option-tree-root',
           source: this.source.root + "tree",
           root: this.source.absoluteRoot,
-          select: node => this.changeOption(node),
+          select: node => {
+            const root = node.level ? Array.from(node.ancestors('[is=bbn-tree-node]')).pop() : node;
+            const app = bbn.fn.getRow(this.source.roots, {id: root.data.id});
+            if (!node.level) {
+              if (app) {
+                this.changeSelected(node, 'app', true);
+              }
+              else if (node.data.id === this.source.rootTemplates) {
+                if (this.currentSubpluginId) {
+                  this.currentSubpluginId = null;
+                }
+                if (this.currentPluginId) {
+                  this.currentPluginId = null;
+                }
+                if (this.currentAppId) {
+                  this.currentAppId = null;
+                }
+                this.changeSelected(node, 'template', true);
+              }
+              else {
+                throw new Error("Node not found in roots");
+              }
+            }
+            else {
+              if (app) {
+                if (app.id !== this.currentAppId) {
+                  this.currentAppId = app.id;
+                }
+
+                this.changeSelected(node, null, true)
+              }
+              else if (root.data.id === this.source.rootTemplates) {
+                if (this.currentSubpluginId) {
+                  this.currentSubpluginId = null;
+                }
+                if (this.currentPluginId) {
+                  this.currentPluginId = null;
+                }
+                if (this.currentAppId) {
+                  this.currentAppId = null;
+                }
+                if (!this.templateSelected) {
+                  this.templateSelected = true;
+                }
+
+                this.changeSelected(node, 'template', true);
+              }
+            }
+          },
           draggable: true
         };
       },
@@ -238,6 +305,7 @@
               action: () => this.goToBlock(0)
             }
           ],
+          storage: false,
           source: this.source.roots.map(a => {
             const b = bbn.fn.extend({}, a);
             b.name = a.text;
@@ -246,7 +314,7 @@
             return b;
           }),
           root: this.source.absoluteRoot,
-          select: node => this.changeApp(node),
+          select: node => this.changeSelected(node, 'app'),
           draggable: false
         };
       },
@@ -299,10 +367,12 @@
               icon: "nf nf-md-chevron_double_right",
             }
           ],
+          storage: true,
+          storageName: 'appui-option-tree-options-' + this.currentApp?.id,
           noData: 'appui-option-nodata-options',
           source: this.source.root + 'tree',
           root: this.currentApp?.rootOptions,
-          select: node => this.changeOption(node),
+          select: node => this.changeSelected(node, 'option'),
           draggable: true
         };
       },
@@ -340,10 +410,12 @@
               },
             }
           ],
+          storage: true,
+          storageName: 'appui-option-tree-templates',
           noData: 'appui-option-nodata-templates',
           source: this.source.root + 'tree',
           root: this.source.rootTemplates,
-          select: node => this.changeTemplate(node),
+          select: node => this.changeSelected(node, 'template'),
           draggable: true
         };
       },
@@ -386,9 +458,10 @@
               }],
             }
           ],
+          storage: false,
           noData: 'appui-option-nodata-plugins',
           source: this.currentApp?.plugins,
-          select: node => this.changePlugin(node),
+          select: node => this.changeSelected(node, 'plugin'),
           draggable: false
         };
       },
@@ -426,10 +499,12 @@
               },
             }
           ],
+          storage: true,
+          storageName: 'appui-option-tree-app-templates-' + this.currentApp?.id,
           noData: 'appui-option-nodata-templates',
           source: this.source.root + 'tree',
           root: this.currentApp?.rootTemplates,
-          select: node => this.changeTemplate(node),
+          select: node => this.changeSelected(node, 'template'),
           draggable: true
         };
       },
@@ -477,10 +552,12 @@
               icon: "nf nf-md-chevron_double_right"
             }
           ],
+          storage: true,
+          storageName: 'appui-option-tree-plugin-' + this.currentPlugin?.id,
           noData: 'appui-option-nodata-option',
           source: this.source.root + 'tree',
           root: this.currentPlugin?.rootOptions,
-          select: node => this.changeOption(node),
+          select: node => this.changeSelected(node, 'option'),
           draggable: true
         };
       },
@@ -521,10 +598,10 @@
               },
             }
           ],
+          storage: false,
           noData: 'appui-option-nodata-plugins',
-          source: this.source.root + 'tree',
-          root: this.currentPlugin?.rootPlugins,
-          select: node => this.changeOption(node),
+          source: this.currentPlugin?.subplugins,
+          select: node => this.changeSelected(node, 'subplugin'),
           draggable: true
         };
       },
@@ -562,10 +639,12 @@
               },
             }
           ],
+          storage: true,
+          storageName: 'appui-option-tree-plugin-templates-' + this.currentPlugin?.id,
           noData: 'appui-option-nodata-templates',
           source: this.source.root + 'tree',
           root: this.currentPlugin?.rootTemplates,
-          select: node => this.changeTemplate(node),
+          select: node => this.changeSelected(node, 'template'),
           draggable: true
         };
       },
@@ -624,10 +703,12 @@
               action: () => this.goToBlock(0)
             }
           ],
+          storage: true,
+          storageName: 'appui-option-tree-subplugin-' + this.currentSubplugin?.id,
           noData: 'appui-option-nodata-option',
           source: this.source.root + 'tree',
-          root: this.currentPlugin?.rootOptions,
-          select: node => this.changeSubplugin(node),
+          root: this.currentSubplugin?.rootOptions,
+          select: node => this.changeSelected(node, 'option'),
           draggable: true
         };
       },
@@ -721,6 +802,12 @@
           this.currentTab = bits[1];
         }
       },
+      setDefaultTemplateTab(route) {
+        const bits = route.split('/');
+        if (bits.length > 1) {
+          this.currentTemplateTab = bits[1];
+        }
+      },
       goToBlock(idx) {
         if ((idx <= 1) && this.currentPluginId) {
           this.currentPluginId = null;
@@ -731,6 +818,16 @@
 
         this.currentPosition = idx ? (-100*idx) + '%' : '0px';
         this.currentIndex = idx;
+        const remain = this.blocks.filter(a => a.index === idx);
+        if (remain.length) {
+          const row = this.templateSelected ?
+            bbn.fn.getRow(remain, a => a.id.toLowerCase().indexOf('template') !== -1)
+            : bbn.fn.getRow(remain, a => a.id.toLowerCase().indexOf('template') === -1);
+          if (row) {
+            this.treeSeen.push(row.id);
+          }
+        }
+        bbn.fn.log("GOING TO BLOCK " + idx, this.currentPosition, this.blocks, this.blocks.filter(a => a.index === idx));
       },
       updateTrees(data, del) {
         const blocks = bbn.fn.filter(this.blocks, {root: data.id_parent});
@@ -771,7 +868,7 @@
         bbn.fn.log("ON CREATE", res)
         if (res.success && res.data) {
           this.updateTrees(res.data);
-          this.changeOption(res);
+          this.changeSelected(res, 'option');
         }
       },
       onDeleteApp(opt) {
@@ -932,113 +1029,137 @@
         }, 250);
 
       },
-      changeOption(node) {
-        this.currentNode = node;
-        const data = node.data;
-        if (data && data.id) {
-          this.isReady = false;
-          this.routerURL = 'option';
-          this.$nextTick(() => {
-            this.optionSelected = {
-              code: data.code,
-              text: data.text,
-              id: data.id
-            };
-            this.launchReady('option/' + data.id + '/' + this.currentTab, data.name || data.text);
-            bbn.fn.log(['changeOption', this.root + 'tree/option/' + data.id, this.currentTab])
-          });
-        }
+      onUpdateDataDebug(d) {
+        this.debug = JSON.stringify(d, null, 2)
       },
-      changeApp(node) {
-        this.currentNode = node;
-        const data = node.data;
-        if (data?.id) {
-          this.isReady = false;
-          this.currentAppId = data.id;
-          this.routerURL = 'app';
-          this.$nextTick(() => {
-            this.blocks.splice(2, 8, 
-              this.genBlockOptions(),
-              this.genBlockTemplates(),
-              this.genBlockPlugins(),
-              this.genBlockAppTemplates(), 
-              this.genBlockPlugin(),
-              this.genBlockSubplugins(),
-              this.genBlockPluginTemplates(),
-              this.genBlockSubplugin()
-            );
-            this.goToBlock(0);
-            this.optionSelected = {
-              code: data.code,
-              text: data.text,
-              id: data.id
-            };
-            this.launchReady('app/' + data.id, data.name || data.text);
-          });
+      changeSelected(node, type, noAction) {
+        const selected = this.querySelectorAll('.bbn-tree .bbn-node-clicker.bbn-primary');
+        if (selected) {
+          selected.forEach(t => t.classList.remove('bbn-primary'));
         }
-      },
-      changeTemplate(node) {
-        this.currentNode = node;
-        const data = node.data;
-        if (data?.id) {
-          this.isReady = false;
-          this.routerURL = 'template';
-          this.$nextTick(() => {
-            this.optionSelected = {
-              code: data.code,
-              text: data.text,
-              id: data.id
-            };
-            this.launchReady('template/' + data.id + '/values', data.name || data.text);
-          });
-        }
-      },
-      changePlugin(node) {
-        this.currentNode = node;
-        const data = node.data;
-        if (data?.id) {
-          this.isReady = false;
-          this.currentPluginId = data.id;
-          this.routerURL = 'plugin/' + data.id;
-          this.$nextTick(() => {
-            this.blocks.splice(6, 4,
-              this.genBlockPlugin(),
-              this.genBlockSubplugins(),
-              this.genBlockPluginTemplates(),
-              this.genBlockSubplugin(),
-            );
-            this.goToBlock(2);
-            this.optionSelected = {
-              code: data.code,
-              text: data.text,
-              id: data.id
-            };
-            bbn.fn.log("DATA", data)
-            this.launchReady('plugin/' + data.id, data.name || data.text);
-          });
-        }
-      },
-      changeSubplugin(node) {
-        this.currentNode = node;
-        const data = node.data;
-        if (data?.id) {
-          this.isReady = false;
-          this.currentSubpluginId = data.id;
-          this.routerURL = 'subplugin';
 
-          this.$nextTick(() => {
-            this.blocks.splice(9, 1,
-              this.genBlockSubplugin()
-            );
-            this.goToBlock(5);
-            this.optionSelected = {
-              code: data.code,
-              text: data.text,
-              id: data.id
-            };
+        if (bbn.fn.isString(node) && type) {
+          node = this.getRef('tree' + type).getNodeByUid(node);
+          if (!noAction) {
+            node.getRef('clicker').click();
+            return;
+          }
+        }
 
-            this.launchReady('subplugin/' + data.id, data.name || data.text);
-          });
+        if (node?.data?.id && (node.data.id !== this.currentId)) {
+          this.currentId = node.data.id;
+          if (!type) {
+            bbn.fn.each(this.source.roots, root => {
+              if (root.id === node.data.id) {
+                type = 'app';
+              }
+              else {
+                const plugin = bbn.fn.getRow(root.plugins, {id: node.data.id});
+                if (plugin) {
+                  type = 'plugin';
+                }
+                else {
+                  bbn.fn.each(root.plugins, p => {
+                    const subplugin = bbn.fn.getRow(p.subplugins, {id: node.data.id});
+                    if (subplugin) {
+                      type = 'subplugin';
+                      return false;
+                    }
+                  });
+                }
+              }
+
+              if (type) {
+                return false;
+              }
+            });
+          }
+
+          if (!type) {
+            type = 'option';
+          }
+
+          node.getRef('clicker').classList.add('bbn-primary');
+          this.isReady = false;
+          let url;
+          let title;
+          let fn = () => {};
+          const data = node.data;
+          this.currentNode = node;
+          switch (type) {
+            case 'option':
+              url = 'option/' + data.id + '/' + this.currentTab;
+              title = data.name || data.text;
+              break;
+            case 'app':
+              url = 'app/' + data.id;
+              title = data.name || data.text;
+              this.currentAppId = data.id;
+              if (!noAction) {
+                fn = () => {
+                  this.blocks.splice(2, 8, 
+                    this.genBlockOptions(),
+                    this.genBlockTemplates(),
+                    this.genBlockPlugins(),
+                    this.genBlockAppTemplates(), 
+                    this.genBlockPlugin(),
+                    this.genBlockSubplugins(),
+                    this.genBlockPluginTemplates(),
+                    this.genBlockSubplugin()
+                  );
+                  this.goToBlock(0);
+                };
+              }
+              break;
+            case 'template':
+              url = 'template/' + data.id + '/' + this.currentTemplateTab;
+              title = data.name || data.text;
+              break;
+            case 'plugin':
+              url = 'plugin/' + data.id;
+              title = data.name || data.text;
+              this.currentPluginId = data.id;
+              if (!noAction) {
+                fn = () => {
+                  this.blocks.splice(6, 4,
+                    this.genBlockPlugin(),
+                    this.genBlockSubplugins(),
+                    this.genBlockPluginTemplates(),
+                    this.genBlockSubplugin(),
+                  );
+                  this.goToBlock(2);
+                }
+              }
+              break;
+            case 'subplugin':
+              url = 'subplugin/' + data.id;
+              title = data.name || data.text;
+              this.currentSubpluginId = data.id;
+              if (!noAction) {
+                fn = () => {
+                  this.blocks.splice(9, 1,
+                    this.genBlockSubplugin()
+                  );
+                  this.goToBlock(4);
+                };
+              }
+              break;
+          }
+
+          if (url) {
+            this.routerURL = url.split('/')[0];
+            this.$nextTick(() => {
+              fn();
+              this.optionSelected = {
+                code: data.code,
+                text: data.text,
+                id_alias: data.id_alias,
+                id: data.id
+              };
+              this.launchReady(url, title);
+              bbn.fn.log(['changeSelected', url, title, noAction]);
+            });
+          }
         }
       },
       moveOpt(node, nodeDest, ev) {
@@ -1063,10 +1184,11 @@
       },
 
     },
-    created() {
-      this.blocks = this.getBlocks();
+    beforeDestroy() {
+      appui.unregister('appui-option-tree');
     },
     beforeMount() {
+      appui.register('appui-option-tree', this);
       if (this.source.info?.option) {
         let opt = this.source.info.option;
         this.cfg = this.source.info.cfg;
@@ -1074,6 +1196,7 @@
         this.optionSelected.id = opt.id;
         this.optionSelected.code = opt.code;
         this.optionSelected.text = opt.text;
+        this.optionSelected.id_alias = opt.id_alias;
       }
       else {
         const ct = this.closest('bbn-container');
@@ -1084,10 +1207,12 @@
 
       if (this.source.info?.parentPlugin) {
         this.currentPluginId = this.source.info.parentPlugin;
-        setTimeout(() => {
-          this.goToBlock(2);
-        }, 250);
       }
+
+      this.blocks = this.getBlocks();
+      setTimeout(() => {
+        this.goToBlock(this.source.info?.parentPlugin ? 2 : 0);
+      }, 250);
     },
     watch: {
       optionSelected(v) {

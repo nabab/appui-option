@@ -1,4 +1,5 @@
 <div class="bbn-overlay bbn-flex-height">
+  <appui-option-loader :source="source"/>
   <div class="bbn-padding bbn-w-100 bbn-flex-width"
        bbn-if="data"
        :style="{

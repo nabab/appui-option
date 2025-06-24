@@ -19,7 +19,8 @@
                    alignItems: 'center',
                    display: 'flex'
                  }">
-              <div class="bbn-button-group">
+              <div class="bbn-button-group"
+                   bbn-if="treeSeen.includes(c.id)">
                 <bbn-button bbn-for="b in c.buttons"
                             :action="b.action || undefined"
                             :url="b.url || undefined"
@@ -36,18 +37,23 @@
             </div>
             <h3 class="bbn-c bbn-hxspadding bbn-vpadding bbn-no-margin"
                 bbn-text="c.label"/>
+            <div bbn-if="!treeSeen.includes(c.id)"
+                class="bbn-flex-fill bbn-middle">
+              <div class="bbn-card bbn-padding bbn-block">Hello!</div>
+            </div>
             <div class="bbn-flex-fill bbn-hpadding"
-                 bbn-if="(changingRoot !== c.id) && ((typeof c.source === 'string') && c.root) || bbn.fn.isArray(c.source)">
+                 bbn-elseif="(changingRoot !== c.id) && ((typeof c.source === 'string') && c.root) || bbn.fn.isArray(c.source)">
               <bbn-tree bbn-if="c.source"
                         :source="c.source"
                         uid="id"
-                        :storage="true"
-                        :storage-full-name="'appui-options-tree-' + c.id"
+                        :selectable="false"
+                        :storage-full-name="c.storageName || ''"
+                        :storage="c.storage"
                         :root="c.root || undefined"
                         :map="treeMapper"
                         item-component="appui-option-tree-item"
                         :no-data-component="c.noData || null"
-                        @select="node => c.select(node)"
+                        @nodeclick="node => c.select(node)"
                         :ref="'tree' + c.id"
                         :drag="c.draggable"
                         @move="moveOpt"
@@ -82,7 +88,7 @@
                                  @deleteplugin="onDeletePlugin"
                                  @deletesubplugin="onDeleteSubplugin"
                                  @delete="onDelete"
-                                 @update="d => debug = JSON.stringify(d, null, 2)"/>
+                                 @update="onUpdateDataDebug"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>
@@ -92,7 +98,7 @@
                          ref="appContainer">
             <appui-option-page-app :source="optionSelected"
                               bbn-if="!routerURL.indexOf('app') && optionSelected && isReady"
-                              @update="d => debug = JSON.stringify(d, null, 2)"/>
+                              @update="onUpdateDataDebug"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>
@@ -102,7 +108,9 @@
                          ref="templateContainer">
             <appui-option-template :source="optionSelected"
                                     bbn-if="!routerURL.indexOf('template') && optionSelected && isReady"
-                                    @delete="onDeleteTemplate"/>
+                                    @route="setDefaultTemplateTab"
+                                    @delete="onDeleteTemplate"
+                                    @update="onUpdateDataDebug"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>
@@ -112,7 +120,8 @@
                          ref="pluginContainer">
             <appui-option-page-plugin :source="optionSelected"
                                  bbn-if="!routerURL.indexOf('plugin') && optionSelected && isReady"
-                                 @delete="onDeletePlugin"/>
+                                 @delete="onDeletePlugin"
+                                 @update="onUpdateDataDebug"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>
@@ -121,8 +130,9 @@
                          label="<?= _("Subplugin") ?>"
                          ref="subpluginContainer">
             <appui-option-page-subplugin :source="optionSelected"
-                                    bbn-if="!routerURL.indexOf('subplugin') && optionSelected && isReady"
-                                    @delete="onDeleteSubplugin"/>
+                                         bbn-if="!routerURL.indexOf('subplugin') && optionSelected && isReady"
+                                         @delete="onDeleteSubplugin"
+                                         @update="onUpdateDataDebug"/>
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>

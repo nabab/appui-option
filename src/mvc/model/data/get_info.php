@@ -7,31 +7,65 @@ if (isset($model->inc->options)) {
   //info option for spliter
   if (!empty($model->data['id'])) {
     $all = $o->option($model->data['id']);
-    $cfg = $o->getCfg($model->data['id']) ?: [];
-    $aliases = $o->getAliases($model->data['id']);
-    $prefs = new \bbn\User\Preferences($model->db);
-    $permissions = $model->inc->perm->getParentCfg($model->data['id']);
-    $pub = array_map(
-      function ($a) {
-        if (!empty($a['value']) && \bbn\Str::isJson($a['value'])) {
-          $a = array_merge(json_decode($a['value'], true), $a);
-          unset($a['value']);
-        }
-        return $a;
-      },
-      $model->db->rselectAll('bbn_users_options', [], [
-        'id_option' => $model->data['id'],
-        'public' => 1
-      ])
-    );
-
     if (
       !empty($all) &&
       ($option = $o->nativeOption($model->data['id']))
     ) {
+      $cfg = $o->getCfg($model->data['id']) ?: [];
+      if ($all['id_alias']) {
+        $realCfg = $model->db->selectOne('bbn_options', 'cfg', ['id' => $all['id']]);
+        if (is_string($realCfg)) {
+          $realCfg = json_decode($realCfg, true);
+        }
+      }
+      else {
+        $realCfg = $cfg;
+      }
+
+      $aliases = $o->getAliases($model->data['id']);
+      $prefs = new \bbn\User\Preferences($model->db);
+      $permissions = $model->inc->perm->getParentCfg($model->data['id']);
+      $pub = array_map(
+        function ($a) {
+          if (!empty($a['value']) && \bbn\Str::isJson($a['value'])) {
+            $a = array_merge(json_decode($a['value'], true), $a);
+            unset($a['value']);
+          }
+          return $a;
+        },
+        $model->db->rselectAll('bbn_users_options', [], [
+          'id_option' => $model->data['id'],
+          'public' => 1
+        ])
+      );
+
       if (!empty($all['id_alias'])) {
         $option['alias'] = $o->option($all['id_alias']);
       }
+
+      $template = null;
+      $idParentTemplate = $o->getParentTemplateId($model->data['id']);
+      $isInTemplate = (bool)$idParentTemplate;
+      $isTemplate = $idParentTemplate === $model->data['id'];
+      $usedTemplate = null;
+      if ($isInTemplate) {
+        $template = $o->option($idParentTemplate);
+      }
+      elseif ($usedTemplate = $o->usedTemplate($model->data['id'])) {
+        $template = $o->option($usedTemplate);
+      }
+
+      $plugin = null;
+      if ($isPlugin = $option['id_alias'] === $o->getPluginTemplateId()) {
+        $suboptions = $o->fullOptions($model->data['id']);
+        $plugin = [
+          'options' => X::getField($suboptions, ['id_alias' => $o->getOptionsTemplateId()], 'id'),
+          'plugins' => X::getField($suboptions, ['id_alias' => $o->getPluginsTemplateId()], 'id'),
+          'permissions' => X::getField($suboptions, ['id_alias' => $o->getPermissionsTemplateId()], 'id'),
+          'templates' => X::getField($suboptions, ['id_alias' => $o->getTemplatesTemplateId()], 'id'),
+        ];
+      }
+
 
       $parents = $o->parents($model->data['id']);
       $breadcrumb = array_reverse(array_map(function($a) use (&$o) {
@@ -41,9 +75,11 @@ if (isset($model->inc->options)) {
       array_push($breadcrumb, $option);
       return [
         'success' => true,
+        'value' => $option['value'],
         'info' => json_encode($all),
-        'option' => $option,
+        'option' => $all,
         'cfg' => $cfg,
+        'realCfg' => $realCfg,
         'parentCfg' => $o->getCfg($option['id_parent']),
         'cfg_inherit_from_text' => !empty($cfg['inherit_from']) ? $model->inc->options->text($cfg['inherit_from']) : '',
         'aliases' => $aliases,
@@ -53,14 +89,17 @@ if (isset($model->inc->options)) {
         'parents' => $parents,
         'breadcrumb' => $breadcrumb,
         'prefs' => $prefs->getAll($model->data['id']),
-        'isTemplate' => $o->isInTemplate($model->data['id']),
-        'isPlugin' => $option['id_alias'] === $o->getPluginTemplateId(),
+        'isPlugin' => $isPlugin,
+        'plugin' => $plugin,
         'isSubplugin' => $option['id_alias'] === $o->getSubpluginTemplateId(),
         'isApp' => ($option['code'] !== 'templates') && ($option['id_parent'] === $model->inc->options->getRoot()),
         'parent' => $o->parent($model->data['id']),
-        'template' => $o->getOptionTemplate($model->data['id']),
-        'parentTemplate' => $o->parentTemplate($model->data['id']),
+        'template' => $template,
+        'usedTemplate' => $usedTemplate,
+        'isInTemplate' => $isInTemplate,
+        'isTemplate' => $isTemplate,
         'parentPlugin' => $o->getParentPlugin($model->data['id']),
+        'parentSubplugin' => $o->getParentSubplugin($model->data['id']),
         'appId' => array_slice($parents, -2, 1)[0]
       ];
     }

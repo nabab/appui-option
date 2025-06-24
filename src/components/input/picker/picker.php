@@ -3,18 +3,21 @@
 <div class="appui-option-input-picker">
   <bbn-button @click="showFloater = !showFloater"
               ref="button"
+              :disabled="disabled"
               type="button">
     <?= _("Browse") ?>
   </bbn-button> &nbsp;
-  <bbn-input bbn-model="rootAlias"/>
+  <bbn-input bbn-model="rootAlias"
+             :disabled="disabled"/>
   <bbn-button bbn-if="value"
+              :disabled="disabled"
               class="bbn-space-left"
               @click="emitInput(null)">
     <?= _("Clear") ?>
   </bbn-button>
   <bbn-input type="hidden"
              bbn-model="value"/>
-  <bbn-floater bbn-if="showFloater"
+  <bbn-floater bbn-if="showFloater && !disabled"
                :element="$refs.button.$el"
                height="40em"
                width="25em">

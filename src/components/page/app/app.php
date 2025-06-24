@@ -1,4 +1,5 @@
 <div class="bbn-overlay bbn-flex-height">
+  <appui-option-loader :source="source"/>
   <div class="bbn-padding bbn-w-100 bbn-flex-width"
        bbn-if="data"
        :style="{
@@ -12,7 +13,8 @@
       <?= _("Application") ?> 
       <span bbn-text="data.option.text"/>
     </div>
-    <appui-option-buttons :source="data.option"/>
+    <appui-option-buttons :source="data.option"
+                          :plugin="data.isPlugin"/>
     <div class="bbn-bottom-left bbn-vxxspadding bbn-hxspadding">
       <appui-option-breadcrumb :source="data.breadcrumb"/>
     </div>
