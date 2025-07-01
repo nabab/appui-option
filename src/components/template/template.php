@@ -13,7 +13,7 @@
       <?= _("Template") ?> 
       <span bbn-text="data.option.text"/>
     </div>
-    <appui-option-buttons :source="data.option"/>
+    <appui-option-buttons :source="data"/>
     <div class="bbn-bottom-left bbn-vxxspadding bbn-hxspadding">
       <appui-option-breadcrumb :source="data.breadcrumb"/>
     </div>
@@ -26,16 +26,22 @@
                 :master="true"
                 :show-switch="false"
                 :breadcrumb="isMobile">
-      <bbns-container :url="data.option.id + '/values'"
+      <bbn-container :url="data.option.id + '/values'"
                       :fixed="true"
                       label="<?= _('Values') ?>"
-                      component="appui-option-template-form"
-                      :source="data"
                       :load="false"
                       bcolor="teal"
                       fcolor="white"
-                      icon="nf nf-fa-list_alt"/>
-      <bbns-container :url="data.option.id + '/cfg'"
+                      icon="nf nf-fa-list_alt">
+        <div class="bbn-padding bbn-centered-block">
+          <appui-option-template-form bbn-if="data.isTemplate"
+                             :source="data"/>
+          <appui-option-form bbn-else
+                                      :source="data"/>
+        </div>
+
+      </bbn-container>
+      <bbn-container :url="data.option.id + '/cfg'"
                       :fixed="true"
                       label="<?= _('Configuration') ?>"
                       component="appui-option-config"

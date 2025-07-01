@@ -190,7 +190,7 @@
               tab.reload();
           });
         }
-        else if (this.tree?.currentNode && (this.tree.currentNode.data?.id === this.data.id)) {
+        else if (this.tree.currentNode && (this.tree.currentNode.data?.id === this.data.id)) {
           this.tree.currentNode.parent.reload();
         }
         else{
@@ -208,6 +208,16 @@
           }
         });
       },
+      applyTemplate() {
+        this.post(appui.plugins['appui-option'] + '/actions/template', {
+          id: this.optionId,
+          mode: 'parent'
+        }, (d) => {
+          if (d.success) {
+            appui.success(d.success + bbn._(' modifications applied'));
+          }
+        });
+      }
     },
     mounted(){
       if (!appui.plugins['appui-option'] || this.constructor.controllers) {

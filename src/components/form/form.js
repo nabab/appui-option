@@ -3,20 +3,17 @@
     mixins: [bbn.cp.mixins.basic],
     props: ['source', 'configuration'],
     data() {
-      const currentSource = this.source.option || this.source.row || this.source;
       return {
         root: appui.plugins['appui-option'] + '/',
-        currentSource,
-        cfg: this.configuration || this.source.cfg,
-        parentCfg: this.source.parentCfg || this.configuration
+        cfg: this.configuration,
       }
     },
     computed: {
       currentIcon: {
         get() {
-          if (!('icon' in this.currentSource) && ('value' in this.currentSource)) {
+          if (!('icon' in this.source) && ('value' in this.source)) {
             try {
-              const v = bbn.fn.isString(this.currentSource.value) ? JSON.parse(this.currentSource.value) : this.currentSource.value;
+              const v = bbn.fn.isString(this.source.value) ? JSON.parse(this.source.value) : this.source.value;
               if (v && ('icon' in v)) {
                 return v.icon;
               }
@@ -26,25 +23,25 @@
             return '';
           }
 
-          return this.currentSource.icon || '';
+          return this.source.icon || '';
         },
         set(value) {
-          if (!('icon' in this.currentSource) && ('value' in this.currentSource)) {
+          if (!('icon' in this.source) && ('value' in this.source)) {
             try {
-              const v = bbn.fn.isString(this.currentSource.value) ? JSON.parse(this.currentSource.value) : this.currentSource.value;
+              const v = bbn.fn.isString(this.source.value) ? JSON.parse(this.source.value) : this.source.value;
               v.icon = value;
-              this.currentSource.value = JSON.stringify(v);
+              this.source.value = JSON.stringify(v);
               return true;
             }
             catch (e) {}
           }
 
-          this.currentSource.icon = value;
+          this.source.icon = value;
           return true;
         }
       },
       alias(){
-        return this.currentSource.alias ? this.currentSource.alias.text : '';
+        return this.source.alias ? this.source.alias.text : '';
       },
       list(){
         let tab = this.closest('bbn-container')
@@ -71,7 +68,7 @@
         return false;
       },
       unnecessaryFields() {
-        const pc = this.parentCfg || {};
+        const pc = this.cfg || {};
         const fields = [];
         const authorized = ['id', 'id_parent'];
         if (pc.schema) {
@@ -93,7 +90,7 @@
           authorized.push('id_alias');
         }
 
-        for (let n in this.currentSource) {
+        for (let n in this.source) {
           if (!authorized.includes(n)) {
             if ((n === 'id_alias') && !pc.relations) {
               fields.push(n);
@@ -107,7 +104,7 @@
     },
     methods: {
       schemaHasField(field){
-        return field && this.currentComp.schema && (bbn.fn.search(this.currentComp.schema, 'field', field) > -1);
+        return field && this.cfg.schema && (bbn.fn.search(this.cfg.schema, 'field', field) > -1);
       },
       showField(f){
         if ( ((f.field === 'code') && !this.cfg.show_code) ||
@@ -127,12 +124,12 @@
           component: 'appui-option-browse',
           source: {
             idRootTree: this.cfg.id_root_alias,
-            data: this.currentSource
+            data: this.source
           }
         });
       },
       clearAlias(){
-        this.currentSource.id_alias = '';
+        this.source.id_alias = '';
         this.alias = '';
       },
       selectIcon(){
@@ -148,9 +145,10 @@
         });
       },
       beforeSend(d){
-        if ( !this.currentComp ){
+        if ( !this.source ){
           return false;
         }
+
         if ( (d.source_children !== undefined) && !d.source_children.length ){
           delete d.source_children;
         }
@@ -159,8 +157,8 @@
       success(d) {
         if ( d.success && d.data ){
           if ( this.list ){
-            if ( this.currentSource.id ){
-              let idx = bbn.fn.search(this.list.source.options, 'id', this.currentSource.id);
+            if ( this.source.id ){
+              let idx = bbn.fn.search(this.list.source.options, 'id', this.source.id);
               if ( idx > -1 ){
                 this.list.source.options[idx] = d.data;
               }

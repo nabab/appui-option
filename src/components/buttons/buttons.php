@@ -1,7 +1,12 @@
 <div class="bbn-button-group" style="width: auto">
+  <bbn-button icon="nf nf-cod-copy"
+              @click="copyId"
+              :label="_('Copy ID %s', source.option.id)"
+              :notext="true"/>
   <bbn-button icon="nf nf-fa-link"
               @click="linkOption"
-              :label="'<?= _('Go to') ?> ' + source.text"
+              bbn-if="source.parentCfg.allow_children"
+              :label="'<?= _('Go to') ?> ' + source.option.text"
               :notext="true"/>
   <bbn-button icon="nf nf-fa-history"
               @click="deleteCache"

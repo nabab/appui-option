@@ -136,6 +136,17 @@
             <bbn-loader bbn-else
                         class="bbn-overlay bbn-middle"/>
           </bbn-container>
+          <!-- INDEX 6 -->
+          <bbn-container url="container"
+                         label="<?= _("Container") ?>"
+                         ref="containerContainer">
+            <appui-option-page-container :source="optionSelected"
+                                         bbn-if="!routerURL.indexOf('container') && optionSelected && isReady"
+                                         @delete="onDeleteContainer"
+                                         @update="onUpdateDataDebug"/>
+            <bbn-loader bbn-else
+                        class="bbn-overlay bbn-middle"/>
+          </bbn-container>
         </bbn-router>
       </div>
     </bbn-pane>

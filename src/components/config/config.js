@@ -35,7 +35,6 @@
     props: ['source'],
     data() {
       return {
-        cfg: getDefaultCfg(this.source.cfg),
         optionId: this.source.option ? this.source.option.id : this.source.id,
         ready: false,
         models: [],
@@ -107,6 +106,7 @@
           value: 'schema'
         }],
         showScfg: !!this.source.cfg.scfg,
+        lastScfg: {},
         showReset: !this.source.cfg.frozen,
         root: appui.plugins['appui-option'] + '/',
         isFrozen: !!this.source.cfg.frozen || this.source.useTemplate,
@@ -170,6 +170,7 @@
         return true;
       },
       onSuccess() {
+        debugger;
         let tab = this.closest('bbn-container'),
             list = tab.find('appui-option-list'),
             table = list ? list.getRef('table') : false;
@@ -198,10 +199,10 @@
         });
       },
       unlock(){
-        this.data.cfg.frozen = false;
-        this.data.cfg.inherit_from = '';
+        this.source.cfg.frozen = false;
+        this.source.cfg.inherit_from = '';
         //this.data.cfg.inherit_from_text = '';
-        this.data.cfg_inherit_from_text = '';
+        this.source.cfg_inherit_from_text = '';
       },
       reset(){
         this.confirm(bbn._('Are you sure you want to back to the default configuration?'), () => {
@@ -221,25 +222,12 @@
           this.source.cfg = bbn.fn.extend({}, newVal, true);
         }
       },
-      scfg: {
-        deep: true,
-        handler(newVal) {
-          if (newVal) {
-            if (this.source.cfg.scfg !== newVal) {
-              this.source.cfg.scfg = newVal;
-            }
-          }
-          else if (this.source.cfg.scfg) {
-            delete this.source.cfg.scfg;
-          }
-        }
-      },
       isFrozen(newVal){
         if (newVal) {
         }
       },
       currentSchema(newVal) {
-        this.cfg.schema = newVal;
+        this.source.cfg.schema = newVal;
       },
       /*
       rootAlias(val, oldVal){
@@ -248,13 +236,14 @@
       */
       showScfg(newVal){
         if (newVal) {
-          this.scfg = bbn.fn.extend({}, getDefaultCfg(), true);
+          this.source.cfg.scfg = getDefaultCfg(this.lastScfg);
         }
         else {
-          delete this.cfg.scfg;
+          this.lastScfg = this.source.cfg.scfg;
+          delete this.source.cfg.scfg;
         }
       },
-      'data.cfg.allow_children'(newVal){
+      'source.cfg.allow_children'(newVal){
         if ( newVal && !!this.source.cfg.scfg ){
           this.showScfg = !!newVal;
         }

@@ -19,7 +19,7 @@
                 :disabled="isFrozen"/>
   
   <div class="bbn-grid-full bbn-c"
-       bbn-if="(source.relations === 'template') && source.id_template && (!tree || tree.optionSelected?.option?.num_children)">
+       bbn-if="(source.relations === 'template') && source.id_template && $origin.source?.option?.num_children">
     <bbn-button @click="applyTemplate"
                 label="<?= _('Apply template to existing children') ?>"/>
   </div>

@@ -13,7 +13,7 @@
       <?= _("Plugin") ?> 
       <span bbn-text="data.option.text"/>
     </div>
-    <appui-option-buttons :source="data.option"/>
+    <appui-option-buttons :source="data"/>
     <div class="bbn-bottom-left bbn-vxxspadding bbn-hxspadding">
       <appui-option-breadcrumb :source="data.breadcrumb"/>
     </div>

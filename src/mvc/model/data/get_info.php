@@ -66,7 +66,7 @@ if (isset($model->inc->options)) {
         ];
       }
 
-
+      $pcfg = $o->getParentCfg($model->data['id']);
       $parents = $o->parents($model->data['id']);
       $breadcrumb = array_reverse(array_map(function($a) use (&$o) {
         return $o->option($a);
@@ -77,10 +77,10 @@ if (isset($model->inc->options)) {
         'success' => true,
         'value' => $option['value'],
         'info' => json_encode($all),
-        'option' => $all,
+        'option' => $pcfg['show_value'] ? $option : $all,
         'cfg' => $cfg,
         'realCfg' => $realCfg,
-        'parentCfg' => $o->getCfg($option['id_parent']),
+        'parentCfg' => $pcfg,
         'cfg_inherit_from_text' => !empty($cfg['inherit_from']) ? $model->inc->options->text($cfg['inherit_from']) : '',
         'aliases' => $aliases,
         'permissions' => $permissions,

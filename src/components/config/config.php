@@ -6,6 +6,7 @@
       <bbn-form :action="root + 'actions/cfg'"
                 :source="source.cfg"
                 :validation="beforeSend"
+                :transform="a => ({id: source.option.id, cfg: source.cfg})"
                 ref="config"
                 @success="onSuccess"
                 :scrollable="false"
@@ -49,7 +50,7 @@
             <div class="bbn-w-100 bbn-c bbn-light bbn-lg">
               <?= _('Configuration for items under this option') ?>
             </div>
-            <div bbn-if="cfg.inherit_from"
+            <div bbn-if="source.cfg.inherit_from"
                 class="bbn-w-100 bbn-c bbn-light bbn-lg">
               <?= _('Inherited from') ?> <a :href="root + 'list/' + source.cfg.inherit_from" bbn-text="source.cfg.inherit_from_text"/>
             </div>
@@ -100,7 +101,7 @@
                               }]"/>
                 </div>
   
-                <label bbn-if="cfg.allow_children"
+                <label bbn-if="source.cfg.allow_children"
                       class="bbn-p">
                   <?= _("Set rules for items' descendents") ?>
                 </label>
@@ -108,12 +109,14 @@
                             :disabled="isFrozen"
                             :value="true"
                             :novalue="false"
-                            bbn-if="cfg.allow_children"/>
+                            bbn-if="source.cfg.allow_children"/>
               </div>
-              <div bbn-if="showScfg && source.cfg.allow_children" class="bbn-box bbn-top-sspace">
+              <div bbn-if="showScfg && source.cfg.allow_children && source.cfg.scfg" class="bbn-box bbn-top-sspace">
                 <div class="bbn-header bbn-c bbn-no-border-left bbn-no-border-top bbn-no-border-right bbn-spadding bbn-radius-top-left bbn-radius-top-right"><?= _('Descendents configuration') ?></div>
   
-                <appui-option-config-items class="bbn-padding" :source="source.cfg.scfg" :option-id="optionId"/>
+                <appui-option-config-items class="bbn-padding"
+                                           :source="source.cfg.scfg"
+                                           :option-id="optionId"/>
   
                 <div class="bbn-grid-fields bbn-padding">
                   <!-- OPTIONS INHERITANCE -->

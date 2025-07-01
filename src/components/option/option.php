@@ -10,7 +10,7 @@
        bbn-if="data?.option">
     <div class="bbn-flex-fill bbn-b bbn-c bbn-large"
          bbn-text="data.option.text"/>
-    <appui-option-buttons :source="data.option"
+    <appui-option-buttons :source="data"
                           @deleteapp="a => $emit('deleteapp', a)"
                           @deleteplugin="a => $emit('deleteplugin', a)"
                           @deletesubplugin="a => $emit('deletesubplugin', a)"
@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="bbn-flex-fill">
-    <div bbn-if="data?.usedTemplate && (data.usedTemplate.id !== data.option.id)"
+    <div bbn-if="data?.usedTemplate && (data.usedTemplate !== data.option.id_alias)"
          class="bbn-lpadding bbn-card bbn-centered-block bbn-vlmargin">
       <div class="bbn-message-info bbn-i bbn-c bbn-light bbn-bottom-margin"
            bbn-text="_('This option cannot be modified as it is part of the template %s', data.template.text)"/>
@@ -67,14 +67,12 @@
       <bbn-container :url="data.option.id + '/values'"
                       :fixed="true"
                       label="<?= _('Values') ?>"
-                      component=""
-                      :source="data"
                       :load="false"
                       bcolor="teal"
                       fcolor="white"
                       icon="nf nf-fa-list_alt">
         <div class="bbn-padding bbn-centered-block">
-          <appui-option-form :source="data"/>
+          <appui-option-form :source="data.option" :configuration="data.parentCfg"/>
         </div>
       </bbn-container>
       <bbn-container :url="data.option.id + '/cfg'"

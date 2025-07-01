@@ -18,30 +18,9 @@ if (!empty($id)) {
           'languages' => $translation->getPrimariesLangs(),
           'parents' => [],
           'id_root_opt' => $o->fromCode(false)
-          ]
+        ]
       );
       //  die(\bbn\X::dump($ctrl->data['cfg']));
-      if (!empty($ctrl->data['cfg']['id_root_alias'])) {
-        $ctrl->data['cfg']['root_alias'] = $o->option($ctrl->data['cfg']['id_root_alias']);
-        if (!empty($ctrl->data['cfg']['root_alias']['num_children'])
-            && ($ch = $o->items($ctrl->data['cfg']['id_root_alias']))
-        ) {
-          $ctrl->data['cfg']['root_alias']['last_level'] = true;
-          foreach ($ch as $c){
-            if ($o->items($c)) {
-              $ctrl->data['cfg']['root_alias']['last_level'] = false;
-              break;
-            }
-          }
-
-          if ($ctrl->data['cfg']['root_alias']['last_level']
-              && ($last_level_children = $o->fullOptions($ctrl->data['cfg']['id_root_alias']))
-          ) {
-            \bbn\X::sortBy($last_level_children, 'text');
-            $ctrl->data['cfg']['root_alias']['last_level_children'] = $last_level_children;
-          }
-        }
-      }
 
       if (!empty($ctrl->data['cfg']['inherit_from'])) {
         $ctrl->data['cfg']['inherit_from_text'] = $o->text($ctrl->data['cfg']['inherit_from']);

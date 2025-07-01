@@ -10,11 +10,10 @@
         }"
        bbn-if="data?.option">
     <div class="bbn-flex-fill bbn-b bbn-c bbn-large">
-      <?= _("Application") ?> 
+      <?= _("Container") ?> 
       <span bbn-text="data.option.text"/>
     </div>
-    <appui-option-buttons :source="data"
-                          :plugin="data.isPlugin"/>
+    <appui-option-buttons :source="data"/>
     <div class="bbn-bottom-left bbn-vxxspadding bbn-hxspadding">
       <appui-option-breadcrumb :source="data.breadcrumb"/>
     </div>
@@ -32,21 +31,19 @@
               <div><?= _('ID') ?></div>
               <div bbn-text="data.option.id"/>
   
-              <div><?= _("Application's name") ?></div>
+              <div><?= _("Container's name") ?></div>
               <bbn-input bbn-model="data.option.text"
                         class="bbn-wide"
                         :required="true"/>
   
-              <div><?= _("Application's code") ?></div>
+              <div><?= _("Container's code") ?></div>
               <bbn-input bbn-model="data.option.code"
                          class="bbn-wide"
                          :required="true"/>
   
-              <div><?= _("Other values") ?></div>
-              <div style="height: 300px"
-                   class="bbn-widest">
-                <bbn-json-editor bbn-model="data.option.value"/>
-              </div>
+              <div><?= _("Container's color") ?></div>
+              <bbn-colorpicker bbn-model="data.option.color"/>
+  
             </div>
           </bbn-form>
         </div>
