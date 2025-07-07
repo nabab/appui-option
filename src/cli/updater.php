@@ -5,8 +5,9 @@ use bbn\X;
 /** @var $ctrl \bbn\mvc\ctrl */
 X::adump("Hello from the updater...");
 $appui = new bbn\Appui();
-if ($res = $appui->importOptions()) {
-  echo PHP_EOL . $res . ' ' . _("options changed") . PHP_EOL;
+$res = $appui->importOptions();
+foreach ($res as $r) {
+  echo PHP_EOL . $r . ' ' . _("options changed") . PHP_EOL;
 }
 
 /*

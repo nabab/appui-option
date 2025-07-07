@@ -37,7 +37,8 @@
           <appui-option-template-form bbn-if="data.isTemplate"
                              :source="data"/>
           <appui-option-form bbn-else
-                                      :source="data"/>
+                             :source="data.option"
+                             :configuration="data.parentCfg"/>
         </div>
 
       </bbn-container>
