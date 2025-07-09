@@ -14,7 +14,15 @@
         ready: false,
         models: [],
         views: [],
+        isContainer: !!this.source.container,
         showSchema: !!this.source.schema,
+        optionsNature: [{
+          text: bbn._('Real option'),
+          value: false
+        }, {
+          text: bbn._('Container'),
+          value: true
+        }],
         aliasRelations: [{
           text: bbn._('No relations'),
           value: '',
@@ -233,6 +241,15 @@
       }
     },
     watch:{
+      isContainer(nv) {
+        if (nv) {
+          this.source.container = 1;
+          this.source.allow_children = 1;
+        }
+        else {
+          delete this.source.container;
+        }
+      },
       isFrozen(newVal){
         if (newVal) {
         }

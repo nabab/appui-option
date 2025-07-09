@@ -9,7 +9,7 @@ if ($model->hasData('value') && ($model->data['value'] === null)) {
 unset($model->data['res']);
 if ($model->hasData('id', true) && ($model->hasData('id_alias', true) || $model->hasData('text', true))) {
   $o =& $model->inc->options;
-  $cfg = $o->getParentCfg($model->data['id']);
+  $cfg = $o->getApplicableCfg($model->data['id']);
   if (!empty($cfg['schema'])) {
     if (is_array($cfg['schema'])) {
       $schema = $cfg['schema'];

@@ -64,7 +64,7 @@
             </div>
             <hr>
             <appui-option-config-items :source="source.cfg" :option-id="optionId"/>
-            <template bbn-if="source.cfg.relations !== 'template'">
+            <template bbn-if="!source.cfg.container && (source.cfg.relations !== 'template')">
               <hr>
               <div class="bbn-w-100 bbn-c bbn-light bbn-lg">
                 <?= _('Items inheritance') ?>

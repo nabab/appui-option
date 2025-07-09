@@ -24,7 +24,7 @@ if (isset($model->inc->options)) {
 
       $aliases = $o->getAliases($model->data['id']);
       $prefs = new \bbn\User\Preferences($model->db);
-      $permissions = $model->inc->perm->getParentCfg($model->data['id']);
+      $permissions = $model->inc->perm->getApplicableCfg($model->data['id']);
       $pub = array_map(
         function ($a) {
           if (!empty($a['value']) && \bbn\Str::isJson($a['value'])) {
@@ -66,7 +66,7 @@ if (isset($model->inc->options)) {
         ];
       }
 
-      $pcfg = $o->getParentCfg($model->data['id']);
+      $pcfg = $o->getApplicableCfg($model->data['id']);
       $parents = $o->parents($model->data['id']);
       $breadcrumb = array_reverse(array_map(function($a) use (&$o) {
         return $o->option($a);

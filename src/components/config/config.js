@@ -1,7 +1,7 @@
 // Javascript Document
 (() => {
   const getDefaultCfg = o => {
-    return bbn.fn.extend({
+    const cfg = bbn.fn.extend({
       allow_children: null,
       alias_name: "",
       categories: null,
@@ -11,24 +11,29 @@
       desc: "",
       form: null,
       frozen: 0,
+      help: '',
       i18n: "",
       i18n_inheritance: "",
       id: "",
+      id_template: null,
       inheritance: "",
+      notext: 0,
       permissions: "",
-      schema: null,
       relations: '',
-      template: null,
+      root_alias: bbn._('Root'),
+      schema: null,
       show_code: null,
       show_icon: 0,
       show_value: null,
       sortable: null,
-      write: true,
-      help: '',
-      notext: 0,
       view: 0,
-      root_alias: bbn._('Root')
+      write: true,
     }, o || {});
+    if (cfg.id_template && (cfg.relations !== 'template')) {
+      cfg.relations = 'template';
+    }
+
+    return cfg;
   };
   return {
     mixins: [bbn.cp.mixins.basic],
@@ -112,7 +117,7 @@
         isFrozen: !!this.source.cfg.frozen || this.source.useTemplate,
         data: {
           id: this.optionId,
-          cfg: this.source.cfg
+          cfg: getDefaultCfg(this.source.cfg)
         }
       }
     },
@@ -170,7 +175,6 @@
         return true;
       },
       onSuccess() {
-        debugger;
         let tab = this.closest('bbn-container'),
             list = tab.find('appui-option-list'),
             table = list ? list.getRef('table') : false;

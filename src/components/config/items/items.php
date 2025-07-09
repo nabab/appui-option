@@ -1,48 +1,62 @@
 <div class="bbn-grid-fields">
-  <!-- INTERNAL RELATIONS -->
+  <!-- OPTIONS NATURE -->
   <div class="bbn-grid-full bbn-m bbn-b">
-    <?= _('Internal relations') ?>
+    <?= _('Option nature') ?>
   </div>
 
   <div class="bbn-grid-full bbn-c">
+    <bbn-radio class="bbn-options-nature"
+              bbn-model="isContainer"
+              :disabled="isFrozen"
+              :source="optionsNature"/>
+  </div>
+
+  <!-- INTERNAL RELATIONS -->
+  <div class="bbn-grid-full bbn-m bbn-b"
+       bbn-if="!source.container">
+    <?= _('Internal relations') ?>
+  </div>
+
+  <div class="bbn-grid-full bbn-c"
+       bbn-if="!source.container">
     <bbn-radio class="bbn-options-relations"
               bbn-model="source.relations"
               :disabled="isFrozen"
               :source="aliasRelations"/>
   </div>
-  <label bbn-if="source.relations === 'template'">
+  <label bbn-if="!source.container && (source.relations === 'template')">
     <?= _('Template used by children') ?>
   </label>
-  <bbn-dropdown bbn-if="source.relations === 'template'"
+  <bbn-dropdown bbn-if="!source.container && (source.relations === 'template')"
                 bbn-model="source.id_template"
                 :source="appui.plugins['appui-option'] + '/data/templates'"
                 :disabled="isFrozen"/>
   
   <div class="bbn-grid-full bbn-c"
-       bbn-if="(source.relations === 'template') && source.id_template && $origin.source?.option?.num_children">
+       bbn-if="!source.container && (source.relations === 'template') && source.id_template && $origin.source?.option?.num_children">
     <bbn-button @click="applyTemplate"
                 label="<?= _('Apply template to existing children') ?>"/>
   </div>
 
-  <label bbn-if="source.relations === 'alias'">
+  <label bbn-if="!source.container && (source.relations === 'alias')">
     <?= _("Alias' root") ?>
   </label>
   <div class="bbn-flex-width"
-        bbn-if="source.relations === 'alias'">
+        bbn-if="!source.container && (source.relations === 'alias')">
     <appui-option-input-picker :disabled="isFrozen"
                                 bbn-model="source.id_root_alias"/>
   </div>
 
-  <label bbn-if="source.relations === 'alias'">
+  <label bbn-if="!source.container && (source.relations === 'alias')">
     <?= _("Alias' name") ?>
   </label>
-  <bbn-input bbn-if="source.relations === 'alias'"
-            bbn-model="source.alias_name"
-            :disabled="isFrozen"
-            class="bbn-wide"/>
+  <bbn-input bbn-if="!source.container && (source.relations === 'alias')"
+             bbn-model="source.alias_name"
+             :disabled="isFrozen"
+             class="bbn-wide"/>
 
   <!-- DATA STRUCTURE -->
-  <template bbn-if="source.relations !== 'template'">
+  <template bbn-if="!source.container && (source.relations !== 'template')">
 
     <div class="bbn-grid-full bbn-m bbn-b">
       <?= _('Data structure') ?>
