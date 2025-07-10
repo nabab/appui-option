@@ -131,7 +131,7 @@
         <bbn-radio :source="optionsRadio"
                   bbn-model="editorOptionsType"/><br>
         <bbn-json-editor bbn-if="optionsType === 'source'"
-                        bbn-model="currentSource"/>
+                        bbn-model="currentSource.source"/>
         <bbn-json-editor bbn-elseif="optionsType === 'options'"
                         bbn-model="currentOptions"/>
       </div>
