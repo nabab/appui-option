@@ -32,7 +32,13 @@
         <div><?= _("Template's text") ?></div>
         <div bbn-text="data.option.alias.text"/>
         <div><?= _("Template's code") ?></div>
-        <div bbn-text="data.option.alias.code"/>
+        <div bbn-if="data.option.code === data.option.alias.code"
+             bbn-text="data.option.code"/>
+        <div bbn-else
+             class="bbn-state-error">
+          <?= _("This option's code is not the same as the template's one") ?>:
+          <span bbn-text="data.option.code + ' / ' + data.option.alias.code"/>
+        </div>
       </div>
       <div class="bbn-w-100"
             bbn-if="data.realCfg">
@@ -44,7 +50,7 @@
         </div>
       </div>
       <div class="bbn-w-100"
-            bbn-if="data.option.code || data.option.text || data.option.value">
+            bbn-if="data.option.text || data.option.value">
         <div class="bbn-card bbn-message-error bbn-centered-block bbn-spadding bbn-c">
           <?= _("Some values for this option are set but are not taken into account") ?><br><br>
           <bbn-button @click="deleteValues"
