@@ -1,4 +1,6 @@
-<div class="bbn-overlay appui-option-list">
+<?php
+use bbn\Str;
+?><div class="bbn-overlay appui-option-list">
 	<bbn-table :source="source.options"
              uid="id"
              ref="table"
@@ -55,7 +57,7 @@
     <bbns-column bbn-if="(source.cfg.relations === 'alias') && !schemaHasField('id_alias')"
                 field="id_alias"
                 :width="!schemaHasField('text') && (!source.cfg.notext || (source.cfg.relations !== 'alias')) ? 150 : null"
-                :label="source.cfg.alias_name || '<?= st::escapeSquotes(_('Alias')) ?>'"
+                :label="source.cfg.alias_name || '<?= Str::escapeSquotes(_('Alias')) ?>'"
                 :render="renderAlias"
                 :editable="source.cfg.relations === 'alias'"/>
     <bbns-column field="value"

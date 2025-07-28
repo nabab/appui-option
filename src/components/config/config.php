@@ -1,4 +1,6 @@
-<!-- HTML Document -->
+<?php
+use bbn\Str;
+?><!-- HTML Document -->
 <div>
   <div class="bbn-padding bbn-centered-block"
        style="min-width: 60%">
@@ -87,16 +89,16 @@
                             bbn-model="source.cfg.inheritance"
                             :disabled="isFrozen"
                             :source="[{
-                                text: '<?= st::escape(_('None')) ?>',
+                                text: '<?= Str::escape(_('None')) ?>',
                                 value: '',
                               }, {
-                                text: '<?= st::escape(_('Only children')) ?>',
+                                text: '<?= Str::escape(_('Only children')) ?>',
                                 value: 'children',
                               }, {
-                                text: '<?= st::escape(_('Cascade')) ?>',
+                                text: '<?= Str::escape(_('Cascade')) ?>',
                                 value: 'cascade',
                               }, {
-                                text: '<?= st::escape(_('Default')) ?>',
+                                text: '<?= Str::escape(_('Default')) ?>',
                                 value: 'default',
                               }]"/>
                 </div>

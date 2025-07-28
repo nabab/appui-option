@@ -1,4 +1,6 @@
-<div class="bbn-grid-fields">
+<?php
+use bbn\Str;
+?><div class="bbn-grid-fields">
   <!-- OPTIONS NATURE -->
   <div class="bbn-grid-full bbn-m bbn-b">
     <?= _('Option nature') ?>
@@ -216,13 +218,13 @@
               bbn-model="source.i18n_inheritance"
               :disabled="isFrozen"
               :source="[{
-                  text: '<?= st::escape(_('None')) ?>',
+                  text: '<?= Str::escape(_('None')) ?>',
                   value: '',
                 }, {
-                  text: '<?= st::escape(_('Only children')) ?>',
+                  text: '<?= Str::escape(_('Only children')) ?>',
                   value: 'children',
                 }, {
-                  text: '<?= st::escape(_('Cascade')) ?>',
+                  text: '<?= Str::escape(_('Cascade')) ?>',
                   value: 'cascade',
                 }]"/>
   </template>
