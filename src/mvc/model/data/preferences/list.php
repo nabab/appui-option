@@ -2,7 +2,7 @@
 
 use bbn\Appui\Grid;
 
-/** @var $this \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 if ($model->hasData(['limit', 'data'], true) && isset($model->data['data']['id'])) {
   $where = [
     'conditions' => [

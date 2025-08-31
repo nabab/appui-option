@@ -1,5 +1,5 @@
 <?php
-/* @var \bbn\Mvc\Model $model */
+/* @var bbn\Mvc\Model $model */
 if ( 
   ($pref = new \bbn\User\Preferences($model->db)) &&
   !empty($model->data['id'])

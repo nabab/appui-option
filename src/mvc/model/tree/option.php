@@ -1,6 +1,6 @@
 <?php
 use bbn\X;
-/* @var \bbn\Mvc\Model $model */
+/* @var bbn\Mvc\Model $model */
 $r = $model->getModel($model->pluginUrl('appui-option') . '/data/get_info', ['id' => $model->data['id']]);
 if (!empty($r['success'])) {
   if (!empty($r['cfg']) && is_string($r['cfg'])) {

@@ -1,6 +1,6 @@
 <?php
 
-/** @var $this \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 $ctrl
   ->setIcon("nf nf-md-music")
   ->setColor('#5E40BF', '#FFF')

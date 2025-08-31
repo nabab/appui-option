@@ -1,5 +1,5 @@
 <?php
-/* @var \bbn\Mvc\Model $model */
+/* @var bbn\Mvc\Model $model */
 $pref = new \bbn\User\Preferences($model->db);
 if ( !empty($model->data['id']) ){
   return ['success' => !!$pref->delete($model->data['id'])];

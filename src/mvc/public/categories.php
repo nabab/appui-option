@@ -1,5 +1,5 @@
 <?php
-/* @var $ctrl \bbn\Mvc\Controller */
+/* @var bbn\Mvc\Controller $ctrl */
 /*
 $ctrl->inc->options->apply(function($a){
   if ( isset($a['icon']) ){
