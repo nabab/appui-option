@@ -177,8 +177,11 @@
       inPopup(){
         return !!this.closest('bbn-popup');
       },
-      controllers(){
+      controllers() {
         return this.constructor.controllers;
+      },
+      languages() {
+        return this.$origin.source.languages;
       },
     },
     methods: {

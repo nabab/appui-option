@@ -3,6 +3,8 @@
 (() => {
   return {
     mixins: [bbn.cp.mixins.basic],
+    props: {
+    },
     data(){
       return {
         showTable: true,
@@ -10,9 +12,6 @@
       }
     },
     computed: {
-      tableData(){
-        return bbn.fn.extend({root: this.source.root}, this.source.cfg);
-      },
       schema(){
         if ( this.source.cfg.schema ){
           return typeof this.source.cfg.schema === 'string' ? JSON.parse(this.source.cfg.schema) : this.source.cfg.schema;

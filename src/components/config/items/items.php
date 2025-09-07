@@ -201,7 +201,7 @@ use bbn\Str;
     </div>
   
     <label><?= _('Language') ?></label>
-    <bbn-dropdown :source="source.languages"
+    <bbn-dropdown :source="languages"
                   bbn-model="source.i18n"
                   placeholder=" - "
                   source-value="code"

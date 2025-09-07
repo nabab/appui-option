@@ -7,9 +7,9 @@ if (!empty($r['success'])) {
     $r['cfg'] = json_decode($r['cfg'], true);
   }
 
-  $i81nCls = new \bbn\Appui\I18n($model->db);
+  $i18nCls = new \bbn\Appui\I18n($model->db);
   if ($r['option']['text']) {
-    $r['languages'] = $i81nCls->getPrimariesLangs();
+    $r['languages'] = $i18nCls->getPrimariesLangs();
     if (($t = $model->getModel(APPUI_OPTION_ROOT.'data/text', $model->data))
       && !empty($t['success'])
     ) {
