@@ -104,7 +104,7 @@
     },
     methods: {
       schemaHasField(field){
-        return field && this.cfg.schema && (bbn.fn.search(this.cfg.schema, 'field', field) > -1);
+        return field && this.cfg.schema && (bbn.fn.search(this.cfg.schema || [], 'field', field) > -1);
       },
       showField(f){
         if ( ((f.field === 'code') && !this.cfg.show_code) ||
