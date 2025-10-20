@@ -62,7 +62,7 @@
     <bbn-router bbn-elseif="data?.option"
                 class="bbn-100"
                 :autoload="false"
-                :nav="true"
+                mode="tabs"
                 :master="true"
                 ref="router"
                 @notfound="onNotFound"

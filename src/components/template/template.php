@@ -22,7 +22,7 @@
     <bbn-router bbn-if="data?.option"
                 class="bbn-flex-fill"
                 :autoload="false"
-                :nav="true"
+                mode="tabs"
                 :master="true"
                 :show-switch="false"
                 :breadcrumb="isMobile">

@@ -89,9 +89,9 @@ use bbn\Str;
                 :width="50"
                 cls="bbn-c"
                 type="number"/>
-    <bbns-column :width="180"
+    <bbns-column :width="80"
                 :buttons="renderButtons"
-                flabel="<?= _('Actions') ?>"
+                label="<?= _('Actions') ?>"
                 :showable="false"
                 :editable="false"
                 cls="bbn-c"/>
