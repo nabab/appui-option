@@ -1,4 +1,5 @@
 <?php
+use bbn\Str;
 
 /** @var bbn\Mvc\Controller $ctrl */
 // Case for the whole page
@@ -12,7 +13,7 @@ if ( !isset($ctrl->post['id']) && empty($ctrl->arguments[0]) ){
     'cat' => $id_perm,
     /*'tree' => $ctrl->inc->options->map(function($r)use($perm){
       if ( empty($r['icon']) ){
-        if ( substr($r['code'], -1) === '/' ){
+        if ( Str::sub($r['code'], -1) === '/' ){
           $r['icon'] = 'nf nf-fa-folder';
         }
         else {

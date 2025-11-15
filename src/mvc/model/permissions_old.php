@@ -1,4 +1,6 @@
 <?php
+use bbn\Str;
+
 /** @var bbn\Mvc\Model $model */
 
 if ( !empty($model->data['action']) ){
@@ -86,7 +88,7 @@ else if ( isset($model->data['id']) &&
   $mgr = new \bbn\User\Manager($model->inc->user);
   $groups = $mgr->groups();
   $users = $mgr->getList();
-  $is_file = substr($row['code'], -1) !== '/';
+  $is_file = Str::sub($row['code'], -1) !== '/';
   // Check if it's an option
   $is_option = $model->inc->options->isParent($model->data['id'], $model->inc->options->fromCode('options', 'permission', 'appui'));
   $res = [
@@ -128,17 +130,17 @@ else if ( isset($model->data['id']) &&
     }
     else{
       if ( !empty($p) ){
-        $name = substr($p[0], 0, \strlen($p[0]));
+        $name = Str::sub($p[0], 0, Str::len($p[0]));
       }
       else if ( !$is_file ) {
-        $name = substr($row['code'], 0, \strlen($row['code']));
+        $name = Str::sub($row['code'], 0, Str::len($row['code']));
       }
       if ( !empty($name) ){
         foreach ( $model->data['routes'] as $n => $r ){
-          array_push($tried, [$r['path'].'src/mvc/public/'.substr($path, \strlen($name))]);
+          array_push($tried, [$r['path'].'src/mvc/public/' . Str::sub($path, Str::len($name))]);
           if ( $n.'/' === $name ){
             $tried[count($tried)-1][1] = 'really';
-            if ( file_exists($r['path'].'src/mvc/public/'.substr($path, \strlen($name))) ){
+            if ( file_exists($r['path'].'src/mvc/public/' . Str::sub($path, Str::len($name))) ){
               $res['exist'] = true;
               $res['type'] = $is_file ? 'file' : 'folder';
               break;
@@ -159,7 +161,7 @@ else if ( isset($model->data['id']) ){
   foreach ( $rows as $r ){
     $is_folder = false;
     if ( empty($r['icon']) ){
-      if ( substr($r['code'], -1) === '/' ){
+      if ( Str::sub($r['code'], -1) === '/' ){
         $is_folder = true;
         $r['icon'] = 'nf nf-fa-folder';
       }
@@ -171,7 +173,7 @@ else if ( isset($model->data['id']) ){
         }
         if ( empty($real) ){
           foreach ( $model->data['routes'] as $n => $route ){
-            if ( file_exists($route['path'].'src/mvc/public/'.substr($path_to_file, \strlen($n)+1).'.php') ){
+            if ( file_exists($route['path'].'src/mvc/public/' . Str::sub($path_to_file, Str::len($n)+1).'.php') ){
               $real = true;
               break;
             }

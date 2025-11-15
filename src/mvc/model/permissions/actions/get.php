@@ -5,6 +5,7 @@
  **/
 
 use bbn\X;
+use bbn\Str;
 
 /** @var bbn\Mvc\Model $model */
 $res = ['success' => false];
@@ -15,7 +16,7 @@ if ($model->hasData('id', true)) {
   $mgr         = $model->inc->user->getManager();
   $groups      = $mgr->groups();
   $users       = $mgr->getList();
-  $is_file     = substr($row['code'], -1) !== '/';
+  $is_file     = Str::sub($row['code'], -1) !== '/';
   $pluginTplId = $o->getPluginTemplateId();
   $permTplId   = $o->getPermissionsTemplateId();
   // Check if it's an option
@@ -90,17 +91,17 @@ if ($model->hasData('id', true)) {
     }
     else{
       if ( !empty($p) ){
-        $name = substr($p[0], 0, \strlen($p[0]));
+        $name = Str::sub($p[0], 0, Str::len($p[0]));
       }
       else if ( !$is_file ) {
-        $name = substr($row['code'], 0, \strlen($row['code']));
+        $name = Str::sub($row['code'], 0, Str::len($row['code']));
       }
       if ( !empty($name) ){
         foreach ( $model->data['routes'] as $n => $r ){
-          array_push($tried, [$r['path'].'src/mvc/public/'.substr($path, \strlen($name))]);
+          array_push($tried, [$r['path'].'src/mvc/public/' . Str::sub($path, Str::len($name))]);
           if ( $n.'/' === $name ){
             $tried[count($tried)-1][1] = 'really';
-            if ( file_exists($r['path'].'src/mvc/public/'.substr($path, \strlen($name))) ){
+            if ( file_exists($r['path'].'src/mvc/public/' . Str::sub($path, Str::len($name))) ){
               $data['exist'] = true;
               $data['type'] = $is_file ? 'file' : 'folder';
               break;

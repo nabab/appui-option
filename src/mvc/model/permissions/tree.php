@@ -5,6 +5,7 @@
  **/
 
 use bbn\X;
+use bbn\Str;
 
 /** @var bbn\Mvc\Model $model */
 $o =& $model->inc->options;
@@ -81,7 +82,7 @@ if ($model->hasData('data', true)
       foreach ( $rows as $r ){
         $is_folder = false;
         if (empty($r['icon'])) {
-          if ( substr($r['code'], -1) === '/' ){
+          if ( Str::sub($r['code'], -1) === '/' ){
             $is_folder = true;
             $r['icon'] = 'nf nf-fa-folder';
           }

@@ -1,11 +1,12 @@
 <?php
 
 use bbn\X;
+use bbn\Str;
 /** @var bbn\Mvc\Controller $ctrl */
 if ($ctrl->hasArguments() && !empty($ctrl->post)) {
   $ok = true;
   foreach ($ctrl->arguments as $v) {
-    if (strpos($v, '../') !== false) {
+    if (Str::pos($v, '../') !== false) {
       $ok = false;
     }
   }

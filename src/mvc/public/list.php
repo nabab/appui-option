@@ -1,5 +1,6 @@
 <?php
 /** @var bbn\Mvc\Controller $ctrl */
+use bbn\Str;
 
 
 /** @var bbn\Appui\Option $o */
@@ -73,7 +74,7 @@ if (!empty($id)) {
 
 
       /*if ( $controller ){
-        $ctrl2 = $ctrl->add($controller, $ctrl->data, substr($controller, 0, 2) === './' ? false : true);
+        $ctrl2 = $ctrl->add($controller, $ctrl->data, Str::sub($controller, 0, 2) === './' ? false : true);
         $ctrl->obj = $ctrl2->get();
       }*/
 
