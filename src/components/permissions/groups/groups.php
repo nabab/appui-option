@@ -25,6 +25,7 @@
                       bbn-model="source['group' + g.id]"
                       :label="g.nom || g.group"
                       :novalue="false"
+                      :value="true"
                       :key="g.id+'b'"/>
       </li>
     </ul>
