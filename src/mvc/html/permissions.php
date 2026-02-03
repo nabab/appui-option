@@ -74,11 +74,6 @@
                  class="bbn-overlay bbn-middle">
               <div class="bbn-xl bbn-block"><?= _("Select an item...") ?></div>
             </div>
-            <div class="bbn-overlay bbn-modal bbn-middle"
-                 bbn-if="selected.type === 'folder'">
-              <div class="bbn-xlpadding bbn-xl bbn-background"
-                   bbn-text="_('No permission on folder')"/>
-            </bbn-floater>
           </div>
         </bbn-pane>
       </bbn-splitter>

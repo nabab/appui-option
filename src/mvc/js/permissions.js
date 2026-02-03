@@ -188,16 +188,27 @@
         });
       },
       setPanelSource(selected){
+        const tmp = [];
         if (selected) {
-          this.panelSource =  [
-            {
-              header: '<span class="bbn-lg bbn-b">' + bbn._("Configuration") + '</span>',
-              component: 'appui-option-permissions-configuration',
-              componentOptions: {
-                source: selected,
-                parent: this
-            	}
-            }, {
+          tmp.push({
+            header: '<span class="bbn-lg bbn-b">' + bbn._("Configuration") + '</span>',
+            component: 'appui-option-permissions-configuration',
+            componentOptions: {
+              source: selected,
+              parent: this
+            }
+          }, {
+            header: '<span class="bbn-lg bbn-b">' + bbn._("New permission (under this one)") + '</span>',
+            component: 'appui-option-permissions-new',
+            componentOptions: {
+              source: {
+                selected: selected
+              },
+              parent: this
+            }
+          });
+          if (selected.type !== 'folder') {
+            tmp.splice(1, 0, {
               header: '<span class="bbn-lg bbn-b">' + bbn._("Groups") + '</span>',
               component: 'appui-option-permissions-groups',
               componentOptions: {
@@ -215,17 +226,9 @@
                 source: selected,
                 parent: this
               }
-            }, {
-              header: '<span class="bbn-lg bbn-b">' + bbn._("New permission (under this one)") + '</span>',
-              component: 'appui-option-permissions-new',
-              componentOptions: {
-                source: {
-                  selected: selected
-                },
-                parent: this
-              }
-            }
-          ];
+            });
+          }
+          this.panelSource = tmp;
         }
         else {
           this.panelSource = [];
