@@ -1,6 +1,6 @@
 <!-- HTML Document -->
 <div class="bbn-overlay appui-option-tree">
-  <bbn-splitter :resizable="true" :collapsible="true" orientation="horizontal">
+  <bbn-splitter :resizable="true" :collapsible="true" orientation="horizontal" fcolor="#FFF" :bcolor="closest('bbn-container').currentBcolor">
     <bbn-pane :resizable="true" :collapsible="true" :size="300" :scrollable="false">
       <div class="bbn-100"
            ref="container"
