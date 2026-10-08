@@ -1,5 +1,5 @@
 <?php
-/* @var bbn\Mvc\Controller $ctrl */
+/** @var bbn\Mvc\Controller $ctrl */
 if ( isset($ctrl->post['id']) ){
   $ctrl->obj->data = $ctrl->inc->options->textValueOptions($ctrl->post['id']);
 }
